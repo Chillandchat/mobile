@@ -1,0 +1,12 @@
+GET http://localhost:3001/api/users/get/all http/1.1
+
+###
+
+POST http://localhost:3001/api/users/post/create http/1.1
+content-type: application/json
+
+{
+    "id":"123",
+    "username":"admin",
+    "password":"password1234"
+}

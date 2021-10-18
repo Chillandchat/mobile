@@ -3,17 +3,18 @@ import express from "express";
 import { URI } from "./vars.js";
 import user from "./schema.js";
 import mongoose from "mongoose";
+
 //Express sestup
 const app = express();
 
 //Variables
-const PORT = 8080;
+const port = process.env.PORT || 3001;
 
 //Db connection
 mongoose.connect(URI);
 
 //Json middleware
-app.use(express.json);
+app.use(express.json());
 
 //Get endpoint
 app.get("/", (req, res) => {
@@ -57,6 +58,6 @@ const notFound = (req, res) => {
 app.use(notFound);
 
 //Listen server on port
-app.listen(PORT, () => {
-  console.log("server online!");
+app.listen(port, () => {
+  console.log(`Server Ready and listening on port ${port}`);
 });
