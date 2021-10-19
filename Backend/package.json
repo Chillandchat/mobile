@@ -1,21 +1,23 @@
 {
-  "name": "authapi",
+  "name": "chill-chat-api",
   "version": "0.0.0",
-  "description": "The auth api for chill chat",
+  "description": "The api for chill chat",
   "main": "./index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
-    "type": "git",
-    "url": "None"
+    "type": "Github",
+    "url": "https://github.com/AlvinC888/Chill-chat"
   },
   "author": "Alvin cheng (Brother and sister software)",
-  "license": "ISC",
+  "license": "None",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^6.0.11",
-    "nodemon": "^2.0.13",
     "socket.io": "^4.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   }
 }
