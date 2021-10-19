@@ -2,7 +2,7 @@
   "name": "authapi",
   "version": "0.0.0",
   "description": "The auth api for chill chat",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^6.0.11"
+    "mongoose": "^6.0.11",
+    "nodemon": "^2.0.13",
+    "socket.io": "^4.3.1"
   }
 }
