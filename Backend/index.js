@@ -1,14 +1,19 @@
 //Importing packages
-import express from "express";
-import { URI } from "./vars.js";
-import user from "./schema.js";
-import mongoose from "mongoose";
-
-//Express sestup
-const app = express();
+const app = require("express")();
+const URI = require("./vars.js");
+const user = require("./schema.js");
+const mongoose = require("mongoose");
+const io = require("socket.io");
+const server = require("http").server(app);
+const io = require("socket.io")(server);
 
 //Variables
 const port = process.env.PORT || 3001;
+
+//Web socket
+io.on("connection", (socket) => {
+  console.log("User connected.");
+});
 
 //Db connection
 mongoose.connect(URI);

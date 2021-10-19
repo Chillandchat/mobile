@@ -1,5 +1,5 @@
 //Importing packages
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 //Schema
 const schema = mongoose.Schema({
@@ -9,4 +9,4 @@ const schema = mongoose.Schema({
 });
 
 //Export schema
-export default mongoose.model("user", schema);
+module.exports = mongoose.model("user", schema);
