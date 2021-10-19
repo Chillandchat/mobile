@@ -13,6 +13,9 @@ const port = process.env.PORT || 3001;
 //Web socket
 io.on("connection", (socket) => {
   console.log("User connected.");
+  socket.on("messaage", (message) => {
+    io.emit(message);
+  });
 });
 
 //Db connection
