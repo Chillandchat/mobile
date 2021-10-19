@@ -8,14 +8,14 @@ const server = require("http").server(app);
 const io = require("socket.io")(server);
 
 //Variables
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || "8080";
 
 //Web socket
 io.on("connection", (socket) => {
   console.log("User connected.");
-  socket.on("messaage", (message) => {
-    io.emit(message);
-  });
+});
+io.on("message", (payload) => {
+  io.emit("message", payload);
 });
 
 //Db connection
