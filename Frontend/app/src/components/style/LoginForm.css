@@ -1,0 +1,106 @@
+/*CSS file:*/
+#label {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.3rem;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  margin-right: 22vw;
+}
+#textBox {
+  border-radius: 140vw;
+  border: 6px solid #ffff;
+  width: 40vw;
+  height: 4vw;
+  cursor: pointer;
+
+  padding: 0rem 1rem 0rem 1rem;
+  font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+}
+#container {
+  text-align: center;
+  margin-top: 3vw;
+  overflow: hidden;
+}
+#textBox::-webkit-input-placeholder {
+  color: #c8bcbc;
+  padding-left: 0rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+}
+
+@media (min-width: 1000px) {
+  #label {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 0;
+
+    margin-right: 20vw;
+  }
+  #textBox {
+    border-radius: 140vw;
+    border: 7px solid #ffff;
+    width: 27vw;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    height: 3vw;
+    padding: 0rem 1rem 0rem 1rem;
+    background-color: transparent;
+    color: #fff;
+    outline: none;
+  }
+  #container {
+    text-align: center;
+    margin-top: 2vw;
+    overflow: hidden;
+  }
+  #textBox::-webkit-input-placeholder {
+    color: #c8bcbc;
+    padding-left: 0rem;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+  }
+}
+@media (max-width: 600px) {
+  #label {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.7rem;
+    margin: 0;
+    padding: 0;
+    margin-right: 25vw;
+  }
+  #textBox {
+    border-radius: 140vw;
+    border: 5px solid #ffff;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    width: 34vw;
+    height: 4vw;
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    background-color: transparent;
+    color: #fff;
+    outline: none;
+  }
+  #container {
+    text-align: center;
+    margin-top: 3vw;
+    overflow: hidden;
+  }
+  #textBox::-webkit-input-placeholder {
+    color: #c8bcbc;
+    padding-left: 0rem;
+    font-size: 0.7rem;
+    font-family: "Poppins", sans-serif;
+  }
+}

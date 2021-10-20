@@ -1,0 +1,21 @@
+/*CSS file:*/
+#userIcon {
+  border-radius: 100%;
+  height: 20vw;
+  width: 20vw;
+}
+#wrapper {
+  text-align: center;
+  overflow: hidden;
+}
+@media (min-width: 1000px) {
+  #userIcon {
+    border-radius: 100%;
+    height: 15vw;
+    width: 15vw;
+  }
+  #wrapper {
+    text-align: center;
+    overflow: hidden;
+  }
+}
