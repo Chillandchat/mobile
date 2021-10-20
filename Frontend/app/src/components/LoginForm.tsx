@@ -3,7 +3,7 @@ import "./style/LoginForm.css";
 
 interface Props {
   formPlaceHolder: string;
-  formLable: string;
+  formLabel: string;
   password: string;
 }
 
@@ -11,7 +11,7 @@ export const LoginForm = (props: Props) => {
   if (props.password == "true") {
     return (
       <div id="container">
-        <p id="label">{props.formLable}</p>
+        <p id="label">{props.formLabel}</p>
         <input
           placeholder={props.formPlaceHolder}
           id="textBox"
@@ -22,7 +22,7 @@ export const LoginForm = (props: Props) => {
   } else {
     return (
       <div id="container">
-        <p id="label">{props.formLable}</p>
+        <p id="label">{props.formLabel}</p>
         <input placeholder={props.formPlaceHolder} id="textBox" />
       </div>
     );
