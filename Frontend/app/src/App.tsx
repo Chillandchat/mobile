@@ -1,9 +1,22 @@
-import React from "react";
-import logo from "./logo.svg";
+//Importing packages
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Login } from "./components/LoginPage";
 import "./App.css";
 
-function App() {
-  return <div className="App"></div>;
-}
+//Main app component
+const App = () => {
+  return (
+    <div className="App">
+      {/*Browser router*/}
+      <BrowserRouter>
+        <Switch>
+          {/*Login route*/}
+          <Route path="/" component={Login} />
+        </Switch>
+      </BrowserRouter>
+    </div>
+  );
+};
 
+//Export compoent
 export default App;
