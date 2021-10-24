@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const LoginForm = (props: Props) => {
-  if (props.password == "true") {
+  if (props.password === "true") {
     return (
       <div id="container">
         <p id="label">{props.formLabel}</p>

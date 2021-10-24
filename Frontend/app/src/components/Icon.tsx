@@ -5,7 +5,7 @@ export const Icon: React.FC = () => {
   return (
     <div>
       <div id="wrapper">
-        <img src={UserIcon} id="userIcon" />
+        <img src={UserIcon} id="userIcon" alt="Error" />
       </div>
     </div>
   );

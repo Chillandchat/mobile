@@ -3,3 +3,27 @@
   padding-top: 6rem;
   overflow: hidden;
 }
+#signupLink {
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+}
+#signup {
+  text-align: center;
+  padding: 2rem;
+}
+@media (max-width: 600px) {
+  #loginParent {
+    background-color: #fa4747;
+    padding-top: 9rem;
+    overflow: hidden;
+  }
+  #signupLink {
+    color: #fff;
+    font-size: 0.7rem;
+  }
+  #signup {
+    text-align: center;
+    padding: 2rem;
+  }
+}

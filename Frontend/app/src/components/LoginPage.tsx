@@ -1,8 +1,10 @@
 //Importing packages
 import React from "react";
 import "./style/LoginPage.css";
+import login from "../scripts/login.js";
 import { Icon } from "./Icon";
 import { LoginForm } from "./LoginForm";
+import { ExecuteButton } from "./ExecuteButton";
 import { Credit } from "./Credit";
 import { Link } from "react-router-dom";
 
@@ -33,6 +35,12 @@ export const Login: React.FC = () => {
         >
           New? Sign up today!
         </Link>
+        {/*Button*/}
+        <ExecuteButton
+          onclick={() => {
+            login();
+          }}
+        />
       </div>
       {/*Credit*/}
       <Credit />
