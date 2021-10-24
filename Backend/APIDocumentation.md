@@ -1,4 +1,4 @@
-### Chill&chat API documentation
+# Chill&chat API documentation
 
 # Introduction
 
