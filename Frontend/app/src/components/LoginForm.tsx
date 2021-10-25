@@ -15,7 +15,7 @@ export const LoginForm: React.FC<Props> = (props) => {
   if (props.password === "true") {
     return (
       <div id="container">
-        {/*Lable*/}
+        {/*Label*/}
         <p id="label">{props.formLabel}</p>
         {/*Input box*/}
         <input
@@ -28,7 +28,7 @@ export const LoginForm: React.FC<Props> = (props) => {
   } else {
     return (
       <div id="container">
-        {/*Lable*/}
+        {/*Label*/}
         <p id="label">{props.formLabel}</p>
         {/*Input box*/}
         <input placeholder={props.formPlaceHolder} id="textBox" />
