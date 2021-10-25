@@ -13,6 +13,7 @@
   "author": "Alvin cheng (Brother and sister software)",
   "license": "MIT See LICENSE file for more infomation",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^6.0.11",
     "socket.io": "^4.3.1"
