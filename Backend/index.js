@@ -1,14 +1,3 @@
-/***********************************************************************************
- Tasks and notes:
- * Payload object plan
- {
-   _id:String,
-    id: String,
-    user:String,
-    content:String,
- }
- ***********************************************************************************/
-
 //Importing packages
 const app = require("express")();
 const URI = require("./vars.js");
@@ -35,10 +24,12 @@ io.on("message", (payload) => {
       content: payload.content,
     });
     newMessage.save().then(() => {
-      res.status(201).send();
+      res
+        .status(201)
+        .send("Message saved successfully, no errors or problems.");
     });
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send(`SERVER ERROR: ${err}`);
   }
 });
 
@@ -61,7 +52,7 @@ app.get("/api/messages/get", (req, res) => {
       .exec()
       .then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send(`SERVER ERROR: ${err}`);
   }
 });
 
@@ -77,10 +68,10 @@ app.post("/api/users/post/create", (req, res) => {
       onDeleteList: req.body.onDeleteList,
     });
     newUser.save().then(() => {
-      res.status(201).send("Done, no errors and problems.");
+      res.status(201).send("Saved successfully, no errors and problems.");
     });
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send(`SERVER ERROR: ${err}`);
   }
 });
 
@@ -93,7 +84,7 @@ app.get("/api/users/get/all", (req, res) => {
       .exec()
       .then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send(`SERVER ERROR: ${err}`);
   }
 });
 
@@ -104,11 +95,11 @@ app.get("/api/users/get/:user/:password", (req, res) => {
       .findOne({ username: req.params.user, password: req.params.password })
       .exec()
       .then((data) => {
-        res.status(200).send();
+        res.status(200).send("User login successfully");
       });
   } catch (err) {
     console.log(err);
-    res.status(500).send();
+    res.status(500).send(`SERVER ERROR: ${err}`);
   }
 });
 
@@ -119,37 +110,29 @@ app.get("/api/users/get/:user/", (req, res) => {
       .findOne({ username: req.params.user })
       .exec()
       .then((data) => {
-        res.status(200).send();
+        res.status(200).send("User found");
       });
   } catch (err) {
     console.log(err);
-    res.status(500).send();
+    res.status(500).send(`SERVER ERROR: ${err}`);
   }
 });
 
 //Block user endpoint
-app.put("/api/users/block/:user/:blockStatus", (req, res) => {
-  try {
-    user
-      .findOne({ username: req.params.user })
-      .exec()
-      .then((data) => {
-        try {
-          data.blocked = req.params.blockStatus;
-          res.status(200).send();
-        } catch (err) {
-          res.status(500).send(err);
-        }
-      });
-  } catch (err) {
-    console.log(err);
-    res.status(500).send();
-  }
+app.put("/api/users/block/", (req, res) => {
+  user.findOne({ username: req.body.user }, (err, data) => {
+    if (err) res.status(500).send(err);
+    else data.blocked = req.body.blockStatus;
+  });
 });
 
 //Not found error handling
 const notFound = (req, res) => {
-  res.status(404).send("REQUEST ERROR: The page you requested was not found.");
+  res
+    .status(404)
+    .send(
+      "REQUEST ERROR: The page you requested was not found, please type a valid URL."
+    );
 };
 app.use(notFound);
 
