@@ -80,7 +80,7 @@ axios
 
 This endpoint is used to retrieve all user information from the database in mongodb.
 
-NOTE: PLEASE NOTE THAT THIS ENDPOINT MUST NOT BE SHARED TO ANY OTHER PEOPLE BECUASE ALL USER INFORMATION CAN BE LEAKED TO PUBLIC TO INSURE PRIVACY TO USERS.
+NOTE: PLEASE NOTE THAT THIS ENDPOINT MUST NOT BE SHARED TO ANY OTHER PEOPLE BECAUSE ALL USER INFORMATION CAN BE LEAKED TO PUBLIC TO INSURE PRIVACY TO USERS.
 
 Sample:
 
@@ -151,7 +151,8 @@ Sample:
 import axios from "axios";
 
 axios
-  .put("http://foo.com/api/users/block/<TARGET USER>/<BLOCK STATUS>", {
+  .put("http://foo.com/api/users/block/", {
+    user: "John smith",
     blocked: true,
   })
   .then((data) => {
