@@ -7,6 +7,8 @@ const message = require("./messageSchema.js");
 const mongoose = require("mongoose");
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
+const cors = require("cors");
+const { captureRejections } = require("events");
 
 //Variables
 const port = process.env.PORT || "8080";
@@ -39,6 +41,9 @@ mongoose.connect(URI);
 //Json middleware
 app.use(express.json());
 
+//CORS middleware
+app.use(cors());
+
 //Get endpoint
 app.get("/", (req, res) => {
   res.status(401).send("REQUEST ERROR: PLEASE ENTER API KEY.");
@@ -58,7 +63,6 @@ app.get("/api/messages/get", (req, res) => {
 
 //Create user endpoint
 app.post("/api/users/post/create", (req, res) => {
-  //create user
   try {
     const newUser = new user({
       id: req.body.id,
@@ -77,7 +81,6 @@ app.post("/api/users/post/create", (req, res) => {
 
 //Find users endpoint
 app.get("/api/users/get/all", (req, res) => {
-  //Find all users
   try {
     user
       .find()
@@ -90,17 +93,19 @@ app.get("/api/users/get/all", (req, res) => {
 
 //Login endpoint
 app.get("/api/users/get/:user/:password", (req, res) => {
-  try {
-    user
-      .findOne({ username: req.params.user, password: req.params.password })
-      .exec()
-      .then((data) => {
-        res.status(200).send("User login successfully");
-      });
-  } catch (err) {
-    console.log(err);
-    res.status(500).send(`SERVER ERROR: ${err}`);
-  }
+  user
+    .findOne({ username: req.params.user })
+    .exec()
+    .then((data) => {
+      if (data != null || data != undefined) {
+        if (
+          data.username == req.params.user &&
+          data.password == req.params.password
+        )
+          res.status(200).send("User login success");
+        else res.status(400).send("Invalid username or password");
+      } else res.status(404).send("User not found");
+    });
 });
 
 //Find user endpoint
@@ -110,20 +115,37 @@ app.get("/api/users/get/:user/", (req, res) => {
       .findOne({ username: req.params.user })
       .exec()
       .then((data) => {
-        res.status(200).send("User found");
+        if (data != null || data != undefined)
+          res.status(200).send("User found successfully");
+        else res.status(404).send("User not found");
+      })
+      .catch((err) => {
+        res.status(500).send(`SERVER ERROR: ${err}`);
       });
   } catch (err) {
-    console.log(err);
     res.status(500).send(`SERVER ERROR: ${err}`);
   }
 });
 
 //Block user endpoint
 app.put("/api/users/block/", (req, res) => {
-  user.findOne({ username: req.body.user }, (err, data) => {
-    if (err) res.status(500).send(err);
-    else data.blocked = req.body.blockStatus;
-  });
+  let error = false;
+  user
+    .findOne({ username: req.body.user })
+    .exec()
+    .then((data) => {
+      if (data != null || data != undefined) {
+        try {
+          data.blocked = req.body.blockedStatus;
+          data.save();
+        } catch (err) {
+          res.status(500).send(`SERVER ERROR: ${err}`);
+          error = true;
+        }
+      } else res.status(404).send("User not found");
+      if (!error) res.status(200).send();
+      error = false;
+    });
 });
 
 //Not found error handling
