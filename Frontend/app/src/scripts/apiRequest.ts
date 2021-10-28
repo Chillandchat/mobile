@@ -2,7 +2,7 @@
 import axios from "axios";
 
 //Api endpoints
-export const apiEndpoint = {
+export const apiEndpoints = {
   loginEndpoint: "/api/users/get/all",
   signupEndpoint: "/api/users/create.post",
 };
