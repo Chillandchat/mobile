@@ -8,7 +8,6 @@ const mongoose = require("mongoose");
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const cors = require("cors");
-const { captureRejections } = require("events");
 
 //Variables
 const port = process.env.PORT || "8080";
@@ -131,7 +130,7 @@ app.get("/api/users/get/:user/", (req, res) => {
 app.put("/api/users/block/", (req, res) => {
   let error = false;
   user
-    .findOne({ username: req.body.user })
+    .findOneAndUpdate({ username: req.body.user })
     .exec()
     .then((data) => {
       if (data != null || data != undefined) {

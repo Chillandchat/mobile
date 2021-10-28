@@ -153,7 +153,7 @@ import axios from "axios";
 axios
   .put("http://foo.com/api/users/block/", {
     user: "John smith",
-    blocked: true,
+    blockedStatus: true,
   })
   .then((data) => {
     //Write your code here:

@@ -20,3 +20,13 @@ GET http://localhost:8080/api/users/get/admin/ http/1.1
 ###
 
 GET http://localhost:8080/api/users/get/admin/password1234 http/1.1
+
+###
+
+PUT http://localhost:8080/api/users/block http/1.1
+content-type: application/json
+
+{
+    "user":"admin",
+    "blockStatus":true
+}
