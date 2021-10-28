@@ -16,7 +16,7 @@ const App = () => {
           {/*SignUp route*/}
           <Route
             exact
-            path="/signup&index=RCA@IAAgADASIAA#h%EBAxEB/8QAHwAAA%QUBAQEBAQEA"
+            path="/signup"
             component={SignUpPage}
           />
         </Switch>
@@ -25,5 +25,5 @@ const App = () => {
   );
 };
 
-//Export compoent
+//Export component
 export default App;
