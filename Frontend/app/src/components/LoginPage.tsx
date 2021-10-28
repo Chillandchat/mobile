@@ -29,16 +29,14 @@ export const Login: React.FC = () => {
       />
       {/*Sign up form*/}
       <div id="signup">
-        <Link
-          to="/signup"
-          id="signupLink"
-        >
+        <Link to="/signup" id="signupLink">
           New? Sign up today!
         </Link>
         {/*Button*/}
         <ExecuteButton
+          text="xxx"
           onclick={() => {
-            login("xxx","xxx");
+            login("xxx", "xxx");
           }}
         />
       </div>

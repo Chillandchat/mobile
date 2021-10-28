@@ -2,11 +2,11 @@ import React from "react";
 import "./style/ExecuteButton.css";
 
 interface Props {
-  text?: String;
+  text: String;
   onclick: () => any;
 }
 
-export const ExecuteButton = (props: Props) => {
+export const ExecuteButton:React.FC<Props> = (props) => {
   return (
     <div>
       <button onClick={props.onclick} id="button">
