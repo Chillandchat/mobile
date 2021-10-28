@@ -1,12 +1,14 @@
-import { apiEndpoints, api } from "./apiRequest.js";
+import { apiEndpoints as endpoints, api } from "./apiRequest";
 
-const login = () => {
+const login = (username: String, password: String) => {
   try {
-    api.get(apiEndpoints.loginEndpoint).then((response) => {
-      console.log(response);
-    });
-  } catch (error) {
-    console.error(error);
+    api
+      .get(`${endpoints.loginEndpoint}${username}/${password}`)
+      .then((response) => {
+        console.log(response);
+      });
+  } catch (err) {
+    console.error(err);
   }
 };
 
