@@ -1,4 +1,4 @@
-//Importing packeages
+//Importing packages
 import React from "react";
 import "./style/Credit.css";
 
