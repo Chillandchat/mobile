@@ -1,0 +1,33 @@
+/*CSS file:*/
+#signupParent {
+  background-color: #fa4747;
+  padding-top: 8rem;
+  overflow: hidden;
+  text-align: center;
+}
+#loginLink {
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  padding: 2rem;
+}
+#form {
+  text-align: center;
+  padding: 0rem 0rem 2rem 0rem;
+}
+@media (max-width: 600px) {
+  #signupParent {
+    background-color: #fa4747;
+    padding-top: 9rem;
+    overflow: hidden;
+    text-align: center;
+  }
+  #loginLink {
+    color: #fff;
+    font-size: 0.7rem;
+  }
+  #form {
+    text-align: center;
+    padding: 2rem;
+  }
+}

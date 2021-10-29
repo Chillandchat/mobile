@@ -3,13 +3,11 @@
 # Introduction
 
 Welcome to the Chill&chat API documentation, here you can learn more about the chill&chat api. Where I will cover every endpoint in this API. and I will also have samples on how to use this api in your application with javascript.
-
 # License
 
 Please note this code is licensed under the MIT license. please find the LICENSE file for more information.
 
 (c) copyright 2021-2022 Alvin Cheng
-
 # Endpoints:
 
 # Websocket in backend
