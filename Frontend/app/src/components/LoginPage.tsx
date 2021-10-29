@@ -1,9 +1,11 @@
 //Importing packages
 import React from "react";
 import "./style/LoginPage.css";
+import login from "../scripts/login";
 import { Icon } from "./Icon";
 import { LoginForm } from "./LoginForm";
-import { Credit } from "./Credit";
+import { ExecuteButton } from "./ExecuteButton";
+import {Credit } from "./Credit";
 import { Link } from "react-router-dom";
 
 //Login component
@@ -17,22 +19,26 @@ export const Login: React.FC = () => {
       <LoginForm
         formLabel="Username"
         formPlaceHolder="Your username"
-        password="false"
+        password={false}
       />
       {/*Password form*/}
       <LoginForm
         formLabel="Password"
         formPlaceHolder="Your password"
-        password="true"
+        password={true}
       />
       {/*Sign up form*/}
       <div id="signup">
-        <Link
-          to="/signup&index=RCA@IAAgADASIAA#h%EBAxEB/8QAHwAAA%QUBAQEBAQEA"
-          id="signupLink"
-        >
+        <Link to="/signup" id="signupLink">
           New? Sign up today!
         </Link>
+        {/*Button*/}
+        <ExecuteButton
+          text="xxx"
+          onclick={() => {
+            login("xxx", "xxx");
+          }}
+        />
       </div>
       {/*Credit*/}
       <Credit />

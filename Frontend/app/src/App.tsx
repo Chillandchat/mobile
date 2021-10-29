@@ -1,9 +1,29 @@
-import React from "react";
-import logo from "./logo.svg";
+//Importing packages
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Login } from "./components/LoginPage";
+import { SignUpPage } from "./components/SignUpPage";
 import "./App.css";
 
-function App() {
-  return <div className="App"></div>;
-}
+//Main app component
+const App = () => {
+  return (
+    <div className="App">
+      {/*Browser router*/}
+      <BrowserRouter>
+        <Switch>
+          {/*Login route*/}
+          <Route path="/" component={Login} exact />
+          {/*SignUp route*/}
+          <Route
+            exact
+            path="/signup"
+            component={SignUpPage}
+          />
+        </Switch>
+      </BrowserRouter>
+    </div>
+  );
+};
 
+//Export component
 export default App;

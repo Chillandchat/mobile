@@ -2,22 +2,23 @@
 import React from "react";
 import "./style/LoginForm.css";
 
-//Props interface properties
+//Props interface
 interface Props {
   formPlaceHolder: string;
   formLabel: string;
-  password: string;
+  password:Boolean;
 }
 
 //Login form component
-export const LoginForm: React.FC<Props> = (props) => {
-  //Conditional component rendering
-  if (props.password === "true") {
+export const LoginForm:React.FC<Props> = (props) => {
+  //Password form 
+  if (props.password) {
+
     return (
       <div id="container">
         {/*Label*/}
         <p id="label">{props.formLabel}</p>
-        {/*Input box*/}
+        {/*Form*/}
         <input
           placeholder={props.formPlaceHolder}
           id="textBox"
@@ -25,12 +26,15 @@ export const LoginForm: React.FC<Props> = (props) => {
         />
       </div>
     );
-  } else {
+
+  } 
+  //Non-password form
+  else {
     return (
       <div id="container">
         {/*Label*/}
         <p id="label">{props.formLabel}</p>
-        {/*Input box*/}
+         {/*Form*/}
         <input placeholder={props.formPlaceHolder} id="textBox" />
       </div>
     );
