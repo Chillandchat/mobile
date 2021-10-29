@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 //Schema
 const schema = mongoose.Schema({
   id: String,
-  username: String,
-  password: String,
+  user: String,
+  content: String,
 });
 
 //Export schema
-module.exports = mongoose.model("user", schema);
+module.exports = mongoose.model("message", schema);

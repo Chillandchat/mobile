@@ -13,6 +13,7 @@ interface Props {
 export const LoginForm:React.FC<Props> = (props) => {
   //Password form 
   if (props.password) {
+
     return (
       <div id="container">
         {/*Label*/}
@@ -25,6 +26,7 @@ export const LoginForm:React.FC<Props> = (props) => {
         />
       </div>
     );
+
   } 
   //Non-password form
   else {
@@ -32,7 +34,7 @@ export const LoginForm:React.FC<Props> = (props) => {
       <div id="container">
         {/*Label*/}
         <p id="label">{props.formLabel}</p>
-        {/*Form*/}
+         {/*Form*/}
         <input placeholder={props.formPlaceHolder} id="textBox" />
       </div>
     );
