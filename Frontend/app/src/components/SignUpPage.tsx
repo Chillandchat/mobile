@@ -27,3 +27,6 @@ export const SignUpPage: React.FC = () => {
       <Link to="/" id="loginLink">
         Have an account? Login Here!
       </Link>
+    </div>
+  );
+};
