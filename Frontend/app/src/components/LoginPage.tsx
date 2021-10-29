@@ -5,7 +5,7 @@ import login from "../scripts/login";
 import { Icon } from "./Icon";
 import { LoginForm } from "./LoginForm";
 import { ExecuteButton } from "./ExecuteButton";
-import {Credit } from "./Credit";
+import { Credit } from "./Credit";
 import { Link } from "react-router-dom";
 
 //Login component
