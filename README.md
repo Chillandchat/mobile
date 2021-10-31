@@ -1,6 +1,4 @@
-### Chill-chat
-
-## Introduction
+# Chill-chat
 
 Welcome! this the chill&chat app repository, this app is still being developed. And is expected to release by the end of this year.
 
