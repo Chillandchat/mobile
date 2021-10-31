@@ -1,4 +1,4 @@
-## Chill-chat
+### Chill-chat
 
 # Introduction
 
@@ -18,6 +18,7 @@ I look forward to seeing your clever contributions to Chill&chat!
 # Credits
 
 Alvin cheng - Software engineer
+
 Brianna cheng - UI/UX designer
 
 # Bugs and issues
