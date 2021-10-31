@@ -1,21 +1,21 @@
 ### Chill-chat
 
-# Introduction
+## Introduction
 
 Welcome! this the chill&chat app repository, this app is still being developed. And is expected to release by the end of this year.
 
-# License
+## License
 
 This repository is licensed under the MIT License. Please see the LICENSE file for license information.
 
-# Contribution
+## Contribution
 
 Feel free to contribute to this project. Please fork and make changes in the repository and make a pull request, to contribute.
 please make sure your code is tested and your documentation is clear before submitting. Also make sure to submit a pull request under the pull request tab and submit your changes to the repository ONLY if your code is following the github pull request guidelines.
 
 I look forward to seeing your clever contributions to Chill&chat!
 
-# Credits
+## Credits
 
 Alvin cheng - Software engineer
 
