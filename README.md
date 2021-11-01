@@ -6,6 +6,8 @@ Welcome! this the chill&chat app repository, this app is still being developed. 
 
 This repository is licensed under the MIT License. Please see the LICENSE file for license information.
 
+(c) Alvin cheng (Brother and sister software)
+
 ## Contribution
 
 Feel free to contribute to this project. Please fork and make changes in the repository and make a pull request, to contribute.
