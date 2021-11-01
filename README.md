@@ -19,7 +19,7 @@ Alvin cheng - Software engineer
 
 Brianna cheng - UI/UX designer
 
-# Bugs and issues
+## Bugs and issues
 
 If you have found any bug(s) please post them in the issue tab in this repository, and tag it with a "bug" tag to let me know. please contact me on:
 
@@ -32,13 +32,15 @@ AlvinC#2300
 Github:
 AlvinC888
 
-# API
+## API
 
 APIs that I used to create this application:
 Custom API
 
 I made a custom API with node and you can download it in the project which is available in the backend folder and you can read the documentation for a detailed description.
 
+Please note: I WILL NOT SHARE THE API LINK TO THE PUBLIC IF YOU WANT TO USE IT PLEASE MAKE SURE TO DEPLOY IT YOUR SELF.
+
 #
 
-This repository is created by Alvin cheng and Brianna cheng in Brother sister software.
+This project is created by Alvin cheng and Brianna cheng in Brother sister software.
