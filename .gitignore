@@ -1,2 +1,3 @@
+#Git ignore uneeded files in repository
 node_modules
 vars.js
