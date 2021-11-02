@@ -10,7 +10,7 @@ const io = require("socket.io")(server);
 const cors = require("cors");
 
 //Variables
-const port = process.env.PORT || "8080";
+const port = process.env.PORT || "3001";
 
 //Web socket
 io.on("connection", (socket) => {
@@ -78,7 +78,7 @@ app.post("/api/users/post/create", (req, res) => {
   }
 });
 
-//Find users endpoint
+//Find all users endpoint
 app.get("/api/users/get/all", (req, res) => {
   try {
     user
@@ -92,19 +92,26 @@ app.get("/api/users/get/all", (req, res) => {
 
 //Login endpoint
 app.get("/api/users/get/:user/:password", (req, res) => {
-  user
-    .findOne({ username: req.params.user })
-    .exec()
-    .then((data) => {
-      if (data != null || data != undefined) {
-        if (
-          data.username == req.params.user &&
-          data.password == req.params.password
-        )
-          res.status(200).send("User login success");
-        else res.status(400).send("Invalid username or password");
-      } else res.status(404).send("User not found");
-    });
+  try {
+    user
+      .findOne({ username: req.params.user })
+      .exec()
+      .then((data) => {
+        if (data != null || data != undefined) {
+          if (
+            data.username == req.params.user &&
+            data.password == req.params.password
+          )
+            res.status(200).send("User login success");
+          else res.status(400).send("Invalid password");
+        } else res.status(404).send("User not found");
+      })
+      .catch((err) => {
+        res.status(500).send(`SERVER ERROR: ${err}`);
+      });
+  } catch (err) {
+    res.status(500).send(`SERVER ERROR: ${err}`);
+  }
 });
 
 //Find user endpoint
@@ -114,8 +121,7 @@ app.get("/api/users/get/:user/", (req, res) => {
       .findOne({ username: req.params.user })
       .exec()
       .then((data) => {
-        if (data != null || data != undefined)
-          res.status(200).send("User found successfully");
+        if (data != null || data != undefined) res.status(200).send();
         else res.status(404).send("User not found");
       })
       .catch((err) => {
