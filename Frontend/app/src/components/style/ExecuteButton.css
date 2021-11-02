@@ -1,0 +1,59 @@
+/*CSS file:*/
+#button {
+  background-color: #d88e1f;
+  border: none;
+  height: 7vw;
+  width: 20vw;
+  border-radius: 99vw 99vw 99vw 99vw;
+  margin-top: 5vw;
+  color: white;
+  transition-duration: 0.5s;
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+#button:hover {
+  border: 7px solid white;
+  background-color: transparent;
+  color: white;
+  transition-duration: 0.5s;
+}
+@media (min-width: 750px) {
+  #button {
+    background-color: #d88e1f;
+    border: none;
+    height: 5vw;
+    width: 18vw;
+    border-radius: 99vw 99vw 99vw 99vw;
+    margin-top: 5vw;
+    color: white;
+    transition-duration: 0.5s;
+    font-style: 3vw;
+    cursor: pointer;
+  }
+  #button:hover {
+    border: 7px solid white;
+    background-color: transparent;
+    color: white;
+    transition-duration: 0.5s;
+  }
+}
+@media (min-width: 1000px) {
+  #button {
+    background-color: #d88e1f;
+    border: none;
+    height: 3.5vw;
+    width: 10vw;
+    border-radius: 99vw 99vw 99vw 99vw;
+    margin-top: 2vw;
+    color: white;
+    transition-duration: 0.5s;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  #button:hover {
+    border: 7px solid white;
+    background-color: transparent;
+    color: white;
+    transition-duration: 0.5s;
+  }
+}

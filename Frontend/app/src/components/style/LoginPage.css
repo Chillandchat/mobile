@@ -3,6 +3,9 @@
   background-color: #fa4747;
   padding-top: 6rem;
   overflow: hidden;
+  background-size: fill;
+  padding-bottom: 25vw;
+  display: block;
 }
 #signup {
   text-align: center;
@@ -23,8 +26,12 @@
 @media (max-width: 600px) {
   #loginParent {
     background-color: #fa4747;
+    display: block;
     padding-top: 9rem;
-    overflow: hidden;
+    padding-bottom: 43vw;
+    overflow-y: hidden;
+    display: block;
+    background-size: fill;
   }
   #signupLink {
     color: #fff;
@@ -33,15 +40,16 @@
   #signup {
     text-align: center;
     padding: 2rem;
-    padding-top: 10rem;
+    padding-top: 1rem;
+    margin-top: 0rem;
     overflow: hidden;
     text-align: center;
   }
   #signupLink {
     color: white;
     font-family: "poppins", "sans-serif";
-    font-size: 0.7rem;
-    margin: 0.5rem;
+    font-size: 0.5rem;
+    margin: 2rem 0rem 0rem 0rem;
     padding: 0.5rem;
   }
 }
