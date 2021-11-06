@@ -6,7 +6,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./style/LoginPage.css";
-import login from "../scripts/login";
+import { login } from "../scripts/login";
 import { Icon } from "./Icon";
 import { LoginForm } from "./LoginForm";
 import { ExecuteButton } from "./ExecuteButton";
@@ -18,7 +18,7 @@ export const Login: React.FC = () => {
   const authenticated = useSelector((state: RootState) => {
     return state.login;
   });
-  console.log(authenticated);
+  ////console.log(authenticated);
   //Data management variables
   let usernameData: string;
   let passwordData: string;
@@ -63,8 +63,10 @@ export const Login: React.FC = () => {
           <ExecuteButton
             text="LET'S GO!!"
             onclick={() => {
-              //Call login function from login script
-              login(usernameData, passwordData);
+              //TODO - Call login function from login script
+              login(usernameData, passwordData).then((data) =>
+                console.info(data)
+              );
             }}
           />
         </div>
