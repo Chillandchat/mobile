@@ -4,20 +4,29 @@
 
 //Importing packages
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./style/LoginPage.css";
 import { login } from "../scripts/login";
 import { Icon } from "./Icon";
 import { LoginForm } from "./LoginForm";
 import { ExecuteButton } from "./ExecuteButton";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { RootState } from "../redux/reducers/index";
+import {
+  login as reduxLogin,
+  changeUsername as reduxChangeUsername,
+} from "../redux/action";
+
 //Login component
 export const Login: React.FC = () => {
+  //Redux state
   const authenticated = useSelector((state: RootState) => {
     return state.login;
   });
+
+  //Dispatch
+  const dispatch = useDispatch();
+
   ////console.log(authenticated);
   //Data management variables
   let usernameData: string;
@@ -64,9 +73,16 @@ export const Login: React.FC = () => {
             text="LET'S GO!!"
             onclick={() => {
               //TODO - Call login function from login script
-              login(usernameData, passwordData).then((data) =>
-                console.info(data)
-              );
+              login(usernameData, passwordData).then((isOk) => {
+                if (isOk) {
+                  dispatch(reduxLogin());
+                  dispatch(reduxChangeUsername(usernameData));
+                } else {
+                  console.error(
+                    `Uncaught error: Cannot login to ${usernameData} using the provided password and information.`
+                  );
+                }
+              });
             }}
           />
         </div>
