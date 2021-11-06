@@ -26,3 +26,14 @@ export const clearUsername: any = () => {
     type: "AUTH_LOGOUT_CLEAR_USERNAME",
   };
 };
+
+//Combine actions
+const actions = {
+  userLogin: login(),
+  userLogout: logout(),
+  userChangeUsername: changeUsername(),
+  userClearUsername: clearUsername(),
+};
+
+//Export actions
+export default actions;

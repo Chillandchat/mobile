@@ -9,7 +9,7 @@ import { createStore } from "redux";
 import reducers from "./redux/reducers/index";
 
 //Redux configuration
-let store = createStore(reducers);
+export const store = createStore(reducers);
 
 //Render app
 ReactDOM.render(
