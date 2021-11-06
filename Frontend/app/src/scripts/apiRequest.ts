@@ -3,12 +3,12 @@ import axios from "axios";
 
 //Endpoint interface config
 export interface apiEndpointType {
-  getAllMessageEndpoint: String;
-  loginEndpoint: String;
-  signupEndpoint: String;
-  getAllUsersEndpoint: String;
-  findUserEndpoint: String;
-  blockUsersEndpoint: String;
+  getAllMessageEndpoint?: string;
+  loginEndpoint?: string;
+  signupEndpoint?: string;
+  getAllUsersEndpoint?: string;
+  findUserEndpoint?: string;
+  blockUsersEndpoint?: string;
 }
 
 //Api endpoints
@@ -23,5 +23,5 @@ export const apiEndpoints: apiEndpointType = {
 
 //Axios for api requests
 export const api = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "http://localhost:3001",
 });

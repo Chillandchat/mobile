@@ -5,6 +5,7 @@ import "./style/Icon.css";
 
 //Icon component
 export const Icon: React.FC = () => {
+  //Render component
   return (
     <div>
       {/*Wrapper*/}

@@ -6,14 +6,15 @@ import "./style/LoginForm.css";
 interface Props {
   formPlaceHolder: string;
   formLabel: string;
-  password:Boolean;
+  password: boolean;
+  onChange: any;
 }
 
 //Login form component
-export const LoginForm:React.FC<Props> = (props) => {
-  //Password form 
+export const LoginForm: React.FC<Props> = (props) => {
+  
+  //Render password form
   if (props.password) {
-
     return (
       <div id="container">
         {/*Label*/}
@@ -23,19 +24,23 @@ export const LoginForm:React.FC<Props> = (props) => {
           placeholder={props.formPlaceHolder}
           id="textBox"
           type="password"
+          onChange={props.onChange}
         />
       </div>
     );
-
-  } 
-  //Non-password form
+  }
+  //Render non-password form
   else {
     return (
       <div id="container">
         {/*Label*/}
         <p id="label">{props.formLabel}</p>
-         {/*Form*/}
-        <input placeholder={props.formPlaceHolder} id="textBox" />
+        {/*Form*/}
+        <input
+          placeholder={props.formPlaceHolder}
+          id="textBox"
+          onChange={props.onChange}
+        />
       </div>
     );
   }

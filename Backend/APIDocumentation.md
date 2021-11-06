@@ -1,18 +1,16 @@
 # Chill&chat API documentation
 
-# Introduction
-
 Welcome to the Chill&chat API documentation, here you can learn more about the chill&chat api. Where I will cover every endpoint in this API. and I will also have samples on how to use this api in your application with javascript.
 # License
 
-Please note this code is licensed under the MIT license. please find the LICENSE file for more information.
+Please note this API is licensed under the MIT license. please find the LICENSE file for more information.
 
 (c) copyright 2021-2022 Alvin Cheng
 # Endpoints:
 
-# Websocket in backend
+### Websocket
 
-This api includes a websocket in the backend, to allow easy communication to clients to send real time messages between different ends. In the client, send the message to the server by using the "message" event in the client websocket with SocketIO, The server will send the message to all clients connected.
+This api includes a websocket in the backend, to allow easy communication to clients, and to send real time messages between different ends. In the client, send the message to the server by using the "message" event in the client websocket with SocketIO, the server will send the message to all clients connected and store a message history in MongoDB.
 
 Sample:
 
@@ -26,12 +24,25 @@ socketName.on("message", (data) => {
 });
 ```
 
-# Get all message endpoint - GET
+Please note: PLEASE NOTE THAT CURRENTLY WE CANNOT FIND A WAY TO INTERRACT WITH THE WEBSOCKET IN OTHER LANGUAGES.
 
-This endpoint will return all messages in the message history which is stored in the database on mongodb.
+### Get all message endpoint - GET
+
+This endpoint will return all messages in the message history which is stored in the database on MongoDB, in this format:
+```
+{
+id: "123abc",
+user: "John smith",
+content: "Hello world!",
+}
+```
+
+URL:
+``` http://foo.com/api/messages/get```
 
 Sample:
 
+Javascript:
 ```js
 import axios from "axios";
 
@@ -47,7 +58,18 @@ axios
   });
 ```
 
-# Create user endpoint - POST
+Python:
+```py
+import requests
+
+response = requests.get("http://foo.com/api/messages/get")
+
+# Write your code here...
+random_function()
+# ...
+```
+
+### Create user endpoint - POST
 
 This endpoint will create a new user with the given username and password and will be stored in the database.
 
@@ -74,7 +96,7 @@ axios
   });
 ```
 
-# Get all user endpoint - GET
+### Get all user endpoint - GET
 
 This endpoint is used to retrieve all user information from the database in mongodb.
 
@@ -97,7 +119,7 @@ axios
   });
 ```
 
-# Login endpoint - GET
+### Login endpoint - GET
 
 This endpoint is used to authenticate the user with the provided inputs from the user.
 
@@ -118,7 +140,7 @@ axios
   });
 ```
 
-# Find user endpoint - GET
+### Find user endpoint - GET
 
 This endpoint will return if the user does exist.
 
@@ -139,7 +161,7 @@ axios
   });
 ```
 
-# Block user endpoint - PUT
+### Block user endpoint - PUT
 
 This is a simple put endpoint that can be used to block users in the chat room, this endpoint will fire off the function to modify the status of "blocked" element in the database.
 
@@ -169,4 +191,4 @@ Thanks for reading this documentation, I will be writing new features in this ap
 
 #
 
-API / documentation created by Alvin Cheng
+API / documentation created by Alvin Cheng (Brother and sister software)

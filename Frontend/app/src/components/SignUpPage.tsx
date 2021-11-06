@@ -1,8 +1,8 @@
-import React from "react";
 import { Icon } from "./Icon";
 import { LoginForm } from "./LoginForm";
 import { Link } from "react-router-dom";
 import "./style/Signup.css";
+
 export const SignUpPage: React.FC = () => {
   return (
     <div id="signupParent">
@@ -12,16 +12,19 @@ export const SignUpPage: React.FC = () => {
           password={false}
           formPlaceHolder="Your username"
           formLabel="Username"
+          onChange={() => console.log("hi")}
         />
         <LoginForm
           password={true}
           formPlaceHolder="Your password"
           formLabel="Password"
+          onChange={() => console.log("hi")}
         />
         <LoginForm
           password={true}
           formPlaceHolder="Confirm password"
           formLabel="Password"
+          onChange={() => console.log("hi")}
         />
       </div>
       <Link to="/" id="loginLink">
@@ -30,4 +33,3 @@ export const SignUpPage: React.FC = () => {
     </div>
   );
 };
-

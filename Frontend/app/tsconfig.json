@@ -1,3 +1,4 @@
+//Type script configuration
 {
   "compilerOptions": {
     "target": "es3",
