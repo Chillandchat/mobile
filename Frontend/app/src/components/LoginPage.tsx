@@ -72,7 +72,7 @@ export const Login: React.FC = () => {
           <ExecuteButton
             text="LET'S GO!!"
             onclick={() => {
-              //TODO - Call login function from login script
+              //Call login function from login script
               login(usernameData, passwordData).then((isOk) => {
                 if (isOk) {
                   dispatch(reduxLogin());
