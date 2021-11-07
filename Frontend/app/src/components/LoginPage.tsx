@@ -11,7 +11,7 @@ import { Icon } from "./Icon";
 import { LoginForm } from "./LoginForm";
 import { ExecuteButton } from "./ExecuteButton";
 import { Link, Redirect } from "react-router-dom";
-import { RootState } from "../redux/reducers/index";
+import { RootState } from "../redux/redux reducers/index";
 import {
   login as reduxLogin,
   changeUsername as reduxChangeUsername,
@@ -33,12 +33,12 @@ export const Login: React.FC = () => {
   let passwordData: string;
 
   //Collect username data
-  const getUsername = (e: any) => {
+  const getUsername = (e: any): void => {
     usernameData = e.target.value;
   };
 
   //Collect password data
-  const getPassword = (e: any) => {
+  const getPassword = (e: any): void => {
     passwordData = e.target.value;
   };
 

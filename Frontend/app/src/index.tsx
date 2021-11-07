@@ -6,7 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import reducers from "./redux/reducers/index";
+import reducers from "./redux/redux reducers/index";
 
 //Redux configuration
 export const store = createStore(reducers);

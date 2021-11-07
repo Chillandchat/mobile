@@ -15,7 +15,7 @@ export interface apiEndpointType {
 export const apiEndpoints: apiEndpointType = {
   getAllMessageEndpoint: "/api/messages/get",
   getAllUsersEndpoint: "/api/users/get/all",
-  signupEndpoint: "/api/users/create/post",
+  signupEndpoint: "/api/users/post/create/",
   loginEndpoint: "/api/users/get/",
   findUserEndpoint: "/api/users/get/",
   blockUsersEndpoint: "/api/users/block/",
