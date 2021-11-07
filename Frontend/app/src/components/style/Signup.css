@@ -1,26 +1,39 @@
 /*CSS file:*/
 #signupParent {
   background-color: #fa4747;
-  padding-top: 8rem;
+  padding-top: 8vh;
   overflow: hidden;
   text-align: center;
+  padding-bottom: 9.8vh;
 }
 #loginLink {
-  color: #fff;
+  color: white;
   text-align: center;
   font-size: 1rem;
   padding: 2rem;
 }
 #form {
   text-align: center;
-  padding: 0rem 0rem 2rem 0rem;
+  padding: 0.5rem;
+}
+#errorMessage {
+  color: white;
+  font-size: 1rem;
+  font-family: "poppins", sans-serif;
+  padding: 1.2rem;
 }
 @media (max-width: 600px) {
   #signupParent {
     background-color: #fa4747;
-    padding-top: 9rem;
+    padding-top: 13vh;
     overflow: hidden;
     text-align: center;
+    padding-bottom: 29vh;
+  }
+  #errorMessage {
+    color: white;
+    font-size: 0.7rem;
+    font-family: "poppins", sans-serif;
   }
   #loginLink {
     color: #fff;
@@ -28,6 +41,6 @@
   }
   #form {
     text-align: center;
-    padding: 2rem;
+    padding: 0rem;
   }
 }
