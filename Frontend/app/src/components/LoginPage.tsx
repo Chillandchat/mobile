@@ -1,9 +1,5 @@
-/******************************************
-//! Work in progress
-******************************************/
-
 //Importing packages
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./style/LoginPage.css";
 import { login } from "../scripts/login";
@@ -19,6 +15,9 @@ import {
 
 //Login component
 export const Login: React.FC = () => {
+  //State
+  let [errorMessage, setErrorMessage] = useState("");
+
   //Redux state
   const authenticated = useSelector((state: RootState) => {
     return state.login;
@@ -48,26 +47,32 @@ export const Login: React.FC = () => {
       <div id="loginParent">
         {/*Icon*/}
         <Icon />
-        {/*User name form*/}
-        <LoginForm
-          formLabel="Username"
-          formPlaceHolder="Your username"
-          password={false}
-          onChange={getUsername}
-        />
-        {/*Password form*/}
-        <LoginForm
-          formLabel="Password"
-          formPlaceHolder="Your password"
-          password={true}
-          onChange={getPassword}
-        />
+        <div id="form">
+          {/*User name form*/}
+          <LoginForm
+            formLabel="Username"
+            formPlaceHolder="Your username"
+            password={false}
+            onChange={getUsername}
+          />
+          {/*Password form*/}
+          <LoginForm
+            formLabel="Password"
+            formPlaceHolder="Your password"
+            password={true}
+            onChange={getPassword}
+          />
+        </div>
+        {/*Error message*/}
+        <strong id="errorMessage">{errorMessage}</strong>
+        <br />
 
-        {/*Sign up form*/}
+        {/*Sign up link*/}
         <div id="signup">
           <Link to="/signup" id="signupLink">
             New? Sign up today!
           </Link>
+
           {/*Button*/}
           <ExecuteButton
             text="LET'S GO!!"
@@ -77,10 +82,17 @@ export const Login: React.FC = () => {
                 if (isOk) {
                   dispatch(reduxLogin());
                   dispatch(reduxChangeUsername(usernameData));
-                } else {
+                }
+                if (!isOk) {
                   console.error(
                     `Uncaught error: Cannot login to ${usernameData} using the provided password and information.`
                   );
+                  setErrorMessage(
+                    "Oops! We ran into an error, please try again."
+                  );
+                  setTimeout(() => {
+                    setErrorMessage("");
+                  }, 5000);
                 }
               });
             }}
