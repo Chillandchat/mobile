@@ -1,7 +1,7 @@
 //Type script configuration
 {
   "compilerOptions": {
-    "target": "es3",
+    "target": "ES5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -11,11 +11,11 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "moduleResolution": "node"
   },
   "include": ["src"]
 }
