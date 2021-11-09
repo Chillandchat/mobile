@@ -1,6 +1,11 @@
-/*CSS file:*/
+/*CSS file for execute button component*/
+/*Root variables*/
+:root{
+  --globalColor: #d88e1f;
+}
+/*Default button styles*/
 #button {
-  background-color: #d88e1f;
+  background-color: var(--globalColor);
   border: none;
   height: 7vw;
   width: 20vw;
@@ -11,15 +16,18 @@
   font-size: 0.6rem;
   cursor: pointer;
 }
+/*Hover styles*/
 #button:hover {
   border: 7px solid white;
   background-color: transparent;
   color: white;
   transition-duration: 0.5s;
 }
+/*Media query for screens >750px*/
 @media (min-width: 750px) {
+  /*Default button styles*/
   #button {
-    background-color: #d88e1f;
+    background-color: var(--globalColor);
     border: none;
     height: 5vw;
     width: 18vw;
@@ -30,6 +38,7 @@
     font-style: 3vw;
     cursor: pointer;
   }
+  /*Hover styles*/
   #button:hover {
     border: 7px solid white;
     background-color: transparent;
@@ -37,9 +46,11 @@
     transition-duration: 0.5s;
   }
 }
+/*Media query for screens >1000px*/
 @media (min-width: 1000px) {
+  /*Default button styles*/
   #button {
-    background-color: #d88e1f;
+    background-color: var(--globalColor);
     border: none;
     height: 3.5vw;
     width: 10vw;
@@ -50,6 +61,7 @@
     font-size: 1rem;
     cursor: pointer;
   }
+  /*Button hover styles*/
   #button:hover {
     border: 7px solid white;
     background-color: transparent;

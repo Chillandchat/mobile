@@ -13,9 +13,13 @@ export const store = createStore(reducers);
 
 //Render app
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <>
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
+  </>,
   document.getElementById("root")
 );
 

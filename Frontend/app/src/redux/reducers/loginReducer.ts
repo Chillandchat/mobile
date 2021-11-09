@@ -3,11 +3,11 @@ const loginReducer: any = (loggedInState: boolean = false, action: any) => {
   //Redux actions check
   switch (action.type) {
     case "AUTH_SIGN_IN":
-      loggedInState = true;
-      break;
+      return (loggedInState = true);
+
     case "AUTH_SIGN_OUT":
-      loggedInState = false;
-      break;
+      return (loggedInState = false);
+
     default:
       return loggedInState;
   }

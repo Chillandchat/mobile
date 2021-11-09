@@ -1,19 +1,22 @@
+//Importing packages
+import { ActionHasParameter, ActionNoParameter } from "./reduxTypes";
+
 //Login action
-export const login: any = () => {
+export const login = (): ActionNoParameter => {
   return {
     type: "AUTH_SIGN_IN",
   };
 };
 
 //Logout action
-export const logout: any = () => {
+export const logout = (): ActionNoParameter => {
   return {
     type: "AUTH_SIGN_OUT",
   };
 };
 
 //Change username action
-export const changeUsername: any = (username: string) => {
+export const changeUsername = (username: string): ActionHasParameter => {
   return {
     type: "AUTH_SET_USERNAME",
     payload: username,
@@ -21,19 +24,8 @@ export const changeUsername: any = (username: string) => {
 };
 
 //Clear username action
-export const clearUsername: any = () => {
+export const clearUsername = (): ActionNoParameter => {
   return {
     type: "AUTH_LOGOUT_CLEAR_USERNAME",
   };
 };
-
-//Combine actions
-const actions = {
-  userLogin: login(),
-  userLogout: logout(),
-  userChangeUsername: changeUsername(),
-  userClearUsername: clearUsername(),
-};
-
-//Export actions
-export default actions;
