@@ -6,16 +6,20 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import reducers from "./redux/redux reducers/index";
+import reducers from "./redux/reducers/index";
 
 //Redux configuration
 export const store = createStore(reducers);
 
 //Render app
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <>
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
+  </>,
   document.getElementById("root")
 );
 
