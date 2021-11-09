@@ -7,7 +7,7 @@ import { Icon } from "./Icon";
 import { LoginForm } from "./LoginForm";
 import { ExecuteButton } from "./ExecuteButton";
 import { Link, Redirect } from "react-router-dom";
-import { RootState } from "../redux/redux reducers/index";
+import { RootState } from "../redux/reducers/index";
 import {
   login as reduxLogin,
   changeUsername as reduxChangeUsername,
