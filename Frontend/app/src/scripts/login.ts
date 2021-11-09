@@ -18,6 +18,7 @@ export const login = async (
     //Change ok status
     okStatus = false;
   } else {
+    //Change ok status
     okStatus = true;
   }
   //Check if ok status is true
@@ -29,13 +30,15 @@ export const login = async (
         .then((response) => {
           //Check API response status
           if (response.status === 404 || response.status === 400) {
+            //Change ok status
             okStatus = false;
           }
-          if (response.status === 200) okStatus = true;
+          if (response.status === 200) /*Change ok status:*/ okStatus = true;
         });
     } catch (err) {
       //Throw error
       console.error(err);
+      //Change ok status
       okStatus = false;
     }
   }
