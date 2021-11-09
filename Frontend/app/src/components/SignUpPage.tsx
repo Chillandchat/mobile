@@ -78,8 +78,9 @@ export const SignUpPage: React.FC = () => {
                 //Throw error is an error occurred
                 if (data) setOk(true);
                 else {
+                  //Throw error
                   setErrorMessage(
-                    "Oops! we ran into an error please try again."
+                    "Oops! we ran into an error, please try again."
                   );
                   setTimeout(() => {
                     setErrorMessage("");

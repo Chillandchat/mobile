@@ -4,7 +4,7 @@
   padding-top: 8vh;
   overflow: hidden;
   text-align: center;
-  padding-bottom: 9.8vh;
+  padding-bottom: 32vh;
 }
 #loginLink {
   color: white;
@@ -28,7 +28,7 @@
     padding-top: 13vh;
     overflow: hidden;
     text-align: center;
-    padding-bottom: 29vh;
+    padding-bottom: 45vh;
   }
   #errorMessage {
     color: white;

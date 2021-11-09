@@ -1,37 +1,44 @@
 /*CSS file:*/
 #loginParent {
   background-color: #fa4747;
-  padding-top: 6rem;
+  padding-top: 10vh;
   overflow: hidden;
   background-size: fill;
-  padding-bottom: 25vw;
+  padding-bottom: 35vh;
   display: block;
+  text-align: center;
+}
+#errorMessage {
+  color: white;
+  font-size: 1rem;
+  padding-top: 0.5rem;
+  font-family: "poppins", sans-serif;
+}
+#form {
+  padding: 1rem;
 }
 #signup {
-  text-align: center;
-  padding: 2rem;
   text-align: center;
 }
 #signupLink {
   color: white;
   font-family: "poppins", "sans-serif";
-  margin: 1rem;
-  padding: 1rem;
-}
-
-#signup {
-  margin: 1rem;
-  padding: 1rem;
 }
 @media (max-width: 600px) {
   #loginParent {
     background-color: #fa4747;
     display: block;
-    padding-top: 9rem;
-    padding-bottom: 43vw;
+    padding-top: 20vh;
+    padding-bottom: 52vh;
     overflow-y: hidden;
     display: block;
     background-size: fill;
+  }
+  #errorMessage {
+    color: white;
+    font-size: 0.2rem;
+    font-family: "poppins", sans-serif;
+    text-align: center;
   }
   #signupLink {
     color: #fff;
@@ -39,9 +46,6 @@
   }
   #signup {
     text-align: center;
-    padding: 2rem;
-    padding-top: 1rem;
-    margin-top: 0rem;
     overflow: hidden;
     text-align: center;
   }
