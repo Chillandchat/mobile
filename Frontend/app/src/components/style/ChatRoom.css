@@ -1,0 +1,10 @@
+:root {
+  --chatRoomGlobalColor: #fa4747;
+  --chatRoomSpecialColor: #f25353;
+}
+#chatRoom {
+  background-color: var(--chatRoomGlobalColor);
+}
+#sendBar {
+  display: flex;
+}
