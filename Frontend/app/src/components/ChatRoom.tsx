@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/reducers/index";
 import { Redirect } from "react-router-dom";
 import { SendButton } from "./SendButton";
-
+import { getAllMessage } from "../scripts/getAllMessages";
 export const ChatRoom: React.FC = () => {
   const username = useSelector((state: RootState) => {
     return state.username;
@@ -22,7 +22,9 @@ export const ChatRoom: React.FC = () => {
           <InputField placeholder="Type a message..." />
           <SendButton
             onclick={() => {
-              console.log("Hello world!");
+              getAllMessage().then((data) => {
+                console.log(data);
+              });
             }}
           />
         </div>
