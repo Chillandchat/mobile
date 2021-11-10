@@ -104,7 +104,7 @@ export const Login: React.FC = () => {
   if (authenticated) {
     return (
       <div>
-        <Redirect to="/public-chat-room:8080170" />
+      <Redirect to="/public-chat-room:8080170" />
       </div>
     );
   } else {
