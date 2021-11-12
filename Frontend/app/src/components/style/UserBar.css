@@ -1,0 +1,14 @@
+.userDisplayName {
+  color: #fff;
+  font-family: "poppins", sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+}
+#userList {
+  vertical-align: middle;
+  background-color: #F25353;
+}
+#user {
+  display: flex;
+  padding: 0.5rem;
+}
