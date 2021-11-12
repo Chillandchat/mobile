@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 //Endpoint interface
-interface apiEndpointType {
+interface ApiEndpointType {
   getAllMessageEndpoint: string;
   loginEndpoint: string;
   signupEndpoint: string;
@@ -16,7 +16,7 @@ interface apiEndpointType {
 }
 
 //Api endpoints
-export const apiEndpoints: apiEndpointType = {
+export const apiEndpoints: ApiEndpointType = {
   getAllMessageEndpoint: "/api/messages/get",
   getAllUsersEndpoint: "/api/users/get/all",
   signupEndpoint: "/api/users/post/create/",
