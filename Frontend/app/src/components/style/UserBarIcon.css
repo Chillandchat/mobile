@@ -1,0 +1,9 @@
+#icon {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 100% 100% 100% 100%;
+}
+#wrapper {
+  text-align: center;
+  overflow: hidden;
+}
