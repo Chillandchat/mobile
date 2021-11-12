@@ -55,12 +55,6 @@ export const signUp = async (
             /*Set ok status:*/ okStatus = false;
           /*Set ok status:*/ else okStatus = true;
         })
-        .catch((err) => {
-          //Throw error
-          console.error(err);
-          //Set ok status
-          okStatus = false;
-        });
     } catch (err) {
       //Throw error
       console.error(err);
