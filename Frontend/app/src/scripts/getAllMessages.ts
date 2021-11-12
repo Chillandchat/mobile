@@ -2,21 +2,21 @@
 import { apiEndpoints, api } from "./apiRequest";
 
 //Types
-interface message {
+interface Message {
   id: string;
   user: string;
   content: string;
 }
-interface returnType {
-  messages: Array<message | any>;
+interface ReturnType {
+  messages: Array<Message>;
   status: boolean;
 }
 
 //Get all message function
-export const getAllMessage = async (): Promise<returnType> => {
+export const getAllMessage = async (): Promise<ReturnType> => {
   //Variables
   let okStatus: boolean;
-  let data: Array<message | any>;
+  let data: Array<Message>;
 
   //Contact API
   try {
@@ -28,10 +28,12 @@ export const getAllMessage = async (): Promise<returnType> => {
         //Set data to response data
         data = response.data;
       } else {
-        //Throw error
+        //Set ok status
         okStatus = false;
+        //Throw error
         console.error(
-          "Server error: Server responded with a status of: " + response.status
+          "Uncaught Error: Server responded with a status of: " +
+            response.status
         );
       }
     });
