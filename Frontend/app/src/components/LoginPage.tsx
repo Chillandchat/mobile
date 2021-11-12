@@ -26,7 +26,6 @@ export const Login: React.FC = () => {
   //Dispatch
   const dispatch = useDispatch();
 
-  ////console.log(authenticated);
   //Data management variables
   let usernameData: string;
   let passwordData: string;
@@ -104,7 +103,7 @@ export const Login: React.FC = () => {
   if (authenticated) {
     return (
       <div>
-      <Redirect to="/public-chat-room:8080170" />
+        <Redirect to="/public-chat-room:8080170" />
       </div>
     );
   } else {
