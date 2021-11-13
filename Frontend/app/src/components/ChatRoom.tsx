@@ -12,7 +12,7 @@ import { Menu } from "./Menu";
 //Chat room component
 export const ChatRoom: React.FC = () => {
   //State
-  let [view, setView] = useState(false);
+  let [view, setView] = useState<boolean>(false);
   //Redux state
   const username = useSelector((state: RootState) => {
     return state.username;
