@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllUsers } from "../scripts/getAllUsers";
+import { getAllUsers } from "../scripts/getUsers";
 import {UserBarIcon } from "./UserBarIcon";
 import "./style/UserBar.css";
 
