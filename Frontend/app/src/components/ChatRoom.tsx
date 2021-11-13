@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style/ChatRoom.css";
 import { InputField } from "./InputField";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,10 +7,11 @@ import { Redirect } from "react-router-dom";
 import { SendButton } from "./SendButton";
 import { UserBar } from "./UserBar";
 import { Logout } from "./Logout";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 import { logout, clearUsername } from "../redux/action";
 
 export const ChatRoom: React.FC = () => {
-  let users: any;
+  let [view, setView] = useState<boolean>(false);
   const username = useSelector((state: RootState) => {
     return state.username;
   });
@@ -21,23 +22,29 @@ export const ChatRoom: React.FC = () => {
   if (authenticated) {
     return (
       <div id="chatRoom">
-        <Logout
-          onClick={() => {
-            dispatch(logout());
-            dispatch(clearUsername());
-          }}
-        />
+        <div id="menu">
+          <Logout
+            onClick={() => {
+              dispatch(logout());
+              dispatch(clearUsername());
+            }}
+          />
+          <VisibilityIcon
+            className="viewButton"
+            onClick={() => {
+              setView(true);
+            }}
+          />
+        </div>
         <p>Hi {username}! and welcome to chill and chat🚀</p>
         <div id="sendBar">
           <InputField placeholder="Type a message..." />
           <SendButton
             onclick={() => {
-              console.log(users);
               console.log("Hello!");
             }}
           />
         </div>
-        <UserBar />
       </div>
     );
   }
@@ -47,10 +54,11 @@ export const ChatRoom: React.FC = () => {
         <Redirect to="/" />
       </div>
     );
-  } else {
+  }
+  if (view) {
     return (
       <div>
-        <p>Error</p>
+        <p>HI</p>
       </div>
     );
   }
