@@ -6,9 +6,29 @@
 }
 #userList {
   vertical-align: middle;
-  background-color: #F25353;
+  background-color: #f25353;
+  padding-bottom: 70vh;
+  padding-left: 35%;
 }
 #user {
   display: flex;
   padding: 0.5rem;
+}
+#tittle {
+  color: #fff;
+  margin-left: 1rem;
+}
+#hideButton {
+  color: #ffff;
+  cursor: pointer;
+  font-size: 2.7rem;
+  margin-left: 1rem;
+}
+@media (max-width: 700px) {
+  #hideButton {
+    color: #ffff;
+    margin-left: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+  }
 }

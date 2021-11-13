@@ -7,21 +7,12 @@
 /*Chat room parent styles*/
 #chatRoom {
   background-color: var(--chatRoomGlobalColor);
+  padding-top: 1.4rem;
+  padding-bottom: 100vh;
 }
 /*Send bar styles*/
 #sendBar {
   display: flex;
-}
-
-.viewButton {
-  color: #ffff;
-  cursor: pointer;
-  font-size: 2.7rem;
-}
-@media (max-width: 700px) {
-  .viewButton {
-    color: #ffff;
-    font-size: 2rem;
-    cursor: pointer;
-  }
+  position: absolute;
+  bottom: 0;
 }
