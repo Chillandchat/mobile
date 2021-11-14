@@ -36,13 +36,11 @@ export const UserBar: React.FC<Props> = (props) => {
           /*Render user*/
         }
         return (
-          <div id="user">
+          <div id="user" key={user.id}>
             {/*Icon*/}
             <UserBarIcon />
             {/*Username*/}
-            <strong className="userDisplayName" key={user.id}>
-              {user.username}
-            </strong>
+            <strong className="userDisplayName">{user.username}</strong>
           </div>
         );
       })}
