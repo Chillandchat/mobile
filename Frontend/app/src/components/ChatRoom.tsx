@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./style/ChatRoom.css";
 import { InputField } from "./InputField";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../redux/reducers/index";
 import { Redirect } from "react-router-dom";
 import { SendButton } from "./SendButton";
@@ -14,9 +14,9 @@ export const ChatRoom: React.FC = () => {
   //State
   let [view, setView] = useState(false);
   //Redux state
-  const username = useSelector((state: RootState) => {
-    return state.username;
-  });
+  //// const username = useSelector((state: RootState) => {
+  ////   return state.username;
+  //// });
   const authenticated = useSelector((state: RootState) => {
     return state.login;
   });
@@ -28,7 +28,7 @@ export const ChatRoom: React.FC = () => {
         {/*UserBar*/}
         <UserBar
           viewOnClick={() => {
-            //Change state 
+            //Change state
             setView(false);
           }}
         />
