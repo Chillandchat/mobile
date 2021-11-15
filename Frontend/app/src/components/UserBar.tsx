@@ -32,9 +32,7 @@ export const UserBar: React.FC<Props> = (props) => {
       <h2 id="tittle">Users:</h2>
       {/*Map users*/}
       {userList.map((user) => {
-        {
-          /*Render user*/
-        }
+        //Render user
         return (
           <div id="user" key={user.id}>
             {/*Icon*/}
