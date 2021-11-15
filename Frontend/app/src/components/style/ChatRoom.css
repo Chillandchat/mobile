@@ -8,7 +8,7 @@
 #chatRoom {
   background-color: var(--chatRoomGlobalColor);
   padding-top: 1.4rem;
-  padding-bottom: 100vh;
+  padding-bottom: 23vh;
 }
 /*Send bar styles*/
 #sendBar {
