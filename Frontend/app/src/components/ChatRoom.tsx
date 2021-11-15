@@ -7,6 +7,7 @@ import { RootState } from "../redux/reducers/index";
 import { Redirect } from "react-router-dom";
 import { SendButton } from "./SendButton";
 import { UserBar } from "./UserBar";
+import { ChatBubble } from "./ChatBubble";
 import { Menu } from "./Menu";
 
 //Chat room component
@@ -54,6 +55,7 @@ export const ChatRoom: React.FC = () => {
           setView(true);
         }}
       />
+      <ChatBubble />
       {/*Send bar*/}
       <div id="sendBar">
         {/*Input field*/}
