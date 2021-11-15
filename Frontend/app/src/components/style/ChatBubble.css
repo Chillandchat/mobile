@@ -1,0 +1,6 @@
+#chatBubble {
+  margin-left: 1rem;
+  height: 80vh;
+  width: 85%;
+  overflow: scroll;
+}
