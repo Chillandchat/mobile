@@ -1,12 +1,8 @@
 //Importing packages
 import { apiEndpoints, api } from "./apiRequest";
+import { Message } from "./types";
 
 //Types
-interface Message {
-  id: string;
-  user: string;
-  content: string;
-}
 interface ReturnType {
   messages: Array<Message>;
   status: boolean;
