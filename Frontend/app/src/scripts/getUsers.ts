@@ -1,14 +1,8 @@
 //Importing packages
 import { api, apiEndpoints } from "./apiRequest";
+import { User } from "./types";
 
 //Types
-export interface User {
-  id: string;
-  username: string;
-  password: string;
-  blocked: boolean;
-  onDeleteList: boolean;
-}
 interface ReturnType {
   status: boolean;
   data: Array<User>;
