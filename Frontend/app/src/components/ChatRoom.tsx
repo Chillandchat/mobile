@@ -8,16 +8,22 @@ import { Redirect } from "react-router-dom";
 import { SendButton } from "./SendButton";
 import { UserBar } from "./UserBar";
 import { ChatBubble } from "./ChatBubble";
+import { send } from "../scripts/send";
+import { v4 as uuid } from "uuid";
 import { Menu } from "./Menu";
 
 //Chat room component
 export const ChatRoom: React.FC = () => {
   //State
   let [view, setView] = useState<boolean>(false);
+
+  //Data management variables
+  let textBoxData: string | undefined = undefined;
+
   //Redux state
-  //// const username = useSelector((state: RootState) => {
-  ////   return state.username;
-  //// });
+  const username = useSelector((state: RootState) => {
+    return state.username;
+  });
   const authenticated = useSelector((state: RootState) => {
     return state.login;
   });
@@ -59,12 +65,17 @@ export const ChatRoom: React.FC = () => {
       {/*Send bar*/}
       <div id="sendBar">
         {/*Input field*/}
-        <InputField placeholder="Type a message..." />
+        <InputField
+          placeholder="Type a message..."
+          onChangeEvent={(e: any) => {
+            textBoxData = e.target.value;
+          }}
+        />
         {/*Send button*/}
         <SendButton
           onclick={() => {
             //TODO - Send message
-            console.log("Hello!");
+            send({ id: uuid(), user: username, content: textBoxData });
           }}
         />
       </div>
