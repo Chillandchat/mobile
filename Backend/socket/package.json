@@ -4,9 +4,10 @@
   "description": "socket for chill and chat",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo stating server... && node ."
   },
-  "author": "",
+  "author": "Alvin cheng (Brother and sister software)",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
