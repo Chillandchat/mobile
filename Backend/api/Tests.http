@@ -1,0 +1,33 @@
+GET http://localhost:3001/api/users/get/all http/1.1
+
+###
+
+POST http://localhost:8080/api/users/post/create http/1.1
+content-type: application/json
+
+{
+    "id":"123",
+    "username":"admin",
+    "password":"password1234",
+    "blocked":false,
+    "onDeleteList":false
+}
+
+###
+
+GET http://localhost:8080/api/users/get/admin/ http/1.1
+
+###
+
+GET http://localhost:8080/api/users/get/admin/password1234 http/1.1
+
+###
+
+PUT http://localhost:8080/api/users/block http/1.1
+content-type: application/json
+
+{
+    "user":"admin",
+    "blockStatus":true
+}
+
