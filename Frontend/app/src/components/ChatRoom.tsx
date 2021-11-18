@@ -1,6 +1,5 @@
 //Importing packages
 import React, { useState } from "react";
-import "./style/ChatRoom.css";
 import { InputField } from "./InputField";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/reducers/index";
@@ -11,9 +10,11 @@ import { ChatBubble } from "./ChatBubble";
 import { send } from "../scripts/send";
 import { v4 as uuid } from "uuid";
 import { Menu } from "./Menu";
+import "./style/ChatRoom.css";
 
 //Chat room component
 export const ChatRoom: React.FC = () => {
+
   //State
   let [view, setView] = useState<boolean>(false);
 
@@ -74,7 +75,7 @@ export const ChatRoom: React.FC = () => {
         {/*Send button*/}
         <SendButton
           onclick={() => {
-            //TODO - Send message
+            //Send message
             send({ id: uuid(), user: username, content: textBoxData });
           }}
         />
