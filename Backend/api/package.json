@@ -4,7 +4,7 @@
   "description": "The api for chill chat",
   "main": "./index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "Github",

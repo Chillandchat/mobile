@@ -4,6 +4,7 @@ const URI = require("./vars.js");
 const express = require("express");
 const user = require("./authSchema.js");
 const mongoose = require("mongoose");
+const message = require("./messageSchema.js");
 const cors = require("cors");
 
 //Variables

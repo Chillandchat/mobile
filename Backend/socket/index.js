@@ -13,8 +13,10 @@ mongoose.connect(URI);
 
 //Web socket
 io.on("connection", (socket) => {
+  console.log("connect");
   socket.on("message", (payload) => {
-    socket.emit("message", payload);
+    console.log("message");
+    io.emit("message", payload);
     //Save message
     try {
       const newMessage = new message({
