@@ -25,7 +25,4 @@ export const send = (message: Message): void => {
     //Disconnect socket
     socket.disconnect();
   });
-
-  //Disconnect socket
-  socket.disconnect();
 };
