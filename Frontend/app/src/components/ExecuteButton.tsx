@@ -21,8 +21,7 @@ export const ExecuteButton: React.FC<Props> = (props) => {
     //Listeners
     window.addEventListener("keydown", (e) => {
       //Check button click
-      /*eslint-disable-next-line*/
-      if (e.code == "Enter") element.click();
+      if (e.code === "Enter") element.click();
     });
 
     //Clean up listeners

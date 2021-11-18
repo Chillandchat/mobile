@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../scripts/getUsers";
 import { UserBarIcon } from "./UserBarIcon";
+import {User as UserType} from "../scripts/types";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import "./style/UserBar.css";
 
@@ -13,7 +14,7 @@ interface Props {
 //UserBar component
 export const UserBar: React.FC<Props> = (props) => {
   //State
-  let [userList, setUserList] = useState<any>([]);
+  let [userList, setUserList] = useState<Array<UserType>>([]);
 
   //Call get user function
   useEffect(() => {
