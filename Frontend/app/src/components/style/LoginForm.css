@@ -1,5 +1,6 @@
-/*CSS file for login form:*/
-/*Form label styles*/
+/* CSS file for login form: */
+
+/* Form label styles */
 #label {
   color: white;
   text-transform: uppercase;
@@ -10,7 +11,7 @@
   padding: 0;
   margin-right: 27vw;
 }
-/*Input field styles*/
+/* Input field styles */
 #textBox {
   border-radius: 140vw;
   border: 6px solid #ffff;
@@ -23,22 +24,22 @@
   color: #fff;
   outline: none;
 }
-/*Container styles*/
+/* Container styles */
 #container {
   text-align: center;
   margin-top: 3vw;
   overflow: hidden;
 }
-/*Input field placeholder styles*/
+/* Input field placeholder styles */
 #textBox::-webkit-input-placeholder {
   color: #c8bcbc;
   padding-left: 0rem;
   font-family: "Poppins", sans-serif;
   font-size: 0.7rem;
 }
-/*Media query for screens >1000px*/
+/* Media query for screens >1000px */
 @media (min-width: 1000px) {
-  /*Label styles*/
+  /* Label styles */
   #label {
     color: white;
     font-family: "Poppins", sans-serif;
@@ -49,7 +50,7 @@
 
     margin-right: 20vw;
   }
-  /*Input field styles*/
+  /* Input field styles */
   #textBox {
     border-radius: 140vw;
     border: 7px solid #ffff;
@@ -62,13 +63,13 @@
     color: #fff;
     outline: none;
   }
-  /*Container styles*/
+  /* Container styles */
   #container {
     text-align: center;
     margin-top: 2vw;
     overflow: hidden;
   }
-  /*Input field placeholder styles*/
+  /* Input field placeholder styles */
   #textBox::-webkit-input-placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
@@ -76,9 +77,9 @@
     font-family: "Poppins", sans-serif;
   }
 }
-/*Media query for screens <600px*/
+/* Media query for screens <600px */
 @media (max-width: 600px) {
-  /*Label styles*/
+  /* Label styles */
   #label {
     color: white;
     font-family: "Poppins", sans-serif;
@@ -89,7 +90,7 @@
     padding: 0;
     margin-right: 25vw;
   }
-  /*Input field styles*/
+  /* Input field styles */
   #textBox {
     border-radius: 140vw;
     border: 5px solid #ffff;
@@ -102,7 +103,7 @@
     color: #fff;
     outline: none;
   }
-  /*Container styles*/
+  /* Container styles */
   #container {
     text-align: center;
     margin-top: 3vw;

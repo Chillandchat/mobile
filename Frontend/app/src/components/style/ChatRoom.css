@@ -1,16 +1,16 @@
-/*Css file for Chat room:*/
-/*Root variables*/
+/* Css file for Chat room: */
+/* Root variables */
 :root {
   --chatRoomGlobalColor: #fa4747;
   --chatRoomSpecialColor: #f25353;
 }
-/*Chat room parent styles*/
+/* Chat room parent styles */
 #chatRoom {
   background-color: var(--chatRoomGlobalColor);
   padding-top: 1.4rem;
   padding-bottom: 14vh;
 }
-/*Send bar styles*/
+/* Send bar styles */
 #sendBar {
   display: flex;
   position: absolute;

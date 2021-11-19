@@ -1,5 +1,6 @@
-/*Css file for input field:*/
-/*Input field styles*/
+/* Css file for input field: */
+
+/* Input field styles */
 #inputField {
   border-radius: 0.7vw;
   border: 5.7px solid #ffff;
@@ -13,16 +14,16 @@
   color: #fff;
   outline: none;
 }
-/*Input field placeholder styles*/
+/* Input field placeholder styles */
 #inputField::-webkit-input-placeholder {
   color: #c8bcbc;
   padding-left: 0rem;
   font-family: "Poppins", sans-serif;
   font-size: 0.85rem;
 }
-/*Media query for screens >700px*/
+/* Media query for screens >700px */
 @media (max-width: 700px) {
-  /*Input field styles*/
+  /* Input field styles */
   #inputField {
     border-radius: 1.9vw;
     margin: 0rem 1rem 1rem 1rem;
@@ -36,7 +37,7 @@
     color: #fff;
     outline: none;
   }
-  /*Input field placeholder styles*/
+  /* Input field placeholder styles */
   #inputField::-webkit-input-placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
