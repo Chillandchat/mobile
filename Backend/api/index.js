@@ -1,6 +1,6 @@
 //Importing packages
+require("dotenv").config();
 const app = require("express")();
-const URI = require("./vars.js");
 const express = require("express");
 const user = require("./authSchema.js");
 const mongoose = require("mongoose");
@@ -11,7 +11,7 @@ const cors = require("cors");
 const port = process.env.PORT || "8080";
 
 //Db connection
-mongoose.connect(URI);
+mongoose.connect(process.env.URI);
 
 //Json middleware
 app.use(express.json());

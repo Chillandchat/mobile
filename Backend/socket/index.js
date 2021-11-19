@@ -1,5 +1,5 @@
 //Importing packages
-const URI = require("./vars.js");
+require("dotenv").config();
 const mongoose = require("mongoose");
 const message = require("./messageSchema.js");
 const io = require("socket.io")(3001, {
@@ -9,7 +9,7 @@ const io = require("socket.io")(3001, {
 });
 
 //Db connection
-mongoose.connect(URI);
+mongoose.connect(process.env.URI);
 
 //Web socket
 io.on("connection", (socket) => {
