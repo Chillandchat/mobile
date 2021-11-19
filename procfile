@@ -1,2 +1,1 @@
-api: node backend/index.js
-api: node socket/index.js
+api: npm start
