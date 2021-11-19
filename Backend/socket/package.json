@@ -1,0 +1,21 @@
+{
+  "name": "socket",
+  "version": "0.0.0",
+  "description": "socket for chill and chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo stating server... && node ."
+  },
+  "author": "Alvin cheng (Brother and sister software)",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13",
+    "socket.io": "^4.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

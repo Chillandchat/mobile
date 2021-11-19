@@ -26,7 +26,6 @@ export const Login: React.FC = () => {
   //Dispatch
   const dispatch = useDispatch();
 
-  ////console.log(authenticated);
   //Data management variables
   let usernameData: string;
   let passwordData: string;
@@ -79,6 +78,7 @@ export const Login: React.FC = () => {
             onclick={() => {
               //Call login function from login script
               login(usernameData, passwordData).then((isOk) => {
+                //Check ok status 
                 if (isOk) {
                   //Change redux state
                   dispatch(reduxLogin());

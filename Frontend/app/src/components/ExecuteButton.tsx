@@ -21,7 +21,7 @@ export const ExecuteButton: React.FC<Props> = (props) => {
     //Listeners
     window.addEventListener("keydown", (e) => {
       //Check button click
-      if (e.code == "Enter") element.click();
+      if (e.code === "Enter") element.click();
     });
 
     //Clean up listeners
