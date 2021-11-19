@@ -56,7 +56,7 @@ export const ChatBubble: React.FC = () => {
     <div id="chatBubble">
       {messages.map((message) => {
         //Render no message
-        if (message == []) {
+        if (message === []) {
           return <div></div>;
         }
         //Render messages
