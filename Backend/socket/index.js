@@ -1,7 +1,7 @@
 //Importing packages
-require("dotenv").config();
 const mongoose = require("mongoose");
 const message = require("./messageSchema.js");
+const URI = require("./vars.js");
 const io = require("socket.io")(3001, {
   cors: {
     origin: "*",
@@ -9,7 +9,7 @@ const io = require("socket.io")(3001, {
 });
 
 //Db connection
-mongoose.connect(process.env.URI);
+mongoose.connect(URI);
 
 //Web socket
 io.on("connection", (socket) => {
