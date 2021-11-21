@@ -1,24 +1,25 @@
-/*CSS file for user icon:*/
-/*Icon styles*/
+/* CSS file for user icon: */
+
+/* Icon styles */
 #userIcon {
   border-radius: 100%;
   height: 20vw;
   width: 20vw;
 }
-/*Wrapper styles*/
+/* Wrapper styles */
 #wrapper {
   text-align: center;
   overflow: hidden;
 }
-/*Media query for screens >1000px*/
+/* Media query for screens >1000px */
 @media (min-width: 1000px) {
-  /*Icon styles*/
+  /* Icon styles */
   #userIcon {
     border-radius: 100%;
-    height: 15vw;
-    width: 15vw;
+    height: 12vw;
+    width: 12vw;
   }
-  /*Wrapper style*/
+  /* Wrapper style */
   #wrapper {
     text-align: center;
     overflow: hidden;

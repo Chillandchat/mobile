@@ -1,7 +1,7 @@
 //Type script configuration
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES3",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,

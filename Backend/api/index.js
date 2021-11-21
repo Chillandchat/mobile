@@ -1,38 +1,14 @@
 //Importing packages
 const app = require("express")();
-const URI = require("./vars.js");
 const express = require("express");
 const user = require("./authSchema.js");
-const message = require("./messageSchema.js");
 const mongoose = require("mongoose");
-const server = require("http").Server(app);
-const io = require("socket.io")(server);
+const message = require("./messageSchema.js");
 const cors = require("cors");
+const URI = require("./vars.js");
 
 //Variables
-const port = process.env.PORT || "3001";
-
-//Web socket
-io.on("connection", (socket) => {
-  console.log("User connected.");
-});
-io.on("message", (payload) => {
-  io.emit("message", payload);
-  try {
-    const newMessage = new message({
-      id: payload.id,
-      user: payload.user,
-      content: payload.content,
-    });
-    newMessage.save().then(() => {
-      res
-        .status(201)
-        .send("Message saved successfully, no errors or problems.");
-    });
-  } catch (err) {
-    res.status(500).send(`SERVER ERROR: ${err}`);
-  }
-});
+const port = process.env.PORT || "8080";
 
 //Db connection
 mongoose.connect(URI);

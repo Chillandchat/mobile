@@ -26,7 +26,6 @@ export const Login: React.FC = () => {
   //Dispatch
   const dispatch = useDispatch();
 
-  ////console.log(authenticated);
   //Data management variables
   let usernameData: string;
   let passwordData: string;
@@ -79,11 +78,14 @@ export const Login: React.FC = () => {
             onclick={() => {
               //Call login function from login script
               login(usernameData, passwordData).then((isOk) => {
+                //Check ok status 
                 if (isOk) {
+                  //Change redux state
                   dispatch(reduxLogin());
                   dispatch(reduxChangeUsername(usernameData));
                 }
                 if (!isOk) {
+                  //Display error message
                   console.error(
                     `Uncaught error: Cannot login to ${usernameData} using the provided password and information.`
                   );
@@ -101,15 +103,20 @@ export const Login: React.FC = () => {
       </div>
     );
   }
+  //Render authenticated component
   if (authenticated) {
     return (
       <div>
+        {/*Redirect*/}
         <Redirect to="/public-chat-room:8080170" />
       </div>
     );
-  } else {
+  }
+  //Throw error
+  else {
     return (
       <div>
+        {/*Error message*/}
         <p>Error</p>
       </div>
     );

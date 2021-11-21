@@ -1,0 +1,45 @@
+/* CSS file for user bar component: */
+
+/* User display name styles */
+.userDisplayName {
+  color: #fff;
+  font-family: "poppins", sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+}
+/* User list styles */
+#userList {
+  vertical-align: middle;
+  background-color: #f25353;
+  padding-bottom: 70vh;
+  padding-left: 35%;
+}
+/* User styles */
+#user {
+  display: flex;
+  padding: 0.5rem;
+}
+/* Tittle styles */
+#tittle {
+  color: #fff;
+  margin-left: 1rem;
+}
+/* Hide button styles */
+#hideButton {
+  color: #ffff;
+  cursor: pointer;
+  font-size: 2.7rem;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+/* Media query for screens >700px */
+@media (max-width: 700px) {
+  /* Hide button styles */
+  #hideButton {
+    color: #ffff;
+    margin-left: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}

@@ -98,6 +98,7 @@ export const SignUpPage: React.FC = () => {
   if (ok) {
     return (
       <div>
+        {/*Redirect*/}
         <Redirect to="/" />
       </div>
     );
