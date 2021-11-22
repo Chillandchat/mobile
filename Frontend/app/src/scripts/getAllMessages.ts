@@ -11,23 +11,25 @@ export const getAllMessage = async (): Promise<MessageListReturnType> => {
 
   //Contact API
   try {
-    await api.get(apiEndpoints.getAllMessageEndpoint).then((response: any) => {
-      //Check response status
-      if (response.status === 200) {
-        //Set ok status
-        okStatus = true;
-        //Set data to response data
-        data = response.data;
-      } else {
-        //Set ok status
-        okStatus = false;
-        //Throw error
-        console.error(
-          "Uncaught Error: Server responded with a status of: " +
-            response.status
-        );
-      }
-    });
+    await api
+      .get(apiEndpoints.getAllMessageEndpoint)
+      .then((response: any): void => {
+        //Check response status
+        if (response.status === 200) {
+          //Set ok status
+          okStatus = true;
+          //Set data to response data
+          data = response.data;
+        } else {
+          //Set ok status
+          okStatus = false;
+          //Throw error
+          console.error(
+            "Uncaught Error: Server responded with a status of: " +
+              response.status
+          );
+        }
+      });
   } catch (err) {
     //Throw error
     okStatus = false;
