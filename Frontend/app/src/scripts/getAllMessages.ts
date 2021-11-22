@@ -1,15 +1,10 @@
 //Importing packages
 import { apiEndpoints, api } from "./apiRequest";
+import { MessageListReturnType } from "./types";
 import { Message } from "./types";
 
-//Types
-interface ReturnType {
-  messages: Array<Message>;
-  status: boolean;
-}
-
 //Get all message function
-export const getAllMessage = async (): Promise<ReturnType> => {
+export const getAllMessage = async (): Promise<MessageListReturnType> => {
   //Variables
   let okStatus: boolean;
   let data: Array<Message>;

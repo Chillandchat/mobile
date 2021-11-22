@@ -1,15 +1,10 @@
 //Importing packages
 import { api, apiEndpoints } from "./apiRequest";
+import { UserListReturnType } from "./types";
 import { User } from "./types";
 
-//Types
-interface ReturnType {
-  status: boolean;
-  data: Array<User>;
-}
-
 //Get all users function
-export const getAllUsers = async (): Promise<ReturnType> => {
+export const getAllUsers = async (): Promise<UserListReturnType> => {
   //Variables
   let okStatus: boolean;
   let userList: Array<User>;
