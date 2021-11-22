@@ -16,10 +16,10 @@ import {
 //Login component
 export const Login: React.FC = () => {
   //State
-  let [errorMessage, setErrorMessage] = useState("");
+  let [errorMessage, setErrorMessage] = useState<string>("");
 
   //Redux state
-  const authenticated = useSelector((state: RootState) => {
+  const authenticated = useSelector((state: RootState): RootState => {
     return state.login;
   });
 
@@ -75,10 +75,10 @@ export const Login: React.FC = () => {
           {/*Button*/}
           <ExecuteButton
             text="LET'S GO!!"
-            onclick={() => {
+            onclick={(): void => {
               //Call login function from login script
-              login(usernameData, passwordData).then((isOk) => {
-                //Check ok status 
+              login(usernameData, passwordData).then((isOk: boolean): void => {
+                //Check ok status
                 if (isOk) {
                   //Change redux state
                   dispatch(reduxLogin());
@@ -92,7 +92,7 @@ export const Login: React.FC = () => {
                   setErrorMessage(
                     "Oops! We ran into an error, please try again."
                   );
-                  setTimeout(() => {
+                  setTimeout((): void => {
                     setErrorMessage("");
                   }, 5000);
                 }

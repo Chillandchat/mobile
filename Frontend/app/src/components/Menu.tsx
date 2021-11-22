@@ -14,7 +14,8 @@ interface Props {
 //Menu component
 export const Menu: React.FC<Props> = (props) => {
   //Dispatch
-  const dispatch:any = useDispatch();
+  const dispatch = useDispatch();
+  
   //Render component
   return (
     <div>

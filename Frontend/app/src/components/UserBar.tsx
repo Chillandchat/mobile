@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../scripts/getUsers";
 import { UserBarIcon } from "./UserBarIcon";
-import {User as UserType} from "../scripts/types";
+import { User as UserType } from "../scripts/types";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import "./style/UserBar.css";
 
@@ -17,9 +17,9 @@ export const UserBar: React.FC<Props> = (props) => {
   let [userList, setUserList] = useState<Array<UserType>>([]);
 
   //Call get user function
-  useEffect(() => {
+  useEffect((): void => {
     //Call function
-    getAllUsers().then((returnData) => {
+    getAllUsers().then((returnData: any) => {
       setUserList(returnData.data);
     });
   }, []);
