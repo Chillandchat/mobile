@@ -1,7 +1,7 @@
 /* CSS file for execute button component */
 
 /* Root variables */
-:root{
+:root {
   --globalColor: #d88e1f;
 }
 /* Default button styles */
@@ -14,7 +14,7 @@
   margin-top: 5vw;
   color: white;
   transition-duration: 0.5s;
-  font-size: 0.6rem;
+  font-size: 0.4rem;
   cursor: pointer;
 }
 /* Hover styles */
