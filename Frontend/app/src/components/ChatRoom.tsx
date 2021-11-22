@@ -1,5 +1,5 @@
 //Importing packages
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InputField } from "./InputField";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/reducers/index";
@@ -11,21 +11,27 @@ import { send } from "../scripts/send";
 import { v4 as uuid } from "uuid";
 import { Menu } from "./Menu";
 import "./style/ChatRoom.css";
+import { askNotification } from "../scripts/askNotify";
 
 //Chat room component
 export const ChatRoom: React.FC = () => {
-
   //State
   let [view, setView] = useState<boolean>(false);
 
   //Data management variables
   let textBoxData: string | undefined = undefined;
 
+  //Use effect
+  useEffect((): void => {
+    //Ask notification permission
+    askNotification();
+  });
+
   //Redux state
-  const username = useSelector((state: RootState) => {
+  const username = useSelector((state: RootState): RootState => {
     return state.username;
   });
-  const authenticated = useSelector((state: RootState) => {
+  const authenticated = useSelector((state: RootState): RootState => {
     return state.login;
   });
 
@@ -35,7 +41,7 @@ export const ChatRoom: React.FC = () => {
       <div>
         {/*UserBar*/}
         <UserBar
-          viewOnClick={() => {
+          viewOnClick={(): void => {
             //Change state
             setView(false);
           }}
@@ -57,7 +63,7 @@ export const ChatRoom: React.FC = () => {
     <div id="chatRoom">
       {/*Menu*/}
       <Menu
-        viewOnClick={() => {
+        viewOnClick={(): void => {
           //Change state
           setView(true);
         }}
@@ -68,13 +74,13 @@ export const ChatRoom: React.FC = () => {
         {/*Input field*/}
         <InputField
           placeholder="Type a message..."
-          onChangeEvent={(e: any) => {
+          onChangeEvent={(e: any): void => {
             textBoxData = e.target.value;
           }}
         />
         {/*Send button*/}
         <SendButton
-          onclick={() => {
+          onclick={(): void => {
             //Send message
             send({ id: uuid(), user: username, content: textBoxData });
           }}
