@@ -1,16 +1,20 @@
 {
-  "name": "socket",
+  "name": "chill-chat-api",
   "version": "0.0.0",
-  "description": "socket for chill and chat",
-  "main": "index.js",
+  "description": "The api for chill chat",
+  "main": "./index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "echo stating server... && node ."
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "Github",
+    "url": "https://github.com/AlvinC888/Chill-chat"
   },
   "author": "Alvin cheng (Brother and sister software)",
-  "license": "MIT",
+  "license": "MIT See LICENSE file for more information",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.13",
     "socket.io": "^4.3.2"

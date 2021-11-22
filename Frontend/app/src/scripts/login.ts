@@ -27,7 +27,7 @@ export const login = async (
     try {
       await api
         .get(`${apiEndpoints.loginEndpoint}${username}/${password}`)
-        .then((response) => {
+        .then((response: any): void => {
           //Check API response status
           if (response.status === 404 || response.status === 400) {
             //Change ok status

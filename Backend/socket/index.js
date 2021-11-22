@@ -1,7 +1,7 @@
 //Importing packages
-const URI = require("./vars.js");
 const mongoose = require("mongoose");
 const message = require("./messageSchema.js");
+const URI = require("./vars.js");
 const io = require("socket.io")(3001, {
   cors: {
     origin: "*",

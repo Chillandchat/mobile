@@ -14,12 +14,12 @@ export const ExecuteButton: React.FC<Props> = (props) => {
   const buttonRef: any = useRef(null);
 
   //Use effect
-  useEffect(() => {
+  useEffect((): void => {
     //Button reference
     const element = buttonRef.current;
 
     //Listeners
-    window.addEventListener("keydown", (e) => {
+    window.addEventListener("keydown", (e: any): void => {
       //Check button click
       if (e.code === "Enter") element.click();
     });
@@ -27,6 +27,7 @@ export const ExecuteButton: React.FC<Props> = (props) => {
     //Clean up listeners
     return window.removeEventListener("keydown", () => {});
   }, []);
+
   //Render component
   return (
     <div>

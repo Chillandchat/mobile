@@ -1,11 +1,11 @@
 //Importing packages
 const app = require("express")();
-const URI = require("./vars.js");
 const express = require("express");
 const user = require("./authSchema.js");
 const mongoose = require("mongoose");
 const message = require("./messageSchema.js");
 const cors = require("cors");
+const URI = require("./vars.js");
 
 //Variables
 const port = process.env.PORT || "8080";

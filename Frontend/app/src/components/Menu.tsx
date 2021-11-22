@@ -14,7 +14,8 @@ interface Props {
 //Menu component
 export const Menu: React.FC<Props> = (props) => {
   //Dispatch
-  const dispatch:any = useDispatch();
+  const dispatch = useDispatch();
+
   //Render component
   return (
     <div>
@@ -22,7 +23,7 @@ export const Menu: React.FC<Props> = (props) => {
       <div id="menu">
         {/*Logout*/}
         <Logout
-          onClick={() => {
+          onClick={(): void => {
             //Change redux state
             dispatch(logout());
             dispatch(clearUsername());
@@ -33,7 +34,7 @@ export const Menu: React.FC<Props> = (props) => {
         {/*Hide/unhide icon*/}
         <VisibilityIcon
           id="viewButton"
-          onClick={() => {
+          onClick={(): void => {
             //Call props function
             props.viewOnClick();
           }}

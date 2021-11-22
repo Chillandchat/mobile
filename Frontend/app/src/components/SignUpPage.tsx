@@ -10,7 +10,7 @@ import "./style/Signup.css";
 //Sign up component
 export const SignUpPage: React.FC = () => {
   //State
-  let [errorMessage, setErrorMessage] = useState("");
+  let [errorMessage, setErrorMessage] = useState<string>("");
   let [ok, setOk] = useState(false);
 
   //Data management variables
