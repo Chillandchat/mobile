@@ -11,6 +11,9 @@ export const send = (message: Message): void => {
   //Web socket
   const socket = io(process.env.REACT_APP_WEBSOCKET_URL);
 
+  //Check if message is empty
+  if (message.content === undefined || message.content === "") return;
+
   //Emit message
   socket.emit("message", message);
 
