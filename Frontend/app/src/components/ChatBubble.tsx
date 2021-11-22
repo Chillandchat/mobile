@@ -1,11 +1,15 @@
 //Importing packages
 import React, { useEffect, useState, useRef } from "react";
 import { Message } from "./Message";
-import { Message as MessageType } from "../scripts/types";
+import {
+  Message as MessageType,
+  MessageListReturnType,
+} from "../scripts/types";
 import dotenv from "dotenv";
 import { io } from "socket.io-client";
 import { getAllMessage } from "../scripts/getAllMessages";
 import "./style/ChatBubble.css";
+import { notify } from "../scripts/notify";
 
 //SocketIO connection
 const socket = io(process.env.REACT_APP_WEBSOCKET_URL);
@@ -13,40 +17,43 @@ const socket = io(process.env.REACT_APP_WEBSOCKET_URL);
 //Chat bubble component
 export const ChatBubble: React.FC = () => {
   //Show message handler reference
-  const showMessageHandler = useRef<any>(null);
+  const showMessageHandler = useRef(null);
 
   //Message state
-  let [messages, setMessages] = useState<Array<MessageType | any>>([]);
+  let [messages, setMessages] = useState<Array<MessageType | []>>([]);
 
   //Use effect to run code
-  useEffect(() => {
+  useEffect((): void => {
     //Get all messages from api
-    getAllMessage().then((message) => {
+    getAllMessage().then((message: MessageListReturnType): void => {
       //Set state
       setMessages(message.messages);
     });
 
     //Env configuration
     dotenv.config();
-
-    /*eslint-disable-next-line*/
   }, []);
 
-  useEffect(() => {
+  useEffect((): void => {
     //SocketIO listener
     socket.on("message", (chatMessage: MessageType) => {
       //New message variable
-      let newMessage: Array<MessageType> = messages;
+      let newMessage: Array<MessageType | []> = messages;
+
+      //Notify user
+      notify({
+        tittle: "You have a new message from Chill&chat!",
+        body: `${chatMessage.user} says: ${chatMessage.content}`,
+      });
 
       //Assign and set message
       newMessage = [...messages, chatMessage];
       setMessages([]);
       setMessages(newMessage);
     });
-    /*eslint-disable-next-line*/
   });
 
-  useEffect(() => {
+  useEffect((): void => {
     //Scroll handler
     showMessageHandler.current.scrollIntoView();
   }, [messages]);
@@ -54,24 +61,18 @@ export const ChatBubble: React.FC = () => {
   //Render messages
   return (
     <div id="chatBubble">
-      {messages.map((message) => {
-        //Render no message
-        if (message == []) {
-          return <div></div>;
-        }
+      {messages.map((message: MessageType): any => {
         //Render messages
-        else {
-          return (
-            <div>
-              {/*Message*/}
-              <Message
-                key={message.id}
-                user={message.user}
-                content={message.content}
-              />
-            </div>
-          );
-        }
+        return (
+          <div>
+            {/*Message*/}
+            <Message
+              key={message.id}
+              user={message.user}
+              content={message.content}
+            />
+          </div>
+        );
       })}
       {/*Scroll handler*/}
       <div ref={showMessageHandler} id="showMessageHandler" />
