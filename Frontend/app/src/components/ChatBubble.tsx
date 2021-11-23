@@ -1,6 +1,7 @@
 //Importing packages
 import React, { useEffect, useState, useRef } from "react";
 import { Message } from "./Message";
+import { RootState } from "../redux/reducers/index";
 import {
   Message as MessageType,
   MessageListReturnType,
@@ -10,6 +11,7 @@ import { io } from "socket.io-client";
 import { getAllMessage } from "../scripts/getAllMessages";
 import "./style/ChatBubble.css";
 import { notify } from "../scripts/notify";
+import { useSelector } from "react-redux";
 
 //SocketIO connection
 const socket = io(process.env.REACT_APP_WEBSOCKET_URL);
@@ -18,6 +20,11 @@ const socket = io(process.env.REACT_APP_WEBSOCKET_URL);
 export const ChatBubble: React.FC = () => {
   //Show message handler reference
   const showMessageHandler = useRef(null);
+
+  //Redux state
+  const username = useSelector((state: RootState): RootState => {
+    return state.username;
+  });
 
   //Message state
   let [messages, setMessages] = useState<Array<MessageType | []>>([]);
@@ -41,10 +48,12 @@ export const ChatBubble: React.FC = () => {
       let newMessage: Array<MessageType | []> = messages;
 
       //Notify user
-      notify({
-        tittle: "You have a new message from Chill&chat!",
-        body: `${chatMessage.user} says: ${chatMessage.content}`,
-      });
+      if (chatMessage.user !== "SYSTEM" && chatMessage.user !== username) {
+        notify({
+          tittle: "You have a new message from Chill&chat!",
+          body: `${chatMessage.user} says: ${chatMessage.content}`,
+        });
+      }
 
       //Assign and set message
       newMessage = [...messages, chatMessage];
