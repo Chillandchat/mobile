@@ -1,4 +1,8 @@
-export let badWord: Array<string> = [
+//(c) Copyright 2013 Maurice Butler
+//Database by Maurice Butler
+//License: https://github.com/MauriceButler/badwords/blob/master/LICENSE
+//Bad word database
+const badWords: Array<string> = [
   "4r5e",
   "5h1t",
   "5hit",
@@ -450,3 +454,6 @@ export let badWord: Array<string> = [
   "xrated",
   "xxx",
 ];
+
+//Export database
+export default badWords;
