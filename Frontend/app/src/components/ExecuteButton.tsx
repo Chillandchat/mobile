@@ -11,7 +11,7 @@ interface Props {
 //ExecuteButton component
 export const ExecuteButton: React.FC<Props> = (props) => {
   //Button ref
-  const buttonRef: any = useRef(null);
+  const buttonRef = useRef(null);
 
   //Use effect
   useEffect((): void => {
