@@ -22,7 +22,7 @@ export const send = (message: Message): void => {
     //Check word
     if (message.content.includes(badWords[i])) {
       //Edit message
-      message.content = `ERROR: Message UNAVAILABLE, The message that @${username} was trying send\nwas been DELETED by the profanity filter.`;
+      message.content = `ERROR: Message UNAVAILABLE, The message that @${username} was trying send was DELETED by the profanity filter.`;
       message.user = "SYSTEM";
       break;
     } else continue;
