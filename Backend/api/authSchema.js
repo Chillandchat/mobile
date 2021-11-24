@@ -6,8 +6,9 @@ const schema = mongoose.Schema({
   id: String,
   username: String,
   password: String,
+  verified: Boolean,
+  bot: Boolean, 
   blocked: Boolean,
-  onDeleteList: Boolean,
 });
 
 //Export schema
