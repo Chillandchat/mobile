@@ -1,11 +1,13 @@
 # Chill&chat API documentation
 
 Welcome to the Chill&chat API documentation, here you can learn more about the chill&chat api. Where I will cover every endpoint in this API. and I will also have samples on how to use this api in your application with javascript.
+
 # License
 
 Please note this API is licensed under the MIT license. please find the LICENSE file for more information.
 
 (c) copyright 2021-2022 Alvin Cheng
+
 # Endpoints:
 
 ### Websocket
@@ -29,6 +31,7 @@ Please note: PLEASE NOTE THAT CURRENTLY WE CANNOT FIND A WAY TO INTERACT WITH TH
 ### Get all message endpoint - GET
 
 This endpoint will return all messages in the message history which is stored in the database on MongoDB, in this format:
+
 ```
 {
 id: "123abc",
@@ -38,16 +41,17 @@ content: "Hello world!",
 ```
 
 URL:
-``` http://foo.com/api/messages/get```
+`http://foo.com/api/get_all_message/`
 
 Sample:
 
 Javascript:
+
 ```js
 import axios from "axios";
 
 axios
-  .get("http://foo.com/api/messages/get")
+  .get("http://foo.com/api/get_all_message")
   .then((data) => {
     //Write your code here:
     randomFunction();
@@ -59,10 +63,11 @@ axios
 ```
 
 Python:
+
 ```py
 import requests
 
-response = requests.get("http://foo.com/api/messages/get")
+response = requests.get("http://foo.com/api/get_all_message")
 
 # Write your code here...
 random_function()
@@ -73,13 +78,18 @@ random_function()
 
 This endpoint will create a new user with the given username and password and will be stored in the database.
 
+URL:
+`http://foo.com/api/sign_up`
+
 Sample:
+
+Javascript:
 
 ```js
 import axios from "axios";
 
 axios
-  .post("http://foo.com/api/users/post/create", {
+  .post("http://foo.com/api/sign_up", {
     id: "xxxx",
     username: "John smith",
     password: "password1234",
@@ -96,19 +106,36 @@ axios
   });
 ```
 
+Python:
+
+```py
+import requests
+
+response = requests.get("http://foo.com/api/sign_up")
+
+#Write your code here:
+random_function()
+#...
+```
+
 ### Get all user endpoint - GET
 
 This endpoint is used to retrieve all user information from the database in mongodb.
 
 NOTE: PLEASE NOTE THAT THIS ENDPOINT MUST NOT BE SHARED TO ANY OTHER PEOPLE BECAUSE ALL USER INFORMATION CAN BE LEAKED TO PUBLIC TO INSURE PRIVACY TO USERS.
 
+URL:
+`http://foo.com/get_all_users/`
+
 Sample:
+
+Javascript:
 
 ```js
 import axios from "axios";
 
 axios
-  .get("http://foo.com/api/users/get/all")
+  .get("http://foo.com/api/get_all_users")
   .then((data) => {
     //Write your code here:
     randomFunction();
@@ -119,17 +146,37 @@ axios
   });
 ```
 
-### Login endpoint - GET
+Python:
+
+```py
+import requests
+
+response = requests.get("http://foo.com/api/get_all_users")
+
+# Write your code here:
+random_function()
+#...
+```
+
+### Login endpoint - POST
 
 This endpoint is used to authenticate the user with the provided inputs from the user.
 
+URL:
+`http://foo.com/api/login/`
+
 Sample:
+
+Javascript:
 
 ```js
 import axios from "axios";
 
 axios
-  .get("http://foo.com/api/users/get/<USERNAME>/<PASSWORD>")
+  .post("http://foo.com/api/login", {
+    user: "[USERNAME]",
+    password: "[PASSWORD]",
+  })
   .then((data) => {
     //Write your code here:
     randomFunction();
@@ -139,18 +186,27 @@ axios
     //Error handling:
   });
 ```
+
+Python:
+
+NO CODE SAMPLES
 
 ### Find user endpoint - GET
 
 This endpoint will return if the user does exist.
 
+URL:
+`http://foo.com/api/get_user/<USERNAME>/`
+
 Sample:
+
+Javascript:
 
 ```js
 import axios from "axios";
 
 axios
-  .get("http://foo.com/api/users/get/<USERNAME>")
+  .get("http://foo.com/api/get_user/<USERNAME>")
   .then((data) => {
     //Write your code here:
     randomFunction();
@@ -159,6 +215,18 @@ axios
   .catch((err) => {
     //Error handling:
   });
+```
+
+Python:
+
+```py
+import requests
+
+response = requests.get("http://foo.com/api/get_user/<USERNAME>")
+
+# Write your code here:
+random_function()
+#...
 ```
 
 ### Block user endpoint - PUT
@@ -171,7 +239,7 @@ Sample:
 import axios from "axios";
 
 axios
-  .put("http://foo.com/api/users/block/", {
+  .put("http://foo.com/api/block_user", {
     user: "John smith",
     blockedStatus: true,
   })
@@ -184,6 +252,12 @@ axios
     //Error handling:
   });
 ```
+
+Python:
+
+NO CODE SAMPLE
+
+NOTE: THIS ENDPOINT CAN BE BUGGY AND HAVE ISSUES.
 
 # Conclusion / Final thoughts
 
