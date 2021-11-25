@@ -104,7 +104,7 @@ app.post("/api/login", (req, res) => {
 });
 
 //Find user endpoint
-app.get("/api/users/get/:user/", (req, res) => {
+app.get("/api/get_user/:user/", (req, res) => {
   try {
     //Find user
     user
