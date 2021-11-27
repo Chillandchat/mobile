@@ -23,6 +23,7 @@ io.on("connection", (socket) => {
         id: payload.id,
         user: payload.user,
         content: payload.content,
+        verified: payload.verified,
       });
       newMessage.save().then(() => {});
     } catch (err) {
