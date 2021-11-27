@@ -17,12 +17,12 @@ interface ApiEndpointType {
 
 //Api endpoints
 export const apiEndpoints: ApiEndpointType = {
-  getAllMessageEndpoint: "/api/messages/get",
-  getAllUsersEndpoint: "/api/users/get/all",
-  signupEndpoint: "/api/users/post/create/",
-  loginEndpoint: "/api/users/get/",
-  findUserEndpoint: "/api/users/get/",
-  blockUsersEndpoint: "/api/users/block/",
+  getAllMessageEndpoint: "/api/get_all_message",
+  getAllUsersEndpoint: "/api/get_all_users",
+  signupEndpoint: "/api/sign_up",
+  loginEndpoint: "/api/login",
+  findUserEndpoint: "/api/get_user",
+  blockUsersEndpoint: "/api/block_user",
 };
 
 //Axios for api requests

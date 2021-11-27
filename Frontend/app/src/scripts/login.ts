@@ -26,7 +26,10 @@ export const login = async (
     //Contact api
     try {
       await api
-        .get(`${apiEndpoints.loginEndpoint}${username}/${password}`)
+        .post(apiEndpoints.loginEndpoint, {
+          user: username,
+          password: password,
+        })
         .then((response: any): void => {
           //Check API response status
           if (response.status === 404 || response.status === 400) {

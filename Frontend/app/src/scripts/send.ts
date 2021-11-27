@@ -2,17 +2,26 @@
 import dotenv from "dotenv";
 import { io } from "socket.io-client";
 import badWords from "./badWords";
+import { findUserInfo } from "./findUserInfo";
 import { Message } from "./types";
 
 //Env configuration
 dotenv.config();
 
 //Send function
-export const send = (message: Message): void => {
+export const send = async (message: Message): Promise<void> => {
+  //Variables
   const username: string = message.user;
 
   //Web socket
   const socket = io(process.env.REACT_APP_WEBSOCKET_URL);
+
+  //Check verified user message
+  await findUserInfo(message.user).then((response: any): void => {
+    //Check user verify status
+    if (response.data.verified) message.verified = true;
+    else message.verified = false;
+  });
 
   //Check if message is empty
   if (message.content === undefined || message.content === "") return;
@@ -24,6 +33,7 @@ export const send = (message: Message): void => {
       //Edit message
       message.content = `ERROR: Message UNAVAILABLE, The message that @${username} was trying send was DELETED by the profanity filter.`;
       message.user = "SYSTEM";
+      message.verified = true;
       break;
     } else continue;
   }

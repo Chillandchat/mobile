@@ -4,7 +4,14 @@ export interface User {
   username: string;
   password: string;
   blocked: boolean;
-  onDeleteList: boolean;
+  verified: boolean;
+  bot: boolean;
+}
+
+//Find user information return type
+export interface UserInfoReturn {
+  okStatus: boolean;
+  data: User;
 }
 
 //Notification message type
@@ -18,6 +25,7 @@ export interface Message {
   id: string;
   user: string;
   content: string;
+  verified: boolean | null;
 }
 
 //User list return type

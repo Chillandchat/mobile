@@ -43,7 +43,8 @@ export const signUp = async (
           username: username,
           password: password,
           blocked: false,
-          onDeleteList: false,
+          verified: false,
+          bot: false,
         })
         .then((response: any): void => {
           //Check if response was successful
