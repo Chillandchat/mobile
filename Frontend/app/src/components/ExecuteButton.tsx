@@ -19,13 +19,13 @@ export const ExecuteButton: React.FC<Props> = (props) => {
     const element = buttonRef.current;
 
     //Listeners
-    window.addEventListener("keydown", (e: any): void => {
+    window.addEventListener("keydown", (e: KeyboardEvent): void => {
       //Check button click
       if (e.code === "Enter") element.click();
     });
 
     //Clean up listeners
-    return window.removeEventListener("keydown", () => {});
+    return window.removeEventListener("keydown", (): void => {});
   }, []);
 
   //Render component
