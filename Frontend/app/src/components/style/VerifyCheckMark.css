@@ -1,0 +1,13 @@
+#verifyCheckMark {
+  color: #2cdb63;
+  margin-top: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  font-size: 0.7rem;
+  border: 1px solid #2cdb63;
+  border-radius: 1rem;
+  font-family: "poppins", sans-serif;
+  font-weight: bold;
+}
