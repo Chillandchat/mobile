@@ -24,7 +24,9 @@ export const ChatRoom: React.FC = () => {
   //Use effect
   useEffect((): void => {
     //Ask notification permission
-    askNotification();
+    if ("Notification" in window) {
+      askNotification();
+    }
   });
 
   //Redux state
@@ -82,7 +84,12 @@ export const ChatRoom: React.FC = () => {
         <SendButton
           onclick={(): void => {
             //Send message
-            send({ id: uuid(), user: username, content: textBoxData });
+            send({
+              id: uuid(),
+              user: username,
+              content: textBoxData,
+              verified: null,
+            });
           }}
         />
       </div>
