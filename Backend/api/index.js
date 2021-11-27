@@ -112,7 +112,7 @@ app.get("/api/get_user/:user/", (req, res) => {
       .exec()
       .then((data) => {
         //Check conditions
-        if (data != null || data != undefined) res.status(200).send();
+        if (data != null || data != undefined) res.status(200).send(data);
         /*Throw error:*/ else res.status(404).send("User not found");
       })
       .catch((err) => {
