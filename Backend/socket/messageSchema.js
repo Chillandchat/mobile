@@ -6,7 +6,7 @@ const schema = mongoose.Schema({
   id: String,
   user: String,
   content: String,
-  verified:Boolean,
+  verified: Boolean,
 });
 
 //Export schema
