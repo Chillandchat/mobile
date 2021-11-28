@@ -6,3 +6,9 @@
   margin: 0.9rem;
   height: auto;
 }
+#userWrapper {
+  display: flex;
+}
+#checkMark {
+  margin-left: 0.6rem;
+}

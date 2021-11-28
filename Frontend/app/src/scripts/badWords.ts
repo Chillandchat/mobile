@@ -181,6 +181,8 @@ const badWords: Array<string> = [
   "fook",
   "fooker",
   "fuck",
+  "Fucker",
+  "AssFucker",
   "fucka",
   "fucked",
   "fucker",
@@ -452,7 +454,6 @@ const badWords: Array<string> = [
   "willies",
   "willy",
   "xrated",
-  "xxx",
 ];
 
 //Export database

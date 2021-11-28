@@ -6,6 +6,6 @@ export const askNotification = (): void => {
     Notification.permission === "default"
   ) {
     //Request permission
-    Notification.requestPermission();
+    window.Notification.requestPermission();
   } else return;
 };

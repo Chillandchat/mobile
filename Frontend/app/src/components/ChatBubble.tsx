@@ -48,13 +48,14 @@ export const ChatBubble: React.FC = () => {
       let newMessage: Array<MessageType | []> = messages;
 
       //Notify user
-      if (chatMessage.user !== "SYSTEM" && chatMessage.user !== username) {
-        notify({
-          tittle: "You have a new message from Chill&chat!",
-          body: `${chatMessage.user} says: ${chatMessage.content}`,
-        });
+      if ("Notification" in window) {
+        if (chatMessage.user !== "SYSTEM" || chatMessage.user !== username) {
+          notify({
+            tittle: "You have a new message from Chill&chat!",
+            body: `${chatMessage.user} says: ${chatMessage.content}`,
+          });
+        }
       }
-
       //Assign and set message
       newMessage = [...messages, chatMessage];
       setMessages([]);
@@ -79,6 +80,7 @@ export const ChatBubble: React.FC = () => {
               key={message.id}
               user={message.user}
               content={message.content}
+              verified={message.verified}
             />
           </div>
         );
