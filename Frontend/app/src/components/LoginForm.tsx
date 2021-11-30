@@ -5,7 +5,6 @@ import "./style/LoginForm.css";
 //Props interface
 interface Props {
   formPlaceHolder: string;
-  formLabel: string;
   password: boolean;
   onChange: any;
 }
@@ -17,8 +16,6 @@ export const LoginForm: React.FC<Props> = (props) => {
   if (props.password) {
     return (
       <div id="container">
-        {/*Label*/}
-        <p id="label">{props.formLabel}</p>
         {/*Form*/}
         <input
           placeholder={props.formPlaceHolder}
@@ -33,8 +30,6 @@ export const LoginForm: React.FC<Props> = (props) => {
   else {
     return (
       <div id="container">
-        {/*Label*/}
-        <p id="label">{props.formLabel}</p>
         {/*Form*/}
         <input
           placeholder={props.formPlaceHolder}
