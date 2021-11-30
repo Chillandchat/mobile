@@ -8,21 +8,63 @@
 #button {
   background-color: var(--globalColor);
   border: none;
-  height: 7vw;
-  width: 20vw;
+  height: 8vw;
+  width: 17vw;
   border-radius: 99vw 99vw 99vw 99vw;
-  margin-top: 5vw;
+  margin-top: 0.1vw;
   color: white;
   transition-duration: 0.5s;
-  font-size: 0.4rem;
+  font-size: 0.2rem;
   cursor: pointer;
 }
 /* Hover styles */
 #button:hover {
-  border: 7px solid white;
+  border: 3px solid white;
   background-color: transparent;
   color: white;
   transition-duration: 0.5s;
+}
+@media (max-width: 500px) {
+  #button {
+    background-color: var(--globalColor);
+    border: none;
+    height: 9vw;
+    width: 21vw;
+    border-radius: 99vw 99vw 99vw 99vw;
+    margin-top: 1vw;
+    color: white;
+    transition-duration: 0.5s;
+    font-size: 0.4rem;
+    cursor: pointer;
+  }
+  /* Hover styles */
+  #button:hover {
+    border: 3px solid white;
+    background-color: transparent;
+    color: white;
+    transition-duration: 0.5s;
+  }
+}
+@media (max-width: 450px) {
+  #button {
+    background-color: var(--globalColor);
+    border: none;
+    height: 10vw;
+    width: 23vw;
+    border-radius: 99vw 99vw 99vw 99vw;
+    margin-top: 2vw;
+    color: white;
+    transition-duration: 0.5s;
+    font-size: 0.25rem;
+    cursor: pointer;
+  }
+  /* Hover styles */
+  #button:hover {
+    border: 3px solid white;
+    background-color: transparent;
+    color: white;
+    transition-duration: 0.5s;
+  }
 }
 /* Media query for screens >750px */
 @media (min-width: 750px) {
@@ -31,24 +73,24 @@
     background-color: var(--globalColor);
     border: none;
     height: 5vw;
-    width: 18vw;
+    width: 13vw;
     border-radius: 99vw 99vw 99vw 99vw;
-    margin-top: 5vw;
+    margin-top: 2vw;
     color: white;
     transition-duration: 0.5s;
-    font-style: 3vw;
+    font-size: 0.6rem;
     cursor: pointer;
   }
   /* Hover styles */
   #button:hover {
-    border: 7px solid white;
+    border: 3px solid white;
     background-color: transparent;
     color: white;
     transition-duration: 0.5s;
   }
 }
 /* Media query for screens >1000px */
-@media (min-width: 1000px) {
+@media (min-width: 1200px) {
   /* Default button styles */
   #button {
     background-color: var(--globalColor);
@@ -64,7 +106,7 @@
   }
   /* Button hover styles */
   #button:hover {
-    border: 7px solid white;
+    border: 3px solid white;
     background-color: transparent;
     color: white;
     transition-duration: 0.5s;

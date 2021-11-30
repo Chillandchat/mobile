@@ -19,6 +19,9 @@
 #menu {
   display: flex;
   justify-content: space-between;
+  background-color: var(--chatRoomSpecialColor);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 /* Menu text styles */
 #menuText {
