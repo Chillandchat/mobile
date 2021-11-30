@@ -1,6 +1,5 @@
 {
-  "hosting": {
-    "site": "chill-and-chat-web",
-    "public": "build",
+  "projects": {
+    "default": "chill&chat"
   }
 }
