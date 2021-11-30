@@ -10,9 +10,14 @@
 /* User list styles */
 #userList {
   vertical-align: middle;
-  background-color: #f25353;
+  background-color: var(--chatRoomGlobalColor);
   padding-bottom: 70vh;
-  padding-left: 35%;
+  padding-left: 20%;
+  padding-top: 3rem;
+}
+/* Outer list styles */
+#outerList {
+  background-color: var(--chatRoomGlobalColor);
 }
 /* User styles */
 #user {
@@ -30,8 +35,8 @@
   cursor: pointer;
   font-size: 2.7rem;
   position: relative;
-  top: 0;
-  left: 0;
+  top: 1.2rem;
+  left: 1.2rem;
 }
 /* Media query for screens >700px */
 @media (max-width: 700px) {

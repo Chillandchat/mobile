@@ -49,14 +49,12 @@ export const Login: React.FC = () => {
         <div id="form">
           {/*User name form*/}
           <LoginForm
-            formLabel="Username"
             formPlaceHolder="Your username"
             password={false}
             onChange={getUsername}
           />
           {/*Password form*/}
           <LoginForm
-            formLabel="Password"
             formPlaceHolder="Your password"
             password={true}
             onChange={getPassword}
@@ -69,7 +67,7 @@ export const Login: React.FC = () => {
         {/*Sign up link*/}
         <div id="signup">
           <Link to="/signup" id="signupLink">
-            New? Sign up today!
+            <p>New? Sign up today!</p>
           </Link>
 
           {/*Button*/}

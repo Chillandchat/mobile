@@ -17,7 +17,11 @@ mongoose.connect(URI);
 app.use(express.json());
 
 //CORS middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://chill-and-chat-web.web.app/",
+  })
+);
 
 //Get endpoint
 app.get("/", (req, res) => {
@@ -83,7 +87,7 @@ app.post("/api/login", (req, res) => {
       .exec()
       .then((data) => {
         //Check if user exists
-        if (data != null || data != undefined) {
+        if (data != null && data != undefined) {
           //Check password
           if (
             data.username == req.body.user &&

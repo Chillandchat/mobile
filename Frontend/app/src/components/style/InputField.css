@@ -10,7 +10,7 @@
   padding: 0rem 1rem 0rem 1rem;
   margin: 0rem 1rem 0rem 1rem;
   font-family: "Poppins", sans-serif;
-  background-color: transparent;
+  background-color: var(--chatRoomGlobalColor);
   color: #fff;
   outline: none;
 }
@@ -31,9 +31,9 @@
     font-family: "Poppins", sans-serif;
     cursor: pointer;
     width: 70vw;
-    height: 3vh;
+    height: 4vh;
     padding: 0.2rem 1rem 0.2rem 1rem;
-    background-color: transparent;
+    background-color: var(--chatRoomGlobalColor);
     color: #fff;
     outline: none;
   }

@@ -27,35 +27,39 @@ export const UserBar: React.FC<Props> = (props) => {
 
   //Render component
   return (
-    <div id="userList">
-      {/*Hide/unhide button*/}
-      <VisibilityOffIcon id="hideButton" onClick={props.viewOnClick} />
-      {/*Tittle*/}
-      <h2 id="tittle">Users:</h2>
-      {/*Map users*/}
-      {userList.map((user) => {
-        //Render verified user
-        if (user.verified) {
+    <div>
+      <div id="outerList">
+        {/*Hide/unhide button*/}
+        <VisibilityOffIcon id="hideButton" onClick={props.viewOnClick} />{" "}
+      </div>
+      <div id="userList">
+        {/*Tittle*/}
+        <h2 id="tittle">Users:</h2>
+        {/*Map users*/}
+        {userList.map((user) => {
+          //Render verified user
+          if (user.verified) {
+            return (
+              <div id="user" key={user.id}>
+                {/*Icon*/}
+                <UserBarIcon />
+                {/*Username*/}
+                <strong className="userDisplayName">{user.username}</strong>
+                <VerifyCheckMark />
+              </div>
+            );
+          }
+          //Render user
           return (
             <div id="user" key={user.id}>
               {/*Icon*/}
               <UserBarIcon />
               {/*Username*/}
               <strong className="userDisplayName">{user.username}</strong>
-              <VerifyCheckMark />
             </div>
           );
-        }
-        //Render user
-        return (
-          <div id="user" key={user.id}>
-            {/*Icon*/}
-            <UserBarIcon />
-            {/*Username*/}
-            <strong className="userDisplayName">{user.username}</strong>
-          </div>
-        );
-      })}
+        })}
+      </div>
     </div>
   );
 };

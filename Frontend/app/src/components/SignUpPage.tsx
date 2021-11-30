@@ -44,21 +44,18 @@ export const SignUpPage: React.FC = () => {
           <LoginForm
             password={false}
             formPlaceHolder="Your username"
-            formLabel="Username"
             onChange={getUsername}
           />
           {/*Password input box*/}
           <LoginForm
             password={true}
             formPlaceHolder="Your password"
-            formLabel="Password"
             onChange={getPassword}
           />
           {/*Password confirm input box*/}
           <LoginForm
             password={true}
             formPlaceHolder="Confirm password"
-            formLabel="Password"
             onChange={getPasswordConfirm}
           />
         </div>
