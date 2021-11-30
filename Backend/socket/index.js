@@ -4,7 +4,7 @@ const message = require("./messageSchema.js");
 const URI = require("./vars.js");
 const io = require("socket.io")(3001, {
   cors: {
-    origin: "*",
+    origin: "https://chill-and-chat-web.web.app",
   },
 });
 
@@ -13,10 +13,11 @@ mongoose.connect(URI);
 
 //Web socket
 io.on("connection", (socket) => {
-  console.log("connect");
+  //Event listener
   socket.on("message", (payload) => {
-    console.log("message");
+    //Emit message
     io.emit("message", payload);
+
     //Save message
     try {
       const newMessage = new message({
@@ -32,6 +33,7 @@ io.on("connection", (socket) => {
     }
   });
 });
+
 //Handle error
 io.on("connect_error", (err) => {
   console.log(`connect_error due to ${err.message}`);
