@@ -8,8 +8,8 @@
 #button {
   background-color: var(--globalColor);
   border: none;
-  height: 8vw;
-  width: 17vw;
+  height: 7vw;
+  width: 18vw;
   border-radius: 99vw 99vw 99vw 99vw;
   margin-top: 0.1vw;
   color: white;
@@ -49,13 +49,13 @@
   #button {
     background-color: var(--globalColor);
     border: none;
-    height: 10vw;
-    width: 23vw;
+    height: 13vw;
+    width: 29vw;
     border-radius: 99vw 99vw 99vw 99vw;
     margin-top: 2vw;
     color: white;
     transition-duration: 0.5s;
-    font-size: 0.25rem;
+    font-size: 0.13rem;
     cursor: pointer;
   }
   /* Hover styles */
