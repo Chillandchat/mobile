@@ -157,12 +157,12 @@ app.post("/api/report_user", (req, res) => {
 
   //Send mail
   transporter.sendMail(mailOptions, (err, data) => {
-    if (err) error = err; 
+    if (err) error = err;
     else emailOk = true;
   });
 
   //Send status
-  if(emailOk) res.status(200).send();
+  if (emailOk) res.status(200).send();
   else res.status(500).send(`SERVER ERROR: ${error}`);
 });
 //Block user endpoint
