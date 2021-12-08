@@ -5,13 +5,16 @@ const user = require("./authSchema.js");
 const mongoose = require("mongoose");
 const message = require("./messageSchema.js");
 const cors = require("cors");
-const URI = require("./vars.js");
+const dotenv = require("dotenv");
+
+//Setup dotenv
+dotenv.config();
 
 //Variables
 const port = process.env.PORT || "8080";
 
 //Db connection
-mongoose.connect(URI);
+mongoose.connect(process.env.URI);
 
 //Json middleware
 app.use(express.json());
@@ -128,7 +131,40 @@ app.get("/api/get_user/:user/", (req, res) => {
     res.status(500).send(`SERVER ERROR: ${err}`);
   }
 });
+app.post("/api/report_user", (req, res) => {
+  //Email ok
+  let emailOk = false;
 
+  //Error message
+  let error;
+
+  //Transporter
+  let transporter = nodemailer.createTransport({
+    service: "icloud",
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+
+  //Mail options
+  let mailOptions = {
+    from: "alvincheng88@icloud.com",
+    to: "briannacheng@icloud.com",
+    subject: "You have a new report from the Chill&chat server",
+    text: `${req.body.user} has reported ${req.body.reportUser} for "${req.body.reason}"\n`,
+  };
+
+  //Send mail
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) error = err; 
+    else emailOk = true;
+  });
+
+  //Send status
+  if(emailOk) res.status(200).send();
+  else res.status(500).send(`SERVER ERROR: ${error}`);
+});
 //Block user endpoint
 app.put("/api/block_user", (req, res) => {
   //Error variable
