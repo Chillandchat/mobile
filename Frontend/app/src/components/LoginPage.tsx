@@ -88,7 +88,7 @@ export const Login: React.FC = () => {
                     `Uncaught error: Cannot login to ${usernameData} using the provided password and information.`
                   );
                   setErrorMessage(
-                    "Oops! We ran into an error, please try again."
+                    "Your password or username is invalid."
                   );
                   setTimeout((): void => {
                     setErrorMessage("");
