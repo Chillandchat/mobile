@@ -14,7 +14,7 @@ dotenv.config();
 const port = process.env.PORT || "8080";
 
 //Db connection
-mongoose.connect(process.env.URI);
+mongoose.connect(process.env.API_URI);
 
 //Json middleware
 app.use(express.json());
@@ -142,8 +142,8 @@ app.post("/api/report_user", (req, res) => {
   let transporter = nodemailer.createTransport({
     service: "icloud",
     auth: {
-      user: process.env.EMAIL,
-      pass: process.env.EMAIL_PASS,
+      user:  process.env.API_EMAIL,
+      pass:  process.env.API_EMAIL_PASS,
     },
   });
 
