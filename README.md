@@ -11,6 +11,7 @@ https://chill-and-chat-web.web.app/
 This repository is licensed under the MIT License. Please see the LICENSE file for license information.
 
 (C) Copyright 2021-2022 Alvin cheng (Brother and sister software)
+
 (C) Copyright 2021-2022 Brianna cheng (Brother and sister software)
 
 ## Contribution
