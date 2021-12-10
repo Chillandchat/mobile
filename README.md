@@ -8,7 +8,7 @@ https://chill-and-chat-web.web.app/
 
 ## License
 
-This repository is licensed under the MIT License. Please see the ![LICENSE](https://github.com/Chill-and-chat/Chill-chat/blob/master/LICENSE) file for license information.
+This repository is licensed under the MIT License. Please see the [LICENSE](https://github.com/Chill-and-chat/Chill-chat/blob/master/LICENSE) file for license information.
 
 (C) Copyright 2021-2022 Alvin cheng (Brother and sister software)
 
