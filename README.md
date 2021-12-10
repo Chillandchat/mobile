@@ -8,7 +8,7 @@ https://chill-and-chat-web.web.app/
 
 ## License
 
-This repository is licensed under the MIT License. Please see the LICENSE file for license information.
+This repository is licensed under the MIT License. Please see the [LICENSE](https://github.com/Chill-and-chat/Chill-chat/blob/master/LICENSE) file for license information.
 
 (C) Copyright 2021-2022 Alvin cheng (Brother and sister software)
 
@@ -29,7 +29,7 @@ Brianna cheng - UI/UX designer
 
 ## Bugs and issues
 
-If you have found any bug(s) please post them in the issue tab in this repository, and tag it with a "bug" tag to let us know. for bug support please contact Alvin cheng on:
+If you have found any bug(s) please post them in the [issues](https://github.com/Chill-and-chat/Chill-chat/issues) tab in this repository, and tag it with a "bug" tag to let us know. for bug support please contact Alvin cheng on:
 
 Email:
 chengalvin333@gmail.com
