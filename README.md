@@ -29,7 +29,7 @@ Brianna cheng - UI/UX designer
 
 ## Bugs and issues
 
-If you have found any bug(s) please post them in the issue tab in this repository, and tag it with a "bug" tag to let us know. for bug support please contact Alvin cheng on:
+If you have found any bug(s) please post them in the [issues](https://github.com/Chill-and-chat/Chill-chat/issues) tab in this repository, and tag it with a "bug" tag to let us know. for bug support please contact Alvin cheng on:
 
 Email:
 chengalvin333@gmail.com
