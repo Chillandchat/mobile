@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const message = require("./messageSchema.js");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const nodemailer = require("nodemailer");
 
 //Setup dotenv
 dotenv.config();
@@ -139,32 +140,36 @@ app.post("/api/report_user", (req, res) => {
   let error;
 
   //Transporter
-  let transporter = nodemailer.createTransport({
-    service: "icloud",
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
     auth: {
-      user:  process.env.API_EMAIL,
-      pass:  process.env.API_EMAIL_PASS,
+      user: process.env.API_EMAIL,
+      pass: process.env.API_EMAIL_PASS,
     },
   });
 
   //Mail options
-  let mailOptions = {
-    from: "alvincheng88@icloud.com",
-    to: "briannacheng@icloud.com",
+  const mailOptions = {
+    from: process.env.API_EMAIL,
+    to: "chengalvin333@gmail.com",
     subject: "You have a new report from the Chill&chat server",
-    text: `${req.body.user} has reported ${req.body.reportUser} for "${req.body.reason}"\n`,
+    text: `${req.body.user} has reported ${req.body.reportUser}'s message.\nMessage: "${req.body.reason}"\n`,
   };
 
   //Send mail
   transporter.sendMail(mailOptions, (err, data) => {
-    if (err) error = err;
-    else emailOk = true;
+    //Check errors
+    if (err) {
+      error = err;
+      emailOk = false;
+    } else emailOk = true;
   });
 
   //Send status
   if (emailOk) res.status(200).send();
   else res.status(500).send(`SERVER ERROR: ${error}`);
 });
+
 //Block user endpoint
 app.put("/api/block_user", (req, res) => {
   //Error variable
