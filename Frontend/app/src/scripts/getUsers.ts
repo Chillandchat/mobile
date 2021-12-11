@@ -23,6 +23,7 @@ export const getAllUsers = async (): Promise<UserListReturnType> => {
         } else {
           //Set ok status
           okStatus = false;
+          
           //Throw error
           console.error(
             "Uncaught Error: The server responded with a status of: " +

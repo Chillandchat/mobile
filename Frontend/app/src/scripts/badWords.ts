@@ -221,7 +221,6 @@ const badWords: Array<string> = [
   "goddamn",
   "goddamned",
   "hardcoresex",
-  "hell",
   "heshe",
   "hoar",
   "hoare",

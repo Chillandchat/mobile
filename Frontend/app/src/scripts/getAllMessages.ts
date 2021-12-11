@@ -32,8 +32,10 @@ export const getAllMessage = async (): Promise<MessageListReturnType> => {
       });
   } catch (err) {
     //Throw error
-    okStatus = false;
     console.error(err);
+
+    //Set ok status
+    okStatus = false;
   }
   //Return data
   return {
