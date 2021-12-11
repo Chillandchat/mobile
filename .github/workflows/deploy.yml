@@ -1,0 +1,18 @@
+name: Deploy to firebase hosting
+on:
+  release:
+    branches: [ master ]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy Firebase Site
+      - uses: danielmillan/pipelines-firebase-hosting@1.0.8
+        with:
+          firebase-token: ${{ secrets.FIREBASE_TOKEN }}
+          resources-name: build
+          project-name: chill&chat
+          target-name: chill-and-chat-web
+      
