@@ -19,7 +19,7 @@
 }
 /* Hover styles */
 #button:hover {
-  border: 3px solid white;
+  border: 7px solid white;
   background-color: transparent;
   color: white;
   transition-duration: 0.5s;
@@ -41,7 +41,7 @@
   }
   /* Hover styles */
   #button:hover {
-    border: 3px solid white;
+    border: 7px solid white;
     background-color: transparent;
     color: white;
     transition-duration: 0.5s;
@@ -53,8 +53,8 @@
   #button {
     background-color: var(--globalColor);
     border: none;
-    height: 13vw;
-    width: 29vw;
+    height: 10vw;
+    width: 25vw;
     border-radius: 99vw 99vw 99vw 99vw;
     margin-top: 2vw;
     color: white;
@@ -87,7 +87,7 @@
   }
   /* Hover styles */
   #button:hover {
-    border: 3px solid white;
+    border: 7px solid white;
     background-color: transparent;
     color: white;
     transition-duration: 0.5s;
@@ -110,7 +110,7 @@
   }
   /* Button hover styles */
   #button:hover {
-    border: 3px solid white;
+    border: 7px solid white;
     background-color: transparent;
     color: white;
     transition-duration: 0.5s;

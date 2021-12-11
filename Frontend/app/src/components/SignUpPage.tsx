@@ -67,27 +67,27 @@ export const SignUpPage: React.FC = () => {
           Have an account? Login Here!
         </Link>
         {/*Execute button*/}
-        <ExecuteButton
-          onclick={() => {
-            //Call sign up function from signup script
-            signUp(usernameData, passwordData, passwordConfirmData).then(
-              (data) => {
-                //Throw error is an error occurred
-                if (data) setOk(true);
-                else {
-                  //Throw error
-                  setErrorMessage(
-                    "Oops! we ran into an error, please try again."
-                  );
-                  setTimeout(() => {
-                    setErrorMessage("");
-                  }, 5000);
+        <div id="buttonParent">
+          <ExecuteButton
+            onclick={() => {
+              //Call sign up function from signup script
+              signUp(usernameData, passwordData, passwordConfirmData).then(
+                (data) => {
+                  //Throw error is an error occurred
+                  if (data) setOk(true);
+                  else {
+                    //Throw error
+                    setErrorMessage("Unkown error, please try again.");
+                    setTimeout(() => {
+                      setErrorMessage("");
+                    }, 5000);
+                  }
                 }
-              }
-            );
-          }}
-          text="SIGN UP!"
-        />
+              );
+            }}
+            text="SIGN UP!"
+          />
+        </div>
       </div>
     );
   }
