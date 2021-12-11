@@ -27,6 +27,10 @@
   font-family: "poppins", sans-serif;
   padding: 1.2rem;
 }
+/* Button parent styles */
+#buttonParent {
+  margin-top: 1rem;
+}
 /*Media query for screens <600px */
 @media (max-width: 600px) {
   /* Sign up parent styles */
@@ -35,7 +39,7 @@
     padding-top: 13vh;
     overflow: hidden;
     text-align: center;
-    padding-bottom: 45vh;
+    padding-bottom: 50vh;
   }
   /* Error message styles */
   #errorMessage {
@@ -52,5 +56,9 @@
   #form {
     text-align: center;
     padding: 0rem;
+  }
+  /* Button parent styles */
+  #buttonParent {
+    margin-top: 1.2rem;
   }
 }
