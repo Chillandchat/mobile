@@ -12,6 +12,7 @@ interface ApiEndpointType {
   signupEndpoint: string;
   getAllUsersEndpoint: string;
   findUserEndpoint: string;
+  reportUserEndpoint: string;
   blockUsersEndpoint: string;
 }
 
@@ -22,6 +23,7 @@ export const apiEndpoints: ApiEndpointType = {
   signupEndpoint: "/api/sign_up",
   loginEndpoint: "/api/login",
   findUserEndpoint: "/api/get_user",
+  reportUserEndpoint: "/api/report_user",
   blockUsersEndpoint: "/api/block_user",
 };
 

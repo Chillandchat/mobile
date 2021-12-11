@@ -13,6 +13,9 @@ import { Menu } from "./Menu";
 import "./style/ChatRoom.css";
 import { askNotification } from "../scripts/askNotify";
 
+//! TESTING - REMOVE OR COMMENT IN PRODUCTION
+import { reportUser } from "../scripts/reportUser";
+
 //Chat room component
 export const ChatRoom: React.FC = () => {
   //State
@@ -27,6 +30,9 @@ export const ChatRoom: React.FC = () => {
     if ("Notification" in window) {
       askNotification();
     }
+    
+    //! TESTING - REMOVE OR COMMENT IN PRODUCTION
+    reportUser("AlvinC(Team)", "BriannaC(Team)", "TEST");
   });
 
   //Redux state
