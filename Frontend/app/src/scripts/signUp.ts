@@ -59,6 +59,7 @@ export const signUp = async (
     } catch (err) {
       //Throw error
       console.error(err);
+      
       //Set ok status
       okStatus = false;
     }

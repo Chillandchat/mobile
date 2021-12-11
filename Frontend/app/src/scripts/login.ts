@@ -15,6 +15,7 @@ export const login = async (
     console.error(
       "Uncaught Error: username and password must be provided\n  do not leave field blank\n   at <input> LoginPage.tsx\nIf you have found a bug, please report bug at: https://github.com/AlvinC888/Chill-chat/issues"
     );
+
     //Change ok status
     okStatus = false;
   } else {
@@ -41,6 +42,7 @@ export const login = async (
     } catch (err) {
       //Throw error
       console.error(err);
+
       //Change ok status
       okStatus = false;
     }
