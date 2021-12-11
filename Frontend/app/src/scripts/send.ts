@@ -12,6 +12,7 @@ dotenv.config();
 export const send = async (message: Message): Promise<void> => {
   //Variables
   const username: string = message.user;
+  let messageReference: string = message.content.toLowerCase();
 
   //Web socket
   const socket = io(process.env.REACT_APP_WEBSOCKET_URL);
@@ -29,7 +30,7 @@ export const send = async (message: Message): Promise<void> => {
   //Filter words
   for (let i: number = 0; i < badWords.length; i++) {
     //Check word
-    if (message.content.includes(badWords[i])) {
+    if (messageReference.includes(badWords[i])) {
       //Edit message
       message.content = `ERROR: Message UNAVAILABLE, The message that @${username} was trying send was DELETED by the profanity filter.`;
       message.user = "SYSTEM";

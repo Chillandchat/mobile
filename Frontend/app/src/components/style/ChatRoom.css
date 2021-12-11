@@ -7,11 +7,12 @@
 /* Chat room parent styles */
 #chatRoom {
   background-color: var(--chatRoomGlobalColor);
-  padding-bottom: 14vh;
+  padding-bottom: 12vh;
 }
 /* Send bar styles */
 #sendBar {
   display: flex;
   position: absolute;
   bottom: 0;
+  background-color: var(--chatRoomGlobalColor);
 }

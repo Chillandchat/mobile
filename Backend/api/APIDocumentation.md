@@ -1,5 +1,5 @@
-# Note 
-This documentation will be out of date from 10/12/2021 and will no longer be updated.
+NOTE: This documentation will be OUT OF DATE from 10/12/2021 and will no longer be updated.
+
 # Chill&chat API documentation
 
 Welcome to the Chill&chat API documentation, here you can learn more about the chill&chat api. Where I will cover every endpoint in this API. and I will also have samples on how to use this api in your application with javascript.

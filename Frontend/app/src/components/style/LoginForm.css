@@ -63,7 +63,7 @@
     border: 5px solid #ffff;
     font-family: "Poppins", sans-serif;
     cursor: pointer;
-    width: 40vw;
+    width: 45vw;
     height: 5vw;
     padding: 0.2rem 1rem 0.2rem 1rem;
     background-color: transparent;
@@ -80,7 +80,7 @@
   #textBox::-webkit-input-placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
-    font-size: 0.4rem;
+    font-size: 0.7rem;
     font-family: "Poppins", sans-serif;
   }
 }

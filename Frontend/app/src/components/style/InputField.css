@@ -5,7 +5,7 @@
   border-radius: 0.7vw;
   border: 5.7px solid #ffff;
   width: 80vw;
-  height: 4.5vh;
+  height: clamp(2rem, 2rem, 2rem);
   cursor: pointer;
   padding: 0rem 1rem 0rem 1rem;
   margin: 0rem 1rem 0rem 1rem;
@@ -31,7 +31,7 @@
     font-family: "Poppins", sans-serif;
     cursor: pointer;
     width: 70vw;
-    height: 4vh;
+    height: clamp(1.5rem, 1.5rem, 1.5rem);
     padding: 0.2rem 1rem 0.2rem 1rem;
     background-color: var(--chatRoomGlobalColor);
     color: #fff;
