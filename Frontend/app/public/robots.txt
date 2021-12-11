@@ -1,2 +1,46 @@
+# Robot crawl policy for https://chill-and-chat-web.web.app/
+# For more information about this project see github page:
+# https://github.com/Brother-and-sister-software/Chill-chat
+
+# Other user agents
 User-agent: *
+Disallow: /signup
+Allow: /
+Allow: /public-chat-room:8080170
+Crawl-delay: 3
+
+# Google bot
+User-agent: Googlebot
 Disallow: /
+Disallow: /signup
+Disallow: /public-chat-room:8080170
+
+# Bing bot
+User-agent: Bingbot
+Disallow: /
+Disallow: /signup
+Disallow: /public-chat-room:8080170
+
+# Google ads bot
+User-agent: AdsBot-Google
+Allow: /
+Disallow: /signup
+Disallow: /public-chat-room:8080170
+
+# Duck duck bot
+User-agent: DuckDuckBot
+Disallow: /
+Disallow: /signup
+Disallow: /public-chat-room:8080170
+
+# Baidu bot
+User-agent: Baiduspider
+Disallow: /
+Disallow: /signup
+Disallow: /public-chat-room:8080170
+
+# Exa bot
+User-agent: Exabot
+Disallow: /
+Disallow: /signup
+Disallow: /public-chat-room:8080170
