@@ -11,6 +11,15 @@ export const signUp = async (
   //Ok status
   let okStatus = false;
 
+  if (passwordConfirm !== password) {
+    //Set ok status
+    okStatus = false;
+    //Throw error
+    console.error(
+      "Uncaught Error: both password and password confirm must be the same \nat <input> SignUpPage.tsx\nIf you have found a bug, please report bug at: https://github.com/AlvinC888/Chill-chat/issues"
+    );
+  } /*Set ok status:*/ else okStatus = true;
+
   //Check input conditions
   if (
     username === undefined ||
@@ -24,14 +33,6 @@ export const signUp = async (
       "Uncaught Error: username and password must be provided\ndo not leave field blank.\nat <input> SignUpPage.tsx\nIf you have found a bug, please report bug at: https://github.com/AlvinC888/Chill-chat/issues"
     );
   }
-  if (passwordConfirm !== password) {
-    //Set ok status
-    okStatus = false;
-    //Throw error
-    console.error(
-      "Uncaught Error: both password and password confirm must be the same \nat <input> SignUpPage.tsx\nIf you have found a bug, please report bug at: https://github.com/AlvinC888/Chill-chat/issues"
-    );
-  } /*Set ok status:*/ else okStatus = true;
 
   //Check if ok status is true
   if (okStatus) {
@@ -59,7 +60,7 @@ export const signUp = async (
     } catch (err) {
       //Throw error
       console.error(err);
-      
+
       //Set ok status
       okStatus = false;
     }
