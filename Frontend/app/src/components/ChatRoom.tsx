@@ -14,7 +14,7 @@ import "./style/ChatRoom.css";
 import { askNotification } from "../scripts/askNotify";
 
 //! TESTING - REMOVE OR COMMENT IN PRODUCTION
-import { reportUser } from "../scripts/reportUser";
+// import { reportUser } from "../scripts/reportUser";
 
 //Chat room component
 export const ChatRoom: React.FC = () => {
@@ -32,7 +32,7 @@ export const ChatRoom: React.FC = () => {
     }
     
     //! TESTING - REMOVE OR COMMENT IN PRODUCTION
-    reportUser("AlvinC(Team)", "BriannaC(Team)", "TEST");
+    // reportUser("AlvinC(Team)", "BriannaC(Team)", "TEST");
   });
 
   //Redux state
