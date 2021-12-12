@@ -2,6 +2,10 @@
   "hosting": {
     "public": "build",
     "site": "chill-and-chat-web",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
   }
 }
