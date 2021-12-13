@@ -1,13 +1,13 @@
 name: Deploy to Firebase Hosting on new release 
 'on': release
 jobs:
-  build_and_preview:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
+          entryPoint: "./frontend/app/"
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHILL_AND_CHAT_9D33C }}'
           projectId: chill-and-chat-9d33
-          entryPoint: "./frontend/app/"
