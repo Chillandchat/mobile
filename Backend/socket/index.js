@@ -1,15 +1,18 @@
 //Importing packages
 const mongoose = require("mongoose");
 const message = require("./messageSchema.js");
-const URI = require("./vars.js");
+const dotenv = require("dotenv");
 const io = require("socket.io")(3001, {
   cors: {
     origin: "https://chill-and-chat-web.web.app",
   },
 });
 
+//Setup dotenv 
+dotenv.config();
+
 //Db connection
-mongoose.connect(URI);
+mongoose.connect(process.env.URI);
 
 //Web socket
 io.on("connection", (socket) => {
