@@ -1,0 +1,26 @@
+#logoWrapper {
+  background-color: #fa4747;
+  display: flex;
+  padding: 1rem;
+}
+#logoImage {
+  color: #ffff;
+  object-fit: contain;
+  height: 3.5rem;
+  padding-top: 1rem;
+}
+/* Media query for screens >700px */
+@media (max-width: 700px) {
+  /* Send button styles */
+  #logoImage {
+    color: #ffff;
+    height: 3rem;
+    object-fit: contain;
+  }
+}
+#logoText {
+  color: white;
+  font-weight: bold;
+  padding-right: 1rem;
+  font-family: "poppins", sans-serif;
+}
