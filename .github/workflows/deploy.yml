@@ -10,3 +10,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHILL_AND_CHAT_9D33C }}'
           projectId: chill-and-chat-9d33c
+          path: "./frontend/app/"
