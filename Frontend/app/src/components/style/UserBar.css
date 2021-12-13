@@ -9,11 +9,10 @@
 }
 /* User list styles */
 #userList {
-  vertical-align: middle;
+  display: grid;
   background-color: var(--chatRoomGlobalColor);
   padding-bottom: 70vh;
-  padding-left: 20%;
-  padding-top: 3rem;
+  place-content: center;
 }
 /* Outer list styles */
 #outerList {
