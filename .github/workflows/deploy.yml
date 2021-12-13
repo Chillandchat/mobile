@@ -3,11 +3,14 @@ name: Deploy to firebase production
 on:
   release:
     jobs:
-      deploy_live_website:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - run: cd frontend/app && npm run build
+      deploy:
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v2
-        - run: cd frontend/app && npm run build
         - uses: FirebaseExtended/action-hosting-deploy@v0
           with:
             entryPath: "./Frontend/app"
