@@ -5,6 +5,7 @@ import { LoginForm } from "./LoginForm";
 import { Link, Redirect } from "react-router-dom";
 import { ExecuteButton } from "./ExecuteButton";
 import { signUp } from "../scripts/signUp";
+import { Logo } from "./Logo";
 import "./style/Signup.css";
 
 //Sign up component
@@ -35,58 +36,63 @@ export const SignUpPage: React.FC = () => {
   //Render signup component
   if (!ok) {
     return (
-      <div id="signupParent">
-        {/*Icon*/}
-        <Icon />
-        {/*Form wrapper*/}
-        <div id="form">
-          {/*Username input box*/}
-          <LoginForm
-            password={false}
-            formPlaceHolder="Your username"
-            onChange={getUsername}
-          />
-          {/*Password input box*/}
-          <LoginForm
-            password={true}
-            formPlaceHolder="Your password"
-            onChange={getPassword}
-          />
-          {/*Password confirm input box*/}
-          <LoginForm
-            password={true}
-            formPlaceHolder="Confirm password"
-            onChange={getPasswordConfirm}
-          />
-        </div>
-        {/*Error message*/}
-        <strong id="errorMessage">{errorMessage}</strong>
-        <br />
-        {/*Login link*/}
-        <Link to="/" id="loginLink">
-          Have an account? Login Here!
-        </Link>
-        {/*Execute button*/}
-        <div id="buttonParent">
-          <ExecuteButton
-            onclick={() => {
-              //Call sign up function from signup script
-              signUp(usernameData, passwordData, passwordConfirmData).then(
-                (data) => {
-                  //Throw error is an error occurred
-                  if (data) setOk(true);
-                  else {
-                    //Throw error
-                    setErrorMessage("Unkown error, please try again.");
-                    setTimeout(() => {
-                      setErrorMessage("");
-                    }, 5000);
+      <div>
+        {/*Logo*/}
+        <Logo />
+        {/*Signup interface*/}
+        <div id="signupParent">
+          {/*Icon*/}
+          <Icon />
+          {/*Form wrapper*/}
+          <div id="form">
+            {/*Username input box*/}
+            <LoginForm
+              password={false}
+              formPlaceHolder="Your username"
+              onChange={getUsername}
+            />
+            {/*Password input box*/}
+            <LoginForm
+              password={true}
+              formPlaceHolder="Your password"
+              onChange={getPassword}
+            />
+            {/*Password confirm input box*/}
+            <LoginForm
+              password={true}
+              formPlaceHolder="Confirm password"
+              onChange={getPasswordConfirm}
+            />
+          </div>
+          {/*Error message*/}
+          <strong id="errorMessage">{errorMessage}</strong>
+          <br />
+          {/*Login link*/}
+          <Link to="/" id="loginLink">
+            Have an account? Login Here!
+          </Link>
+          {/*Execute button*/}
+          <div id="buttonParent">
+            <ExecuteButton
+              onclick={() => {
+                //Call sign up function from signup script
+                signUp(usernameData, passwordData, passwordConfirmData).then(
+                  (data) => {
+                    //Throw error is an error occurred
+                    if (data) setOk(true);
+                    else {
+                      //Throw error
+                      setErrorMessage("Unkown error, please try again.");
+                      setTimeout(() => {
+                        setErrorMessage("");
+                      }, 5000);
+                    }
                   }
-                }
-              );
-            }}
-            text="SIGN UP!"
-          />
+                );
+              }}
+              text="SIGN UP!"
+            />
+          </div>
         </div>
       </div>
     );
