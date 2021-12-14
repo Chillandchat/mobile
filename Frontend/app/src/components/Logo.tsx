@@ -14,7 +14,7 @@ export const Logo: React.FC = () => {
         {/*Logo text*/}
         <h1 id="logoText">{"Chill&chat"}</h1>
         {/*Logo image*/}
-        <img src={logo} id="logoImage" />
+        <img src={logo} id="logoImage" alt="Error" />
       </div>
     );
   }
