@@ -23,7 +23,7 @@ app.use(express.json());
 //CORS middleware
 app.use(
   cors({
-    origin: "https://chill-and-chat-web.web.app/",
+    origin: ["http://localhost:3000", "https://chill-and-chat-web.web.app"],
   })
 );
 

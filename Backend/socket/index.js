@@ -4,7 +4,7 @@ const message = require("./messageSchema.js");
 const dotenv = require("dotenv");
 const io = require("socket.io")(3001, {
   cors: {
-    origin: "https://chill-and-chat-web.web.app",
+    origin: ["http://localhost:3000", "https://chill-and-chat-web.web.app"],
   },
 });
 
