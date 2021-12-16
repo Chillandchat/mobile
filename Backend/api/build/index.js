@@ -206,5 +206,5 @@ var notFound = function (req, res) {
 app.use(notFound);
 //Listen server on port
 app.listen(port, function () {
-    console.log("Server Ready and listening on port ".concat(port));
+    console.log("Server Ready and listening on port ".concat(port, ".\nPress CTRL + C to stop operation."));
 });

@@ -212,5 +212,5 @@ app.use(notFound);
 
 //Listen server on port
 app.listen(port, (): void => {
-  console.log(`Server Ready and listening on port ${port}`);
+  console.log(`Server Ready and listening on port ${port}.\nPress CTRL + C to stop operation.`);
 });
