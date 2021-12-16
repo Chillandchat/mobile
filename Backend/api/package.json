@@ -2,11 +2,11 @@
   "name": "chill-chat-api",
   "version": "0.0.0",
   "description": "The api for chill chat",
-  "main": "./index.js",
+  "main": "./build/index.js",
   "scripts": {
-    "start": "node ./build/index.js",
-    "build": "tsc && echo 'Building and compiling typescript code...'",
-    "dev": "npm run build && nodemon ./build/index.js"
+    "start": "echo 'Starting app...' && node ./build/index.js",
+    "build": "tsc && echo 'Building and compiling typescript code...\n' && echo 'Done.\n'",
+    "dev": "npm run build && echo 'Running app with nodemon...\n' && nodemon ./build/index.js"
   },
   "repository": {
     "type": "Github",
