@@ -23,7 +23,7 @@ mongoose_1["default"].connect(process.env.API_URI);
 app.use(express_1["default"].json());
 //CORS middleware
 app.use((0, cors_1["default"])({
-    origin: ["http://localhost:3000", "https://chill-and-chat-web.web.app"]
+    origin: "*"
 }));
 //Get endpoint
 app.get("/", function (req, res) {
