@@ -1,15 +1,17 @@
 //Importing packages
-const app = require("express")();
-const express = require("express");
-const user = require("./authSchema.js");
-const mongoose = require("mongoose");
-const message = require("./messageSchema.js");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const nodemailer = require("nodemailer");
+import express from "express";
+import user from "./authSchema";
+import message from "./messageSchema";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+import nodemailer from "nodemailer";
 
 //Setup dotenv
 dotenv.config();
+
+//Setup express
+const app = express();
 
 //Variables
 const port = process.env.PORT || "8080";
