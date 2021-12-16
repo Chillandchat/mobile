@@ -1,0 +1,8 @@
+{
+  "short_name": "Chill&Chat official website",
+  "name": "Chill&Chat official website a fantastic place to chill and chat!",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
