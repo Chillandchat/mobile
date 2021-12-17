@@ -18,7 +18,7 @@ const App: React.FC = () => {
           {/*SignUp route*/}
           <Route exact path="/signup" component={SignUpPage} />
           {/*Chat room route*/}
-          <Route path="/public-chat-room:8080170" component={ChatRoom} />
+          <Route exact path="/public-chat-room:8080170" component={ChatRoom} />
         </Switch>
       </BrowserRouter>
     </div>
