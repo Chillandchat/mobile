@@ -3,7 +3,7 @@
 /* Login page wrapper styles */
 #loginParent {
   background-color: #fa4747;
-  padding-top: 17vh;
+  padding-top: 8vh;
   overflow: hidden;
   background-size: fill;
   padding-bottom: 35vh;
@@ -35,7 +35,7 @@
   #loginParent {
     background-color: #fa4747;
     display: block;
-    padding-top: 20vh;
+    padding-top: 22vh;
     padding-bottom: 52vh;
     overflow-y: hidden;
     display: block;

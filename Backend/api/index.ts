@@ -1,18 +1,20 @@
 //Importing packages
-const app = require("express")();
-const express = require("express");
-const user = require("./authSchema.js");
-const mongoose = require("mongoose");
-const message = require("./messageSchema.js");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const nodemailer = require("nodemailer");
+import express from "express";
+import user from "./authSchema";
+import message from "./messageSchema";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+import nodemailer from "nodemailer";
 
 //Setup dotenv
 dotenv.config();
 
+//Setup express
+const app: any = express();
+
 //Variables
-const port = process.env.PORT || "8080";
+const port: string | number = process.env.PORT || "8080";
 
 //Db connection
 mongoose.connect(process.env.API_URI);
@@ -28,18 +30,18 @@ app.use(
 );
 
 //Get endpoint
-app.get("/", (req, res) => {
+app.get("/", (req: any, res: any): void => {
   res.status(401).send("REQUEST ERROR: PLEASE ENTER API KEY.");
 });
 
 //Get all message endpoint
-app.get("/api/get_all_message", (req, res) => {
+app.get("/api/get_all_message", (req: any, res: any): void => {
   try {
     //Search database
     message
       .find()
       .exec()
-      .then((data) => res.status(200).send(data));
+      .then((data: any): void => res.status(200).send(data));
   } catch (err) {
     //Throw error
     res.status(500).send(`SERVER ERROR: ${err}`);
@@ -56,10 +58,10 @@ app.get("/api/get_all_message", (req, res) => {
 // });
 
 //Create user endpoint
-app.post("/api/sign_up", (req, res) => {
+app.post("/api/sign_up", (req: any, res: any): void => {
   try {
     //Create user element
-    const newUser = new user({
+    const newUser: any = new user({
       id: req.body.id,
       username: req.body.username,
       password: req.body.password,
@@ -68,7 +70,7 @@ app.post("/api/sign_up", (req, res) => {
       blocked: req.body.blocked,
     });
     //Save database
-    newUser.save().then(() => {
+    newUser.save().then((): void => {
       res.status(201).send("Saved successfully, no errors and problems.");
     });
   } catch (err) {
@@ -78,13 +80,13 @@ app.post("/api/sign_up", (req, res) => {
 });
 
 //Find all users endpoint
-app.get("/api/get_all_users", (req, res) => {
+app.get("/api/get_all_users", (req: any, res: any): void => {
   try {
     //Search database
     user
       .find()
       .exec()
-      .then((data) => res.status(200).send(data));
+      .then((data: any): void => res.status(200).send(data));
   } catch (err) {
     //Throw error
     res.status(500).send(`SERVER ERROR: ${err}`);
@@ -92,13 +94,13 @@ app.get("/api/get_all_users", (req, res) => {
 });
 
 //Login endpoint
-app.post("/api/login", (req, res) => {
+app.post("/api/login", (req: any, res: any): void => {
   try {
     //Search database
     user
       .findOne({ username: req.body.user })
       .exec()
-      .then((data) => {
+      .then((data: any): void => {
         //Check if user exists
         if (data != null && data != undefined) {
           //Check password
@@ -110,7 +112,7 @@ app.post("/api/login", (req, res) => {
           else res.status(400).send("Invalid password");
         } else res.status(404).send("User not found");
       })
-      .catch((err) => {
+      .catch((err: any): void => {
         //Throw error
         res.status(500).send(`SERVER ERROR: ${err}`);
       });
@@ -121,18 +123,18 @@ app.post("/api/login", (req, res) => {
 });
 
 //Find user endpoint
-app.get("/api/get_user/:user/", (req, res) => {
+app.get("/api/get_user/:user/", (req: any, res: any): void => {
   try {
     //Find user
     user
       .findOne({ username: req.params.user })
       .exec()
-      .then((data) => {
+      .then((data: any): void => {
         //Check conditions
         if (data != null || data != undefined) res.status(200).send(data);
         /*Throw error:*/ else res.status(404).send("User not found");
       })
-      .catch((err) => {
+      .catch((err: any): void => {
         //Throw error
         res.status(500).send(`SERVER ERROR: ${err}`);
       });
@@ -141,15 +143,15 @@ app.get("/api/get_user/:user/", (req, res) => {
     res.status(500).send(`SERVER ERROR: ${err}`);
   }
 });
-app.post("/api/report_user", (req, res) => {
+app.post("/api/report_user", (req: any, res: any): void => {
   //Email ok
-  let emailOk = false;
+  let emailOk: boolean = false;
 
   //Error message
-  let error;
+  let error: string;
 
   //Transporter
-  const transporter = nodemailer.createTransport({
+  const transporter: any = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: process.env.API_EMAIL,
@@ -158,7 +160,7 @@ app.post("/api/report_user", (req, res) => {
   });
 
   //Mail options
-  const mailOptions = {
+  const mailOptions: any = {
     from: process.env.API_EMAIL,
     to: "chengalvin333@gmail.com",
     subject: "You have a new report from the Chill&chat server",
@@ -166,7 +168,7 @@ app.post("/api/report_user", (req, res) => {
   };
 
   //Send mail
-  transporter.sendMail(mailOptions, (err, data) => {
+  transporter.sendMail(mailOptions, (err: any, data: any): void => {
     //Check errors
     if (err) {
       error = err;
@@ -180,14 +182,15 @@ app.post("/api/report_user", (req, res) => {
 });
 
 //Block user endpoint
-app.put("/api/block_user", (req, res) => {
+app.put("/api/block_user", (req: any, res: any): void => {
   //Error variable
-  let error = false;
+  let error: boolean = false;
+
   //Find and update user
   user
     .findOneAndUpdate({ username: req.body.user })
     .exec()
-    .then((data) => {
+    .then((data: any): void => {
       //Check conditions
       if (data != null || data != undefined) {
         try {
@@ -206,7 +209,7 @@ app.put("/api/block_user", (req, res) => {
 });
 
 //Not found error handling
-const notFound = (req, res) => {
+const notFound = (req: any, res: any): void => {
   //Throw error
   res
     .status(404)
@@ -217,6 +220,6 @@ const notFound = (req, res) => {
 app.use(notFound);
 
 //Listen server on port
-app.listen(port, () => {
-  console.log(`Server Ready and listening on port ${port}`);
+app.listen(port, (): void => {
+  console.log(`Server Ready and listening on port ${port}.\nPress CTRL + C to stop operation.`);
 });

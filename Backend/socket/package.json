@@ -4,7 +4,7 @@
   "description": "The api for chill chat",
   "main": "./index.js",
   "scripts": {
-    "start": "node index.js && echo Socket started."
+    "start": "node index.js && echo 'Socket started.'"
   },
   "repository": {
     "type": "Github",

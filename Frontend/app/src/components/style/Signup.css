@@ -3,7 +3,7 @@
 /* Sign up parent styles */
 #signupParent {
   background-color: #fa4747;
-  padding-top: 8vh;
+  padding-top: 4vh;
   overflow: hidden;
   text-align: center;
   padding-bottom: 32vh;
@@ -35,7 +35,7 @@
   /* Sign up parent styles */
   #signupParent {
     background-color: #fa4747;
-    padding-top: 13vh;
+    padding-top: 17vh;
     overflow: hidden;
     text-align: center;
     padding-bottom: 50vh;
