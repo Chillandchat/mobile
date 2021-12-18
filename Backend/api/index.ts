@@ -48,6 +48,15 @@ app.get("/api/get_all_message", (req: any, res: any): void => {
   }
 });
 
+//Update message like count
+// app.put("/api/update_like_count", (req, res) => {
+//   try {
+//     message.findOneAndUpdate({ id: req.body.id }, { likes: req.body.likes });
+//   } catch (err) {
+//     res.status(500).send(`SERVER ERROR: ${err}`);
+//   }
+// });
+
 //Create user endpoint
 app.post("/api/sign_up", (req: any, res: any): void => {
   try {
