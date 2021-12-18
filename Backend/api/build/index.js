@@ -23,7 +23,7 @@ mongoose_1["default"].connect(process.env.API_URI);
 app.use(express_1["default"].json());
 //CORS middleware
 app.use((0, cors_1["default"])({
-    origin: "*"
+    origin: ["https://chill-and-chat-web.web.app", "http://localhost:3000/"]
 }));
 //Get endpoint
 app.get("/", function (req, res) {
@@ -43,6 +43,14 @@ app.get("/api/get_all_message", function (req, res) {
         res.status(500).send("SERVER ERROR: ".concat(err));
     }
 });
+//Update message like count
+// app.put("/api/update_like_count", (req, res) => {
+//   try {
+//     message.findOneAndUpdate({ id: req.body.id }, { likes: req.body.likes });
+//   } catch (err) {
+//     res.status(500).send(`SERVER ERROR: ${err}`);
+//   }
+// });
 //Create user endpoint
 app.post("/api/sign_up", function (req, res) {
     try {
