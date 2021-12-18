@@ -1,5 +1,5 @@
 //Username reducer for redux
-const usernameReducer: any = (usernameState: string = "", action: any) => {
+const usernameReducer = (usernameState: string = "", action: any): any => {
   //Redux action check
   switch (action.type) {
     case "AUTH_SET_USERNAME":
