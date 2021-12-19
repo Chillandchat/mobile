@@ -101,6 +101,7 @@
     transition-duration: 0.5s;
   }
 }
+
 /* Media query for screens >1000px */
 @media (min-width: 1200px) {
   /* Default button styles */

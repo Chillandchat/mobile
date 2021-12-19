@@ -15,7 +15,7 @@ export const InputField: React.FC<Props> = (props) => {
     <div>
       {/*Input field*/}
       <input
-        id="inputField"
+        id="input-field"
         placeholder={props.placeholder}
         onChange={props.onChangeEvent}
       />

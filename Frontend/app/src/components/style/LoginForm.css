@@ -7,8 +7,8 @@
   width: 31vw;
   height: 4.5vw;
   cursor: pointer;
-  padding: 0rem 1rem 0rem 1rem;
-  font-family: "Poppins", sans-serif;
+  padding: 0rem 1rem;
+  font-family: Poppins, sans-serif;
   background-color: transparent;
   color: #fff;
   outline: none;
@@ -22,10 +22,10 @@
 }
 
 /* Input field placeholder styles */
-#text-box::-webkit-input-placeholder {
+#text-box::webkit-input-placeholder {
   color: #c8bcbc;
   padding-left: 0rem;
-  font-family: "Poppins", sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 0.7rem;
 }
 
@@ -36,10 +36,10 @@
     border-radius: 0.7rem;
     border: 7px solid #ffff;
     width: 25vw;
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     cursor: pointer;
     height: 3vw;
-    padding: 0rem 1rem 0rem 1rem;
+    padding: 0rem 1rem;
     background-color: transparent;
     color: #fff;
     outline: none;
@@ -53,7 +53,7 @@
   }
 
   /* Input field placeholder styles */
-  #text-box::-webkit-input-placeholder {
+  #text-box::webkit-input-placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
     font-size: 1rem;
@@ -67,11 +67,11 @@
   #text-box {
     border-radius: 0.7rem;
     border: 5px solid #ffff;
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     cursor: pointer;
     width: 45vw;
     height: 5vw;
-    padding: 0.2rem 1rem 0.2rem 1rem;
+    padding: 0.2rem 1rem;
     background-color: transparent;
     color: #fff;
     outline: none;
@@ -84,11 +84,11 @@
     overflow: hidden;
   }
 
-  /*Input box placeholder styles*/
-  #text-box::-webkit-input-placeholder {
+  /* Input box placeholder styles */
+  #text-box::webkit-input-placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
     font-size: 0.7rem;
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
   }
 }
