@@ -16,7 +16,7 @@
 }
 
 /* Input field placeholder styles */
-#input-field::-webkit-input-placeholder {
+#input-field:-webkit-input-placeholder {
   color: #c8bcbc;
   padding-left: 0rem;
   font-family: Poppins, sans-serif;
@@ -41,7 +41,7 @@
   }
 
   /* Input field placeholder styles */
-  #input-field::-webkit-input-placeholder {
+  #input-field:-webkit-input-placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
     font-size: 0.7rem;
