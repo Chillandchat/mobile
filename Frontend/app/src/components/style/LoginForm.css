@@ -22,7 +22,7 @@
 }
 
 /* Input field placeholder styles */
-#text-box::webkit-input-placeholder {
+#text-box::-webkit-input-placeholder {
   color: #c8bcbc;
   padding-left: 0rem;
   font-family: Poppins, sans-serif;
@@ -53,7 +53,7 @@
   }
 
   /* Input field placeholder styles */
-  #text-box::webkit-input-placeholder {
+  #text-box::-webkit-input-placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
     font-size: 1rem;
@@ -85,7 +85,7 @@
   }
 
   /* Input box placeholder styles */
-  #text-box::webkit-input-placeholder {
+  #text-box::-webkit-input-placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
     font-size: 0.7rem;
