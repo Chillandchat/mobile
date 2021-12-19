@@ -9,7 +9,7 @@ import "./App.css";
 // Main app component
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <div className="app">
       {/*Browser router*/}
       <BrowserRouter>
         <Switch>
