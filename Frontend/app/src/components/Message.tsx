@@ -1,18 +1,18 @@
-//Importing packages
+// Importing packages
 import React from "react";
 import "./style/Message.css";
 import { VerifyCheckMark } from "./VerifyCheckMark";
 
-//Props interface
+// Props interface
 interface Props {
   user: string;
   content: string;
   verified: boolean;
 }
 
-//Message component
+// Message component
 export const Message: React.FC<Props> = (props) => {
-  //Render verified message
+  // Render verified message
   if (props.verified) {
     return (
       <div id="heroWrapper">
@@ -30,7 +30,7 @@ export const Message: React.FC<Props> = (props) => {
       </div>
     );
   }
-  //Render message
+  // Render message
   return (
     <div id="heroWrapper">
       {/*Username*/}

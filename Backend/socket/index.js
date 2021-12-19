@@ -1,27 +1,27 @@
-//Importing packages
+// Importing packages
 const mongoose = require("mongoose");
 const message = require("./messageSchema.js");
 const dotenv = require("dotenv");
 const io = require("socket.io")(3001, {
   cors: {
-    origin: ["https://chill-and-chat-web.web.app", "http://localhost:3000/"],
+    origin: ["https:// chill-and-chat-web.web.app", "http:// localhost:3000/"],
   },
 });
 
-//Setup dotenv 
+// Setup dotenv
 dotenv.config();
 
-//Db connection
+// Db connection
 mongoose.connect(process.env.URI);
 
-//Web socket
+// Web socket
 io.on("connection", (socket) => {
-  //Event listener
+  // Event listener
   socket.on("message", (payload) => {
-    //Emit message
+    // Emit message
     io.emit("message", payload);
 
-    //Save message
+    // Save message
     try {
       const newMessage = new message({
         id: payload.id,
@@ -31,13 +31,13 @@ io.on("connection", (socket) => {
       });
       newMessage.save().then(() => {});
     } catch (err) {
-      //Handle error
+      // Handle error
       console.log(err);
     }
   });
 });
 
-//Handle error
+// Handle error
 io.on("connect_error", (err) => {
   console.log(`connect_error due to ${err.message}`);
 });

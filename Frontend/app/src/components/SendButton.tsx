@@ -1,16 +1,16 @@
-//Importing packages
+// Importing packages
 import React from "react";
 import SendIcon from "@material-ui/icons/Send";
 import "./style/SendButton.css";
 
-//Props interface
+// Props interface
 interface Props {
   onclick: () => void;
 }
 
-//Send button component
+// Send button component
 export const SendButton: React.FC<Props> = (props) => {
-  //Render button component
+  // Render button component
   return (
     <div>
       {/*Send Icon*/}

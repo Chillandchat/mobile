@@ -1,8 +1,8 @@
-//Importing packages
+// Importing packages
 import mongoose from "mongoose";
 import { MessageSchemaType } from "./type";
 
-//Schema
+// Schema
 const schema: any = new mongoose.Schema({
   id: String,
   user: String,
@@ -10,8 +10,8 @@ const schema: any = new mongoose.Schema({
   verified: Boolean,
 });
 
-//Model
+// Model
 const message: any = mongoose.model<MessageSchemaType>("message", schema);
 
-//Export schema
+// Export schema
 export default message;

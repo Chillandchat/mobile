@@ -1,11 +1,11 @@
-//Ask notification function
+// Ask notification function
 export const askNotification = (): void => {
-  //Check notification status
+  // Check notification status
   if (
     Notification.permission === "denied" ||
     Notification.permission === "default"
   ) {
-    //Request permission
+    // Request permission
     window.Notification.requestPermission();
   } else return;
 };

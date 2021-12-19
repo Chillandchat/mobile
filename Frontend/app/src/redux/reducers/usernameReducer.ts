@@ -1,6 +1,6 @@
-//Username reducer for redux
+// Username reducer for redux
 const usernameReducer = (usernameState: string = "", action: any): any => {
-  //Redux action check
+  // Redux action check
   switch (action.type) {
     case "AUTH_SET_USERNAME":
       return (usernameState = action.payload);
@@ -13,5 +13,5 @@ const usernameReducer = (usernameState: string = "", action: any): any => {
   }
 };
 
-//Export reducer
+// Export reducer
 export default usernameReducer;

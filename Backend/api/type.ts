@@ -1,7 +1,7 @@
-//Importing packages
+// Importing packages
 import mongoose from "mongoose";
 
-//AuthSchemaType interface
+// AuthSchemaType interface
 export interface AuthSchemaType extends mongoose.Document {
   id: string;
   username: string;
@@ -11,7 +11,7 @@ export interface AuthSchemaType extends mongoose.Document {
   blocked: boolean;
 }
 
-//MessageSchemaType interface
+// MessageSchemaType interface
 export interface MessageSchemaType extends mongoose.Document {
   id: string;
   user: string;

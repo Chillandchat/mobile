@@ -1,4 +1,4 @@
-//Importing packages
+// Importing packages
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Login } from "./components/LoginPage";
@@ -6,7 +6,7 @@ import { SignUpPage } from "./components/SignUpPage";
 import { ChatRoom } from "./components/ChatRoom";
 import "./App.css";
 
-//Main app component
+// Main app component
 const App: React.FC = () => {
   return (
     <div className="App">
@@ -25,5 +25,5 @@ const App: React.FC = () => {
   );
 };
 
-//Export component
+// Export component
 export default App;

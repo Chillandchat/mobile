@@ -1,4 +1,4 @@
-//Importing packages
+// Importing packages
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./style/LoginPage.css";
@@ -14,34 +14,34 @@ import {
   changeUsername as reduxChangeUsername,
 } from "../redux/action";
 
-//Login component
+// Login component
 export const Login: React.FC = () => {
-  //State
+  // State
   let [errorMessage, setErrorMessage] = useState<string>("");
 
-  //Redux state
+  // Redux state
   const authenticated = useSelector((state: RootState): RootState => {
     return state.login;
   });
 
-  //Dispatch
+  // Dispatch
   const dispatch = useDispatch();
 
-  //Data management variables
+  // Data management variables
   let usernameData: string;
   let passwordData: string;
 
-  //Collect username data
+  // Collect username data
   const getUsername = (e: any): void => {
     usernameData = e.target.value;
   };
 
-  //Collect password data
+  // Collect password data
   const getPassword = (e: any): void => {
     passwordData = e.target.value;
   };
 
-  //Render non-authenticated component
+  // Render non-authenticated component
   if (!authenticated) {
     return (
       <div>
@@ -79,17 +79,17 @@ export const Login: React.FC = () => {
             <ExecuteButton
               text="LET'S GO!!"
               onclick={(): void => {
-                //Call login function from login script
+                // Call login function from login script
                 login(usernameData, passwordData).then(
                   (isOk: boolean): void => {
-                    //Check ok status
+                    // Check ok status
                     if (isOk) {
-                      //Change redux state
+                      // Change redux state
                       dispatch(reduxLogin());
                       dispatch(reduxChangeUsername(usernameData));
                     }
                     if (!isOk) {
-                      //Display error message
+                      // Display error message
                       console.error(
                         `Uncaught error: Cannot login to ${usernameData} using the provided password and information.`
                       );
@@ -107,7 +107,7 @@ export const Login: React.FC = () => {
       </div>
     );
   }
-  //Render authenticated component
+  // Render authenticated component
   if (authenticated) {
     return (
       <div>

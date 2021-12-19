@@ -1,8 +1,8 @@
-//Importing packages
+// Importing packages
 import mongoose from "mongoose";
 import { AuthSchemaType } from "./type";
 
-//Schema
+// Schema
 const schema: any = new mongoose.Schema({
   id: String,
   username: String,
@@ -12,8 +12,8 @@ const schema: any = new mongoose.Schema({
   blocked: Boolean,
 });
 
-//Model
+// Model
 const user: any = mongoose.model<AuthSchemaType>("user", schema);
 
-//Export schema
+// Export schema
 export default user;

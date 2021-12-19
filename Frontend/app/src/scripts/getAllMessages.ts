@@ -1,29 +1,29 @@
-//Importing packages
+// Importing packages
 import { apiEndpoints, api } from "./apiRequest";
 import { MessageListReturnType } from "./types";
 import { Message } from "./types";
 
-//Get all message function
+// Get all message function
 export const getAllMessage = async (): Promise<MessageListReturnType> => {
-  //Variables
+  // Variables
   let okStatus: boolean;
   let data: Array<Message>;
 
-  //Contact API
+  // Contact API
   try {
     await api
       .get(apiEndpoints.getAllMessageEndpoint)
       .then((response: any): void => {
-        //Check response status
+        // Check response status
         if (response.status === 200) {
-          //Set ok status
+          // Set ok status
           okStatus = true;
-          //Set data to response data
+          // Set data to response data
           data = response.data;
         } else {
-          //Set ok status
+          // Set ok status
           okStatus = false;
-          //Throw error
+          // Throw error
           console.error(
             "Uncaught Error: Server responded with a status of: " +
               response.status
@@ -31,13 +31,13 @@ export const getAllMessage = async (): Promise<MessageListReturnType> => {
         }
       });
   } catch (err) {
-    //Throw error
+    // Throw error
     console.error(err);
 
-    //Set ok status
+    // Set ok status
     okStatus = false;
   }
-  //Return data
+  // Return data
   return {
     messages: data,
     status: okStatus,

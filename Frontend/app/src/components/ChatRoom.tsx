@@ -1,4 +1,4 @@
-//Importing packages
+// Importing packages
 import React, { useState, useEffect } from "react";
 import { InputField } from "./InputField";
 import { useSelector } from "react-redux";
@@ -13,29 +13,29 @@ import { Menu } from "./Menu";
 import "./style/ChatRoom.css";
 import { askNotification } from "../scripts/askNotify";
 
-//! TESTING - REMOVE OR COMMENT IN PRODUCTION
-// import { reportUser } from "../scripts/reportUser";
+// ! TESTING - REMOVE OR COMMENT IN PRODUCTION
+//  import { reportUser } from "../scripts/reportUser";
 
-//Chat room component
+// Chat room component
 export const ChatRoom: React.FC = () => {
-  //State
+  // State
   let [view, setView] = useState<boolean>(false);
 
-  //Data management variables
+  // Data management variables
   let textBoxData: string | undefined = undefined;
 
-  //Use effect
+  // Use effect
   useEffect((): void => {
-    //Ask notification permission
+    // Ask notification permission
     if ("Notification" in window) {
       askNotification();
     }
-    
-    //! TESTING - REMOVE OR COMMENT IN PRODUCTION
-    // reportUser("AlvinC(Team)", "BriannaC(Team)", "TEST");
+
+    // ! TESTING - REMOVE OR COMMENT IN PRODUCTION
+    //  reportUser("AlvinC(Team)", "BriannaC(Team)", "TEST");
   });
 
-  //Redux state
+  // Redux state
   const username = useSelector((state: RootState): RootState => {
     return state.username;
   });
@@ -43,21 +43,21 @@ export const ChatRoom: React.FC = () => {
     return state.login;
   });
 
-  //Render user component
+  // Render user component
   if (view) {
     return (
       <div>
         {/*UserBar*/}
         <UserBar
           viewOnClick={(): void => {
-            //Change state
+            // Change state
             setView(false);
           }}
         />
       </div>
     );
   }
-  //Redirect user if not authenticated
+  // Redirect user if not authenticated
   if (!authenticated) {
     return (
       <div>
@@ -66,13 +66,13 @@ export const ChatRoom: React.FC = () => {
       </div>
     );
   }
-  //Render default component
+  // Render default component
   return (
     <div id="chatRoom">
       {/*Menu*/}
       <Menu
         viewOnClick={(): void => {
-          //Change state
+          // Change state
           setView(true);
         }}
       />
@@ -89,7 +89,7 @@ export const ChatRoom: React.FC = () => {
         {/*Send button*/}
         <SendButton
           onclick={(): void => {
-            //Send message
+            // Send message
             send({
               id: uuid(),
               user: username,

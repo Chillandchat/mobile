@@ -1,4 +1,4 @@
-//Type script configuration
+// Type script configuration
 {
   "compilerOptions": {
     "target": "ES3",
@@ -10,4 +10,3 @@
     "outDir": "./build"
   }
 }
-

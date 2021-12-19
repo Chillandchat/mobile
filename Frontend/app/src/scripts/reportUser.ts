@@ -1,16 +1,16 @@
-//Importing packages
+// Importing packages
 import { apiEndpoints, api } from "./apiRequest";
 
-//Report user function
+// Report user function
 export const reportUser = async (
   targetUser: string,
   reporterUser: string,
   reporterReason: string
 ): Promise<boolean> => {
-  //Ok status
+  // Ok status
   let okStatus: boolean = false;
 
-  //Contact API
+  // Contact API
   try {
     await api
       .post(apiEndpoints.reportUserEndpoint, {
@@ -19,18 +19,18 @@ export const reportUser = async (
         reason: reporterReason,
       })
       .then((response: any): void => {
-        //Check response status
+        // Check response status
         if (response.status === 200) /*Set Ok status:*/ okStatus = true;
         /*Set ok status:*/ else okStatus = false;
       });
   } catch (err) {
-    //Throw error
+    // Throw error
     console.error(err);
 
-    //Set ok status
+    // Set ok status
     okStatus = false;
   }
 
-  //Return
+  // Return
   return okStatus;
 };

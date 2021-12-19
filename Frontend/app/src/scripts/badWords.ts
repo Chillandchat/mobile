@@ -1,7 +1,7 @@
-//Copyright (C) 2004 Sam Hocevar
-//Database by Zacanger
-//License: https://github.com/zacanger/profane-words/blob/master/LICENSE.md
-//Bad word database
+// Copyright (C) 2004 Sam Hocevar
+// Database by Zacanger
+// License: https:// github.com/zacanger/profane-words/blob/master/LICENSE.md
+// Bad word database
 const badWords: Array<string> = [
   "2 girls 1 cup",
   "2g1c",
@@ -1081,7 +1081,7 @@ const badWords: Array<string> = [
   "willies",
   "willy",
   "xrated",
-]
+];
 
-//Export database
+// Export database
 export default badWords;

@@ -1,34 +1,34 @@
-//Importing packages
+// Importing packages
 import React, { useRef, useEffect } from "react";
 import "./style/ExecuteButton.css";
 
-//Props interface
+// Props interface
 interface Props {
   text: string;
   onclick: () => any;
 }
 
-//ExecuteButton component
+// ExecuteButton component
 export const ExecuteButton: React.FC<Props> = (props) => {
-  //Button ref
+  // Button ref
   const buttonRef = useRef(null);
 
-  //Use effect
+  // Use effect
   useEffect((): void => {
-    //Button reference
+    // Button reference
     const element = buttonRef.current;
 
-    //Listeners
+    // Listeners
     window.addEventListener("keydown", (e: KeyboardEvent): void => {
-      //Check button click
+      // Check button click
       if (e.code === "Enter") element.click();
     });
 
-    //Clean up listeners
+    // Clean up listeners
     return window.removeEventListener("keydown", (): void => {});
   }, []);
 
-  //Render component
+  // Render component
   return (
     <div>
       {/*Button*/}

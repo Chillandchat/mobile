@@ -1,21 +1,21 @@
-//Importing packages
+// Importing packages
 import { ActionHasParameter, ActionNoParameter } from "./reduxTypes";
 
-//Login action
+// Login action
 export const login = (): ActionNoParameter => {
   return {
     type: "AUTH_SIGN_IN",
   };
 };
 
-//Logout action
+// Logout action
 export const logout = (): ActionNoParameter => {
   return {
     type: "AUTH_SIGN_OUT",
   };
 };
 
-//Change username action
+// Change username action
 export const changeUsername = (username: string): ActionHasParameter => {
   return {
     type: "AUTH_SET_USERNAME",
@@ -23,7 +23,7 @@ export const changeUsername = (username: string): ActionHasParameter => {
   };
 };
 
-//Clear username action
+// Clear username action
 export const clearUsername = (): ActionNoParameter => {
   return {
     type: "AUTH_LOGOUT_CLEAR_USERNAME",

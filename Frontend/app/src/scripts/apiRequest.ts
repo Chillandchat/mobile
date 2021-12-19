@@ -1,11 +1,11 @@
-//Importing packages
+// Importing packages
 import axios from "axios";
 import dotenv from "dotenv";
 
-//Env configuration
+// Env configuration
 dotenv.config();
 
-//Endpoint interface
+// Endpoint interface
 interface ApiEndpointType {
   getAllMessageEndpoint: string;
   loginEndpoint: string;
@@ -16,7 +16,7 @@ interface ApiEndpointType {
   blockUsersEndpoint: string;
 }
 
-//Api endpoints
+// Api endpoints
 export const apiEndpoints: ApiEndpointType = {
   getAllMessageEndpoint: "/api/get_all_message",
   getAllUsersEndpoint: "/api/get_all_users",
@@ -27,7 +27,7 @@ export const apiEndpoints: ApiEndpointType = {
   blockUsersEndpoint: "/api/block_user",
 };
 
-//Axios for api requests
+// Axios for api requests
 export const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });

@@ -1,14 +1,14 @@
-//Importing packages
+// Importing packages
 import React from "react";
 import logo from "../content/logo.svg";
 import "./style/logo.css";
 
-//Logo component
+// Logo component
 export const Logo: React.FC = () => {
-  //Render mobile component
+  // Render mobile component
   if (window.innerWidth < 600) return null;
   else {
-    //Render component
+    // Render component
     return (
       <div id="logoWrapper">
         {/*Logo text*/}

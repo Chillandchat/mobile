@@ -1,16 +1,16 @@
-//Importing packages
+// Importing packages
 import React from "react";
 import "./style/InputField.css";
 
-//Props interface
+// Props interface
 interface Props {
   placeholder: string;
   onChangeEvent: (e) => void;
 }
 
-//Input field component
+// Input field component
 export const InputField: React.FC<Props> = (props) => {
-  //Render component
+  // Render component
   return (
     <div>
       {/*Input field*/}

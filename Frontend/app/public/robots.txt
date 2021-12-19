@@ -1,4 +1,4 @@
-# Robot crawl policy for https://chill-and-chat-web.web.app/
+# Robot crawl policy for https:// chill-and-chat-web.web.app/
 # For more information about this project see github page:
 # https://github.com/Brother-and-sister-software/Chill-chat
 

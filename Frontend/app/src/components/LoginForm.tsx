@@ -1,18 +1,17 @@
-//Importing packages
+// Importing packages
 import React from "react";
 import "./style/LoginForm.css";
 
-//Props interface
+// Props interface
 interface Props {
   formPlaceHolder: string;
   password: boolean;
   onChange: any;
 }
 
-//Login form component
+// Login form component
 export const LoginForm: React.FC<Props> = (props) => {
-  
-  //Render password form
+  // Render password form
   if (props.password) {
     return (
       <div id="container">
@@ -26,7 +25,7 @@ export const LoginForm: React.FC<Props> = (props) => {
       </div>
     );
   }
-  //Render non-password form
+  // Render non-password form
   else {
     return (
       <div id="container">

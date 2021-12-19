@@ -1,4 +1,4 @@
-//Import packages
+// Import packages
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../scripts/getUsers";
 import { UserBarIcon } from "./UserBarIcon";
@@ -7,25 +7,25 @@ import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import { VerifyCheckMark } from "./VerifyCheckMark";
 import "./style/UserBar.css";
 
-//Props interface
+// Props interface
 interface Props {
   viewOnClick: () => void;
 }
 
-//UserBar component
+// UserBar component
 export const UserBar: React.FC<Props> = (props) => {
-  //State
+  // State
   let [userList, setUserList] = useState<Array<UserType>>([]);
 
-  //Call get user function
+  // Call get user function
   useEffect((): void => {
-    //Call function
+    // Call function
     getAllUsers().then((returnData: any): void => {
       setUserList(returnData.data);
     });
   }, []);
 
-  //Render component
+  // Render component
   return (
     <div>
       <div id="outerList">
@@ -37,7 +37,7 @@ export const UserBar: React.FC<Props> = (props) => {
         <h2 id="tittle">Users:</h2>
         {/*Map users*/}
         {userList.map((user) => {
-          //Render verified user
+          // Render verified user
           if (user.verified) {
             return (
               <div id="user" key={user.id}>
@@ -49,7 +49,7 @@ export const UserBar: React.FC<Props> = (props) => {
               </div>
             );
           }
-          //Render user
+          // Render user
           return (
             <div id="user" key={user.id}>
               {/*Icon*/}

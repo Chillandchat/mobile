@@ -1,4 +1,4 @@
-//Importing packages
+// Importing packages
 import React from "react";
 import { useDispatch } from "react-redux";
 import { logout, clearUsername } from "../redux/action";
@@ -6,17 +6,17 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import { Logout } from "./Logout";
 import "./style/Menu.css";
 
-//Props interface
+// Props interface
 interface Props {
   viewOnClick: () => void;
 }
 
-//Menu component
+// Menu component
 export const Menu: React.FC<Props> = (props) => {
-  //Dispatch
+  // Dispatch
   const dispatch = useDispatch();
 
-  //Render component
+  // Render component
   return (
     <div>
       {/*Wrapper*/}
@@ -24,7 +24,7 @@ export const Menu: React.FC<Props> = (props) => {
         {/*Logout*/}
         <Logout
           onClick={(): void => {
-            //Change redux state
+            // Change redux state
             dispatch(logout());
             dispatch(clearUsername());
           }}
@@ -35,7 +35,7 @@ export const Menu: React.FC<Props> = (props) => {
         <VisibilityIcon
           id="viewButton"
           onClick={(): void => {
-            //Call props function
+            // Call props function
             props.viewOnClick();
           }}
         />

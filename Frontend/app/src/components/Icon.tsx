@@ -1,11 +1,11 @@
-//Importing packages
+// Importing packages
 import React from "react";
 import UserIcon from "../content/User.png";
 import "./style/Icon.css";
 
-//Icon component
+// Icon component
 export const Icon: React.FC = () => {
-  //Render component
+  // Render component
   return (
     <div>
       {/*Wrapper*/}

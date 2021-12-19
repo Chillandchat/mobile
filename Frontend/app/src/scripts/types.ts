@@ -1,4 +1,4 @@
-//User type
+// User type
 export interface User {
   id: string;
   username: string;
@@ -8,19 +8,19 @@ export interface User {
   bot: boolean;
 }
 
-//Find user information return type
+// Find user information return type
 export interface UserInfoReturn {
   okStatus: boolean;
   data: User;
 }
 
-//Notification message type
+// Notification message type
 export interface NotificationMessage {
   body: string;
   tittle: string;
 }
 
-//Message type
+// Message type
 export interface Message {
   id: string;
   user: string;
@@ -28,13 +28,13 @@ export interface Message {
   verified: boolean | null;
 }
 
-//User list return type
+// User list return type
 export interface UserListReturnType {
   status: boolean;
   data: Array<User>;
 }
 
-//Message list return type
+// Message list return type
 export interface MessageListReturnType {
   messages: Array<Message>;
   status: boolean;

@@ -1,7 +1,7 @@
-//Importing packages
+// Importing packages
 const mongoose = require("mongoose");
 
-//Schema
+// Schema
 const schema = mongoose.Schema({
   id: String,
   user: String,
@@ -10,5 +10,5 @@ const schema = mongoose.Schema({
   verified: Boolean,
 });
 
-//Export schema
+// Export schema
 module.exports = mongoose.model("message", schema);

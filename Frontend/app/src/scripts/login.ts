@@ -1,30 +1,30 @@
-//Importing packages
+// Importing packages
 import { apiEndpoints, api } from "./apiRequest";
 
-//login function
+// login function
 export const login = async (
   username: string,
   password: string
 ): Promise<boolean> => {
-  //Ok status variable
+  // Ok status variable
   let okStatus: boolean = false;
 
-  //Check if username and password is empty
+  // Check if username and password is empty
   if (username === undefined || password === undefined) {
-    //Throw error
+    // Throw error
     console.error(
-      "Uncaught Error: username and password must be provided\n  do not leave field blank\n   at <input> LoginPage.tsx\nIf you have found a bug, please report bug at: https://github.com/AlvinC888/Chill-chat/issues"
+      "Uncaught Error: username and password must be provided\n  do not leave field blank\n   at <input> LoginPage.tsx\nIf you have found a bug, please report bug at: https:// github.com/AlvinC888/Chill-chat/issues"
     );
 
-    //Change ok status
+    // Change ok status
     okStatus = false;
   } else {
-    //Change ok status
+    // Change ok status
     okStatus = true;
   }
-  //Check if ok status is true
+  // Check if ok status is true
   if (okStatus) {
-    //Contact api
+    // Contact api
     try {
       await api
         .post(apiEndpoints.loginEndpoint, {
@@ -32,21 +32,21 @@ export const login = async (
           password: password,
         })
         .then((response: any): void => {
-          //Check API response status
+          // Check API response status
           if (response.status === 404 || response.status === 400) {
-            //Change ok status
+            // Change ok status
             okStatus = false;
           }
           if (response.status === 200) /*Change ok status:*/ okStatus = true;
         });
     } catch (err) {
-      //Throw error
+      // Throw error
       console.error(err);
 
-      //Change ok status
+      // Change ok status
       okStatus = false;
     }
   }
-  //Return status
+  // Return status
   return okStatus;
 };
