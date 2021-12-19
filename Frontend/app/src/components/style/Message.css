@@ -1,4 +1,6 @@
 /* CSS File for message component: */
+
+/* Hero wrapper styles */
 #heroWrapper {
   background-color: #ffff;
   border-radius: 1rem;
@@ -6,9 +8,13 @@
   margin: 0.9rem;
   height: auto;
 }
+
+/* User wrapper styles */
 #userWrapper {
   display: flex;
 }
+
+/* User checkmark styles */
 #checkMark {
   margin-left: 0.6rem;
 }

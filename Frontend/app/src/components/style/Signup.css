@@ -8,6 +8,7 @@
   text-align: center;
   padding-bottom: 32vh;
 }
+
 /* Login link styles */
 #loginLink {
   color: white;
@@ -15,21 +16,25 @@
   font-size: 1rem;
   margin-bottom: 2rem;
 }
+
 /* Form styles */
 #form {
   text-align: center;
   padding: 0.5rem;
 }
+
 /* Error message styles */
 #errorMessage {
   color: white;
   font-size: 1rem;
   font-family: "poppins", sans-serif;
 }
+
 /* Button parent styles */
 #buttonParent {
   margin-top: 1rem;
 }
+
 /*Media query for screens <600px */
 @media (max-width: 600px) {
   /* Sign up parent styles */
@@ -40,23 +45,27 @@
     text-align: center;
     padding-bottom: 50vh;
   }
+
   /* Error message styles */
   #errorMessage {
     color: white;
     font-size: 0.7rem;
     font-family: "poppins", sans-serif;
   }
+
   /* Login link styles */
   #loginLink {
     color: #fff;
     font-size: 0.7rem;
     margin-bottom: 1rem;
   }
+
   /* Form styles */
   #form {
     text-align: center;
     padding: 0rem;
   }
+
   /* Button parent styles */
   #buttonParent {
     margin-top: 1.2rem;

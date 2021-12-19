@@ -7,6 +7,7 @@
   font-size: 1rem;
   padding: 1rem;
 }
+
 /* User list styles */
 #userList {
   display: grid;
@@ -14,20 +15,24 @@
   padding-bottom: 70vh;
   place-content: center;
 }
+
 /* Outer list styles */
 #outerList {
   background-color: var(--chatRoomGlobalColor);
 }
+
 /* User styles */
 #user {
   display: flex;
   padding: 0.5rem;
 }
+
 /* Tittle styles */
 #tittle {
   color: #fff;
   margin-left: 1rem;
 }
+
 /* Hide button styles */
 #hideButton {
   color: #ffff;
@@ -37,6 +42,7 @@
   top: 1.2rem;
   left: 1.2rem;
 }
+
 /* Media query for screens >700px */
 @media (max-width: 700px) {
   /* Hide button styles */

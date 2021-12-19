@@ -1,4 +1,4 @@
-/* Css file for input field: */
+/* CSS file for input field: */
 
 /* Input field styles */
 #inputField {
@@ -14,6 +14,7 @@
   color: #fff;
   outline: none;
 }
+
 /* Input field placeholder styles */
 #inputField::-webkit-input-placeholder {
   color: #c8bcbc;
@@ -21,6 +22,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 0.85rem;
 }
+
 /* Media query for screens >700px */
 @media (max-width: 700px) {
   /* Input field styles */
@@ -37,6 +39,7 @@
     color: #fff;
     outline: none;
   }
+
   /* Input field placeholder styles */
   #inputField::-webkit-input-placeholder {
     color: #c8bcbc;

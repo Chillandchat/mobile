@@ -13,12 +13,14 @@
   color: #fff;
   outline: none;
 }
+
 /* Container styles */
 #container {
   text-align: center;
   margin-top: 3vw;
   overflow: hidden;
 }
+
 /* Input field placeholder styles */
 #textBox::-webkit-input-placeholder {
   color: #c8bcbc;
@@ -26,6 +28,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 0.7rem;
 }
+
 /* Media query for screens >1000px */
 @media (min-width: 1000px) {
   /* Input field styles */
@@ -41,12 +44,14 @@
     color: #fff;
     outline: none;
   }
+
   /* Container styles */
   #container {
     text-align: center;
     margin-top: 2vw;
     overflow: hidden;
   }
+
   /* Input field placeholder styles */
   #textBox::-webkit-input-placeholder {
     color: #c8bcbc;
@@ -55,6 +60,7 @@
     font-family: "Poppins", sans-serif;
   }
 }
+
 /* Media query for screens <600px */
 @media (max-width: 600px) {
   /* Input field styles */
@@ -70,12 +76,14 @@
     color: #fff;
     outline: none;
   }
+
   /* Container styles */
   #container {
     text-align: center;
     margin-top: 3vw;
     overflow: hidden;
   }
+  
   /*Input box placeholder styles*/
   #textBox::-webkit-input-placeholder {
     color: #c8bcbc;
