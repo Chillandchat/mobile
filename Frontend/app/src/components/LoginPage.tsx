@@ -48,7 +48,7 @@ export const Login: React.FC = () => {
         {/*Logo*/}
         <Logo />
         {/*Login interface*/}
-        <div id="loginParent">
+        <div id="login-parent">
           {/*Icon*/}
           <Icon />
           <div id="form">
@@ -66,12 +66,12 @@ export const Login: React.FC = () => {
             />
           </div>
           {/*Error message*/}
-          <strong id="errorMessage">{errorMessage}</strong>
+          <strong id="error-message">{errorMessage}</strong>
           <br />
 
           {/*Sign up link*/}
           <div id="signup">
-            <Link to="/signup" id="signupLink">
+            <Link to="/signup" id="signup-link">
               <p>New? Sign up today!</p>
             </Link>
 

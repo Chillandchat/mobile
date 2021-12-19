@@ -2,12 +2,12 @@
 
 /* Root variables */
 :root {
-  --globalColor: #d88e1f;
+  --global-color: #d88e1f;
 }
 
 /* Default button styles */
 #button {
-  background-color: var(--globalColor);
+  background-color: var(--global-color);
   border: none;
   height: 6vw;
   width: 17vw;
@@ -31,7 +31,7 @@
 @media (max-width: 500px) {
   /* Default button styles */
   #button {
-    background-color: var(--globalColor);
+    background-color: var(--global-color);
     border: none;
     height: 9vw;
     width: 21vw;
@@ -51,11 +51,12 @@
     transition-duration: 0.5s;
   }
 }
+
 /* Media query for screens <450px */
 @media (max-width: 450px) {
   /* Default button styles */
   #button {
-    background-color: var(--globalColor);
+    background-color: var(--global-color);
     border: none;
     height: 10vw;
     width: 25vw;
@@ -75,11 +76,12 @@
     transition-duration: 0.5s;
   }
 }
+
 /* Media query for screens >750px */
 @media (min-width: 750px) {
   /* Default button styles */
   #button {
-    background-color: var(--globalColor);
+    background-color: var(--global-color);
     border: none;
     height: 5vw;
     width: 13vw;
@@ -103,7 +105,7 @@
 @media (min-width: 1200px) {
   /* Default button styles */
   #button {
-    background-color: var(--globalColor);
+    background-color: var(--global-color);
     border: none;
     height: 3.5vw;
     width: 10vw;

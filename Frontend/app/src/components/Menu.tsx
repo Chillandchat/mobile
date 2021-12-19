@@ -30,10 +30,10 @@ export const Menu: React.FC<Props> = (props) => {
           }}
         />
         {/*Tittle*/}
-        <strong id="menuText">Public chat room</strong>
+        <strong id="menu-text">Public chat room</strong>
         {/*Hide/unhide icon*/}
         <VisibilityIcon
-          id="viewButton"
+          id="view-button"
           onClick={(): void => {
             // Call props function
             props.viewOnClick();

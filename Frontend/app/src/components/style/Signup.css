@@ -24,7 +24,7 @@
 }
 
 /* Error message styles */
-#errorMessage {
+#error-message {
   color: white;
   font-size: 1rem;
   font-family: "poppins", sans-serif;
@@ -47,7 +47,7 @@
   }
 
   /* Error message styles */
-  #errorMessage {
+  #error-message {
     color: white;
     font-size: 0.7rem;
     font-family: "poppins", sans-serif;

@@ -1,7 +1,7 @@
 /* CSS File for message component: */
 
 /* Hero wrapper styles */
-#heroWrapper {
+#hero-wrapper {
   background-color: #ffff;
   border-radius: 1rem;
   padding: 1.1rem;
@@ -10,11 +10,11 @@
 }
 
 /* User wrapper styles */
-#userWrapper {
+#user-wrapper {
   display: flex;
 }
 
 /* User checkmark styles */
-#checkMark {
+#checkmark {
   margin-left: 0.6rem;
 }

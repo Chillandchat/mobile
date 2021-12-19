@@ -11,7 +11,7 @@ export const Icon: React.FC = () => {
       {/*Wrapper*/}
       <div id="wrapper">
         {/*Icon*/}
-        <img src={UserIcon} id="userIcon" alt="Error" />
+        <img src={UserIcon} id="user-icon" alt="Error" />
       </div>
     </div>
   );

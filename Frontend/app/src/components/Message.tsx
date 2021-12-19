@@ -15,13 +15,13 @@ export const Message: React.FC<Props> = (props) => {
   // Render verified message
   if (props.verified) {
     return (
-      <div id="heroWrapper">
+      <div id="hero-wrapper">
         {/*Wrapper*/}
-        <div id="userWrapper">
+        <div id="user-wrapper">
           {/*Username*/}
           <h3 id="heroUser">{props.user}</h3>
           {/*Check mark*/}
-          <div id="checkMark">
+          <div id="checkmark">
             <VerifyCheckMark />
           </div>
         </div>
@@ -32,7 +32,7 @@ export const Message: React.FC<Props> = (props) => {
   }
   // Render message
   return (
-    <div id="heroWrapper">
+    <div id="hero-wrapper">
       {/*Username*/}
       <h3 id="heroUser">{props.user}</h3>
       {/*Content*/}

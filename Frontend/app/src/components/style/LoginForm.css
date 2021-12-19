@@ -1,7 +1,7 @@
 /* CSS file for login form: */
 
 /* Input field styles */
-#textBox {
+#text-box {
   border-radius: 0.7rem;
   border: 6px solid #ffff;
   width: 31vw;
@@ -22,7 +22,7 @@
 }
 
 /* Input field placeholder styles */
-#textBox::-webkit-input-placeholder {
+#text-box::-webkit-input-placeholder {
   color: #c8bcbc;
   padding-left: 0rem;
   font-family: "Poppins", sans-serif;
@@ -32,7 +32,7 @@
 /* Media query for screens >1000px */
 @media (min-width: 1000px) {
   /* Input field styles */
-  #textBox {
+  #text-box {
     border-radius: 0.7rem;
     border: 7px solid #ffff;
     width: 25vw;
@@ -53,7 +53,7 @@
   }
 
   /* Input field placeholder styles */
-  #textBox::-webkit-input-placeholder {
+  #text-box::-webkit-input-placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
     font-size: 1rem;
@@ -64,7 +64,7 @@
 /* Media query for screens <600px */
 @media (max-width: 600px) {
   /* Input field styles */
-  #textBox {
+  #text-box {
     border-radius: 0.7rem;
     border: 5px solid #ffff;
     font-family: "Poppins", sans-serif;
@@ -83,9 +83,9 @@
     margin-top: 3vw;
     overflow: hidden;
   }
-  
+
   /*Input box placeholder styles*/
-  #textBox::-webkit-input-placeholder {
+  #text-box::-webkit-input-placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
     font-size: 0.7rem;

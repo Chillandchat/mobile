@@ -68,7 +68,7 @@ export const ChatRoom: React.FC = () => {
   }
   // Render default component
   return (
-    <div id="chatRoom">
+    <div id="chat-room">
       {/*Menu*/}
       <Menu
         viewOnClick={(): void => {
@@ -78,7 +78,7 @@ export const ChatRoom: React.FC = () => {
       />
       <ChatBubble />
       {/*Send bar*/}
-      <div id="sendBar">
+      <div id="send-bar">
         {/*Input field*/}
         <InputField
           placeholder="Type a message..."

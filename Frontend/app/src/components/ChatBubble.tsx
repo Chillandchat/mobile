@@ -70,7 +70,7 @@ export const ChatBubble: React.FC = () => {
 
   // Render messages
   return (
-    <div id="chatBubble">
+    <div id="chat-bubble">
       {messages.map((message: MessageType): any => {
         // Render messages
         return (

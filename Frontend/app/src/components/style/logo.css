@@ -1,14 +1,14 @@
 /* CSS file for logo: */
 
 /* Logo wrapper styles */
-#logoWrapper {
+#logo-wrapper {
   background-color: #fa4747;
   display: flex;
   padding: 1rem;
 }
 
 /* Logo image styles */
-#logoImage {
+#logo-image {
   color: #ffff;
   object-fit: contain;
   height: 3.5rem;
@@ -16,7 +16,7 @@
 }
 
 /* Logo text styles */
-#logoText {
+#logo-text {
   color: white;
   font-weight: bold;
   padding-right: 1rem;

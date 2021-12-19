@@ -8,7 +8,7 @@ export const VerifyCheckMark: React.FC = () => {
   return (
     <div>
       {/*Checkmark text*/}
-      <p id="verifyCheckMark">Verified</p>
+      <p id="verify-checkmark">Verified</p>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 /* CSS file for login page: */
 
 /* Login page wrapper styles */
-#loginParent {
+#login-parent {
   background-color: #fa4747;
   padding-top: 8vh;
   overflow: hidden;
@@ -12,7 +12,7 @@
 }
 
 /* Error message styles */
-#errorMessage {
+#error-message {
   color: white;
   font-size: 1rem;
   padding-top: 0.5rem;
@@ -29,14 +29,14 @@
   text-align: center;
 }
 
-#signupLink {
+#signup-link {
   color: white;
   font-family: "poppins", "sans-serif";
 }
 /* Media query for screens <600px */
 @media (max-width: 600px) {
   /* Login page wrapper styles */
-  #loginParent {
+  #login-parent {
     background-color: #fa4747;
     display: block;
     padding-top: 22vh;
@@ -47,7 +47,7 @@
   }
 
   /* Error message styles */
-  #errorMessage {
+  #error-message {
     color: white;
     font-size: 0.2rem;
     font-family: "poppins", sans-serif;
@@ -59,7 +59,7 @@
     text-align: center;
   }
 
-  #signupLink {
+  #signup-link {
     color: #fff;
     font-size: 0.7rem;
     color: white;

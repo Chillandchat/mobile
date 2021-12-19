@@ -65,7 +65,7 @@ export const SignUpPage: React.FC = () => {
             />
           </div>
           {/*Error message*/}
-          <strong id="errorMessage">{errorMessage}</strong>
+          <strong id="error-message">{errorMessage}</strong>
           <br />
           {/*Login link*/}
           <Link to="/" id="loginLink">

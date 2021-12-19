@@ -10,11 +10,11 @@ export const Logo: React.FC = () => {
   else {
     // Render component
     return (
-      <div id="logoWrapper">
+      <div id="logo-wrapper">
         {/*Logo text*/}
-        <h1 id="logoText">{"Chill&chat"}</h1>
+        <h1 id="logo-text">{"Chill&chat"}</h1>
         {/*Logo image*/}
-        <img src={logo} id="logoImage" />
+        <img src={logo} id="logo-image" />
       </div>
     );
   }

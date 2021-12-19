@@ -18,7 +18,7 @@ export const LoginForm: React.FC<Props> = (props) => {
         {/*Form*/}
         <input
           placeholder={props.formPlaceHolder}
-          id="textBox"
+          id="text-box"
           type="password"
           onChange={props.onChange}
         />
@@ -32,7 +32,7 @@ export const LoginForm: React.FC<Props> = (props) => {
         {/*Form*/}
         <input
           placeholder={props.formPlaceHolder}
-          id="textBox"
+          id="text-box"
           onChange={props.onChange}
         />
       </div>

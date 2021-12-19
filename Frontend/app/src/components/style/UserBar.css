@@ -11,14 +11,14 @@
 /* User list styles */
 #userList {
   display: grid;
-  background-color: var(--chatRoomGlobalColor);
+  background-color: var(--chat-room-global-color);
   padding-bottom: 70vh;
   place-content: center;
 }
 
 /* Outer list styles */
 #outerList {
-  background-color: var(--chatRoomGlobalColor);
+  background-color: var(--chat-room-global-color);
 }
 
 /* User styles */
