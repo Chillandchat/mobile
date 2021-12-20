@@ -25,7 +25,7 @@ app.use(express.json());
 // CORS middleware
 app.use(
   cors({
-    origin: ["https:// chill-and-chat-web.web.app", "http:// localhost:3000/"],
+    origin: /*"https://chill-and-chat-web.web.app"*/ '*',
   })
 );
 
@@ -49,13 +49,13 @@ app.get("/api/get_all_message", (req: any, res: any): void => {
 });
 
 // Update message like count
-//  app.put("/api/update_like_count", (req, res) => {
+//  app.put('/api/update_like_count', (req, res) => {
 //    try {
-//      message.findOneAndUpdate({ id: req.body.id }, { likes: req.body.likes });
+//      message.findOneAndUpdate({ id: req.body.id }, { likes: req.body.likes })
 //    } catch (err) {
-//      res.status(500).send(`SERVER ERROR: ${err}`);
+//      res.status(500).send(`SERVER ERROR: ${err}`)
 //    }
-//  });
+//  })
 
 // Create user endpoint
 app.post("/api/sign_up", (req: any, res: any): void => {
@@ -105,8 +105,8 @@ app.post("/api/login", (req: any, res: any): void => {
         if (data != null && data != undefined) {
           // Check password
           if (
-            data.username == req.body.user &&
-            data.password == req.body.password
+            data.username === req.body.user &&
+            data.password === req.body.password
           )
             /*Handle conditions:*/ res.status(200).send("User login success");
           else res.status(400).send("Invalid password");
@@ -164,7 +164,7 @@ app.post("/api/report_user", (req: any, res: any): void => {
     from: process.env.API_EMAIL,
     to: "chengalvin333@gmail.com",
     subject: "You have a new report from the Chill&chat server",
-    text: `${req.body.user} has reported ${req.body.reportUser}'s message.\nMessage: "${req.body.reason}"\n`,
+    text: `${req.body.user} has reported ${req.body.reportUser}'s message.\nMessage: '${req.body.reason}'\n`,
   };
 
   // Send mail

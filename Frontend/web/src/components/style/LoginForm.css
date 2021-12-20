@@ -22,7 +22,7 @@
 }
 
 /* Input field placeholder styles */
-#text-box:-webkit-input-placeholder {
+#text-box::placeholder {
   color: #c8bcbc;
   padding-left: 0rem;
   font-family: Poppins, sans-serif;
@@ -53,7 +53,7 @@
   }
 
   /* Input field placeholder styles */
-  #text-box:-webkit-input-placeholder {
+  #text-box::placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
     font-size: 1rem;
@@ -65,7 +65,7 @@
 @media (max-width: 600px) {
   /* Input field styles */
   #text-box {
-    border-radius: 0.7rem;
+    border-radius: 0.3rem;
     border: 5px solid #ffff;
     font-family: Poppins, sans-serif;
     cursor: pointer;
@@ -85,7 +85,7 @@
   }
 
   /* Input box placeholder styles */
-  #text-box:-webkit-input-placeholder {
+  #text-box::placeholder {
     color: #c8bcbc;
     padding-left: 0rem;
     font-size: 0.7rem;

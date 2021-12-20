@@ -95,7 +95,7 @@
 
   /* Hover styles */
   #button:hover {
-    border: 7px solid white;
+    border: 4px solid white;
     background-color: transparent;
     color: white;
     transition-duration: 0.5s;

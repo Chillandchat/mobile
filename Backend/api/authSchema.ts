@@ -1,6 +1,6 @@
 // Importing packages
-import mongoose from "mongoose";
-import { AuthSchemaType } from "./type";
+import mongoose from 'mongoose' 
+import { AuthSchemaType } from './type' 
 
 // Schema
 const schema: any = new mongoose.Schema({
@@ -10,10 +10,10 @@ const schema: any = new mongoose.Schema({
   verified: Boolean,
   bot: Boolean,
   blocked: Boolean,
-});
+}) 
 
 // Model
-const user: any = mongoose.model<AuthSchemaType>("user", schema);
+const user: any = mongoose.model<AuthSchemaType>('user', schema) 
 
 // Export schema
-export default user;
+export default user 

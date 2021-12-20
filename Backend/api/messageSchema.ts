@@ -1,6 +1,6 @@
 // Importing packages
-import mongoose from "mongoose";
-import { MessageSchemaType } from "./type";
+import mongoose from 'mongoose' 
+import { MessageSchemaType } from './type' 
 
 // Schema
 const schema: any = new mongoose.Schema({
@@ -8,10 +8,10 @@ const schema: any = new mongoose.Schema({
   user: String,
   content: String,
   verified: Boolean,
-});
+}) 
 
 // Model
-const message: any = mongoose.model<MessageSchemaType>("message", schema);
+const message: any = mongoose.model<MessageSchemaType>('message', schema) 
 
 // Export schema
-export default message;
+export default message 
