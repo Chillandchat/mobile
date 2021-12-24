@@ -1,7 +1,7 @@
 # Chill&chat
 ![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat)   ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat)
 
-![](https://github.com/Chill-and-chat/Chill-chat/blob/master/Frontend/app/src/content/logo.svg)
+![](https://github.com/Chill-and-chat/Chill-chat/blob/master/Frontend/web/src/content/logo.svg)
 
 Welcome to the official Chill&chat repository, this repository contains all the source files for the Chill&chat project made by Alvin Cheng / Brianna Cheng(Brother sister software).
 
