@@ -38,10 +38,10 @@ Email:
 chengalvin333@gmail.com
 
 Discord:
-AlvinC#2300
+@AlvinC#2300
 
 Github:
-AlvinC888
+@CHENG-Alvin
 
 ## API
 I made a custom API with node to serve chill&chat and you can download it in the project which is available in the backend folder and you can read the documentation(DEPRECATED) in ./backend/api/APIDocumentation.md for a detailed description.
