@@ -1,25 +1,21 @@
 // Importing packages
-const mongoose = require('mongoose') 
-const message = require('./messageSchema.js') 
-const dotenv = require('dotenv') 
-const io = require('socket.io')(3001, {
-  cors: {
-    origin: /*'https://chill-and-chat-web.web.app',*/ '*',
-  },
-}) 
+const mongoose = require("mongoose");
+const message = require("./messageSchema.js");
+const dotenv = require("dotenv");
+const io = require("socket.io")(3001, {});
 
 // Setup dotenv
-dotenv.config() 
+dotenv.config();
 
 // Db connection
-mongoose.connect(process.env.URI) 
+mongoose.connect(process.env.URI);
 
 // Web socket
-io.on('connection', (socket) => {
+io.on("connection", (socket) => {
   // Event listener
-  socket.on('message', (payload) => {
+  socket.on("message", (payload) => {
     // Emit message
-    io.emit('message', payload) 
+    io.emit("message", payload);
 
     // Save message
     try {
@@ -28,16 +24,17 @@ io.on('connection', (socket) => {
         user: payload.user,
         content: payload.content,
         verified: payload.verified,
-      }) 
-      newMessage.save().then(() => {}) 
+      });
+      newMessage.save().then(() => {});
     } catch (err) {
       // Handle error
-      console.log(err) 
+      console.log(err);
     }
-  }) 
-}) 
+  });
+});
 
 // Handle error
-io.on('connect_error', (err) => {
-  console.log(`connect_error due to ${err.message}`) 
-}) 
+io.on("connect_error", (err) => {
+  // Print to console
+  console.log(`connect_error due to ${err.message}`);
+});

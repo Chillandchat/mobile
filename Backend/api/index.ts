@@ -13,7 +13,7 @@ import {
 } from "express-rate-limit";
 
 // Setup dotenv
-dotenv.config();
+dotenv.config();  1
 
 // Setup express
 const app: express.Express = express();
