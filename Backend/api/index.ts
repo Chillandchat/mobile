@@ -7,6 +7,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
 import { AuthSchemaType, MessageSchemaType } from "./type";
+import {
+  rateLimit as RateLimit,
+  RateLimitRequestHandler,
+} from "express-rate-limit";
 
 // Setup dotenv
 dotenv.config();
@@ -19,6 +23,13 @@ const port: string = String(process.env.PORT) || "8080";
 
 // Db connection
 mongoose.connect(String(process.env.API_URI));
+
+// Rate limit
+const limiter: RateLimitRequestHandler = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 5,
+});
+app.use(limiter);
 
 // Json middleware
 app.use(express.json());
