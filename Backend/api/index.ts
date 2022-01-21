@@ -123,7 +123,7 @@ app.post(
     try {
       // Search database
       await user
-        .findOne({ username: req.body.user })
+        .findOne({ $eq: { username: req.body.user } })
         .exec()
         .then((data: AuthSchemaType | null | undefined): void => {
           // Check if user exists
@@ -155,7 +155,7 @@ app.get(
     try {
       // Find user
       await user
-        .findOne({ username: req.query.user })
+        .findOne({ $eq: { username: req.query.user } })
         .exec()
         .then((data: AuthSchemaType | null | undefined): void => {
           // Check conditions
@@ -226,7 +226,7 @@ app.put(
 
     // Find and update user
     await user
-      .findOneAndUpdate({ username: req.body.user })
+      .findOneAndUpdate({ $eq: { username: req.body.user } })
       .exec()
       .then((data: AuthSchemaType | null | undefined): void => {
         // Check conditions
