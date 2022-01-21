@@ -3,8 +3,6 @@
 
 ![](https://github.com/Chill-and-chat/Chill-chat/blob/master/Frontend/web/src/content/logo.svg)
 
-NOTE: This github repository is now deprecated and will no longer be supported, for a updated version please see [Chill&chat version 2](https://github.com/chill-and-chat/chill-chat-v2/) for up to data version.
-
 Welcome to the official Chill&chat repository, this repository contains all the source files for the Chill&chat project made by Alvin Cheng / Brianna Cheng(Brother sister software).
 
 Website link:
