@@ -1,4 +1,3 @@
-// Importing packages
 import express from "express";
 import user from "./authSchema";
 import message from "./messageSchema";
@@ -12,43 +11,42 @@ import {
   RateLimitRequestHandler,
 } from "express-rate-limit";
 
-// Setup dotenv
-dotenv.config();  1
-
-// Setup express
+dotenv.config();
 const app: express.Express = express();
-
-// Variables
 const port: string = String(process.env.PORT) || "8080";
 
-// Db connection
 mongoose.connect(String(process.env.API_URI));
 
-// Rate limit
 const limiter: RateLimitRequestHandler = RateLimit({
-  windowMs: 1 * 60 * 1000, // 1 minute
+  windowMs: 1 * 60 * 1000,
   max: 5,
 });
+
 app.use(limiter);
-
-// Json middleware
 app.use(express.json());
-
-// CORS middleware
 app.use(cors({}));
 
-// Get endpoint
+/**
+ * This is the home page for the Chill&chat API
+ *
+ * @type {GET} The type of the endpoint.
+ */
+
 app.get("/", (_req: any, res: any, _next: any): void => {
-  // Send error
-  res.status(401).send("REQUEST ERROR: PLEASE ENTER API KEY.");
+  res.status(200).send("Welcome to the Chill&chat API!");
 });
 
-// Get all message endpoint
+/**
+ * This is the get message endpoint, this endpoint is used to get messages in the database.
+ *
+ * @type {GET} The type of the endpoint.
+ * @returns {Array<MessageSchemaType>} Returns a array of messages, check './type.d.ts' for more information.
+ */
+
 app.get(
   "/api/get-messages",
   async (_req: any, res: any, _next: any): Promise<void> => {
     try {
-      // Search database
       await message
         .find()
         .exec()
@@ -56,7 +54,6 @@ app.get(
           res.status(200).send(data)
         );
     } catch (err: unknown) {
-      // Throw error
       res.status(500).send(`SERVER ERROR: ${err}`);
     }
   }
@@ -71,12 +68,18 @@ app.get(
 //    }
 //  })
 
-// Create user endpoint
+/**
+ * This is the signup endpoint this endpoint will create a new user in the data base when called.
+ *
+ * @type {POST} type of the endpoint.
+ * @returns {string} Returns the result as a string format.
+ * @param {AuthSchemaType} user The user information, see './type.d.ts' for details.
+ */
+
 app.post(
   "/api/signup",
   async (req: any, res: any, _next: any): Promise<void> => {
     try {
-      // Create user element
       const newUser: any = new user({
         id: req.body.id,
         username: req.body.username,
@@ -85,24 +88,26 @@ app.post(
         bot: req.body.bot,
         blocked: req.body.blocked,
       });
-      // Save database
       await newUser.save().then((): void => {
-        // Send info
         res.status(201).send("Saved successfully, no errors and problems.");
       });
     } catch (err: unknown) {
-      // Throw error
       res.status(500).send(`SERVER ERROR: ${err}`);
     }
   }
 );
 
-// Find all users endpoint
+/**
+ * This is the get users endpoint, this endpoint will return all users once called.
+ *
+ * @type {GET} The type of the endpoint.
+ * @returns {Array<AuthSchemaType>} Returns a array of users, see './type.d.ts' for details.
+ */
+
 app.get(
   "/api/get-users",
   async (_req: any, res: any, _next: any): Promise<void> => {
     try {
-      // Search database
       await user
         .find()
         .exec()
@@ -110,78 +115,89 @@ app.get(
           res.status(200).send(data)
         );
     } catch (err: unknown) {
-      // Throw error
       res.status(500).send(`SERVER ERROR: ${err}`);
     }
   }
 );
 
-// Login endpoint
+/**
+ * This endpoint is used to login a user once called.
+ *
+ * @type {POST} The type of the endpoint.
+ * @param {string} username The username that the user entered.
+ * @param {string} password The password that the user entered.
+ * @returns {string} Returns the result of the login in a string format.
+ */
+
 app.post(
   "/api/login",
   async (req: any, res: any, _next: any): Promise<void> => {
     try {
-      // Search database
       await user
         .findOne({ $eq: { username: req.body.user } })
         .exec()
         .then((data: AuthSchemaType | null | undefined): void => {
-          // Check if user exists
           if (data != null && data != undefined) {
-            // Check password
             if (
               data.username === req.body.user &&
               data.password === req.body.password
             )
-              /*Handle conditions:*/ res.status(200).send("User login success");
+              res.status(200).send("User login success");
             else res.status(400).send("Invalid password");
           } else res.status(404).send("User not found");
         })
         .catch((err: unknown): void => {
-          // Throw error
           res.status(500).send(`SERVER ERROR: ${err}`);
         });
     } catch (err: unknown) {
-      // Throw error
       res.status(500).send(`SERVER ERROR: ${err}`);
     }
   }
 );
 
-// Find user endpoint
+/**
+ * This endpoint will return the user information from the server once called.
+ *
+ * @type {GET} The type of the endpoint.
+ * @param {string} username The username of the user you want to search.
+ * @returns {AuthSchemaType | string} Returns the user information or a error message.
+ */
+
 app.get(
   "/api/get-user-info",
   async (req: any, res: any, _next: any): Promise<void> => {
     try {
-      // Find user
       await user
         .findOne({ $eq: { username: req.query.user } })
         .exec()
         .then((data: AuthSchemaType | null | undefined): void => {
-          // Check conditions
           if (data != null || data != undefined) res.status(200).send(data);
-          /*Throw error:*/ else res.status(404).send("User not found");
+          else res.status(404).send("User not found");
         })
         .catch((err: unknown): void => {
-          // Throw error
           res.status(500).send(`SERVER ERROR: ${err}`);
         });
     } catch (err: unknown) {
-      // Throw error
       res.status(500).send(`SERVER ERROR: ${err}`);
     }
   }
 );
+
+/**
+ * This endpoint will report a user via email once called.
+ *
+ * @type {POST} The type of the endpoint.
+ * @param {string} user The user that will be reported.
+ * @param {string} email The user that reported the user.
+ * @returns {string} Returns the result in a string format.
+ */
+
 app.post(
   "/api/report-user",
   async (req: any, res: any, _next: any): Promise<void> => {
-    // Email ok
     let emailOk: boolean = false;
-
-    // Error message
     let error: string;
 
-    // Transporter
     const transporter: typeof nodemailer.createTransport =
       nodemailer.createTransport({
         service: "gmail",
@@ -190,66 +206,59 @@ app.post(
           pass: process.env.API_EMAIL_PASS,
         },
       });
-
-    // Mail options
     const mailOptions: any = {
       from: process.env.API_EMAIL,
       to: "chengalvin333@gmail.com",
       subject: "You have a new report from the Chill&chat server",
       text: `${req.body.user} has reported ${req.body.reportUser}'s message.\nMessage: '${req.body.reason}'\n`,
     };
-
-    // Send mail
     await transporter.sendMail(
       mailOptions,
       (err: any, _data: any, _next: any): void => {
-        // Check errors
         if (err) {
           error = err;
           emailOk = false;
         } else emailOk = true;
       }
     );
-
-    // Send status
     if (emailOk) res.status(200).send();
     else res.status(500).send(`SERVER ERROR: ${error}`);
   }
 );
 
-// Block user endpoint
+/**
+ * This endpoint is used to block a user from Chill&chat.
+ *
+ * @type {PUT} The type of the endpoint.
+ * @param {string} user The user to block.
+ * @param {boolean} blockStatus Whether the user should be blocked.
+ * @returns {string} Retuns the result in string format.
+ */
+
 app.put(
   "/api/block_user",
   async (req: any, res: any, _next: any): Promise<void> => {
-    // Error variable
     let error: boolean = false;
 
-    // Find and update user
     await user
       .findOneAndUpdate({ $eq: { username: req.body.user } })
       .exec()
       .then((data: AuthSchemaType | null | undefined): void => {
-        // Check conditions
         if (data != null || data != undefined) {
           try {
-            // Change data
             data.blocked = req.body.blockedStatus;
             data.save();
           } catch (err: unknown) {
-            // Throw error
             error = true;
           }
-        } /*Throw error:*/ else res.status(404).send("User not found");
-        if (!error) /*Check conditions:*/ res.status(200).send();
-        // Reset status
+        } else res.status(404).send("User not found");
+        if (!error) res.status(200).send();
         error = false;
       });
   }
 );
 
-// Not found error handling
 const notFound = (_req: any, res: any, _next: any): void => {
-  // Throw error
   res
     .status(404)
     .send(
@@ -258,7 +267,6 @@ const notFound = (_req: any, res: any, _next: any): void => {
 };
 app.use(notFound);
 
-// Listen server on port
 app.listen(port, (): void => {
   console.log(
     `Server Ready and listening on port ${port}.\nPress CTRL + C to stop operation.`
