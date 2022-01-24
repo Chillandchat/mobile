@@ -59,7 +59,7 @@ app.get(
   }
 );
 
-// Update message like count
+// TODO: Update message like count
 //  app.put('/api/update_like_count', (req, res) => {
 //    try {
 //      message.findOneAndUpdate({ id: req.body.id }, { likes: req.body.likes })
