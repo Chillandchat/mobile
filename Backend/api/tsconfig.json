@@ -1,4 +1,3 @@
-// Type script configuration
 {
   "compilerOptions": {
     "target": "ES3",
@@ -7,6 +6,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./build"
+    "outDir": "./build",
+    "removeComments": true
   }
 }

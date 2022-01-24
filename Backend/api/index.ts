@@ -13,7 +13,7 @@ import {
 
 dotenv.config();
 const app: express.Express = express();
-const port: string = String(process.env.PORT) || "8080";
+const port: string = "8080";
 
 mongoose.connect(String(process.env.API_URI));
 

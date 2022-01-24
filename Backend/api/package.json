@@ -1,22 +1,21 @@
 {
   "name": "chill-chat-api",
   "version": "0.0.0",
-  "description": "The api for chill chat",
+  "description": "The api for Chill&chat",
   "main": "./build/index.js",
   "scripts": {
     "start": "echo 'Starting app...' && node ./build/index.js",
     "build": "tsc && echo 'Building and compiling typescript code...\n' && echo 'Done.\n'",
-    "dev": "npm run build && echo 'Running app with nodemon...\n' && nodemon ./build/index.js"
+    "dev": "yarn run build && echo 'Running app with nodemon...\n' && nodemon ./build/index.js"
   },
   "repository": {
     "type": "Github",
     "url": "https://github.com/AlvinC888/Chill-chat"
   },
   "author": "Alvin cheng (Brother and sister software)",
-  "license": "MIT See LICENSE file for more information",
+  "license": "MIT",
   "module": "module",
   "dependencies": {
-    "@types/mongoose": "^5.11.97",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-rate-limit": "^6.1.0",
@@ -26,6 +25,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/mongoose": "^5.11.97",
     "nodemon": "^2.0.15"
   }
 }
