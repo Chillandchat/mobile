@@ -1,23 +1,26 @@
-// Importing packages
 const mongoose = require("mongoose");
 const message = require("./messageSchema.js");
 const dotenv = require("dotenv");
 const io = require("socket.io")(3001, {});
 
-// Setup dotenv
 dotenv.config();
-
-// Db connection
 mongoose.connect(process.env.URI);
 
-// Web socket
 io.on("connection", (socket) => {
-  // Event listener
   socket.on("message", (payload) => {
-    // Emit message
-    io.emit("message", payload);
+    /**
+     * This event will emit a message to all connected listeners on the network.
+     *
+     * @param {string} id The message id.
+     * @param {string} user The message's sender name.
+     * @param {string} content The message's content or what it says.
+     * @param {boolean} verified If the message's sender is verified or not.
+     *
+     * Please put all the following content in the payload like the following:
+     * @example socket.emit("message", {id: "abcdefg123456789", user:"John Smith", content:"Hi there!", verified: true})
+     */
 
-    // Save message
+    io.emit("message", payload);
     try {
       const newMessage = new message({
         id: payload.id,
@@ -27,14 +30,11 @@ io.on("connection", (socket) => {
       });
       newMessage.save().then(() => {});
     } catch (err) {
-      // Handle error
       console.log(err);
     }
   });
 });
 
-// Handle error
 io.on("connect_error", (err) => {
-  // Print to console
   console.log(`connect_error due to ${err.message}`);
 });
