@@ -22,9 +22,9 @@ const limiter: RateLimitRequestHandler = RateLimit({
   max: 5,
 });
 
-app.use(limiter);
 app.use(express.json());
 app.use(cors({}));
+app.use(limiter);
 
 /**
  * This is the home page for the Chill&chat API
