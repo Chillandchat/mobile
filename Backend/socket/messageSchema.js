@@ -6,14 +6,14 @@ const mongoose = require("mongoose");
  * @param {string} id The id of the message.
  * @param {string} message The user that sent the message.
  * @param {string} content The content of the message.
- * @param {boolean} verified Whether the sender of the message is verified.
+ * @param {string} room The room that the message belongs to.
  */
 
 const schema = mongoose.Schema({
   id: String,
   user: String,
   content: String,
-  verified: Boolean,
+  room: String,
 });
 
 module.exports = mongoose.model("message", schema);

@@ -10,6 +10,7 @@ import {
   rateLimit as RateLimit,
   RateLimitRequestHandler,
 } from "express-rate-limit";
+import * as bcrypt from "bcrypt";
 
 dotenv.config();
 const app: express.Express = express();
@@ -45,7 +46,11 @@ app.get("/", (_req: any, res: any, _next: any): void => {
 
 app.get(
   "/api/get-messages",
-  async (_req: any, res: any, _next: any): Promise<void> => {
+  async (req: any, res: any, _next: any): Promise<void> => {
+    if (req.query.key !== String(process.env.KEY)) {
+      res.status(401).send("ERROR: Invalid api key.");
+      return;
+    }
     try {
       await message
         .find()
@@ -79,11 +84,17 @@ app.get(
 app.post(
   "/api/signup",
   async (req: any, res: any, _next: any): Promise<void> => {
+    if (req.query.key !== String(process.env.KEY)) {
+      res.status(401).send("ERROR: Invalid api key.");
+    }
     try {
       const newUser: any = new user({
         id: req.body.id,
         username: req.body.username,
-        password: req.body.password,
+        password: await bcrypt.hash(
+          req.body.password,
+          await bcrypt.genSalt(Number(Math.floor(Math.random() * 64) + 10))
+        ),
         verified: req.body.verified,
         bot: req.body.bot,
         blocked: req.body.blocked,
@@ -106,7 +117,10 @@ app.post(
 
 app.get(
   "/api/get-users",
-  async (_req: any, res: any, _next: any): Promise<void> => {
+  async (req: any, res: any, _next: any): Promise<void> => {
+    if (req.query.key !== String(process.env.KEY)) {
+      res.status(401).send("ERROR: Invalid api key.");
+    }
     try {
       await user
         .find()
@@ -132,20 +146,22 @@ app.get(
 app.post(
   "/api/login",
   async (req: any, res: any, _next: any): Promise<void> => {
+    if (req.query.key !== String(process.env.KEY)) {
+      res.status(401).send("ERROR: Invalid api key.");
+    }
     try {
       await user
         .findOne({ $eq: { username: req.body.user } })
         .exec()
-        .then((data: AuthSchemaType | null | undefined): void => {
-          if (data != null && data != undefined) {
-            if (
-              data.username === req.body.user &&
-              data.password === req.body.password
-            )
-              res.status(200).send("User login success");
-            else res.status(400).send("Invalid password");
-          } else res.status(404).send("User not found");
-        })
+        .then(
+          async (data: AuthSchemaType | null | undefined): Promise<void> => {
+            if (data != null && data != undefined) {
+              if (await bcrypt.compare(data.password, req.body.password))
+                res.status(200).send("User login success");
+              else res.status(400).send("Invalid password");
+            } else res.status(404).send("User not found");
+          }
+        )
         .catch((err: unknown): void => {
           res.status(500).send(`SERVER ERROR: ${err}`);
         });
@@ -166,6 +182,9 @@ app.post(
 app.get(
   "/api/get-user-info",
   async (req: any, res: any, _next: any): Promise<void> => {
+    if (req.query.key !== String(process.env.KEY)) {
+      res.status(401).send("ERROR: Invalid api key.");
+    }
     try {
       await user
         .findOne({ $eq: { username: req.query.user } })
@@ -195,6 +214,10 @@ app.get(
 app.post(
   "/api/report-user",
   async (req: any, res: any, _next: any): Promise<void> => {
+    if (req.query.key !== String(process.env.KEY)) {
+      res.status(401).send("ERROR: Invalid api key.");
+    }
+
     let emailOk: boolean = false;
     let error: string;
 
@@ -238,6 +261,10 @@ app.post(
 app.put(
   "/api/block_user",
   async (req: any, res: any, _next: any): Promise<void> => {
+    if (req.query.key !== String(process.env.KEY)) {
+      res.status(401).send("ERROR: Invalid api key.");
+    }
+
     let error: boolean = false;
 
     await user

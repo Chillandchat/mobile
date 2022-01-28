@@ -31,5 +31,5 @@ export interface MessageSchemaType extends mongoose.Document {
   id: string;
   user: string;
   content: string;
-  verified: boolean;
+  room: string;
 }

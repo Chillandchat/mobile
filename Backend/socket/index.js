@@ -7,14 +7,14 @@ dotenv.config();
 mongoose.connect(process.env.URI);
 
 io.on("connection", (socket) => {
-  socket.on("message", (payload) => {
+  socket.on("message", (payload, room) => {
     /**
      * This event will emit a message to all connected listeners on the network.
      *
      * @param {string} id The message id.
      * @param {string} user The message's sender name.
      * @param {string} content The message's content or what it says.
-     * @param {boolean} verified If the message's sender is verified or not.
+     * @param {string} room The room that the message belongs to.
      *
      * Please put all the following content in the payload like the following:
      * @example socket.emit("message", {id: "abcdefg123456789", user:"John Smith", content:"Hi there!", verified: true})
@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
         id: payload.id,
         user: payload.user,
         content: payload.content,
-        verified: payload.verified,
+        room: room,
       });
       newMessage.save().then(() => {});
     } catch (err) {

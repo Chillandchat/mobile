@@ -10,7 +10,7 @@ const schema: any = new mongoose.Schema({
   id: String,
   user: String,
   content: String,
-  verified: Boolean,
+  room: String,
 });
 
 const message: any = mongoose.model<MessageSchemaType>("message", schema);
