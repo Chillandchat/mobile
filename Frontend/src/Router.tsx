@@ -18,6 +18,7 @@ import Signup from "./screens/Signup";
 import Chat from "./screens/Chat";
 import Error from "./screens/Error";
 import { StackNavigationEventMap } from "@react-navigation/stack/lib/typescript/src/types";
+import Menu from "./screens/Menu";
 
 const Router: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
@@ -70,8 +71,9 @@ const Router: React.FC = () => {
           <NavigatorStack.Navigator initialRouteName="login">
             <NavigatorStack.Screen name="login" component={Login} />
             <NavigatorStack.Screen name="sign-up" component={Signup} />
-            <NavigatorStack.Screen name="chat" component={Chat} />
             <NavigatorStack.Screen name="error" component={Error} />
+            <NavigatorStack.Screen name="chat" component={Chat} />
+            <NavigatorStack.Screen name="menu" component={Menu} />
           </NavigatorStack.Navigator>
         </NavigationContainer>
       </View>
