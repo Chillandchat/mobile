@@ -1,4 +1,3 @@
-#Git ignore uneeded files in repository
 node_modules
 .env
 vars.js
