@@ -17,7 +17,7 @@ io.on("connection", (socket) => {
      * @param {string} room The room that the message belongs to.
      *
      * Please put all the following content in the payload like the following:
-     * @example socket.emit("message", {id: "abcdefg123456789", user:"John Smith", content:"Hi there!", verified: true})
+     * @example socket.emit("message", {id: "abcdefg123456789", user:"John Smith", content:"Hi there!"}, "0")
      */
 
     io.emit("message", payload);
