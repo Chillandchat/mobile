@@ -47,7 +47,9 @@ const Router: React.FC = () => {
     return (
       <expoAppLoading.default
         startAsync={async (): Promise<void> => {
-          await loadFonts();
+          loadFonts().then(() => {
+            setLoading(false);
+          });
         }}
         onFinish={(): void => {
           setLoading(false);
