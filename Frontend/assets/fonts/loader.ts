@@ -10,16 +10,20 @@ import * as font from "expo-font";
  *      - Light
  *
  * @returns {Promise<void>} The type of contents that are returned from the function.
- * @font_license The license can be found in the same directory at: FONT_LICENSE.txt
+ * @licensing The license can be found in the same directory at: FONT_LICENSE.txt
  */
 
 const loadFonts = async (): Promise<void> => {
-  await font.loadAsync({
-    poppinsBold: require("./Poppins-Bold.ttf"),
-    poppins: require("./Poppins-Regular.ttf"),
-    poppinsExtraBold: require("./Poppins-ExtraBold.ttf"),
-    poppinsLight: require("./Poppins-Light.ttf"),
-  });
+  await font
+    .loadAsync({
+      poppinsBold: require("./Poppins-Bold.ttf"),
+      poppins: require("./Poppins-Regular.ttf"),
+      poppinsExtraBold: require("./Poppins-ExtraBold.ttf"),
+      poppinsLight: require("./Poppins-Light.ttf"),
+    })
+    .catch((err: any): void => {
+      throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0015`);
+    });
 };
 
 export default loadFonts;

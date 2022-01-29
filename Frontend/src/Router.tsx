@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert, View, StyleSheet } from "react-native";
 import loadFonts from "../assets/fonts/loader";
-import * as expoAppLoading from "expo-app-loading";
+import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import {
   createStackNavigator,
@@ -23,6 +23,23 @@ import Menu from "./screens/Menu";
 const Router: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
 
+  React.useEffect((): void => {
+    loadFonts()
+      .then((): void => {
+        setLoading(false);
+      })
+      .catch((err: string): void => {
+        setLoading(true);
+        Alert.alert(
+          "Error while loading fonts",
+          "An error occurred while trying to load fonts, try restarting the application or submit a issue report on Chill&chat offical github. \nError code: CC_ERROR_0015"
+        );
+        console.error(
+          "Error: Unable to load fonts. \n    at Router.tsx expoAppLoading.default \n    at loader.ts \n  Error code: CC_ERROR_0015"
+        );
+        console.error(`Expo error message: ${err}`);
+      });
+  }, []);
   const NavigatorStack: TypedNavigator<
     ParamListBase,
     StackNavigationState<ParamListBase>,
@@ -44,25 +61,7 @@ const Router: React.FC = () => {
   });
 
   if (loading) {
-    return (
-      <expoAppLoading.default
-        startAsync={async (): Promise<void> => {
-          await loadFonts();
-        }}
-        onFinish={(): void => {
-          setLoading(false);
-        }}
-        onError={(): void => {
-          Alert.alert(
-            "Error while loading fonts",
-            "An error occurred while trying to load fonts, try restarting the application or submit a issue report on Chill&chat offical github. \nError code: CC_ERROR_0015"
-          );
-          console.error(
-            "Error: Unable to load fonts. \nat Router.tsx expoAppLoading.default \nat loader.ts \nerror code: CC_ERROR_0015"
-          );
-        }}
-      />
-    );
+    return <AppLoading />;
   } else {
     return (
       <View style={style.container}>
