@@ -58,7 +58,7 @@ const Router: React.FC = () => {
             "An error occurred while trying to load fonts, try restarting the application or submit a issue report on Chill&chat offical github. \nError code: CC_ERROR_0015"
           );
           console.error(
-            "Error found while loading fonts \nat Router.tsx expoAppLoading.default \nat loader.ts \nerror code: CC_ERROR_0015"
+            "Error: Unable to load fonts. \nat Router.tsx expoAppLoading.default \nat loader.ts \nerror code: CC_ERROR_0015"
           );
         }}
       />
