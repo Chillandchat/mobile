@@ -3,6 +3,12 @@ import { Alert, View, StyleSheet } from "react-native";
 import loadFonts from "../assets/fonts/loader";
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
+import Login from "@screens/Login";
+import Signup from "@screens/Signup";
+import Chat from "@screens/Chat";
+import Error from "@screens/Error";
+import { StackNavigationEventMap } from "@react-navigation/stack/lib/typescript/src/types";
+import Menu from "@screens/Menu";
 import {
   createStackNavigator,
   StackNavigationOptions,
@@ -13,12 +19,6 @@ import {
   StackNavigationState,
   TypedNavigator,
 } from "@react-navigation/native";
-import Login from "@screens/Login";
-import Signup from "@screens/Signup";
-import Chat from "@screens/Chat";
-import Error from "@screens/Error";
-import { StackNavigationEventMap } from "@react-navigation/stack/lib/typescript/src/types";
-import Menu from "@screens/Menu";
 
 const Router: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
