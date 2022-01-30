@@ -159,7 +159,7 @@ app.post(
               if (await bcrypt.compare(data.password, req.body.password))
                 res.status(200).send("User login success");
               else res.status(400).send("Invalid password");
-            } else res.status(404).send("User not found");
+            } else res.status(400).send("User not found");
           }
         )
         .catch((err: unknown): void => {
