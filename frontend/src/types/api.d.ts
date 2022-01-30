@@ -53,3 +53,37 @@ export interface ApiCombined {
   endpoints: ApiEndpoints;
   apiKey: string;
 }
+
+/**
+ * This is the database schema for the message object in mongoDB database.
+ *
+ * @param {string} id The id of the message.
+ * @param {string} message The user that sent the message.
+ * @param {string} content The content of the message.
+ * @param {boolean} verified Whether the sender of the message is verified.
+ */
+
+export interface AuthType {
+  id: string;
+  username: string;
+  password: string;
+  verified: boolean;
+  bot: boolean;
+  blocked: boolean;
+}
+
+/**
+ * This is the database schema for the message object in mongoDB database.
+ *
+ * @param {string} id The id of the message.
+ * @param {string} message The user that sent the message.
+ * @param {string} content The content of the message.
+ * @param {string} room The room that the message belongs to.
+ */
+
+export interface MessageType {
+  id: string;
+  user: string;
+  content: string;
+  room: string;
+}
