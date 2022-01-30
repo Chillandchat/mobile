@@ -1,7 +1,7 @@
 // @ts-ignore
 import { API_URL, API_KEY } from "@env";
 import axios, { AxiosInstance } from "axios";
-import { ApiEndpoints, ApiCombined } from "../types/api";
+import { ApiEndpoints, ApiCombined } from "@type/api";
 
 export const apiKey: string = String(API_KEY);
 
@@ -27,7 +27,9 @@ const api: ApiCombined = {
 };
 
 if (API_KEY === undefined || API_URL === undefined) {
-    console.error("Error: API key or API url not found in the .env file, please make sure the variable is set and present. \nError code: CC_ERROR_1591")
+  console.error(
+    "Error: API key or API url not found in the .env file, please make sure the variable is set and present. \nError code: CC_ERROR_1591"
+  );
 }
 
 export default api;
