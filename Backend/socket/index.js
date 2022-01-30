@@ -7,7 +7,7 @@ dotenv.config();
 mongoose.connect(process.env.URI);
 
 io.on("connection", (socket) => {
-  socket.on("message", (payload, room) => {
+  socket.on("message", (payload) => {
     /**
      * This event will emit a message to all connected listeners on the network.
      *
@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
         id: payload.id,
         user: payload.user,
         content: payload.content,
-        room: room,
+        room: payload.room,
       });
       newMessage.save().then(() => {});
     } catch (err) {

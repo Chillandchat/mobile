@@ -24,7 +24,7 @@ export interface AuthSchemaType extends mongoose.Document {
  * @param {string} id The id of the message.
  * @param {string} message The user that sent the message.
  * @param {string} content The content of the message.
- * @param {boolean} verified Whether the sender of the message is verified.
+ * @param {string} room The room that sent the message.
  */
 
 export interface MessageSchemaType extends mongoose.Document {
