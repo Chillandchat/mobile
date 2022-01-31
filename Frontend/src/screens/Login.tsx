@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import Button from "../components/Button";
 
-const Login: React.FC<any> = ({ navigation }) => {
-  const style = StyleSheet.create({
+const Login: React.FC = () => {
+  const style: any = StyleSheet.create({
     container: {
       justifyContent: "center",
       alignItems: "center",
@@ -16,11 +17,14 @@ const Login: React.FC<any> = ({ navigation }) => {
     <View style={style.container}>
       <Text style={style.text}>Login</Text>
       <Button
-        onPress={() => {
-          navigation.navigate("chat");
+        onPress={(): void => {
+          //! DUMMY FUNCTION - REMOVE BEFORE PRODUCTION
+          return;
         }}
-        title={"Press me"}
-      ></Button>
+        color={"#00AD98"}
+        textColor={"#ffff"}
+        text={"login"}
+      />
     </View>
   );
 };
