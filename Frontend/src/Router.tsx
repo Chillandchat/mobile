@@ -40,6 +40,7 @@ const Router: React.FC = () => {
         console.error(`Expo error message: ${err}`);
       });
   }, []);
+
   const NavigatorStack: TypedNavigator<
     ParamListBase,
     StackNavigationState<ParamListBase>,
@@ -67,7 +68,10 @@ const Router: React.FC = () => {
       <View style={style.container}>
         <StatusBar style="auto" />
         <NavigationContainer>
-          <NavigatorStack.Navigator initialRouteName="login">
+          <NavigatorStack.Navigator
+            initialRouteName="login"
+            screenOptions={{ headerShown: false }}
+          >
             <NavigatorStack.Screen name="login" component={Login} />
             <NavigatorStack.Screen name="sign-up" component={Signup} />
             <NavigatorStack.Screen name="error" component={Error} />
