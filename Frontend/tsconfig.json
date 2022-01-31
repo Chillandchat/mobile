@@ -1,14 +1,6 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true,
-    "baseUrl": "./",
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@screens/*": ["src/screens/*"],
-      "@type/*": ["src/types/*"],
-      "@scripts/*": ["src/scripts/*"],
-      "@redux/*": ["src/redux/*"]
-    }
+    "strict": true
   }
 }
