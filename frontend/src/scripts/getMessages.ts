@@ -5,7 +5,7 @@ import api from "./api";
 /**
  * This function will return all messages in the database via the api.
  *
- * @returns {Promise<Array<MessageType> | void>} The return type of the function, this function will return all messages is operation was successful.~
+ * @returns {Promise<Array<MessageType> | void>} The return type of the function, this function will return all messages is operation was successful.
  * But if the operation was not successful the function will return undefined(AKA void).
  */
 
