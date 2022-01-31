@@ -27,7 +27,7 @@ const Button: React.FC<Props> = (props: Props) => {
       width: windowDimensions.width / 1.5,
       alignItems: "center",
       justifyContent: "space-around",
-      borderRadius: windowDimensions.width / 30.0,
+      borderRadius: windowDimensions.width / 28.0,
     },
     content: {
       color: props.textColor,
