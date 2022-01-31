@@ -7,7 +7,7 @@
     "icon": "./assets/logo.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "center",
       "backgroundColor": "#E5E5E5"
     },
     "updates": {
