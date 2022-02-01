@@ -26,7 +26,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
   const style: any = StyleSheet.create({
     container: {
       margin: 15,
-      width: windowDimensions.width / 1.4,
+      width: windowDimensions.width / 1.2,
       borderBottomWidth: 2,
       borderTopColor: "transparent",
       borderLeftColor: "transparent",

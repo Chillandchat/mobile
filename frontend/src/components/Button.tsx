@@ -24,10 +24,10 @@ const Button: React.FC<Props> = (props: Props) => {
   const style: any = StyleSheet.create({
     container: {
       backgroundColor: props.color,
-      width: windowDimensions.width / 1.3,
+      width: windowDimensions.width / 1.4,
       alignItems: "center",
       justifyContent: "space-around",
-      borderRadius: windowDimensions.width / 28.0,
+      borderRadius: 12,
     },
     content: {
       color: props.textColor,
