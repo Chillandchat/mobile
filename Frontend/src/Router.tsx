@@ -20,6 +20,11 @@ import Chat from "./screens/Chat";
 import Error from "./screens/Error";
 import Menu from "./screens/Menu";
 
+/**
+ * This is the router component for the application, This component
+ * contains the stack for the navigation system and also loads important data in the application.
+ */
+
 const Router: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
 
