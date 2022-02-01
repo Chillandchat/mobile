@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { MessageType } from "../types/api";
+import { MessageType } from "../types/apiTypes";
 import api from "./api";
 
 /**

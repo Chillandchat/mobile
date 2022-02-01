@@ -1,5 +1,5 @@
 import React from "react";
-import { FormProps as Props } from "../types/props";
+import { FormProps as Props } from "../types/propsType";
 import { Feather } from "@expo/vector-icons";
 import {
   View,
