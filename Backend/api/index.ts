@@ -20,7 +20,7 @@ mongoose.connect(String(process.env.API_URI));
 
 const limiter: RateLimitRequestHandler = RateLimit({
   windowMs: 1 * 60 * 1000,
-  max: 5,
+  max: 500,
 });
 
 app.use(express.json());
@@ -91,10 +91,7 @@ app.post(
       const newUser: any = new user({
         id: req.body.id,
         username: req.body.username,
-        password: await bcrypt.hash(
-          req.body.password,
-          await bcrypt.genSalt(Number(Math.floor(Math.random() * 64) + 10))
-        ),
+        password: await bcrypt.hash(req.body.password, await bcrypt.genSalt()),
         verified: req.body.verified,
         bot: req.body.bot,
         blocked: req.body.blocked,
@@ -151,14 +148,14 @@ app.post(
     }
     try {
       await user
-        .findOne({ $eq: { username: req.body.user } })
+        .findOne({ username: { $eq: req.body.username } })
         .exec()
         .then(
           async (data: AuthSchemaType | null | undefined): Promise<void> => {
             if (data != null && data != undefined) {
-              if (await bcrypt.compare(data.password, req.body.password))
+              if (bcrypt.compare(data.password, req.body.password)) {
                 res.status(200).send("User login success");
-              else res.status(400).send("Invalid password");
+              } else res.status(400).send("Invalid password");
             } else res.status(400).send("User not found");
           }
         )

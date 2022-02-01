@@ -88,18 +88,21 @@ const Login: React.FC<any> = ({ navigation }) => {
       ) : null}
       <Button
         onPress={(): void => {
-          // if (username !== undefined || password !== undefined) {
-          //   login(username, password)
-          //     .then((): void => {
-          //       navigation.navigate("menu");
-          //     })
-          //     .catch((err: any): void => {
-          //       setError(true);
-          //       console.error(err);
-          //     });
-          // } else {
-          //   return;
-          // }
+          if (username !== undefined || password !== undefined) {
+            login(username, password)
+              .then((): void => {
+                navigation.navigate("menu");
+              })
+              .catch((err: any): void => {
+                setError(true);
+                setTimeout(() => {
+                  setError(false);
+                }, 3000);
+                console.error(err);
+              });
+          } else {
+            return;
+          }
           //! REMOVE IN PRODUCTION CODE!
           console.log(username, password);
         }}

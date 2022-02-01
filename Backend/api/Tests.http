@@ -2,15 +2,26 @@ GET http://localhost:3001/api/users/get/all http/1.1
 
 ###
 
-POST http://localhost:8080/api/users/post/create http/1.1
+POST http://localhost:8080/api/login?key=000 http/1.1
+content-type: application/json
+
+{
+"username":"Alvin",
+"password":"8888"
+}
+
+###
+
+POST http://localhost:8080/api/signup?key=000 http/1.1
 content-type: application/json
 
 {
     "id":"123",
-    "username":"admin",
-    "password":"password1234",
+    "username":"Alvin",
+    "password":"8888",
     "blocked":false,
-    "onDeleteList":false
+    "verified":true,
+    "bot": false
 }
 
 ###

@@ -13,16 +13,10 @@ const login = async (username: string, password: string): Promise<void> => {
   try {
     await api.instance
       .post(`${api.endpoints.login}?key=${api.apiKey}`, {
-        user: username,
+        username: username,
         password: password,
       })
-      .then((data: AxiosResponse): void => {
-        if (data.status !== 200) {
-          throw new Error(
-            `Login failed with status code: ${data.status} \n   Error code: CC_ERROR_0318`
-          );
-        }
-      })
+      .then((_data: AxiosResponse): void => {})
       .catch((err: any): void => {
         throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
       });
