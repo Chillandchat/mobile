@@ -24,7 +24,7 @@ const Button: React.FC<Props> = (props: Props) => {
   const style: any = StyleSheet.create({
     container: {
       backgroundColor: props.color,
-      width: windowDimensions.width / 1.5,
+      width: windowDimensions.width / 1.3,
       alignItems: "center",
       justifyContent: "space-around",
       borderRadius: windowDimensions.width / 28.0,
@@ -32,7 +32,7 @@ const Button: React.FC<Props> = (props: Props) => {
     content: {
       color: props.textColor,
       fontFamily: "poppinsExtraBold",
-      padding: 12,
+      padding: 14,
     },
   });
   return (
