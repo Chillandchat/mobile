@@ -100,6 +100,7 @@ const Login: React.FC<any> = ({ navigation }) => {
           // } else {
           //   return;
           // }
+          //! REMOVE IN PRODUCTION CODE!
           console.log(username, password);
         }}
         color={"#00AD98"}
