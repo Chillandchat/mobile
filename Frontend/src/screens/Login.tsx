@@ -17,7 +17,7 @@ import login from "../scripts/login";
  */
 
 const Login: React.FC<any> = ({ navigation }) => {
-  let [error, setError] = React.useState(false);
+  const [error, setError] = React.useState("");
   const windowDimensions: ScaledSize = Dimensions.get("window");
   let username: string;
   let password: string;
@@ -58,7 +58,6 @@ const Login: React.FC<any> = ({ navigation }) => {
       <Text style={style.text}>Login</Text>
       <View style={style.formContainer}>
         <Form
-          title="Username"
           safeEntry={false}
           type="username"
           onTextChange={(text: string): void => {
@@ -66,7 +65,6 @@ const Login: React.FC<any> = ({ navigation }) => {
           }}
         />
         <Form
-          title="Username"
           safeEntry={true}
           type="password"
           onTextChange={(text: string): void => {
@@ -77,15 +75,12 @@ const Login: React.FC<any> = ({ navigation }) => {
           No account?{" "}
           {
             <TouchableOpacity onPress={() => navigation.navigate("sign-up")}>
-              <Text style={style.link}>Signup</Text>
+              <Text style={style.link}>Signup here.</Text>
             </TouchableOpacity>
           }
-          !
         </Text>
       </View>
-      {error ? (
-        <Text style={style.error}>Invalid username or password.</Text>
-      ) : null}
+      <Text style={style.error}>{error}</Text>
       <Button
         onPress={(): void => {
           if (username !== undefined || password !== undefined) {
@@ -94,10 +89,10 @@ const Login: React.FC<any> = ({ navigation }) => {
                 navigation.navigate("menu");
               })
               .catch((err: any): void => {
-                setError(true);
+                setError("Invalid username or password");
                 setTimeout(() => {
-                  setError(false);
-                }, 3000);
+                  setError("");
+                }, 5000);
                 console.error(err);
               });
           } else {
