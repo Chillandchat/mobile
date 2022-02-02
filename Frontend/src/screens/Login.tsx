@@ -83,21 +83,25 @@ const Login: React.FC<any> = ({ navigation }) => {
       <Text style={style.error}>{error}</Text>
       <Button
         onPress={(): void => {
-          if (username !== undefined || password !== undefined) {
-            login(username, password)
-              .then((): void => {
-                navigation.navigate("menu");
-              })
-              .catch((err: any): void => {
-                setError("Invalid username or password");
-                setTimeout(() => {
-                  setError("");
-                }, 5000);
-                console.error(err);
-              });
-          } else {
+          if (username === undefined || password === undefined) {
+            setError("Invalid username or password");
+            setTimeout(() => {
+              setError("");
+            }, 5000);
             return;
           }
+
+          login(username, password)
+            .then((): void => {
+              navigation.navigate("menu");
+            })
+            .catch((err: any): void => {
+              setError("Invalid username or password");
+              setTimeout(() => {
+                setError("");
+              }, 5000);
+              console.error(err);
+            });
           //! REMOVE IN PRODUCTION CODE!
           console.log(username, password);
         }}
