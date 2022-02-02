@@ -2,8 +2,16 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Form from "../components/LoginForm";
 import Button from "../components/Button";
+import getUser from "../scripts/getUser";
+import { AuthType } from "../types/apiTypes";
+import signup from "../scripts/signup";
 
-const Signup: React.FC = () => {
+/**
+ * This is the signup component for the application, this component is responsible for
+ * rendering the signup components and calling signup functions.
+ */
+
+const Signup: React.FC<any> = ({ navigation }) => {
   const [error, setError] = React.useState("");
 
   let username: string;
@@ -24,7 +32,16 @@ const Signup: React.FC = () => {
       paddingLeft: "09%",
     },
     formContainer: {
-      marginBottom: 40,
+      marginBottom: 25,
+    },
+    error: {
+      color: "red",
+      marginTop: -20,
+      marginBottom: 20,
+      fontFamily: "poppinsLight",
+    },
+    backButton: {
+      marginTop: 10,
     },
   });
   return (
@@ -53,28 +70,71 @@ const Signup: React.FC = () => {
           }}
         />
       </View>
+      <Text style={style.error}>{error}</Text>
       <Button
         color={"#00AD98"}
         textColor={"#ffff"}
         text={"sign up"}
         onPress={(): void => {
+          let userDoesNotExist: boolean = false;
+
           if (password?.length < 5) {
-            setError("Password must be at least 5 characters long.");
+            setError("Password must be at least 5 letters long.");
             setTimeout(() => {
               setError("");
             }, 5000);
             return;
           }
+
           if (password !== confirmPassword) {
-            setError("Password and confirm password does not match.");
+            setError("Passwords does not match.");
             setTimeout(() => {
               setError("");
             }, 5000);
             return;
           }
-          return;
+
+          if (password === undefined || username === undefined) {
+            setError("Unable to create account.");
+            setTimeout(() => {
+              setError("");
+            }, 5000);
+            return;
+          }
+
+          getUser(username)
+            .then((_data: AuthType | void): void => {
+              userDoesNotExist = false;
+            })
+            .catch((_err: any): void => {
+              userDoesNotExist = true;
+            });
+
+          userDoesNotExist
+            ? signup(username, password)
+                .then((): void => {
+                  navigation.navigate("login");
+                })
+                .catch((err: any): void => {
+                  setError("Signup error.");
+                  setTimeout(() => {
+                    setError("");
+                  }, 5000);
+                  console.error(err);
+                })
+            : null;
         }}
       />
+      <View style={style.backButton}>
+        <Button
+          color={"transparent"}
+          onPress={() => {
+            navigation.navigate("login");
+          }}
+          textColor={"black"}
+          text={"back"}
+        />
+      </View>
     </View>
   );
 };
