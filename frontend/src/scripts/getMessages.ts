@@ -10,8 +10,9 @@ import api from "./api";
  */
 
 const getMessages = async (): Promise<Array<MessageType> | void> => {
+  let messages: Array<MessageType> | undefined = undefined;
   try {
-    api.instance
+    await api.instance
       .get(`${api.endpoints.getMessages}?key=${api.apiKey}`)
       .then((data: AxiosResponse): void => {
         if (data.status !== 200) {
@@ -19,7 +20,7 @@ const getMessages = async (): Promise<Array<MessageType> | void> => {
             `Request failed with status code: ${data.status} \n   Error code: CC_ERROR_0318`
           );
         } else {
-          return data.data;
+          messages = data.data;
         }
       })
       .catch((err: any): void => {
@@ -28,6 +29,7 @@ const getMessages = async (): Promise<Array<MessageType> | void> => {
   } catch (err: any) {
     throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0022`);
   }
+  if (messages !== undefined) return messages;
 };
 
 export default getMessages;

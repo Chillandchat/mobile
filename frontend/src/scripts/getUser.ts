@@ -10,10 +10,10 @@ import { AuthType } from "../types/apiTypes";
  * @see {AuthType} for more information about return type.
  */
 
-const getUser = async (user: string): Promise<AuthType | any> => {
-  let userData: AuthType;
+const getUser = async (user: string): Promise<AuthType | void> => {
+  let userData: AuthType | undefined = undefined;
   try {
-    api.instance
+    await api.instance
       .get(`${api.endpoints.getUserInfo}?key=${api.apiKey}&user=${user}`)
       .then((data: AxiosResponse): void => {
         userData = data.data;
@@ -24,6 +24,7 @@ const getUser = async (user: string): Promise<AuthType | any> => {
   } catch (err: any) {
     throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0022`);
   }
+  if (userData !== undefined) return userData;
 };
 
 export default getUser;
