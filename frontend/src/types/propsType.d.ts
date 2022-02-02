@@ -18,10 +18,8 @@ export interface ButtonProps {
  */
 
 export interface FormProps {
-  title: string;
   safeEntry: boolean;
   type: loginFormTypeSelector;
-  value?: any;
   onTextChange?: (text: string) => void;
 }
 
@@ -29,4 +27,4 @@ export interface FormProps {
  * This is the type ristrictions for the form component type prop.
  */
 
-type loginFormTypeSelector = "username" | "password";
+type loginFormTypeSelector = "username" | "password" | "confirm-password";

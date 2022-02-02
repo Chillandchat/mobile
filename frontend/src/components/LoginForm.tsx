@@ -51,7 +51,9 @@ const LoginForm: React.FC<Props> = (props: Props) => {
     <View style={style.container}>
       <View style={style.headerContainer}>
         <Text style={style.text}>
-          {props.type === "username" ? "Username" : "Password"}
+          {props.type !== "username"
+            ? props.type === "password" ? "Password" : "Confirm Password"
+            : "Username"}
         </Text>
         <Feather
           name={props.type === "username" ? "user" : "key"}
@@ -61,7 +63,6 @@ const LoginForm: React.FC<Props> = (props: Props) => {
       </View>
       <TextInput
         placeholder=""
-        value={props.value}
         onChangeText={props.onTextChange}
         secureTextEntry={props.safeEntry}
         style={style.input}
