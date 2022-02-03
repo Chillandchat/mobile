@@ -1,5 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
+  Keyboard,
+} from "react-native";
 import Button from "../components/Button";
 import Form from "../components/LoginForm";
 import login from "../scripts/login";
@@ -46,60 +54,63 @@ const Login: React.FC<any> = ({ navigation }) => {
     },
   });
   return (
-    <View style={style.container}>
-      <Text style={style.text}>Login</Text>
-      <View style={style.formContainer}>
-        <Form
-          safeEntry={false}
-          type="username"
-          onTextChange={(text: string): void => {
-            username = text;
-          }}
-        />
-        <Form
-          safeEntry={true}
-          type="password"
-          onTextChange={(text: string): void => {
-            password = text;
-          }}
-        />
-        <Text style={style.signup}>
-          No account?{" "}
-          {
-            <TouchableOpacity onPress={() => navigation.navigate("sign-up")}>
-              <Text style={style.link}>Signup here.</Text>
-            </TouchableOpacity>
-          }
-        </Text>
-      </View>
-      <Text style={style.error}>{error}</Text>
-      <Button
-        onPress={(): void => {
-          if (username === undefined || password === undefined) {
-            setError("Invalid username or password");
-            setTimeout(() => {
-              setError("");
-            }, 5000);
-            return;
-          }
-
-          login(username, password)
-            .then((): void => {
-              navigation.navigate("menu");
-            })
-            .catch((err: any): void => {
+    <KeyboardAvoidingView style={{ flex: 1 }} enabled behavior={"padding"}>
+      <ScrollView contentContainerStyle={style.container}>
+        <Text style={style.text}>Login</Text>
+        <View style={style.formContainer}>
+          <Form
+            safeEntry={false}
+            type="username"
+            onTextChange={(text: string): void => {
+              username = text;
+            }}
+          />
+          <Form
+            safeEntry={true}
+            type="password"
+            onTextChange={(text: string): void => {
+              password = text;
+            }}
+          />
+          <Text style={style.signup}>
+            No account?{" "}
+            {
+              <TouchableOpacity onPress={() => navigation.navigate("sign-up")}>
+                <Text style={style.link}>Signup here.</Text>
+              </TouchableOpacity>
+            }
+          </Text>
+        </View>
+        <Text style={style.error}>{error}</Text>
+        <Button
+          onPress={(): void => {
+            if (username === undefined || password === undefined) {
               setError("Invalid username or password");
               setTimeout(() => {
                 setError("");
               }, 5000);
-              console.error(err);
-            });
-        }}
-        color={"#00AD98"}
-        textColor={"#ffff"}
-        text={"login"}
-      />
-    </View>
+              return;
+            }
+
+            login(username, password)
+              .then((): void => {
+                Keyboard.dismiss();
+                navigation.navigate("menu");
+              })
+              .catch((err: any): void => {
+                setError("Invalid username or password");
+                setTimeout(() => {
+                  setError("");
+                }, 5000);
+                console.error(err);
+              });
+          }}
+          color={"#00AD98"}
+          textColor={"#ffff"}
+          text={"login"}
+        />
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
