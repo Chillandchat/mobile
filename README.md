@@ -5,10 +5,6 @@
 
 Welcome to the official Chill&chat repository, this repository contains all the source files for the Chill&chat project made by Alvin Cheng / Brianna Cheng(Brother sister software).
 
-Website link:
-
-https://chill-and-chat-web.web.app/
-
 ## License
 
 This repository is licensed under the MIT License. Please see the [LICENSE](https://github.com/Chill-and-chat/Chill-chat/blob/master/LICENSE) file for license information.
