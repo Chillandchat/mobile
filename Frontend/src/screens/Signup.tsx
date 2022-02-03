@@ -76,8 +76,6 @@ const Signup: React.FC<any> = ({ navigation }) => {
         textColor={"#ffff"}
         text={"sign up"}
         onPress={(): void => {
-          let userDoesNotExist: boolean = false;
-
           if (password?.length < 5) {
             setError("Password must be at least 5 letters long.");
             setTimeout(() => {
@@ -102,27 +100,25 @@ const Signup: React.FC<any> = ({ navigation }) => {
             return;
           }
 
-          getUser(username)
-            .then((_data: AuthType | void): void => {
-              userDoesNotExist = false;
-            })
-            .catch((_err: any): void => {
-              userDoesNotExist = true;
-            });
+          getUser(username).then((_data: AuthType | void): void => {
+            setError("Username taken, try another username.");
+            setTimeout(() => {
+              setError("");
+            }, 5000);
+            return;
+          });
 
-          userDoesNotExist
-            ? signup(username, password)
-                .then((): void => {
-                  navigation.navigate("login");
-                })
-                .catch((err: any): void => {
-                  setError("Signup error.");
-                  setTimeout(() => {
-                    setError("");
-                  }, 5000);
-                  console.error(err);
-                })
-            : null;
+          signup(username, password)
+            .then((): void => {
+              navigation.navigate("login");
+            })
+            .catch((err: any): void => {
+              setError("Signup error.");
+              setTimeout(() => {
+                setError("");
+              }, 5000);
+              console.error(err);
+            });
         }}
       />
       <View style={style.backButton}>

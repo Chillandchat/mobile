@@ -1,4 +1,7 @@
+//! "import "react-native-get-random-values";" MUST BE FIRST!!
+import "react-native-get-random-values";
 import { AxiosResponse } from "axios";
+import { v4 as uuid } from "uuid";
 import api from "./api";
 
 /**
@@ -13,7 +16,7 @@ const signup = async (username: string, password: string): Promise<void> => {
   try {
     await api.instance
       .post(`${api.endpoints.signup}?key=${api.apiKey}`, {
-        id: "", // TODO: Install uuid v4 npm package and replace """" with "uuid()".
+        id: uuid(),
         username: username,
         password: password,
         verified: false,

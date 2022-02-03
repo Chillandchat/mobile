@@ -18,7 +18,6 @@ import login from "../scripts/login";
 
 const Login: React.FC<any> = ({ navigation }) => {
   const [error, setError] = React.useState("");
-  const windowDimensions: ScaledSize = Dimensions.get("window");
   let username: string;
   let password: string;
 
@@ -102,8 +101,6 @@ const Login: React.FC<any> = ({ navigation }) => {
               }, 5000);
               console.error(err);
             });
-          //! REMOVE IN PRODUCTION CODE!
-          console.log(username, password);
         }}
         color={"#00AD98"}
         textColor={"#ffff"}
