@@ -34,7 +34,6 @@ const Router: React.FC = () => {
         setLoading(false);
       })
       .catch((err: string): void => {
-        setLoading(true);
         Alert.alert(
           "Error while loading fonts",
           "An error occurred while trying to load fonts, try restarting the application or submit a issue report on Chill&chat offical github. \nError code: CC_ERROR_0015"
@@ -80,8 +79,8 @@ const Router: React.FC = () => {
             <NavigatorStack.Screen name="login" component={Login} />
             <NavigatorStack.Screen name="sign-up" component={Signup} />
             <NavigatorStack.Screen name="error" component={Error} />
-            <NavigatorStack.Screen name="chat" component={Chat} />
             <NavigatorStack.Screen name="menu" component={Menu} />
+            <NavigatorStack.Screen name="chat" component={Chat} />
           </NavigatorStack.Navigator>
         </NavigationContainer>
       </View>
