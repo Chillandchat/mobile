@@ -1,8 +1,8 @@
-![](https://github.com/Chill-and-chat/Chill-and-chat/blob/react-native-migration/logo.svg)
+   ![](https://github.com/Chill-and-chat/Chill-and-chat/blob/react-native-migration/logo.svg)
 # Chill&chat repository 
 Chill&chat is a free and open source mobile chat application that can chat send messages instantly to anyone with an account.
 
-![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat)   ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat)
+![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/issues-pr-closed/chill-and-chat/chill-chat) ![](https://img.shields.io/github/issues-pr-raw/chill-and-chat/chill-chat)
 
 # License
 
@@ -27,12 +27,14 @@ Before you start please make sure that you have node v16 or later installed, and
 
 
 - First run the command below:
+
   npm:
   ``` npm install  # This will install required packages. ```
   
   yarn:
   ``` yarn install  # This will install required packages. ```
 - Then run these commands:
+
   npm:
   ``` npm build && npm start # This will build and start the api ```
   
