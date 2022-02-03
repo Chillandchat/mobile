@@ -1,8 +1,9 @@
    ![](https://github.com/Chill-and-chat/Chill-and-chat/blob/react-native-migration/logo.svg)
 # Chill&chat repository 
-Chill&chat is a free and open source mobile chat application that can chat send messages instantly to anyone with an account.
-
 ![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/issues-pr-closed/chill-and-chat/chill-chat) ![](https://img.shields.io/github/issues-pr-raw/chill-and-chat/chill-chat)
+
+
+Chill&chat is a free and open source mobile chat application that can chat send messages instantly to anyone with an account.
 
 # License
 
