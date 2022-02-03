@@ -20,19 +20,24 @@ I look forward to seeing your contributions to Chill&chat!
 If you have found any bug(s) please post them in the [Issues](https://github.com/Chill-and-chat/Chill-chat/issues) tab in this repository. Please explain the problem and post any error messages or codes, also include a list of instructions to reproduce this bug or problem.
 
 # API
-I made a custom API with node for Chill&chat and you can download it in the backend folder.
+I made a custom API with node for Chill&chat and you can download it in the backend folder, please follow the instructions below to run the api sevrer.
+
+## To run the api
+Before you start please make sure that you have node v16 or later installed, and the .env file filled, optionally you can have yarn installed for a better user expreience.
 
 
-## Run the api
 - First run the command below:
   npm:
   ``` npm install  # This will install required packages. ```
+  
   yarn:
   ``` yarn install  # This will install required packages. ```
 - Then run these commands:
   npm:
   ``` npm build && npm start # This will build and start the api ```
+  
   yarn:
     ``` yarn build && yarn start # This will build and start the api ```
 
+#
 This project is created by Alvin Cheng and Brianna Cheng(Brother sister software) 2021-2022.
