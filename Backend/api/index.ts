@@ -184,7 +184,7 @@ app.get(
     }
     try {
       await user
-        .findOne({ $eq: { username: req.query.user } })
+        .findOne({ username: { $eq: req.query.user } })
         .exec()
         .then((data: AuthSchemaType | null | undefined): void => {
           if (data != null || data != undefined) res.status(200).send(data);
