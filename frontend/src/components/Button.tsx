@@ -1,4 +1,4 @@
-import { ButtonProps as Props } from "../types/propsType";
+import { ButtonProps as Props } from ".";
 import React from "react";
 import {
   Text,

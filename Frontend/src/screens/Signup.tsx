@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import Form from "../components/LoginForm";
 import Button from "../components/Button";
 import getUser from "../scripts/getUser";
-import { AuthType } from "../types/apiTypes";
+import { AuthType } from "../scripts";
 import signup from "../scripts/signup";
 
 /**
