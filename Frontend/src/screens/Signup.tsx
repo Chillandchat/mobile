@@ -36,7 +36,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
       fontSize: 35,
       marginBottom: 30,
       alignSelf: "flex-start",
-      paddingLeft: "09%",
+      margin: "03%",
     },
     formContainer: {
       marginBottom: 25,
@@ -54,8 +54,8 @@ const Signup: React.FC<any> = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior={"padding"} style={{ flex: 1 }} enabled>
       <ScrollView contentContainerStyle={style.container}>
-        <Text style={style.text}>Signup</Text>
         <View style={style.formContainer}>
+          <Text style={style.text}>Signup</Text>
           <Form
             safeEntry={false}
             type="username"
