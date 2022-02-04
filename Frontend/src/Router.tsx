@@ -72,15 +72,38 @@ const Router: React.FC = () => {
       <View style={style.container}>
         <StatusBar style="auto" />
         <NavigationContainer>
-          <NavigatorStack.Navigator
-            initialRouteName="login"
-            screenOptions={{ headerShown: false }}
-          >
-            <NavigatorStack.Screen name="login" component={Login} />
-            <NavigatorStack.Screen name="sign-up" component={Signup} />
-            <NavigatorStack.Screen name="error" component={Error} />
-            <NavigatorStack.Screen name="menu" component={Menu} />
-            <NavigatorStack.Screen name="chat" component={Chat} />
+          <NavigatorStack.Navigator initialRouteName="login">
+            <NavigatorStack.Screen
+              name="login"
+              component={Login}
+              options={{ headerShown: false }}
+            />
+            <NavigatorStack.Screen
+              name="sign-up"
+              component={Signup}
+              options={{ headerShown: false }}
+            />
+            <NavigatorStack.Screen
+              name="menu"
+              component={Menu}
+              options={{ headerShown: false }}
+            />
+            <NavigatorStack.Screen
+              name="chat"
+              component={Chat}
+              options={{ headerShown: false }}
+            />
+            <NavigatorStack.Screen
+              name="error"
+              component={Error}
+              options={{
+                headerTitle: "Unexpected Error",
+                headerStyle: {
+                  backgroundColor: "orange",
+                },
+                headerTintColor: "#fff",
+              }}
+            />
           </NavigatorStack.Navigator>
         </NavigationContainer>
       </View>
