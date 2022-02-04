@@ -1,4 +1,5 @@
-   ![](https://github.com/Chill-and-chat/Chill-and-chat/blob/react-native-migration/logo.svg)
+<p align="center"how><img src="https://github.com/Chill-and-chat/Chill-and-chat/blob/react-native-migration/logo.svg/" style="width:200px;"/></p>
+
 # Chill&chat repository 
 ![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/issues-pr-closed/chill-and-chat/chill-chat) ![](https://img.shields.io/github/issues-pr-raw/chill-and-chat/chill-chat)
 
