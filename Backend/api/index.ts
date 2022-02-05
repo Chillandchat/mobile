@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
-import { AuthSchemaType, MessageSchemaType } from "./type";
+import { AuthSchemaType, MessageSchemaType } from "./index.d";
 import {
   rateLimit as RateLimit,
   RateLimitRequestHandler,
@@ -63,15 +63,6 @@ app.get(
     }
   }
 );
-
-// TODO: Update message like count
-//  app.put('/api/update_like_count', (req, res) => {
-//    try {
-//      message.findOneAndUpdate({ id: req.body.id }, { likes: req.body.likes })
-//    } catch (err) {
-//      res.status(500).send(`SERVER ERROR: ${err}`)
-//    }
-//  })
 
 /**
  * This is the signup endpoint this endpoint will create a new user in the data base when called.
@@ -202,6 +193,7 @@ app.get(
 /**
  * This endpoint will report a user via email once called.
  *
+ * @deprecated
  * @type {POST} The type of the endpoint.
  * @param {string} user The user that will be reported.
  * @param {string} email The user that reported the user.
@@ -249,6 +241,7 @@ app.post(
 /**
  * This endpoint is used to block a user from Chill&chat.
  *
+ * @deprecated
  * @type {PUT} The type of the endpoint.
  * @param {string} user The user to block.
  * @param {boolean} blockStatus Whether the user should be blocked.

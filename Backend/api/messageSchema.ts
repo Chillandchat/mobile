@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import { MessageSchemaType } from "./type";
+import { MessageSchemaType } from "./index.d";
 
 /**
  * This is the message schema for the database, please see './type.d.ts' for more information.
- * @type {MessageSchemaType}
+ * @see {MessageSchemaType}
  */
 
 const schema: any = new mongoose.Schema({

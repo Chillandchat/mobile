@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import { AuthSchemaType } from "./type";
+import { AuthSchemaType } from "./index.d";
 
 /**
  * This is the user schema for the database, please see './type.d.ts' for more information.
- * @type {AuthSchemaType}
+ * @see {AuthSchemaType}
  */
 
 const schema: any = new mongoose.Schema({
