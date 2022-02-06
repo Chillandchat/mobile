@@ -28,6 +28,7 @@ const Button: React.FC<Props> = (props: Props) => {
       alignItems: "center",
       justifyContent: "space-around",
       borderRadius: 12,
+      opacity: props.disabled ? 0.3 : 1,
     },
     content: {
       color: props.textColor,
@@ -36,7 +37,16 @@ const Button: React.FC<Props> = (props: Props) => {
     },
   });
   return (
-    <TouchableOpacity onPress={props.onPress} style={style.container}>
+    <TouchableOpacity
+      onPress={
+        props.disabled
+          ? (): void => {
+              return;
+            }
+          : props.onPress
+      }
+      style={style.container}
+    >
       <Text style={style.content}>
         {props.text?.toUpperCase() || "UNTITTLED BUTTON"}
       </Text>

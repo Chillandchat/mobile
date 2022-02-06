@@ -9,6 +9,7 @@ export interface ButtonProps {
   text?: string;
   onPress: () => void;
   textColor: string;
+  disabled?: boolean;
 }
 
 /**
