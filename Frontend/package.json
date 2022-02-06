@@ -9,6 +9,10 @@
     "web": "expo start --web",
     "eject": "expo eject"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chill-and-chat/Chill-and-chat.git"
+  },
   "dependencies": {
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "^6.0.11",
