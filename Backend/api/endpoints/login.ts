@@ -1,6 +1,7 @@
 import { AuthSchemaType } from "../index.d";
 import user from "../schema/authSchema";
 import * as bcrypt from "bcrypt";
+import { NextFunction, Request, Response } from "express";
 
 /**
  * This endpoint is used to login a user once called.
@@ -11,29 +12,31 @@ import * as bcrypt from "bcrypt";
  * @returns {string} Returns the result of the login in a string format.
  */
 
-const login = async (req: any, res: any, _next: any): Promise<void> => {
-    if (req.query.key !== String(process.env.KEY)) {
-      res.status(401).send("ERROR: Invalid api key.");
-    }
-    try {
-      await user
-        .findOne({ username: { $eq: req.body.username } })
-        .exec()
-        .then(
-          async (data: AuthSchemaType | null | undefined): Promise<void> => {
-            if (data != null && data != undefined) {
-              if (bcrypt.compare(data.password, req.body.password)) {
-                res.status(200).send("User login success");
-              } else res.status(400).send("Invalid password");
-            } else res.status(400).send("User not found");
-          }
-        )
-        .catch((err: unknown): void => {
-          res.status(500).send(`SERVER ERROR: ${err}`);
-        });
-    } catch (err: unknown) {
-      res.status(500).send(`SERVER ERROR: ${err}`);
-    }
+const login = async (
+  req: Request,
+  res: Response,
+  _next: NextFunction
+): Promise<void> => {
+  if (req.query.key !== String(process.env.KEY)) {
+    res.status(401).send("ERROR: Invalid api key.");
   }
+  try {
+    await user
+      .findOne({ username: { $eq: req.body.username } })
+      .exec()
+      .then(async (data: AuthSchemaType | null | undefined): Promise<void> => {
+        if (data != null && data != undefined) {
+          if (bcrypt.compare(data.password, req.body.password)) {
+            res.status(200).send("User login success");
+          } else res.status(400).send("Invalid password");
+        } else res.status(400).send("User not found");
+      })
+      .catch((err: unknown): void => {
+        res.status(500).send(`SERVER ERROR: ${err}`);
+      });
+  } catch (err: unknown) {
+    res.status(500).send(`SERVER ERROR: ${err}`);
+  }
+};
 
-  export default login;
+export default login;

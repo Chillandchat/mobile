@@ -1,16 +1,21 @@
+import { NextFunction, Request, Response } from "express";
 import { nodemailer } from "nodemailer";
 
 /**
  * This endpoint will report a user via email once called.
  *
- * @deprecated This endpoint is no longer used. 
+ * @deprecated This endpoint is no longer used.
  * @type {POST} This is a post typed endpoint.
  * @param {string} user The user that will be reported.
  * @param {string} email The user that reported the user.
  * @returns {string} Returns the result in a string format.
  */
 
-const reportUser = async (req: any, res: any, _next: any): Promise<void> => {
+const reportUser = async (
+  req: Request,
+  res: Response,
+  _next: NextFunction
+): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
     res.status(401).send("ERROR: Invalid api key.");
   }

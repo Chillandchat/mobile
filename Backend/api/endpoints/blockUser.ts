@@ -1,3 +1,4 @@
+import { NextFunction, Request, Response } from "express";
 import { AuthSchemaType } from "../index.d";
 import user from "../schema/authSchema";
 
@@ -11,7 +12,11 @@ import user from "../schema/authSchema";
  * @returns {string} Retuns the result in string format.
  */
 
-const blockUser = async (req: any, res: any, _next: any): Promise<void> => {
+const blockUser = async (
+  req: Request,
+  res: Response,
+  _next: NextFunction
+): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
     res.status(401).send("ERROR: Invalid api key.");
   }

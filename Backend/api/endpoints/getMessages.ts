@@ -1,3 +1,4 @@
+import { NextFunction, Request, Response } from "express";
 import { MessageSchemaType } from "../index.d";
 import message from "../schema/messageSchema";
 
@@ -8,7 +9,11 @@ import message from "../schema/messageSchema";
  * @returns {Array<MessageSchemaType>} Returns a array of messages, check './type.d.ts' for more information.
  */
 
-const getMessages = async (req: any, res: any, _next: any): Promise<void> => {
+const getMessages = async (
+  req: Request,
+  res: Response,
+  _next: NextFunction
+): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
     res.status(401).send("ERROR: Invalid api key.");
     return;
@@ -17,8 +22,8 @@ const getMessages = async (req: any, res: any, _next: any): Promise<void> => {
     await message
       .find()
       .exec()
-      .then((data: Array<MessageSchemaType>): void =>
-        res.status(200).send(data)
+      .then(
+        (data: Array<MessageSchemaType>): Response => res.status(200).send(data)
       );
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
