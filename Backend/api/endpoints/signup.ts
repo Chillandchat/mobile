@@ -1,6 +1,6 @@
 import * as bcrypt from "bcrypt"
 import { AuthSchemaType } from "../index.d";
-import user from "../authSchema";
+import user from "../schema/authSchema";
 
 /**
  * This is the signup endpoint this endpoint will create a new user in the data base when called.

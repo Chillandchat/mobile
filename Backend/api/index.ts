@@ -15,7 +15,7 @@ dotenv.config();
 const app: express.Express = express();
 const PORT: string = process.env.PORT || "8080";
 
-mongoose.connect(String(process.env.DATA_URI));
+mongoose.connect(String(process.env.DATABASE_URI));
 
 app.use(express.json());
 app.use(cors({}));

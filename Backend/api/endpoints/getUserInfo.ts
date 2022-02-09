@@ -1,5 +1,5 @@
 import { AuthSchemaType } from "../index.d";
-import user from "../authSchema";
+import user from "../schema/authSchema";
 
 /**
  * This endpoint will return the user information from the server once called.

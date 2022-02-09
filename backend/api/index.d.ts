@@ -36,7 +36,7 @@ export interface MessageSchemaType extends mongoose.Document {
 
 /**
  * This is the database schema for the message room object in mongoDB database.
- * 
+ *
  * @param {string} id The id of the message room.
  * @param {string} name The name of the message room.
  * @param {string} users The users in the message room.
@@ -46,4 +46,5 @@ export interface RoomSchemaType extends mongoose.Document {
   id: string;
   name: string;
   users: Array<string>;
+  passcode: string;
 }

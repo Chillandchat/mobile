@@ -1,5 +1,5 @@
 import { AuthSchemaType } from "../index.d";
-import user from "../authSchema";
+import user from "../schema/authSchema";
 
 /**
  * This is the get users endpoint, this endpoint will return all users once called.

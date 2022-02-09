@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { AuthSchemaType } from "./index.d";
+import { AuthSchemaType } from "../index.d";
 
 /**
  * This is the user schema for the database, please see './type.d.ts' for more information.
@@ -15,6 +15,9 @@ const schema: any = new mongoose.Schema({
   blocked: Boolean,
 });
 
-const user: any = mongoose.model<AuthSchemaType>("user", schema);
+const user: mongoose.Model<any> = mongoose.model<AuthSchemaType>(
+  "user",
+  schema
+);
 
 export default user;

@@ -1,5 +1,5 @@
 import { AuthSchemaType } from "../index.d";
-import user from "../authSchema";
+import user from "../schema/authSchema";
 
 /**
  * This endpoint is used to block a user from Chill&chat.

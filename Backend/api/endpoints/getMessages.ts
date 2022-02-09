@@ -1,5 +1,5 @@
 import { MessageSchemaType } from "../index.d";
-import message from "../messageSchema";
+import message from "../schema/messageSchema";
 
 /**
  * This is the get message endpoint, this endpoint is used to get messages in the database.

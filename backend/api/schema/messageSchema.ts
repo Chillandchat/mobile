@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { MessageSchemaType } from "./index.d";
+import { MessageSchemaType } from "../index.d";
 
 /**
  * This is the message schema for the database, please see './type.d.ts' for more information.
@@ -13,6 +13,9 @@ const schema: any = new mongoose.Schema({
   room: String,
 });
 
-const message: any = mongoose.model<MessageSchemaType>("message", schema);
+const message: mongoose.Model<any> = mongoose.model<MessageSchemaType>(
+  "message",
+  schema
+);
 
 export default message;
