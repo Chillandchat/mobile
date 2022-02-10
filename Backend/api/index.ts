@@ -10,6 +10,7 @@ import login from "./endpoints/login";
 import getUserInfo from "./endpoints/getUserInfo";
 import reportUser from "./endpoints/reportUser";
 import blockUser from "./endpoints/blockUser";
+import getAllRooms from "./endpoints/getAllRooms";
 
 dotenv.config();
 const app: express.Express = express();
@@ -26,10 +27,11 @@ app.post("/api/login", login);
 app.get("/api/get-messages", getMessages);
 app.get("/api/get-users", getUsers);
 app.get("/api/get-user-info", getUserInfo);
+app.get("/api/get-rooms", getAllRooms);
 
 // DERECATED:
-app.post("/api/report-user", reportUser);
-app.put("/api/block_user", blockUser);
+app.post("/derecated/report-user", reportUser);
+app.put("/deprecated/block_user", blockUser);
 
 const notFound = (_req: any, res: any, _next: any): void => {
   res
