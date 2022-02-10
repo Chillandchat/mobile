@@ -12,12 +12,12 @@ io.on("connection", (socket) => {
      * This event will emit a message to all connected listeners on the network.
      *
      * @param {string} id The message id.
-     * @param {string} user The message's sender name.
+     * @param {string} user The message's sender id.
      * @param {string} content The message's content or what it says.
      * @param {string} room The room that the message belongs to.
      *
      * Please put all the following content in the payload like the following:
-     * @example socket.emit("message", {id: "abcdefg123456789", user:"John Smith", content:"Hi there!"}, "0")
+     * @example socket.emit("message", {id: "abcdefg123456789", user:"abcd138ef", content:"Hi there!"}, "0")
      */
 
     io.emit("message", payload);
