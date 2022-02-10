@@ -20,19 +20,17 @@ const signup = async (
     res.status(401).send("ERROR: Invalid api key.");
   }
   try {
-    await user
-      .findOne({ username: { $eq: req.body.username } })
-      .exec()
-      .then(async (data: AuthSchemaType | null | undefined): Promise<void> => {
-        if (data != null && data != undefined) {
-          if (bcrypt.compare(data.password, req.body.password)) {
-            res.status(200).send("User login success");
-          } else res.status(400).send("Invalid password");
-        } else res.status(400).send("User not found");
-      })
-      .catch((err: unknown): void => {
-        res.status(500).send(`SERVER ERROR: ${err}`);
-      });
+    const newUser: any = new user({
+      id: req.body.id,
+      username: req.body.username,
+      password: await bcrypt.hash(req.body.password, await bcrypt.genSalt()),
+      verified: req.body.verified,
+      bot: req.body.bot,
+      blocked: req.body.blocked,
+    });
+    await newUser.save().then((): void => {
+      res.status(201).send("Saved successfully, no errors and problems.");
+    });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
   }
