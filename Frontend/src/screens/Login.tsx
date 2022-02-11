@@ -1,3 +1,4 @@
+import { login as loginAction } from "../redux/action";
 import React from "react";
 import {
   View,
@@ -8,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Keyboard,
 } from "react-native";
+import { useDispatch } from "react-redux";
 import Button from "../components/Button";
 import Form from "../components/LoginForm";
 import login from "../scripts/login";
@@ -19,6 +21,7 @@ import login from "../scripts/login";
 
 const Login: React.FC<any> = ({ navigation }) => {
   const [error, setError] = React.useState("");
+  const dispatch = useDispatch();
   let username: string;
   let password: string;
 
@@ -33,7 +36,7 @@ const Login: React.FC<any> = ({ navigation }) => {
       fontSize: 35,
       marginBottom: 30,
       alignSelf: "flex-start",
-      margin: "03%"
+      margin: "03%",
     },
     formContainer: {
       marginBottom: 40,
@@ -57,7 +60,7 @@ const Login: React.FC<any> = ({ navigation }) => {
     <KeyboardAvoidingView style={{ flex: 1 }} enabled behavior={"padding"}>
       <ScrollView contentContainerStyle={style.container}>
         <View style={style.formContainer}>
-        <Text style={style.text}>Login</Text>
+          <Text style={style.text}>Login</Text>
           <Form
             safeEntry={false}
             type="username"
@@ -94,6 +97,7 @@ const Login: React.FC<any> = ({ navigation }) => {
 
             login(username, password)
               .then((): void => {
+                dispatch(loginAction());
                 Keyboard.dismiss();
                 navigation.navigate("menu");
               })
