@@ -1,4 +1,4 @@
-import { ActionNoParameter } from "../index.d";
+import { ActionNoParameter, loginStatusEventType } from "../index.d";
 
 /**
  * This is the reducer for the loginStatus object in the redux store.
@@ -6,7 +6,7 @@ import { ActionNoParameter } from "../index.d";
  * @note This reducer has no argument.
  */
 
-const loginStatus = (state = false, action: ActionNoParameter) => {
+const loginStatus = (state = false, action: ActionNoParameter<loginStatusEventType>) => {
   switch (action.type) {
     case "LOGIN":
       return (state = true);

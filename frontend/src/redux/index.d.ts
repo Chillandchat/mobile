@@ -4,8 +4,8 @@
  * @param {string} type The type of the action.
  */
 
-export interface ActionNoParameter {
-  type: string;
+export interface ActionNoParameter<ActionType> {
+  type: ActionType;
 }
 
 /**
@@ -16,6 +16,10 @@ export interface ActionNoParameter {
  * @param {PayloadType} payload The payload of the action.
  */
 
-export interface ActionWithParameter<PayloadType> extends ActionNoParameter {
+export interface ActionWithParameter<PayloadType, ActionType> extends ActionNoParameter<ActionType> {
   payload: PayloadType;
 }
+
+// Redux events types:
+export type loginStatusEventType =  "LOGIN" | "LOGOUT";
+export type userInfoEventType = "SET_USER_INFO" | "DETELE_USER_INFO";
