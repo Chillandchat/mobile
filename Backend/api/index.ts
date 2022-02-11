@@ -11,6 +11,7 @@ import getUserInfo from "./endpoints/getUserInfo";
 import reportUser from "./endpoints/reportUser";
 import blockUser from "./endpoints/blockUser";
 import getAllRooms from "./endpoints/getAllRooms";
+import createRoom from "./endpoints/createRoom";
 
 dotenv.config();
 const app: express.Express = express();
@@ -28,6 +29,7 @@ app.get("/api/get-messages", getMessages);
 app.get("/api/get-users", getUsers);
 app.get("/api/get-user-info", getUserInfo);
 app.get("/api/get-rooms", getAllRooms);
+app.post("/api/create-room", createRoom)
 
 // DERECATED:
 app.post("/derecated/report-user", reportUser);
