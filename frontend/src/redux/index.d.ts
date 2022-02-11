@@ -1,7 +1,8 @@
 /**
  * This is the action interface for the redux store.(Without the payload)
  *
- * @param {string} type The type of the action.
+ * @param ActionType The type of the type of the action.
+ * @param {ActionType} type The type of the action.
  */
 
 export interface ActionNoParameter<ActionType> {
@@ -22,4 +23,4 @@ export interface ActionWithParameter<PayloadType, ActionType> extends ActionNoPa
 
 // Redux events types:
 export type loginStatusEventType =  "LOGIN" | "LOGOUT";
-export type userInfoEventType = "SET_USER_INFO" | "DETELE_USER_INFO";
+export type UserInfoEventType = "SET_USER_INFO" | "DETELE_USER_INFO";
