@@ -19,6 +19,8 @@ import Signup from "./screens/Signup";
 import Chat from "./screens/Chat";
 import Error from "./screens/Error";
 import Menu from "./screens/Menu";
+import { Provider } from "react-redux";
+import store from "./redux/index";
 
 /**
  * This is the router component for the application, This component
@@ -42,6 +44,8 @@ const Router: React.FC = () => {
           "Error: Unable to load fonts. \n    at Router.tsx expoAppLoading.default \n    at loader.ts \n  Error code: CC_ERROR_0015"
         );
         console.error(`Expo error message: ${err}`);
+
+        return;
       });
   }, []);
 
@@ -69,44 +73,46 @@ const Router: React.FC = () => {
     return <AppLoading />;
   } else {
     return (
-      <View style={style.container}>
-        <StatusBar style="auto" />
-        <NavigationContainer>
-          <NavigatorStack.Navigator initialRouteName="login">
-            <NavigatorStack.Screen
-              name="login"
-              component={Login}
-              options={{ headerShown: false }}
-            />
-            <NavigatorStack.Screen
-              name="sign-up"
-              component={Signup}
-              options={{ headerShown: false }}
-            />
-            <NavigatorStack.Screen
-              name="menu"
-              component={Menu}
-              options={{ headerShown: false }}
-            />
-            <NavigatorStack.Screen
-              name="chat"
-              component={Chat}
-              options={{ headerShown: false }}
-            />
-            <NavigatorStack.Screen
-              name="error"
-              component={Error}
-              options={{
-                headerTitle: "Unexpected Error",
-                headerStyle: {
-                  backgroundColor: "orange",
-                },
-                headerTintColor: "#fff",
-              }}
-            />
-          </NavigatorStack.Navigator>
-        </NavigationContainer>
-      </View>
+      <Provider store={store}>
+        <View style={style.container}>
+          <StatusBar style="auto" />
+          <NavigationContainer>
+            <NavigatorStack.Navigator initialRouteName="login">
+              <NavigatorStack.Screen
+                name="login"
+                component={Login}
+                options={{ headerShown: false }}
+              />
+              <NavigatorStack.Screen
+                name="sign-up"
+                component={Signup}
+                options={{ headerShown: false }}
+              />
+              <NavigatorStack.Screen
+                name="menu"
+                component={Menu}
+                options={{ headerShown: false }}
+              />
+              <NavigatorStack.Screen
+                name="chat"
+                component={Chat}
+                options={{ headerShown: false }}
+              />
+              <NavigatorStack.Screen
+                name="error"
+                component={Error}
+                options={{
+                  headerTitle: "Unexpected Error",
+                  headerStyle: {
+                    backgroundColor: "orange",
+                  },
+                  headerTintColor: "#fff",
+                }}
+              />
+            </NavigatorStack.Navigator>
+          </NavigationContainer>
+        </View>
+      </Provider>
     );
   }
 };
