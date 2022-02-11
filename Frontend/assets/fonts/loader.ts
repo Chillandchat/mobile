@@ -10,7 +10,7 @@ import * as font from "expo-font";
  *      - Light
  *
  * @returns {Promise<void>} The type of contents that are returned from the function.
- * @licensing The license can be found in the same directory at: FONT_LICENSE.txt
+ * @license FONT_LICENSE.txt The license can be found in the same directory at: FONT_LICENSE.txt
  */
 
 const loadFonts = async (): Promise<void> => {
