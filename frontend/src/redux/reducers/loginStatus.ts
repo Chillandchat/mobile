@@ -6,12 +6,17 @@ import { ActionNoParameter, loginStatusEventType } from "../index.d";
  * @note This reducer has no argument.
  */
 
-const loginStatus = (state = false, action: ActionNoParameter<loginStatusEventType>) => {
+const loginStatus = (
+  state = false,
+  action: ActionNoParameter<loginStatusEventType>
+): typeof state => {
   switch (action.type) {
     case "LOGIN":
       return (state = true);
+
     case "LOGOUT":
       return (state = false);
+
     default:
       return state;
   }

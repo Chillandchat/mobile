@@ -1,4 +1,4 @@
-import { ActionWithParameter, userInfoEventType } from "../index.d";
+import { ActionWithParameter, UserInfoEventType } from "../index.d";
 import { AuthType } from "./../../scripts/index.d";
 
 /**
@@ -9,8 +9,8 @@ import { AuthType } from "./../../scripts/index.d";
 
 const userInfo = (
   state: AuthType | {} = {},
-  action: ActionWithParameter<AuthType, userInfoEventType>
-): any => {
+  action: ActionWithParameter<AuthType, UserInfoEventType>
+): typeof state => {
   switch (action.type) {
     case "SET_USER_INFO":
       return (state = action.payload);
