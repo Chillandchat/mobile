@@ -1,4 +1,4 @@
-import { login as loginAction } from "../redux/action";
+import { login as loginAction, setUserInfo } from "../redux/action";
 import React from "react";
 import {
   View,
@@ -13,6 +13,8 @@ import { useDispatch } from "react-redux";
 import Button from "../components/Button";
 import Form from "../components/LoginForm";
 import login from "../scripts/login";
+import { AuthType } from "../scripts";
+import getUser from "../scripts/getUser";
 
 /**
  * This is the login component for the application, this component is responsible for
@@ -56,6 +58,7 @@ const Login: React.FC<any> = ({ navigation }) => {
       fontFamily: "poppinsExtraBold",
     },
   });
+  
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} enabled behavior={"padding"}>
       <ScrollView contentContainerStyle={style.container}>
@@ -97,9 +100,31 @@ const Login: React.FC<any> = ({ navigation }) => {
 
             login(username, password)
               .then((): void => {
-                dispatch(loginAction());
-                Keyboard.dismiss();
-                navigation.navigate("menu");
+                getUser(username)
+                  .then((user: AuthType | void): void => {
+                    if (user !== undefined) {
+                      dispatch(setUserInfo(user as AuthType));
+                      dispatch(loginAction());
+                      Keyboard.dismiss();
+                      navigation.navigate("menu");
+                    } else {
+                      setError("Unable to connect.");
+                      setTimeout(() => {
+                        setError("");
+                      }, 5000);
+                      console.error(
+                        "Error: user is undefined, or not present\n   Error code: CC_ERROR_1591"
+                      );
+                      return;
+                    }
+                  })
+                  .catch((err: any): void => {
+                    setError("Missing data ");
+                    setTimeout(() => {
+                      setError("");
+                    }, 5000);
+                    console.error(err);
+                  });
               })
               .catch((err: any): void => {
                 setError("Invalid username or password");
