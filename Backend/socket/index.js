@@ -1,9 +1,17 @@
 const mongoose = require("mongoose");
 const message = require("./messageSchema.js");
 const dotenv = require("dotenv");
-const io = require("socket.io")(3001, {});
+const express = require("express");
+const http = require("http");
+const io = require("socket.io");
+
+const PORT = process.env.PORT || 3001;
+
+const app = express();
+const server = http.createServer(app);
 
 dotenv.config();
+io.listen(server);
 mongoose.connect(process.env.URI);
 
 io.on("connection", (socket) => {
@@ -33,4 +41,8 @@ io.on("connection", (socket) => {
       console.log(err);
     }
   });
+});
+
+server.listen(PORT, () => {
+  console.log("Server is running on port " + PORT);
 });
