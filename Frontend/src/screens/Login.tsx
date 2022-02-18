@@ -9,12 +9,13 @@ import {
   KeyboardAvoidingView,
   Keyboard,
 } from "react-native";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../components/Button";
 import Form from "../components/LoginForm";
 import login from "../scripts/login";
 import { AuthType } from "../scripts";
 import getUser from "../scripts/getUser";
+import { RootState } from "../redux/index.d";
 
 /**
  * This is the login component for the application, this component is responsible for
@@ -58,7 +59,7 @@ const Login: React.FC<any> = ({ navigation }) => {
       fontFamily: "poppinsExtraBold",
     },
   });
-  
+
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} enabled behavior={"padding"}>
       <ScrollView contentContainerStyle={style.container}>
@@ -105,8 +106,13 @@ const Login: React.FC<any> = ({ navigation }) => {
                     if (user !== undefined) {
                       dispatch(setUserInfo(user as AuthType));
                       dispatch(loginAction());
-                      Keyboard.dismiss();
-                      navigation.navigate("menu");
+                      if (!user.blocked) {
+                        Keyboard.dismiss();
+                        navigation.navigate("menu");
+                      } else {
+                        navigation.navigate("block-error");
+                        return;
+                      }
                     } else {
                       setError("Unable to connect.");
                       setTimeout(() => {

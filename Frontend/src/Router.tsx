@@ -21,6 +21,7 @@ import Error from "./screens/Error";
 import Menu from "./screens/Menu";
 import { Provider } from "react-redux";
 import store from "./redux/index";
+import BlockError from "./screens/BlockError";
 
 /**
  * This is the router component for the application, This component
@@ -101,6 +102,17 @@ const Router: React.FC = () => {
               <NavigatorStack.Screen
                 name="error"
                 component={Error}
+                options={{
+                  headerTitle: "Unexpected Error",
+                  headerStyle: {
+                    backgroundColor: "orange",
+                  },
+                  headerTintColor: "#fff",
+                }}
+              />
+              <NavigatorStack.Screen
+                name="block-error"
+                component={BlockError}
                 options={{
                   headerTitle: "Unexpected Error",
                   headerStyle: {
