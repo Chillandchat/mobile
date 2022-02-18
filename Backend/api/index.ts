@@ -13,6 +13,7 @@ import blockUser from "./endpoints/blockUser";
 import getAllRooms from "./endpoints/getAllRooms";
 import createRoom from "./endpoints/createRoom";
 import siteMap from "./endpoints/sitemap";
+import joinRoom from "./endpoints/joinRoom";
 
 dotenv.config();
 const app: express.Express = express();
@@ -31,6 +32,7 @@ app.get("/api/get-users", getUsers);
 app.get("/api/get-user-info", getUserInfo);
 app.get("/api/get-rooms", getAllRooms);
 app.post("/api/create-room", createRoom);
+app.post("/api/join-room", joinRoom);
 app.get("/site-map", siteMap);
 
 // DERECATED:
