@@ -26,6 +26,15 @@ content-type: application/json
 
 ###
 
+POST http://localhost:8080/deprecated/block_user?key=000 http/1.1
+content-type: application/json
+
+{
+"user":"Alvin",
+"blockStatus":true
+}
+
+###
 GET http://localhost:8080/api/users/get/admin/ http/1.1
 
 ###
