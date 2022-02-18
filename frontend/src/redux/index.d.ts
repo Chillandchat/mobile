@@ -1,3 +1,5 @@
+import reducers from "./index";
+
 /**
  * This is the action interface for the redux store.(Without the payload)
  *
@@ -24,3 +26,9 @@ export interface ActionWithParameter<PayloadType, ActionType> extends ActionNoPa
 // Redux events types:
 export type loginStatusEventType =  "LOGIN" | "LOGOUT";
 export type UserInfoEventType = "SET_USER_INFO" | "DETELE_USER_INFO";
+
+/**
+ * This is the rootstate type 
+ */
+
+export type RootState = ReturnType<typeof reducers>;
