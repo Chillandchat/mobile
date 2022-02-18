@@ -5,8 +5,7 @@ import user from "../schema/authSchema";
 /**
  * This endpoint is used to block a user from Chill&chat.
  *
- * @deprecated
- * @type {PUT} This is a put endpoint
+ * @type {POST} This is a post endpoint
  * @param {string} user The user to block.
  * @param {boolean} blockStatus Whether the user should be blocked.
  * @returns {string} Retuns the result in string format.
@@ -21,23 +20,20 @@ const blockUser = async (
     res.status(401).send("ERROR: Invalid api key.");
   }
 
-  let error: boolean = false;
-
-  await user
-    .findOneAndUpdate({ $eq: { username: req.body.user } })
-    .exec()
-    .then((data: AuthSchemaType | null | undefined): void => {
-      if (data != null || data != undefined) {
-        try {
-          data.blocked = req.body.blockedStatus;
-          data.save();
-        } catch (err: unknown) {
-          error = true;
-        }
-      } else res.status(404).send("User not found");
-      if (!error) res.status(200).send();
-      error = false;
-    });
+  try {
+    await user
+      .findOneAndUpdate(
+        { $eq: { username: req.body.user } },
+        { blocked: req.body.blockStatus }
+      )
+      .exec()
+      .then((data: AuthSchemaType | null | undefined): void => {
+        if (data != null || data != undefined) {
+          res.status(200).send("User blocked or unblocked.");
+        } else res.status(400).send("User not found");
+      });
+  } catch (err: unknown) {
+    res.status(500).send(`SERVER ERROR: ${err}`);
+  }
 };
-
 export default blockUser;

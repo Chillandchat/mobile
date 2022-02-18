@@ -31,13 +31,13 @@ app.get("/api/get-messages", getMessages);
 app.get("/api/get-users", getUsers);
 app.get("/api/get-user-info", getUserInfo);
 app.get("/api/get-rooms", getAllRooms);
+app.post("/api/block_user", blockUser);
 app.post("/api/create-room", createRoom);
 app.post("/api/join-room", joinRoom);
 app.get("/site-map", siteMap);
 
 // DERECATED:
 app.post("/derecated/report-user", reportUser);
-app.put("/deprecated/block_user", blockUser);
 
 const notFound = (_req: any, res: any, _next: any): void => {
   res
