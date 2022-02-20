@@ -17,6 +17,9 @@ const login = async (username: string, password: string): Promise<void> => {
         password: password,
       })
       .then((_data: AxiosResponse): void => {})
+      .catch((err: any): void => {
+        throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
+      });
   } catch (err: any) {
     throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0022`);
   }
