@@ -23,7 +23,7 @@ const blockUser = async (
   try {
     await user
       .findOneAndUpdate(
-        { $eq: { username: req.body.user } },
+        { username: { $eq: req.body.user } },
         { blocked: req.body.blockStatus }
       )
       .exec()

@@ -28,8 +28,8 @@ const getAllRooms = async (
       .then((data: Array<RoomSchemaType>): void => {
         let rooms: Array<RoomSchemaType> = [];
         for (let i: number = 0; i < data.length; i++) {
-          for (let e: number = 0; i < data[e].users.length; i++) {
-            if (req.query.user === data[i].users[i]) rooms.push(data[i]);
+          for (let j: number = 0; j < data[j].users.length; j++) {
+            if (req.query.user === data[j].users[j]) rooms.push(data[j]);
           }
         }
         res.status(200).send(rooms);

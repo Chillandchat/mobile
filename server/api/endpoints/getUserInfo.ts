@@ -23,12 +23,9 @@ const getUserInfo = async (
       .findOne({ username: { $eq: req.query.user } })
       .exec()
       .then((data: AuthSchemaType | null | undefined): void => {
-        if (data != null || data != undefined) res.status(200).send(data);
+        if (data !== null || data !== undefined) res.status(200).send(data);
         else res.status(404).send("User not found");
       })
-      .catch((err: unknown): void => {
-        res.status(500).send(`SERVER ERROR: ${err}`);
-      });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
   }
