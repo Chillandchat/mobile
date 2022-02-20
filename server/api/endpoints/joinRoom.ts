@@ -28,12 +28,12 @@ const joinRoom = async (
       .findOne({ id: req.body.id })
       .then(async (data: RoomSchemaType): Promise<void> => {
         if (data.passcode !== "") {
-          if (!bcrypt.compare(req.body.passcode, data.passcode)) {
+          if (!(await bcrypt.compare(req.body.passcode, data.passcode))) {
             res.status(400).send("Incorrect passcode.");
             return;
           }
         }
-        
+
         await roomSchema
           .findOneAndUpdate(
             { id: req.body.id },

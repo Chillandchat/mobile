@@ -26,7 +26,7 @@ const login = async (
       .exec()
       .then(async (data: AuthSchemaType | null | undefined): Promise<void> => {
         if (data != null && data != undefined) {
-          if (bcrypt.compare(data.password, req.body.password)) {
+          if (await bcrypt.compare(req.body.password, data.password)) {
             res.status(200).send("User login success");
           } else res.status(400).send("Invalid password");
         } else res.status(400).send("User not found");
