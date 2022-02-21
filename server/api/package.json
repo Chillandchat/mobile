@@ -5,7 +5,8 @@
   "main": "./build/index.js",
   "scripts": {
     "start": "echo 'Starting app...' && node ./build/index.js",
-    "build": "tsc && echo 'Building and compiling typescript code...\n' && echo 'Done.\n'"
+    "build": "tsc && echo 'Building and compiling typescript code...\n' && echo 'Done.\n'",
+    "test": "echo 'Running...' && yarn build && yarn start"
   },
   "repository": {
     "type": "git",
