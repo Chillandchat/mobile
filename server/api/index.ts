@@ -15,11 +15,13 @@ import createRoom from "./endpoints/createRoom";
 import siteMap from "./endpoints/sitemap";
 import joinRoom from "./endpoints/joinRoom";
 import searchMessge from "./endpoints/SearchMessage";
+import debug from "./debug";
 
-dotenv.config();
 const app: express.Express = express();
 const PORT: string = process.env.PORT || "8080";
 
+dotenv.config();
+debug.init();
 mongoose.connect(String(process.env.DATABASE_URI));
 
 app.use(express.json());
@@ -51,7 +53,7 @@ const notFound = (_req: any, res: any, _next: any): void => {
 app.use(notFound);
 
 app.listen(PORT, (): void => {
-  console.log(
-    `Server Ready and listening on port ${PORT}.\nPress CTRL + C to stop operation.`
+  debug.log(
+    `Server Ready and listening on port ${PORT}, press CTRL + C to stop operation.`
   );
 });
