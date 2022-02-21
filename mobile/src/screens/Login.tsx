@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingView,
   Keyboard,
 } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Button from "../components/Button";
 import Form from "../components/LoginForm";
 import login from "../scripts/login";
