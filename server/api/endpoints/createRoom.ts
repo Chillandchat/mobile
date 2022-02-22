@@ -1,3 +1,4 @@
+import { randomColor } from 'random-color';
 import roomSchema from "../schema/roomSchema";
 import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
@@ -32,6 +33,7 @@ const createRoom = async (
         req.body.passcode,
         await bcrypt.genSaltSync()
       ),
+      iconColor: randomColor().hexString(),
     });
     await newRoom
       .save()
