@@ -22,7 +22,7 @@ I look forward to seeing your contributions to Chill&chat!
 If you have found any bug(s) please post them in the [Issues](https://github.com/Chill-and-chat/Chill-chat/issues) tab in this repository. Please explain the problem and post any error messages or codes, also include a list of instructions to reproduce this bug or problem.
 
 # Mobile App
-Sorry, the mobile app is still in the development & testing phase and will be released on march 1st 2022.
+Sorry, the mobile app is still in the development & testing phase and will be released on april 1st 2022.
 
 # API
 I made a custom API with node for Chill&chat and you can download it in the backend folder, please follow the instructions below to run the api sevrer.
