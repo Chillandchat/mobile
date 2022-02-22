@@ -23,7 +23,7 @@ const PORT: string = process.env.PORT || "8080";
 
 const apiLimiter = rateLimit({
   windowMs: 1 * 30 * 1000,
-  max: 10,
+  max: 15,
   standardHeaders: true,
   legacyHeaders: false,
 });
