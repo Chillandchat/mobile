@@ -23,7 +23,7 @@ const getAllRooms = async (
 
   try {
     await roomSchema
-      .find({ users: { $elemMatch: { $eq: req.body.user } } })
+      .find({ users: { $elemMatch: { $eq: req.query.user } } })
       .exec()
       .then((data: Array<RoomSchemaType>): void => {
         res.status(200).send(data);
