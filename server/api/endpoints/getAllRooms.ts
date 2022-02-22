@@ -23,17 +23,11 @@ const getAllRooms = async (
 
   try {
     await roomSchema
-      .find()
+      .find({ users: { $elemMatch: { $eq: req.body.user } } })
       .exec()
       .then((data: Array<RoomSchemaType>): void => {
-        let rooms: Array<RoomSchemaType> = [];
-        for (let i: number = 0; i < data.length; i++) {
-          for (let j: number = 0; j < data[j].users.length; j++) {
-            if (req.query.user === data[j].users[j]) rooms.push(data[j]);
-          }
-        }
-        res.status(200).send(rooms);
-        debug.log(`User ${req.query.user} has found ${rooms.length} rooms.`);
+        res.status(200).send(data);
+        debug.log(`User ${req.query.user} has found ${data.length} rooms.`);
       });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
