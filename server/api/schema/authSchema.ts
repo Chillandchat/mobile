@@ -13,6 +13,7 @@ const schema: any = new mongoose.Schema({
   verified: Boolean,
   bot: Boolean,
   blocked: Boolean,
+  iconColor: String
 });
 
 const user: mongoose.Model<any> = mongoose.model<AuthSchemaType>(

@@ -7,6 +7,7 @@ import mongoose from "mongoose";
  * @param {string} message The user that sent the message.
  * @param {string} content The content of the message.
  * @param {boolean} verified Whether the sender of the message is verified.
+ * @param {string} iconColor The color of the icon.
  */
 
 export interface AuthSchemaType extends mongoose.Document {
@@ -16,6 +17,7 @@ export interface AuthSchemaType extends mongoose.Document {
   verified: boolean;
   bot: boolean;
   blocked: boolean;
+  iconColor: string;
 }
 
 /**
@@ -40,6 +42,7 @@ export interface MessageSchemaType extends mongoose.Document {
  * @param {string} id The id of the message room.
  * @param {string} name The name of the message room.
  * @param {string} users The users in the message room.
+ * @param {string} iconColor The color of the icon.
  */
 
 export interface RoomSchemaType extends mongoose.Document {
@@ -47,4 +50,5 @@ export interface RoomSchemaType extends mongoose.Document {
   name: string;
   users: Array<string>;
   passcode: string;
+  iconColor: string;
 }

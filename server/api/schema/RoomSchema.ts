@@ -12,6 +12,7 @@ const schema: any = new mongoose.Schema({
   users: Array,
   name: String,
   passcode: String,
+  iconColor: String,
 });
 
 const model: mongoose.Model<any> = mongoose.model<RoomSchemaType>(
