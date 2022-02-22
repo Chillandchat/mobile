@@ -26,7 +26,7 @@ const getUserInfo = async (
       .then((data: AuthSchemaType | null | undefined): void => {
         if (data !== null || data !== undefined) {
           res.status(200).send(data);
-          debug.log("User %s 's info sent.", req.query.user);
+          debug.log(`User ${req.query.user} information sent.`);
         } else res.status(404).send("User not found");
       });
   } catch (err: unknown) {
