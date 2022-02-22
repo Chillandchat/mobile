@@ -12,7 +12,10 @@ export type ApiEndpoint =
   | "/api/get-user-info"
   | "/api/get-users"
   | "/api/report-user"
-  | "/api/block-user";
+  | "/api/block-user"
+  | "/api/create-room"
+  | "/api/join-room"
+  | "/api/get-rooms";
 
 /**
  * This is the ApiEndpoints type, This type works with the "ApiEndpoint"
@@ -38,6 +41,9 @@ export interface ApiEndpoints {
   reportUser: ApiEndpoint;
   blockUser: ApiEndpoint;
   getUsers: ApiEndpoint;
+  joinRoom: ApiEndpoint;
+  getRoom: ApiEndpoint;
+  createRoom: ApiEndpoint;
 }
 
 /**
@@ -70,6 +76,22 @@ export interface AuthType {
   verified: boolean;
   bot: boolean;
   blocked: boolean;
+}
+/**
+ * This is the room object type.
+ *
+ * @param {string} id The id of the message room.
+ * @param {string} name The name of the message room.
+ * @param {string} users The users in the message room.
+ * @param {string} iconColor The color of the icon.
+ */
+
+export interface RoomType {
+  id: string;
+  name: string;
+  users: Array<string>;
+  passcode: string;
+  iconColor: string;
 }
 
 /**
