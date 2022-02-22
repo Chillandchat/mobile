@@ -78,7 +78,12 @@ const Router: React.FC = () => {
         <View style={style.container}>
           <StatusBar style="auto" />
           <NavigationContainer>
-            <NavigatorStack.Navigator initialRouteName="login">
+            <NavigatorStack.Navigator initialRouteName="menu">
+              <NavigatorStack.Screen
+                name="menu"
+                component={Menu}
+                options={{ headerShown: false }}
+              />
               <NavigatorStack.Screen
                 name="login"
                 component={Login}
@@ -87,11 +92,6 @@ const Router: React.FC = () => {
               <NavigatorStack.Screen
                 name="sign-up"
                 component={Signup}
-                options={{ headerShown: false }}
-              />
-              <NavigatorStack.Screen
-                name="menu"
-                component={Menu}
                 options={{ headerShown: false }}
               />
               <NavigatorStack.Screen
