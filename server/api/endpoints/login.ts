@@ -2,6 +2,7 @@ import { AuthSchemaType } from "../index.d";
 import user from "../schema/authSchema";
 import * as bcrypt from "bcrypt";
 import { NextFunction, Request, Response } from "express";
+import debug from "../debug";
 
 /**
  * This endpoint is used to login a user once called.
@@ -28,14 +29,17 @@ const login = async (
         if (data != null && data != undefined) {
           if (await bcrypt.compare(req.body.password, data.password)) {
             res.status(200).send("User login success");
+            debug.log("User login success");
           } else res.status(400).send("Invalid password");
         } else res.status(400).send("User not found");
       })
       .catch((err: unknown): void => {
         res.status(500).send(`SERVER ERROR: ${err}`);
+        debug.error(err);
       });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
+    debug.error(err);
   }
 };
 

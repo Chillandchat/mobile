@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import debug from "../debug";
 import { MessageSchemaType } from "../index.d";
 import message from "../schema/messageSchema";
 
@@ -22,11 +23,13 @@ const getMessages = async (
     await message
       .find()
       .exec()
-      .then(
-        (data: Array<MessageSchemaType>): Response => res.status(200).send(data)
-      );
+      .then((data: Array<MessageSchemaType>): void => {
+        res.status(200).send(data);
+        debug.log("Found messages");
+      });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
+    debug.error(err);
   }
 };
 

@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import debug from "../debug";
 import { AuthSchemaType } from "../index.d";
 import user from "../schema/authSchema";
 
@@ -30,10 +31,12 @@ const blockUser = async (
       .then((data: AuthSchemaType | null | undefined): void => {
         if (data != null || data != undefined) {
           res.status(200).send("User blocked or unblocked.");
+          debug.log(`User ${req.body.user} blocked or unblocked.`);
         } else res.status(400).send("User not found");
       });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
+    debug.error(err)
   }
 };
 export default blockUser;

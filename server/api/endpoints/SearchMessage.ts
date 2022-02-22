@@ -1,6 +1,7 @@
 import { MessageSchemaType } from "../index.d";
 import { NextFunction, Request, Response } from "express";
 import messageSchema from "../schema/messageSchema";
+import debug from "../debug";
 
 /**
  * This is the search message endpoint, this endpoint will retrun a message of the given id.
@@ -26,15 +27,18 @@ const seachMessage = async (
       .then((data: MessageSchemaType | null | undefined) => {
         if (data !== null || data !== undefined) {
           res.status(200).send(data);
+          debug.log(`Message ${req.body.id} has been found.`);
         } else {
           res.status(400).send("No message found.");
         }
       })
       .catch((err: unknown): void => {
         res.status(500).send(`SERVER ERROR: ${err}`);
+        debug.error(err);
       });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
+    debug.error(err);
   }
 };
 

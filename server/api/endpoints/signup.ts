@@ -1,6 +1,6 @@
 import * as bcrypt from "bcrypt";
 import { NextFunction, Request, Response } from "express";
-import { AuthSchemaType } from "../index.d";
+import debug from "../debug";
 import user from "../schema/authSchema";
 
 /**
@@ -30,9 +30,11 @@ const signup = async (
     });
     await newUser.save().then((): void => {
       res.status(201).send("Saved successfully, no errors and problems.");
+      debug.log("New user created.");
     });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
+    debug.error(err);
   }
 };
 

@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import debug from "../debug";
 import { AuthSchemaType } from "../index.d";
 import user from "../schema/authSchema";
 
@@ -23,9 +24,11 @@ const getUsers = async (
       .exec()
       .then((data: Array<AuthSchemaType>): void => {
         res.status(200).send(data);
+        debug.log("Found users");
       });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
+    debug.error(err);
   }
 };
 

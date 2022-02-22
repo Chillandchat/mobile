@@ -1,6 +1,7 @@
 import roomSchema from "../schema/roomSchema";
 import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
+import debug from "../debug";
 
 /**
  * This is the create room endpoint, this endpoint wil create a room once called.
@@ -20,8 +21,8 @@ const createRoom = async (
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
     res.status(401).send("ERROR: Invalid api key.");
-    return;
   }
+
   try {
     const newRoom: any = new roomSchema({
       id: req.body.id,
@@ -36,12 +37,15 @@ const createRoom = async (
       .save()
       .then((): void => {
         res.status(201).send("Room created.");
+        debug.log(`Room ${req.body.id} created.`);
       })
       .catch((err: unknown): void => {
         res.status(500).send(`SERVER ERROR: ${err}`);
+        debug.error(err);
       });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
+    debug.error(err);
   }
 };
 

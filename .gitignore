@@ -14,4 +14,4 @@ npm-debug.*
 web-build/
 .DS_Store
 yarn-error.log
-.apilog
+log.txt

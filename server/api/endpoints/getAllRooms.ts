@@ -1,6 +1,7 @@
 import roomSchema from "../schema/roomSchema";
 import { NextFunction, Request, Response } from "express";
 import { RoomSchemaType } from "../index.d";
+import debug from "../debug";
 
 /**
  * This get all rooms endpoint will return all rooms that the inputed user has once called.
@@ -18,7 +19,6 @@ const getAllRooms = async (
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
     res.status(401).send("ERROR: Invalid api key.");
-    return;
   }
 
   try {
@@ -33,9 +33,11 @@ const getAllRooms = async (
           }
         }
         res.status(200).send(rooms);
+        debug.log(`User ${req.query.user} has found ${rooms.length} rooms.`);
       });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
+    debug.error(err);
   }
 };
 
