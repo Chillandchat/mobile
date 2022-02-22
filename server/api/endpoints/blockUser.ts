@@ -25,7 +25,7 @@ const blockUser = async (
     await user
       .findOneAndUpdate(
         { username: { $eq: req.body.user } },
-        { blocked: req.body.blockStatus }
+        { blocked: { $eq: req.body.blockStatus } }
       )
       .exec()
       .then((data: AuthSchemaType | null | undefined): void => {
@@ -36,7 +36,7 @@ const blockUser = async (
       });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
-    debug.error(err)
+    debug.error(err);
   }
 };
 export default blockUser;

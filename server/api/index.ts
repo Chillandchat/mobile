@@ -13,6 +13,7 @@ import blockUser from "./endpoints/blockUser";
 import getAllRooms from "./endpoints/getAllRooms";
 import createRoom from "./endpoints/createRoom";
 import siteMap from "./endpoints/sitemap";
+import rateLimit from "express-rate-limit";
 import joinRoom from "./endpoints/joinRoom";
 import searchMessge from "./endpoints/SearchMessage";
 import debug from "./debug";
@@ -20,12 +21,21 @@ import debug from "./debug";
 const app: express.Express = express();
 const PORT: string = process.env.PORT || "8080";
 
+const apiLimiter = rateLimit({
+  windowMs: 1 * 30 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 dotenv.config();
 debug.init();
+
 mongoose.connect(String(process.env.DATABASE_URI));
 
 app.use(express.json());
 app.use(cors({}));
+app.use(apiLimiter);
 
 app.get("/", home);
 app.post("/api/signup", signup);

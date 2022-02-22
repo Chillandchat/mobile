@@ -23,7 +23,7 @@ const seachMessage = async (
 
   try {
     await messageSchema
-      .findOne({ id: req.body.id })
+      .findOne({ id: { $eq: req.body.id } })
       .then((data: MessageSchemaType | null | undefined) => {
         if (data !== null || data !== undefined) {
           res.status(200).send(data);
