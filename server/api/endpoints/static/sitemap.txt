@@ -1,7 +1,10 @@
 Paths:
 
+UTILITIES:
 / - Home screen(GET)
+/site-map - Sitemap(GET)
 ---------------------------------------------------
+SUPPORTED:
 /api/login - Login(POST)
 /api/signup - Signup(POST)
 /api/get-messages - Get all messages(GET)
@@ -9,7 +12,8 @@ Paths:
 /api/get-user-info - Get user information(GET)
 /api/get-rooms - Get all rooms of the user(GET)
 /api/create-room - Create a room(POST)
-----------------------------------------------------
-DEPRECATED:
-/api/report-user - Report user(POST)
 /api/block-user - Block user(POST)
+/api/join-room - Join a room(POST)
+----------------------------------------------------
+DEPRECATED / NOT SUPPORTED:
+/api/report-user - Report user(POST)
