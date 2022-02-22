@@ -18,10 +18,10 @@ const getUser = async (user: string): Promise<AuthType | void> => {
       .then((data: AxiosResponse): void => {
         userData = data.data;
       })
-      .catch((err: any): void => {
+      .catch((err: unknown): void => {
         throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
       });
-  } catch (err: any) {
+  } catch (err: unknown) {
     throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0022`);
   }
   if (userData !== undefined) return userData;

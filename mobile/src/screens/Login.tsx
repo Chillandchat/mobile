@@ -124,7 +124,7 @@ const Login: React.FC<any> = ({ navigation }) => {
                       return;
                     }
                   })
-                  .catch((err: any): void => {
+                  .catch((err: unknown): void => {
                     setError("Missing data ");
                     setTimeout(() => {
                       setError("");
@@ -132,7 +132,7 @@ const Login: React.FC<any> = ({ navigation }) => {
                     console.error(err);
                   });
               })
-              .catch((err: any): void => {
+              .catch((err: unknown): void => {
                 setError("Invalid username or password");
                 setTimeout(() => {
                   setError("");

@@ -121,7 +121,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
                 Keyboard.dismiss();
                 navigation.navigate("login");
               })
-              .catch((err: any): void => {
+              .catch((err: unknown): void => {
                 setError("Signup error.");
                 setTimeout(() => {
                   setError("");
