@@ -25,6 +25,19 @@ export interface FormProps {
 }
 
 /**
+ * This is the props for the icon component.
+ *
+ * @see Icon.tsx
+ */
+
+export interface IconProps {
+  iconLetter: string;
+  color: string;
+  touchable?: boolean;
+  onPress?: () => void;
+}
+
+/**
  * This is the type ristrictions for the form component type prop.
  */
 
