@@ -4,6 +4,11 @@ import { useDispatch } from "react-redux";
 import Button from "../components/Button";
 import { logout } from "../redux/action";
 
+/**
+ * This is the signout confirm component for the application, this component is responsible for
+ * rendering the signout confirm components and loading signout confirm data.
+ */
+
 const SignoutConfirm: React.FC<any> = ({ navigation }) => {
   const dispatch: any = useDispatch();
 
