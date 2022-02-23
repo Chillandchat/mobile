@@ -2,7 +2,7 @@ import * as bcrypt from "bcrypt";
 import { NextFunction, Request, Response } from "express";
 import debug from "../debug";
 import user from "../schema/authSchema";
-import randomColor from "random-color";
+import randomColor from "randomcolor";
 
 /**
  * This is the signup endpoint this endpoint will create a new user in the data base when called.
@@ -28,7 +28,7 @@ const signup = async (
       verified: req.body.verified,
       bot: req.body.bot,
       blocked: req.body.blocked,
-      iconColor: randomColor().hexString(),
+      iconColor: randomColor(),
     });
     await newUser.save().then((): void => {
       res.status(201).send("Saved successfully, no errors and problems.");
