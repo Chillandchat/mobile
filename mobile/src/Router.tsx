@@ -22,6 +22,7 @@ import Menu from "./screens/Menu";
 import { Provider } from "react-redux";
 import store from "./redux/index";
 import BlockError from "./screens/BlockError";
+import SignoutConfirm from "./screens/SignoutConfirm";
 
 /**
  * This is the router component for the application, This component
@@ -78,12 +79,7 @@ const Router: React.FC = () => {
         <View style={style.container}>
           <StatusBar style="auto" />
           <NavigationContainer>
-            <NavigatorStack.Navigator initialRouteName="menu">
-              <NavigatorStack.Screen
-                name="menu"
-                component={Menu}
-                options={{ headerShown: false }}
-              />
+            <NavigatorStack.Navigator initialRouteName="login">
               <NavigatorStack.Screen
                 name="login"
                 component={Login}
@@ -95,8 +91,18 @@ const Router: React.FC = () => {
                 options={{ headerShown: false }}
               />
               <NavigatorStack.Screen
+                name="menu"
+                component={Menu}
+                options={{ headerShown: false }}
+              />
+              <NavigatorStack.Screen
                 name="chat"
                 component={Chat}
+                options={{ headerShown: false }}
+              />
+              <NavigatorStack.Screen
+                name="signout-confirm"
+                component={SignoutConfirm}
                 options={{ headerShown: false }}
               />
               <NavigatorStack.Screen
