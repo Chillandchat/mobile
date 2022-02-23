@@ -1,3 +1,4 @@
+import { Icon } from './../../../web/components/Icon';
 import { AxiosInstance } from "axios";
 
 /**
@@ -67,6 +68,7 @@ export interface ApiCombined {
  * @param {string} message The user that sent the message.
  * @param {string} content The content of the message.
  * @param {boolean} verified Whether the sender of the message is verified.
+ * @param {string} iconColor The icon color.
  */
 
 export interface AuthType {
@@ -76,6 +78,7 @@ export interface AuthType {
   verified: boolean;
   bot: boolean;
   blocked: boolean;
+  iconColor: string
 }
 /**
  * This is the room object type.
