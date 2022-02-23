@@ -119,7 +119,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
             signup(username, password)
               .then((): void => {
                 Keyboard.dismiss();
-                navigation.navigate("login");
+                navigation.push("login");
               })
               .catch((err: unknown): void => {
                 setError("Signup error.");

@@ -15,7 +15,6 @@ import Form from "../components/LoginForm";
 import login from "../scripts/login";
 import { AuthType } from "../scripts";
 import getUser from "../scripts/getUser";
-import { RootState } from "../redux/index.d";
 
 /**
  * This is the login component for the application, this component is responsible for
@@ -82,7 +81,7 @@ const Login: React.FC<any> = ({ navigation }) => {
           <Text style={style.signup}>
             No account?{" "}
             {
-              <TouchableOpacity onPress={() => navigation.navigate("sign-up")}>
+              <TouchableOpacity onPress={() => navigation.push("sign-up")}>
                 <Text style={style.link}>Signup here.</Text>
               </TouchableOpacity>
             }
@@ -108,9 +107,9 @@ const Login: React.FC<any> = ({ navigation }) => {
                       dispatch(loginAction());
                       if (!user.blocked) {
                         Keyboard.dismiss();
-                        navigation.navigate("menu");
+                        navigation.push("menu");
                       } else {
-                        navigation.navigate("block-error");
+                        navigation.push("block-error");
                         return;
                       }
                     } else {
