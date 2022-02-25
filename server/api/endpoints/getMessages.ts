@@ -19,6 +19,7 @@ const getMessages = async (
     res.status(401).send("ERROR: Invalid api key.");
     return;
   }
+
   try {
     await message
       .find()

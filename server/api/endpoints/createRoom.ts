@@ -1,4 +1,4 @@
-import { randomColor } from 'randomcolor';
+import { randomColor } from "randomcolor";
 import roomSchema from "../schema/roomSchema";
 import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
@@ -22,6 +22,7 @@ const createRoom = async (
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
     res.status(401).send("ERROR: Invalid api key.");
+    return;
   }
 
   try {

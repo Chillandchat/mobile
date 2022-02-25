@@ -18,7 +18,9 @@ const getUserInfo = async (
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
     res.status(401).send("ERROR: Invalid api key.");
+    return;
   }
+
   try {
     await user
       .findOne({ username: { $eq: req.query.user } })

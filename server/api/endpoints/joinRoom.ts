@@ -22,6 +22,7 @@ const joinRoom = async (
   if (req.query.key !== String(process.env.KEY)) {
     res.status(401).send("ERROR: Invalid api key.");
     return;
+    return;
   }
 
   try {
