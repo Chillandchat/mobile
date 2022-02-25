@@ -23,6 +23,7 @@ import { Provider } from "react-redux";
 import store from "./redux/index";
 import BlockError from "./screens/BlockError";
 import SignoutConfirm from "./screens/SignoutConfirm";
+import CreateRoom from "./screens/CreateRoom";
 
 /**
  * This is the router component for the application, This component
@@ -79,7 +80,7 @@ const Router: React.FC = () => {
         <View style={style.container}>
           <StatusBar style="auto" />
           <NavigationContainer>
-            <NavigatorStack.Navigator initialRouteName="login">
+            <NavigatorStack.Navigator initialRouteName="create-room">
               <NavigatorStack.Screen
                 name="login"
                 component={Login}
@@ -103,6 +104,11 @@ const Router: React.FC = () => {
               <NavigatorStack.Screen
                 name="signout-confirm"
                 component={SignoutConfirm}
+                options={{ headerShown: false }}
+              />
+              <NavigatorStack.Screen
+                name="create-room"
+                component={CreateRoom}
                 options={{ headerShown: false }}
               />
               <NavigatorStack.Screen
