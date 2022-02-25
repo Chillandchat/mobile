@@ -1,3 +1,5 @@
+import { RoomType } from "../scripts/index.d";
+
 /**
  * This is the props for the button component.
  *
@@ -18,7 +20,7 @@ export interface ButtonProps {
  * @see Form.tsx
  */
 
-export interface FormProps {
+export interface LoginFormProps {
   safeEntry: boolean;
   type: loginFormTypeSelector;
   onTextChange?: (text: string) => void;
@@ -35,6 +37,22 @@ export interface IconProps {
   color: string;
   touchable?: boolean;
   onPress?: () => void;
+}
+
+export interface FormProps{
+  safeEntry: boolean;
+  placeholder: string;
+  onTextChange: (text: string) => void;
+}
+
+/**
+ * This is the props for the room list component.
+ *
+ * @see RoomList.tsx
+ */
+
+export interface RoomListProps {
+  rooms: Array<RoomType>;
 }
 
 /**
