@@ -38,6 +38,9 @@ content-type: application/json
 
 ###
 
+GET http://localhost:8080/api/get-rooms?key=000&user=Alvin http/1.1
+
+###
 POST http://localhost:8080/api/block_user?key=000 http/1.1
 content-type: application/json
 
