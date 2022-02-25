@@ -14,7 +14,7 @@ const getRoom = async (user: string): Promise<typeof rooms> => {
 
   try {
     await api.instance
-      .get(`${api.endpoints.getRoom}?user=${user}`)
+      .get(`${api.endpoints.getRoom}?user=${user}&key=${api.apiKey}`)
       .then((data: AxiosResponse): void => {
         data.data?.forEach((room: RoomType): void => {
           rooms.push(room);
