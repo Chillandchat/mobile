@@ -29,14 +29,14 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
   if (props.touchable) {
     return (
       <TouchableOpacity style={style.container} onPress={props.onPress}>
-        <Text style={style.text}>{props.iconLetter}</Text>
+        <Text style={style.text}>{props.iconLetter.toUpperCase()}</Text>
       </TouchableOpacity>
     );
   }
 
   return (
     <View style={style.container}>
-      <Text style={style.text}>{props.iconLetter}</Text>
+      <Text style={style.text}>{props.iconLetter.toUpperCase()}</Text>
     </View>
   );
 };
