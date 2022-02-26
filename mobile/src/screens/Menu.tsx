@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Touchable } from "react-native";
 import { useSelector } from "react-redux";
 import RoomList from "../components/RoomList";
 import Icon from "../components/Icon";
 import { RootState } from "../redux/index.d";
 import getRoom from "../scripts/getRooms";
 import { RoomType } from "../scripts/index.d";
-import Button from "../components/Button";
+import { Ionicons } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
@@ -58,17 +59,22 @@ const Menu: React.FC<any> = ({ navigation }) => {
       marginTop: "5%",
       marginLeft: "5%",
     },
-    buttonWrapper: {
-      marginBottom: "10%",
-      paddingTop: 30,
-    },
     divider: {
       padding: 5,
     },
+    addButton: {
+      backgroundColor: "#00AD98",
+      zIndex: 3,
+      marginBottom: 10,
+      position: "absolute",
+      bottom: "5%",
+      padding: 5,
+      borderRadius: 10000,
+    },
   });
-  
+
   if (!loggedin) {
-    navigation.naviagte("login");
+    navigation.navigate("login");
     return <View></View>;
   } else {
     return (
@@ -85,25 +91,14 @@ const Menu: React.FC<any> = ({ navigation }) => {
           />
         </View>
         <RoomList rooms={rooms} />
-        <View style={style.buttonWrapper}>
-          <Button
-            textColor="white"
-            color={"#00AD98"}
-            onPress={(): void => {
-              navigation.navigate("create-room");
-            }}
-            text={"Create room"}
-          />
-          <View style={style.divider} />
-          <Button
-            textColor="white"
-            color={"#00AD98"}
-            onPress={(): void => {
-              return;
-            }}
-            text={"Join room"}
-          />
-        </View>
+        <TouchableOpacity
+          style={style.addButton}
+          onPress={(): void => {
+            navigation.navigate("add-room");
+          }}
+        >
+          <Ionicons name="ios-add" size={50} color="white" />
+        </TouchableOpacity>
       </View>
     );
   }
