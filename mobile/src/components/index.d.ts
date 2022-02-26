@@ -21,9 +21,9 @@ export interface ButtonProps {
  */
 
 export interface LoginFormProps {
-  safeEntry: boolean;
+  safeEntry?: boolean;
   type: loginFormTypeSelector;
-  onTextChange?: (text: string) => void;
+  onTextChange: (text: string) => void;
 }
 
 /**
@@ -39,8 +39,14 @@ export interface IconProps {
   onPress?: () => void;
 }
 
-export interface FormProps{
-  safeEntry: boolean;
+/**
+ * This is the props for the input component.
+ *
+ * @see Input.tsx
+ */
+
+export interface FormProps {
+  safeEntry?: boolean;
   placeholder: string;
   onTextChange: (text: string) => void;
 }
