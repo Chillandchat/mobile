@@ -3,8 +3,12 @@ import { View, Text, StyleSheet, BackHandler, Linking } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import Button from "../components/Button";
 
+/**
+ * This is the block error page, this page will display if the user is blocked on login.
+ */
+
 const BlockError: React.FC = () => {
-  const style = StyleSheet.create({
+  const style: any = StyleSheet.create({
     container: {
       justifyContent: "center",
       flex: 1,
@@ -21,11 +25,14 @@ const BlockError: React.FC = () => {
       paddingBottom: 23,
     },
   });
+
   return (
     <View style={style.container}>
       <MaterialIcons name="error" size={75} color="orange" />
       <Text style={style.titleText}>Failed to connect</Text>
-      <Text style={style.text}>Your account is banned from all Chill&chat servers</Text>
+      <Text style={style.text}>
+        Your account is banned from all Chill&chat servers
+      </Text>
       <Button
         color={"orange"}
         textColor={"#ffff"}
