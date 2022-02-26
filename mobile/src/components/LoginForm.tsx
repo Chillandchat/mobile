@@ -13,11 +13,9 @@ import {
 /**
  *  This is the Login form element of the login page.
  *
- *  @param {string} title The title of the form.
- *  @param {boolean} safeEntry Whetherthe form has a safe entry feature.
- *  @type {loginFormTypeSelector} The type of the form. @see props.d.ts
- *  @param {any} value The state of the value of the form.
- *  @param {void} onTextChange The callback of the onTextChange callback event.
+ *  @prop {loginFormTypeSelector} type The type of the form. @see props.d.ts
+ *  @prop {void} onTextChange The callback of the onTextChange callback event.
+ *  @optional @prop {boolean} safeEntry Whetherthe form has a safe entry feature.
  */
 
 const LoginForm: React.FC<Props> = (props: Props) => {

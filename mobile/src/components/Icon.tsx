@@ -5,10 +5,10 @@ import { IconProps } from "./index.d";
 /**
  * This is the Icon component for the chat area.
  *
- * @param {string} iconLetter The letter that the icon displays.
- * @param {string} color The background color of the icon.
- * @optional @param {void} onPress The function to call when the icon is pressed.
- * @optional @param {boolean} touchable If the icon is touchable.
+ * @prop {string} iconLetter The letter that the icon displays.
+ * @prop {string} color The background color of the icon.
+ * @optional @prop {void} onPress The function to call when the icon is pressed.
+ * @optional @prop {boolean} touchable If the icon is touchable.
  */
 
 const Icon: React.FC<IconProps> = (props: IconProps) => {

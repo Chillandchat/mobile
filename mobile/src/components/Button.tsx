@@ -12,10 +12,11 @@ import {
  * This is the button component that renders the button on screen and
  * will run the action provided.
  *
- * @param {string} color The background color of the button.
- * @param {string} text The text that the button displays. OPTIONAL
- * @param {void} onPress The function to call when the button is pressed.
- * @param {string} textColor The color of the text on the button.
+ * @prop {string} color The background color of the button.
+ * @prop {string} textColor The color of the text on the button.
+ * @prop {void} onPress The function to call when the button is pressed.
+ * @optional @prop {boolean} disabled If the button is disabled.
+ * @optional @prop {string} text The text that the button displays. OPTIONAL
  */
 
 const Button: React.FC<Props> = (props: Props) => {
