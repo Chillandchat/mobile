@@ -3,6 +3,10 @@ import { View, Text, StyleSheet, BackHandler, Linking } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import Button from "../components/Button";
 
+/**
+ * This is the error page, this page will display an error message.
+ */
+
 const Error: React.FC = () => {
   const style = StyleSheet.create({
     container: {
