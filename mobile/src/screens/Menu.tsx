@@ -6,6 +6,7 @@ import Icon from "../components/Icon";
 import { RootState } from "../redux/index.d";
 import getRoom from "../scripts/getRooms";
 import { RoomType } from "../scripts/index.d";
+import Button from "../components/Button";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
@@ -17,6 +18,10 @@ const Menu: React.FC<any> = ({ navigation }) => {
       return state.userInfo;
     }
   );
+
+  const loggedin: any = useSelector((state: RootState): RootState => {
+    return state.loginStatus;
+  });
 
   const [rooms, setRooms] = React.useState<Array<RoomType>>([]);
 
@@ -53,24 +58,55 @@ const Menu: React.FC<any> = ({ navigation }) => {
       marginTop: "5%",
       marginLeft: "5%",
     },
+    buttonWrapper: {
+      marginBottom: "10%",
+      paddingTop: 30,
+    },
+    divider: {
+      padding: 5,
+    },
   });
-
-  return (
-    <View style={style.container}>
-      <View style={style.tittleBar}>
-        <Text style={style.text}>Messages</Text>
-        <Icon
-          iconLetter={username[0] || ""}
-          color={iconColor || "#0000"}
-          touchable
-          onPress={(): void => {
-            navigation.push("signout-confirm");
-          }}
-        />
+  
+  if (!loggedin) {
+    navigation.naviagte("login");
+    return <View></View>;
+  } else {
+    return (
+      <View style={style.container}>
+        <View style={style.tittleBar}>
+          <Text style={style.text}>Messages</Text>
+          <Icon
+            iconLetter={username[0] || ""}
+            color={iconColor || "#0000"}
+            touchable
+            onPress={(): void => {
+              navigation.push("signout-confirm");
+            }}
+          />
+        </View>
+        <RoomList rooms={rooms} />
+        <View style={style.buttonWrapper}>
+          <Button
+            textColor="white"
+            color={"#00AD98"}
+            onPress={(): void => {
+              navigation.navigate("create-room");
+            }}
+            text={"Create room"}
+          />
+          <View style={style.divider} />
+          <Button
+            textColor="white"
+            color={"#00AD98"}
+            onPress={(): void => {
+              return;
+            }}
+            text={"Join room"}
+          />
+        </View>
       </View>
-      <RoomList rooms={rooms} />
-    </View>
-  );
+    );
+  }
 };
 
 export default Menu;
