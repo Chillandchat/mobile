@@ -26,9 +26,20 @@ export interface ActionWithParameter<PayloadType, ActionType> extends ActionNoPa
 // Redux events types:
 export type loginStatusEventType =  "LOGIN" | "LOGOUT";
 export type UserInfoEventType = "SET_USER_INFO" | "DETELE_USER_INFO";
+export type SessionStatusEventType = "SET_SESSION_STATUS" | "DELETE_SESSION_STATUS";
 
 /**
  * This is the rootstate type 
  */
 
 export type RootState = ReturnType<typeof reducers>;
+
+/**
+ * This is the state for the session status reducer.
+ * 
+ * @param {string} chatSessionId The chat room session id.
+ */
+
+export interface SessionStatus{
+  chatSessionId: string;
+}
