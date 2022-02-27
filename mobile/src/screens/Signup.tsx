@@ -108,25 +108,26 @@ const Signup: React.FC<any> = ({ navigation }) => {
               return;
             }
 
-            getUser(username).then((_data: AuthType | void): void => {
-              setError("Username taken, try another username.");
-              setTimeout(() => {
-                setError("");
-              }, 5000);
-              return;
-            });
-
-            signup(username, password)
-              .then((): void => {
-                Keyboard.dismiss();
-                navigation.push("login");
-              })
-              .catch((err: unknown): void => {
-                setError("Signup error.");
+            getUser(username)
+              .then((_data: AuthType | void): void => {
+                setError("Username taken, try another username.");
                 setTimeout(() => {
                   setError("");
                 }, 5000);
-                console.error(err);
+              })
+              .catch((): void => {
+                signup(username, password)
+                  .then((): void => {
+                    Keyboard.dismiss();
+                    navigation.push("login");
+                  })
+                  .catch((err: unknown): void => {
+                    setError("Signup error.");
+                    setTimeout(() => {
+                      setError("");
+                    }, 5000);
+                    console.error(err);
+                  });
               });
           }}
         />
