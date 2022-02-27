@@ -5,7 +5,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 /**
- * The is the add room screen, 
+ * The is the add room screen,
  * this room is where the user can select to join or create a room.
  */
 
@@ -17,7 +17,7 @@ const AddRoom: React.FC<any> = ({ navigation }) => {
       alignItems: "center",
     },
     divider: {
-      padding: 20,
+      padding: 10,
     },
     title: {
       fontFamily: "poppinsExtraBold",
@@ -56,7 +56,7 @@ const AddRoom: React.FC<any> = ({ navigation }) => {
         textColor="white"
         color={"#00AD98"}
         onPress={(): void => {
-          return;
+          navigation.navigate("join-room");
         }}
         text={"Join room"}
       />
