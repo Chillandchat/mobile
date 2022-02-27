@@ -26,11 +26,13 @@ io.on("connection", (socket) => {
        * @param {string} content The message's content or what it says.
        * @param {string} room The room that the message belongs to.
        *
+       * @param {string} key The api key.
+       *
        * Please put all the following content in the payload like the following:
        * @example socket.emit("message", {id: "abcdefg123456789", user:"abcd138ef", content:"Hi there!"}, "YOUR_API_KEY", "YOUR_RESPONSE_TOKEN")
        */
 
-      io.emit("client-message", payload);
+      io.emit(`message-room(${payload.room})`, payload);
       try {
         const newMessage = new message({
           id: payload.id,
@@ -38,7 +40,9 @@ io.on("connection", (socket) => {
           content: payload.content,
           room: payload.room,
         });
-        newMessage.save().then(() => {});
+        newMessage.save().then(() => {
+          io.emit("sent", responseToken);
+        });
       } catch (err) {
         /**
          * This error event will emit a error back to the sender.

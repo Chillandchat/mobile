@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Frontend",
-    "slug": "Frontend",
+    "name": "mobile",
+    "slug": "mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "center",
-      "backgroundColor": "#E5E5E5"
+      "backgroundColor": "#fffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -18,12 +18,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.brothersistersoftware.chillandchat"
+      "bundleIdentifier": "com.chillandchat.chillandchat"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
-        "backgroundColor": "#E5E5E5"
+        "backgroundColor": "#fffff"
       }
     },
     "web": {
