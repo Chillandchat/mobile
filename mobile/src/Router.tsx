@@ -25,6 +25,7 @@ import BlockError from "./screens/BlockError";
 import SignoutConfirm from "./screens/SignoutConfirm";
 import CreateRoom from "./screens/CreateRoom";
 import AddRoom from "./screens/AddRoom";
+import JoinRoom from "./screens/JoinRoom";
 
 /**
  * This is the router component for the application, This component
@@ -115,6 +116,11 @@ const Router: React.FC = () => {
               <NavigatorStack.Screen
                 name="add-room"
                 component={AddRoom}
+                options={{ headerShown: false }}
+              />
+              <NavigatorStack.Screen
+                name="join-room"
+                component={JoinRoom}
                 options={{ headerShown: false }}
               />
               <NavigatorStack.Screen
