@@ -13,7 +13,6 @@
   "author": "Alvin cheng",
   "license": "MIT",
   "dependencies": {
-    "@types/socket.io": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
