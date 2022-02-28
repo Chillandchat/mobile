@@ -30,9 +30,7 @@ I made a custom API with node for Chill&chat and you can download it in the "sev
 To clone:
 
 ```
-
 git clone https://github.com/Chill-and-chat/Chill-and-chat/
-
 ```
 
 #
