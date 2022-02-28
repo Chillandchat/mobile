@@ -143,6 +143,14 @@ const Login: React.FC<any> = ({ navigation }) => {
           textColor={"#ffff"}
           text={"login"}
         />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("information");
+          }}
+          style={{ position: "absolute", bottom: "4%", left: "7%" }}
+        >
+          <Text style={style.link}>App information</Text>
+        </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
   );

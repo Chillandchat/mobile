@@ -26,6 +26,7 @@ import SignoutConfirm from "./screens/SignoutConfirm";
 import CreateRoom from "./screens/CreateRoom";
 import AddRoom from "./screens/AddRoom";
 import JoinRoom from "./screens/JoinRoom";
+import Information from "./screens/Information";
 
 /**
  * This is the router component for the application, This component
@@ -86,6 +87,11 @@ const Router: React.FC = () => {
               <NavigatorStack.Screen
                 name="login"
                 component={Login}
+                options={{ headerShown: false }}
+              />
+              <NavigatorStack.Screen
+                name="information"
+                component={Information}
                 options={{ headerShown: false }}
               />
               <NavigatorStack.Screen
