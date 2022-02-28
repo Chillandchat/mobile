@@ -6,9 +6,9 @@
 
 Chill&chat is a free and open source mobile chat application that can chat send messages instantly to anyone with an account.
 
-# License
+## License
 
-This repository is licensed under the MIT License. Please see the [LICENSE](https://github.com/Chill-and-chat/Chill-chat/blob/master/LICENSE) file for license information.
+This repository is licensed under the MIT License and is free for use. Please see the [LICENSE](https://github.com/Chill-and-chat/Chill-chat/blob/master/LICENSE) file for full license.
 
 # Contribution
 
@@ -25,26 +25,10 @@ If you have found any bug(s) please post them in the [Issues](https://github.com
 Sorry, the mobile app is still in the development & testing phase and will be released on april 1st 2022.
 
 # API
-I made a custom API with node for Chill&chat and you can download it in the backend folder, please follow the instructions below to run the api sevrer.
+I made a custom API with node for Chill&chat and you can download it in the "sevrer" folder.
 
-## To run the api
-Before you start please make sure that you have node v16 or later installed, and the .env file filled, optionally you can have yarn installed for a better user expreience.
-
-
-- First run the command below:
-
-  npm:
-  ``` npm install  # This will install required packages. ```
-  
-  yarn:
-  ``` yarn install  # This will install required packages. ```
-- Then run these commands:
-
-  npm:
-  ``` npm build && npm start # This will build and start the api ```
-  
-  yarn:
-    ``` yarn build && yarn start # This will build and start the api ```
+To clone:
+```git clone https://github.com/Chill-and-chat/Chill-and-chat/```
 
 #
 This project is created by Alvin Cheng and Brianna Cheng(Brother sister software) 2021-2022.
