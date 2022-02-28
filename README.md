@@ -35,7 +35,7 @@ Please check this repository for updates!
 ## API
 The Chill&chat is made with NodeJS, can download it in the "server" folder.
 
-To clone:
+### To clone:
 
 ```
 git clone https://github.com/Chill-and-chat/Chill-and-chat/
