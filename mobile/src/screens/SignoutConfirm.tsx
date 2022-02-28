@@ -29,8 +29,8 @@ const SignoutConfirm: React.FC<any> = ({ navigation }) => {
           Alert.alert("Signout confirm", "Are you sure you want to signout?", [
             {
               text: "Signout",
-              onPress: () => {
-                dispatch(logout());
+              onPress: async () => {
+                await dispatch(logout());
                 navigation.navigate("login");
               },
               style: "destructive",
