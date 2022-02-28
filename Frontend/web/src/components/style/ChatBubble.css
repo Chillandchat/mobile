@@ -1,9 +1,0 @@
-/* CSS File for chat bubble component: */
-
-/* Chat bubble styles */
-#chat-bubble {
-  margin-left: 1rem;
-  height: 80vh;
-  width: 85%;
-  overflow: scroll;
-}

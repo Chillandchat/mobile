@@ -1,0 +1,11 @@
+Error codes: 
+CC_ERROR_0015 - Font loading failed.
+CC_ERROR_0001 - Unable to connect to socket server.
+CC_ERROR_0014 - Authentication failed.
+CC_ERROR_0013 - Error while loading data.
+CC_ERROR_0020 - Invalid socket connection.
+CC_ERROR_0021 - Expo error.
+CC_ERROR_0022 - General error.
+CC_ERROR_0318 - Network or API error.
+CC_ERROR_1591 - Missing or invalid data.
+CC_ERROR_0219_CRITICAL - Critical error, contact dev team as soon as possible or open issue.
