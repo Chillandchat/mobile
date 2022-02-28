@@ -28,7 +28,12 @@ Sorry, the mobile app is still in the development & testing phase and will be re
 I made a custom API with node for Chill&chat and you can download it in the "sevrer" folder.
 
 To clone:
-```git clone https://github.com/Chill-and-chat/Chill-and-chat/```
+
+```
+
+git clone https://github.com/Chill-and-chat/Chill-and-chat/
+
+```
 
 #
 This project is created by Alvin Cheng and Brianna Cheng(Brother sister software) 2021-2022.
