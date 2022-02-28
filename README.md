@@ -33,7 +33,7 @@ The mobile app is still in the development & testing phase and will be released 
 Please check this repository for updates!
 
 ## API
-I made a custom API with node for Chill&chat and you can download it in the "sevrer" folder.
+The Chill&chat is made with NodeJS, can download it in the "server" folder.
 
 To clone:
 
