@@ -1,48 +1,50 @@
-# Chill&chat
-![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat)   ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat)
+<p align="center"how><img src="https://github.com/Chill-and-chat/Chill-and-chat/blob/react-native-migration/logo.svg/" style="width:200px;"/></p>
 
-![](https://github.com/Chill-and-chat/Chill-chat/blob/master/Frontend/web/src/content/logo.svg)
+# Chill&chat repository 
+![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/issues-pr-closed/chill-and-chat/chill-chat) ![](https://img.shields.io/github/issues-pr-raw/chill-and-chat/chill-chat)
 
-Welcome to the official Chill&chat repository, this repository contains all the source files for the Chill&chat project made by Alvin Cheng / Brianna Cheng(Brother sister software).
 
-Website link:
+Chill&chat is a free and open source mobile chat application that can chat send messages instantly to anyone with an account.
 
-https://chill-and-chat-web.web.app/
-
-## License
+# License
 
 This repository is licensed under the MIT License. Please see the [LICENSE](https://github.com/Chill-and-chat/Chill-chat/blob/master/LICENSE) file for license information.
 
-(C) Copyright 2021-2022 Alvin cheng (Brother and sister software)
+# Contribution
 
-(C) Copyright 2021-2022 Brianna cheng (Brother and sister software)
+You are welcome to contribute to this project at anytime. To contribute, please fork the project and make changes in the forked repository. Then make a pull request under the [Pull request tab](https://github.com/Chill-and-chat/Chill-chat/pulls). Please make sure your code has passed all tests, and the code explanation is clear before submitting, and please make sure follow the github offical community guidelines when submitting any code to the Chill&chat repository.
 
-## Contribution
-
-Feel free to contribute to this project. To contribute, please fork the project and make changes in the repository. Then make a pull request under the [Pull request tab](https://github.com/Chill-and-chat/Chill-chat/pulls) Please make sure your code is tested and the code explanation is clear before submitting, and please follow the github offical community guidelines when submitting any code to Chill&chat.
 
 I look forward to seeing your contributions to Chill&chat!
 
+# Bugs and issues
 
-## Credits
+If you have found any bug(s) please post them in the [Issues](https://github.com/Chill-and-chat/Chill-chat/issues) tab in this repository. Please explain the problem and post any error messages or codes, also include a list of instructions to reproduce this bug or problem.
 
-Alvin cheng - Software engineer 
+# Mobile App
+Sorry, the mobile app is still in the development & testing phase and will be released on april 1st 2022.
 
-Brianna cheng - UI/UX designer
+# API
+I made a custom API with node for Chill&chat and you can download it in the backend folder, please follow the instructions below to run the api sevrer.
 
-## Bugs and issues
+## To run the api
+Before you start please make sure that you have node v16 or later installed, and the .env file filled, optionally you can have yarn installed for a better user expreience.
 
-If you have found any bug(s) please post them in the [Issues](https://github.com/Chill-and-chat/Chill-chat/issues) tab in this repository, and tag it with a "bug" tag to let us know. for bug support please contact Alvin cheng on:
 
-Email:
-chengalvin333@gmail.com
+- First run the command below:
 
-Github:
-[@CHENG-Alvin](https://github.com/CHENG-Alvin)
+  npm:
+  ``` npm install  # This will install required packages. ```
+  
+  yarn:
+  ``` yarn install  # This will install required packages. ```
+- Then run these commands:
 
-## API
-I made a custom API with node to server chill&chat and you can download it in the project which is available in the backend folder and you can read the [documentation(DEPRECATED)](https://github.com/Chill-and-chat/Chill-chat/blob/master/DEPRECATED/APIDocumentation.md) for a detailed description.
+  npm:
+  ``` npm build && npm start # This will build and start the api ```
+  
+  yarn:
+    ``` yarn build && yarn start # This will build and start the api ```
 
 #
-
 This project is created by Alvin Cheng and Brianna Cheng(Brother sister software) 2021-2022.

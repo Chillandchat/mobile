@@ -1,6 +1,17 @@
-#Git ignore uneeded files in repository
-node_modules
-.env
-vars.js
-.DS_Store
+
 build
+web
+node_modules/
+.expo/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+.DS_Store
+yarn-error.log
+log.txt
