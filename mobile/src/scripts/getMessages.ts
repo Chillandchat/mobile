@@ -5,12 +5,13 @@ import api from "./api";
 /**
  * This function will return all messages in the database via the api.
  *
- * @returns {Promise<Array<MessageType> | void>} The return type of the function, this function will return all messages is operation was successful.
- * But if the operation was not successful the function will return undefined(AKA void).
+ * @optional @param room The room to get messages from.
+ * @returns {Promise<Array<MessageType>} The return type of the function, this function will return all messages.
  */
 
-const getMessages = async (): Promise<Array<MessageType> | void> => {
-  let messages: Array<MessageType> | undefined = undefined;
+const getMessages = async (room?: string): Promise<Array<MessageType>> => {
+  let messages: Array<MessageType> = [];
+
   try {
     await api.instance
       .get(`${api.endpoints.getMessages}?key=${api.apiKey}`)
@@ -20,7 +21,15 @@ const getMessages = async (): Promise<Array<MessageType> | void> => {
             `Request failed with status code: ${data.status} \n   Error code: CC_ERROR_0318`
           );
         } else {
-          messages = data.data;
+          if (room !== undefined) {
+            data.data?.foreach((message: MessageType): void => {
+              if (message.room === room) {
+                messages.push(message);
+              }
+            });
+          } else {
+            messages = data.data;
+          }
         }
       })
       .catch((err: unknown): void => {
@@ -29,7 +38,8 @@ const getMessages = async (): Promise<Array<MessageType> | void> => {
   } catch (err: unknown) {
     throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0022`);
   }
-  if (messages !== undefined) return messages;
+
+  return messages;
 };
 
 export default getMessages;
