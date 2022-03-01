@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Chill&chat",
+    "slug": "chill-and-chat-mobile-app",
     "version": "0.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",

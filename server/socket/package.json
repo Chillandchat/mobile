@@ -1,8 +1,9 @@
 {
-  "name": "chill-chat-api",
+  "name": "chill-chat-socket",
   "version": "0.0.0",
-  "description": "The api for chill chat",
   "main": "./index.js",
+  "author": "Alvin cheng",
+  "license": "MIT",
   "scripts": {
     "start": "node index.js && echo 'Socket started.'"
   },
@@ -10,8 +11,6 @@
     "type": "git",
     "url": "https://github.com/Chill-and-chat/Chill-and-chat.git"
   },
-  "author": "Alvin cheng",
-  "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
