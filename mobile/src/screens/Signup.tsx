@@ -6,6 +6,8 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Keyboard,
+  ScaledSize,
+  Dimensions,
 } from "react-native";
 import Form from "../components/LoginForm";
 import Button from "../components/Button";
@@ -20,7 +22,7 @@ import signup from "../scripts/signup";
 
 const Signup: React.FC<any> = ({ navigation }) => {
   const [error, setError] = React.useState("");
-
+  const windowDimensions: ScaledSize = Dimensions.get("window");
   let username: string;
   let password: string;
   let confirmPassword: string;
@@ -36,7 +38,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
       fontSize: 35,
       marginBottom: 30,
       alignSelf: "flex-start",
-      margin: "03%",
+      marginLeft: windowDimensions.width * 0.03,
     },
     formContainer: {
       marginBottom: 25,

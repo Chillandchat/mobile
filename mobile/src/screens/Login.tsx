@@ -8,6 +8,8 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Keyboard,
+  Dimensions,
+  ScaledSize,
 } from "react-native";
 import { useDispatch } from "react-redux";
 import Button from "../components/Button";
@@ -22,6 +24,7 @@ import getUser from "../scripts/getUser";
  */
 
 const Login: React.FC<any> = ({ navigation }) => {
+  const windowDimensions: ScaledSize = Dimensions.get("window");
   const [error, setError] = React.useState("");
   const dispatch = useDispatch();
   let username: string;
@@ -38,7 +41,7 @@ const Login: React.FC<any> = ({ navigation }) => {
       fontSize: 35,
       marginBottom: 30,
       alignSelf: "flex-start",
-      margin: "03%",
+      marginLeft: windowDimensions.width * 0.03,
     },
     formContainer: {
       marginBottom: 40,
