@@ -2,6 +2,11 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
+/**
+ * This is the information page, 
+ * this page will show the user some information about the app version.
+ */
+
 const Information: React.FC<any> = ({ navigation }) => {
   const style: any = StyleSheet.create({
     container: {
