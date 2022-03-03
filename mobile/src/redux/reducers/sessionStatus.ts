@@ -1,18 +1,15 @@
-import {
-  ActionWithParameter,
-  SessionStatus,
-  SessionStatusEventType,
-} from "./../index.d";
+import { RoomType } from "../../scripts";
+import { ActionWithParameter, SessionStatusEventType } from "./../index.d";
 
 /**
  * This is the session status reducer.
- * 
+ *
  * @param {string} action The id of the chat room session.
  */
 
 const sessionStatus = (
-  state: SessionStatus = { chatSessionId: "" },
-  action: ActionWithParameter<string, SessionStatusEventType>
+  state: RoomType | {} = {},
+  action: ActionWithParameter<RoomType, SessionStatusEventType>
 ) => {
   switch (action.type) {
     case "SET_SESSION_STATUS":
