@@ -7,6 +7,10 @@ import Icon from "./Icon";
 import { RoomListProps as Props } from "./index.d";
 import { v4 as uuid } from "uuid";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { useDispatch } from "react-redux";
+import { setSessionData } from "../redux/action";
+import { useNavigation } from "@react-navigation/native";
 
 /**
  * This is the room list component, this component will diaplay all the rooms provied.
@@ -15,6 +19,10 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
  */
 
 const RoomList: React.FC<Props> = (props: Props) => {
+  const dispatch: any = useDispatch();
+
+  const navigation: any = useNavigation();
+
   const style: any = StyleSheet.create({
     roomContainer: {
       flexDirection: "row",
@@ -63,7 +71,14 @@ const RoomList: React.FC<Props> = (props: Props) => {
       <ScrollView style={style.container}>
         {props.rooms.map((room: RoomType): any => {
           return (
-            <View style={style.roomContainer} key={uuid()}>
+            <TouchableOpacity
+              style={style.roomContainer}
+              key={uuid()}
+              onPress={async (): Promise<void> => {
+                await dispatch(setSessionData(room));
+                navigation.push("chat");
+              }}
+            >
               <Icon
                 iconLetter={room.name[0]}
                 color={room.iconColor}
@@ -72,7 +87,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
               <Text style={style.titleStyle} numberOfLines={1} key={uuid()}>
                 {room.name}
               </Text>
-            </View>
+            </TouchableOpacity>
           );
         })}
       </ScrollView>
