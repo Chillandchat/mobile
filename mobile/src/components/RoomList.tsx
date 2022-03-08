@@ -31,7 +31,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
     },
     titleStyle: {
       fontFamily: "poppinsBold",
-      fontSize: 25,
+      fontSize: 22,
       marginHorizontal: "7%",
     },
     container: {

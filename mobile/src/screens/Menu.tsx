@@ -45,7 +45,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
       flex: 1,
     },
     text: {
-      fontFamily: "poppinsExtraBold",
+      fontFamily: "poppinsBold",
       fontSize: 35,
       flex: 1,
     },
