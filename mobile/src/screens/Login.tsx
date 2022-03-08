@@ -1,4 +1,5 @@
 import { login as loginAction, setUserInfo } from "../redux/action";
+import { Feather } from "@expo/vector-icons";
 import React from "react";
 import {
   View,
@@ -104,10 +105,13 @@ const Login: React.FC<any> = ({ navigation }) => {
             login(username, password)
               .then((): void => {
                 getUser(username)
-                  .then((user: AuthType | void): void => {
-                    if (user !== undefined) {
+                  .then((user: AuthType | {}): void => {
+                    if (user !== {}) {
                       dispatch(setUserInfo(user as AuthType));
                       dispatch(loginAction());
+            
+                      // @ts-ignore 
+
                       if (!user.blocked) {
                         Keyboard.dismiss();
                         navigation.push("menu");
@@ -152,7 +156,7 @@ const Login: React.FC<any> = ({ navigation }) => {
           }}
           style={{ position: "absolute", bottom: "4%", left: "7%" }}
         >
-          <Text style={style.link}>App information</Text>
+          <Feather name="info" size={40} color="black" />
         </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
