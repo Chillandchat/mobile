@@ -1,8 +1,11 @@
-import { MessageSchemaType } from "./index.d";
-import express from "express";
+import { Server, Socket } from "socket.io";
 import mongoose from "mongoose";
-import cors from "cors";
+import { createServer } from "http";
+import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
+
+import { MessageSchemaType } from "./index.d";
 import home from "./endpoints/home";
 import getMessages from "./endpoints/getMessages";
 import signup from "./endpoints/signup";
@@ -18,8 +21,6 @@ import rateLimit from "express-rate-limit";
 import joinRoom from "./endpoints/joinRoom";
 import searchMessge from "./endpoints/SearchMessage";
 import debug from "./debug";
-import { Server, Socket } from "socket.io";
-import { createServer } from "http";
 import message from "./schema/messageSchema";
 
 const app: express.Express = express();
