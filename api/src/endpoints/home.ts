@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import debug from "../debug";
+import debug from "../utils/debug";
 
 /**
  * This is the home page for the Chill&chat API

@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
 
-import { AuthSchemaType } from "../index.d";
+import { AuthSchemaType } from "../utils";
 import user from "../schema/authSchema";
-import debug from "../debug";
+import debug from "../utils/debug";
 
 /**
  * This endpoint is used to login a user once called.

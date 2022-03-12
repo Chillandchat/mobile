@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import { MessageSchemaType } from "../index.d";
+import { MessageSchemaType } from "../utils";
 
 /**
  * This is the message schema for the database, please see './type.d.ts' for more information.

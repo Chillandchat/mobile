@@ -3,7 +3,7 @@ import randomColor from "randomcolor";
 import bcrypt from "bcrypt";
 
 import user from "../schema/authSchema";
-import debug from "../debug";
+import debug from "../utils/debug";
 
 /**
  * This is the signup endpoint this endpoint will create a new user in the data base when called.

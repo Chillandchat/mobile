@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
-import { AuthSchemaType } from "../index.d";
-import debug from "../debug";
+import { AuthSchemaType } from "../utils";
+import debug from "../utils/debug";
 import user from "../schema/authSchema";
 
 /**

@@ -5,7 +5,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
-import { MessageSchemaType } from "./index.d";
+import { MessageSchemaType } from "./utils";
 import home from "./endpoints/home";
 import getMessages from "./endpoints/getMessages";
 import signup from "./endpoints/signup";
@@ -20,7 +20,7 @@ import siteMap from "./endpoints/sitemap";
 import rateLimit from "express-rate-limit";
 import joinRoom from "./endpoints/joinRoom";
 import searchMessge from "./endpoints/SearchMessage";
-import debug from "./debug";
+import debug from "./utils/debug";
 import message from "./schema/messageSchema";
 
 const app: express.Express = express();

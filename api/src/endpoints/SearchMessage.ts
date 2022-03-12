@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
 import messageSchema from "../schema/messageSchema";
-import { MessageSchemaType } from "../index.d";
-import debug from "../debug";
+import { MessageSchemaType } from "../utils";
+import debug from "../utils/debug";
 
 /**
  * This is the search message endpoint, this endpoint will retrun a message of the given id.

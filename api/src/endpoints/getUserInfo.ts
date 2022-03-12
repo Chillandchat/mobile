@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
-import { AuthSchemaType } from "../index.d";
+import { AuthSchemaType } from "../utils";
 import user from "../schema/authSchema";
-import debug from "../debug";
+import debug from "../utils/debug";
 
 /**
  * This endpoint will return the user information from the server once called.

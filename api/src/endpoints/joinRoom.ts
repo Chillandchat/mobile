@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
 
-import { RoomSchemaType } from "./../index.d";
+import { RoomSchemaType } from "../utils";
 import roomSchema from "../schema/roomSchema";
-import debug from "../debug";
+import debug from "../utils/debug";
 
 /**
  * This is the join room endpoint, this endpoint will join a room once called.

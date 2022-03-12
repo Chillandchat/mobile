@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
 import roomSchema from "../schema/roomSchema";
-import { RoomSchemaType } from "../index.d";
-import debug from "../debug";
+import { RoomSchemaType } from "../utils";
+import debug from "../utils/debug";
 
 /**
  * This get all rooms endpoint will return all rooms that the inputed user has once called.

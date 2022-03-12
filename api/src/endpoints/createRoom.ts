@@ -3,7 +3,7 @@ import { randomColor } from "randomcolor";
 import bcrypt from "bcrypt";
 
 import roomSchema from "../schema/roomSchema";
-import debug from "../debug";
+import debug from "../utils/debug";
 
 /**
  * This is the create room endpoint, this endpoint wil create a room once called.

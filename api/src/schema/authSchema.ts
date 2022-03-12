@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import { AuthSchemaType } from "../index.d";
+import { AuthSchemaType } from "../utils";
 
 /**
  * This is the user schema for the database, please see './type.d.ts' for more information.

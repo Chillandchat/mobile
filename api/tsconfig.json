@@ -5,7 +5,6 @@
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "outDir": "./build",
     "removeComments": true,
     "allowJs": true,

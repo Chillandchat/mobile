@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
-import { MessageSchemaType } from "../index.d";
-import debug from "../debug";
+import { MessageSchemaType } from "../utils";
+import debug from "../utils/debug";
 import message from "../schema/messageSchema";
 
 /**
