@@ -1,8 +1,9 @@
-import * as bcrypt from "bcrypt";
 import { NextFunction, Request, Response } from "express";
-import debug from "../debug";
-import user from "../schema/authSchema";
 import randomColor from "randomcolor";
+import bcrypt from "bcrypt";
+
+import user from "../schema/authSchema";
+import debug from "../debug";
 
 /**
  * This is the signup endpoint this endpoint will create a new user in the data base when called.
@@ -18,12 +19,12 @@ const signup = async (
   _next: NextFunction
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
-    res.status(401).send("ERROR: Invalid api key.");
+    res.status(401).send("Invalid api key.");
     return;
   }
 
   try {
-    const newUser: any = new user({
+    await new user({
       id: req.body.id,
       username: req.body.username,
       password: await bcrypt.hash(req.body.password, await bcrypt.genSalt()),
@@ -31,13 +32,16 @@ const signup = async (
       bot: req.body.bot,
       blocked: req.body.blocked,
       iconColor: randomColor(),
-    });
-    await newUser.save().then((): void => {
-      res.status(201).send("Saved successfully, no errors and problems.");
-      debug.log("New user created.");
-    });
+    })
+      .save()
+      .then((): void => {
+        res.status(201).send("Saved successfully, no errors and problems.");
+
+        debug.log("New user created.");
+      });
   } catch (err: unknown) {
-    res.status(500).send(`SERVER ERROR: ${err}`);
+    res.status(500).send(`${err}`);
+
     debug.error(err);
   }
 };

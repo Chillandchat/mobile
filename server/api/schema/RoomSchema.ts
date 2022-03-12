@@ -1,5 +1,6 @@
-import { RoomSchemaType } from "../index.d";
 import mongoose from "mongoose";
+
+import { RoomSchemaType } from "../index.d";
 
 /**
  * This is the database schema for the message room object in mongoDB database.

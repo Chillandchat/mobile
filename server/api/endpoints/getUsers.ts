@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import debug from "../debug";
+
 import { AuthSchemaType } from "../index.d";
+import debug from "../debug";
 import user from "../schema/authSchema";
 
 /**
@@ -16,7 +17,7 @@ const getUsers = async (
   _next: NextFunction
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
-    res.status(401).send("ERROR: Invalid api key.");
+    res.status(401).send("Invalid api key.");
     return;
   }
 
@@ -26,10 +27,12 @@ const getUsers = async (
       .exec()
       .then((data: Array<AuthSchemaType>): void => {
         res.status(200).send(data);
+
         debug.log("Found users");
       });
   } catch (err: unknown) {
-    res.status(500).send(`SERVER ERROR: ${err}`);
+    res.status(500).send(`${err}`);
+
     debug.error(err);
   }
 };

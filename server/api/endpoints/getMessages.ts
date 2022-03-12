@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import debug from "../debug";
+
 import { MessageSchemaType } from "../index.d";
+import debug from "../debug";
 import message from "../schema/messageSchema";
 
 /**
@@ -16,7 +17,7 @@ const getMessages = async (
   _next: NextFunction
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
-    res.status(401).send("ERROR: Invalid api key.");
+    res.status(401).send("Invalid api key.");
     return;
   }
 
@@ -26,10 +27,12 @@ const getMessages = async (
       .exec()
       .then((data: Array<MessageSchemaType>): void => {
         res.status(200).send(data);
-        debug.log("Found messages");
+
+        debug.log("Found messages.");
       });
   } catch (err: unknown) {
-    res.status(500).send(`SERVER ERROR: ${err}`);
+    res.status(500).send(`${err}`);
+
     debug.error(err);
   }
 };

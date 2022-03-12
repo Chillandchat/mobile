@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+
 import debug from "../debug";
 
 /**
@@ -9,6 +10,7 @@ import debug from "../debug";
 
 const home = (_req: Request, res: Response, _next: NextFunction): void => {
   res.status(200).sendFile(__dirname + "/static/index.html");
+
   debug.log("Home page HTML file sent.");
 };
 

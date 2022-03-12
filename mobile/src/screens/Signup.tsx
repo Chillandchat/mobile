@@ -141,7 +141,6 @@ const Signup: React.FC<any> = ({ navigation }) => {
 
             getUser(username)
               .then((data: AuthType | {}): void => {
-                console.log(data)
                 if (data === {}) {
                   signup(username, password)
                     .then((): void => {
@@ -163,7 +162,8 @@ const Signup: React.FC<any> = ({ navigation }) => {
                   setError("");
                 }, 5000);
               })
-              .catch((): void => {
+              .catch((err:unknown): void => {
+                console.error(err)
                 setError("Unable to signup.");
                 setTimeout(() => {
                   setError("");

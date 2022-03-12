@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 import { AuthSchemaType } from "../index.d";
 
 /**

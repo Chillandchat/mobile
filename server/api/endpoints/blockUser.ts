@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import debug from "../debug";
+
 import { AuthSchemaType } from "../index.d";
+import debug from "../debug";
 import user from "../schema/authSchema";
 
 /**
@@ -18,7 +19,7 @@ const blockUser = async (
   _next: NextFunction
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
-    res.status(401).send("ERROR: Invalid api key.");
+    res.status(401).send("Invalid api key.");
     return;
   }
 
@@ -32,11 +33,12 @@ const blockUser = async (
       .then((data: AuthSchemaType | null | undefined): void => {
         if (data != null || data != undefined) {
           res.status(200).send("User blocked or unblocked.");
+
           debug.log(`User ${req.body.user} blocked or unblocked.`);
-        } else res.status(400).send("User not found");
+        } else res.status(400).send("User not found.");
       });
   } catch (err: unknown) {
-    res.status(500).send(`SERVER ERROR: ${err}`);
+    res.status(500).send(`${err}`);
     debug.error(err);
   }
 };

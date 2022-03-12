@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import debug from "../debug";
+
 import { AuthSchemaType } from "../index.d";
 import user from "../schema/authSchema";
+import debug from "../debug";
 
 /**
  * This endpoint will return the user information from the server once called.
@@ -17,7 +18,7 @@ const getUserInfo = async (
   _next: NextFunction
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
-    res.status(401).send("ERROR: Invalid api key.");
+    res.status(401).send("Invalid api key.");
     return;
   }
 
@@ -28,11 +29,15 @@ const getUserInfo = async (
       .then((data: AuthSchemaType | null | undefined): void => {
         if (data !== null || data !== undefined) {
           res.status(200).send(data);
+
           debug.log(`User ${req.query.user} information sent.`);
-        } else res.status(404).send("User not found");
+        } else {
+          res.status(404).send("User not found");
+        }
       });
   } catch (err: unknown) {
-    res.status(500).send(`SERVER ERROR: ${err}`);
+    res.status(500).send(`${err}`);
+
     debug.error(err);
   }
 };

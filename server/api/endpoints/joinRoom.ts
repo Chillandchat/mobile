@@ -1,7 +1,8 @@
-import { RoomSchemaType } from "./../index.d";
 import { NextFunction, Request, Response } from "express";
-import roomSchema from "../schema/roomSchema";
 import bcrypt from "bcrypt";
+
+import { RoomSchemaType } from "./../index.d";
+import roomSchema from "../schema/roomSchema";
 import debug from "../debug";
 
 /**
@@ -44,15 +45,7 @@ const joinRoom = async (
           .then(() => {
             res.status(200).send("Successfully joined room.");
             debug.log(`User ${req.body.user} has joined room ${req.body.id}.`);
-          })
-          .catch((err: unknown) => {
-            res.status(500).send(`SERVER ERROR: ${err}`);
-            debug.error(err);
           });
-      })
-      .catch((err: unknown) => {
-        res.status(500).send(`SERVER ERROR: ${err}`);
-        debug.error(err);
       });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);

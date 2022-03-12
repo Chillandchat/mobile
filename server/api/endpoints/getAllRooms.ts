@@ -1,5 +1,6 @@
-import roomSchema from "../schema/roomSchema";
 import { NextFunction, Request, Response } from "express";
+
+import roomSchema from "../schema/roomSchema";
 import { RoomSchemaType } from "../index.d";
 import debug from "../debug";
 
@@ -8,7 +9,6 @@ import debug from "../debug";
  *
  * @type {GET} This is a get typed endpoint.`
  * @param {string} user The id of the user you want to search.
- * @param {string} key The api key.
  * @returns {Array<RoomSchemaType>} Returns an array of rooms, see './type.d.ts' for details.
  */
 
@@ -18,7 +18,7 @@ const getAllRooms = async (
   _next: NextFunction
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
-    res.status(401).send("ERROR: Invalid api key.");
+    res.status(401).send("Invalid api key.");
     return;
   }
 
@@ -28,10 +28,12 @@ const getAllRooms = async (
       .exec()
       .then((data: Array<RoomSchemaType>): void => {
         res.status(200).send(data);
+
         debug.log(`User ${req.query.user} has found ${data.length} rooms.`);
       });
   } catch (err: unknown) {
-    res.status(500).send(`SERVER ERROR: ${err}`);
+    res.status(500).send(`${err}`);
+
     debug.error(err);
   }
 };

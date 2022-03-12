@@ -1,6 +1,7 @@
-import { MessageSchemaType } from "../index.d";
 import { NextFunction, Request, Response } from "express";
+
 import messageSchema from "../schema/messageSchema";
+import { MessageSchemaType } from "../index.d";
 import debug from "../debug";
 
 /**
@@ -17,7 +18,7 @@ const seachMessage = async (
   _next: NextFunction
 ): Promise<void> => {
   if (req.query.key !== String(process.env.KEY)) {
-    res.status(401).send("ERROR: Invalid api key.");
+    res.status(401).send("Invalid api key.");
     return;
   }
 
@@ -31,13 +32,10 @@ const seachMessage = async (
         } else {
           res.status(400).send("No message found.");
         }
-      })
-      .catch((err: unknown): void => {
-        res.status(500).send(`SERVER ERROR: ${err}`);
-        debug.error(err);
       });
   } catch (err: unknown) {
     res.status(500).send(`SERVER ERROR: ${err}`);
+
     debug.error(err);
   }
 };
