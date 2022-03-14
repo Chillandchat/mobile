@@ -5,7 +5,7 @@
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "outDir": "./build",
+    "outDir": "./build/js",
     "removeComments": true,
     "allowJs": true,
     "checkJs": true

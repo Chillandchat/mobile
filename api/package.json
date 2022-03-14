@@ -1,12 +1,12 @@
 {
   "name": "chill-and-chat-api",
   "version": "1.0.0",
-  "main": "./build/index.js",
+  "main": "build/js/index.js",
   "author": "Alvin cheng",
   "license": "MIT",
   "module": "module",
   "scripts": {
-    "start": "echo 'Starting app...' && node ./build/index.js",
+    "start": "echo 'Starting app...' && node .",
     "build": "tsc && echo 'Building and compiling typescript code...\n' && echo 'Done.\n'",
     "test": "echo 'Running...' && yarn build && yarn start"
   },
