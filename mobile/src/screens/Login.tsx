@@ -1,5 +1,3 @@
-import { login as loginAction, setUserInfo } from "../redux/action";
-import { Feather } from "@expo/vector-icons";
 import React from "react";
 import {
   View,
@@ -11,8 +9,12 @@ import {
   Keyboard,
   Dimensions,
   ScaledSize,
+  Platform,
 } from "react-native";
+import { Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
+
+import { login as loginAction, setUserInfo } from "../redux/action";
 import Button from "../components/Button";
 import Form from "../components/LoginForm";
 import login from "../scripts/login";
@@ -28,8 +30,8 @@ const Login: React.FC<any> = ({ navigation }) => {
   const windowDimensions: ScaledSize = Dimensions.get("window");
   const [error, setError] = React.useState("");
   const dispatch = useDispatch();
-  let username: string;
-  let password: string;
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword]:any = React.useState("");
 
   const style: any = StyleSheet.create({
     container: {
@@ -48,7 +50,6 @@ const Login: React.FC<any> = ({ navigation }) => {
       marginBottom: 40,
     },
     signup: {
-      margin: 15,
       fontFamily: "poppinsExtraBold",
     },
     error: {
@@ -61,10 +62,26 @@ const Login: React.FC<any> = ({ navigation }) => {
       textDecorationLine: "underline",
       fontFamily: "poppinsExtraBold",
     },
+    informationLink: {
+      position: "relative",
+      top: windowDimensions.width * 0.2,
+      left: windowDimensions.width * 0.4,
+    },
+    signupContainer: {
+      margin: 15,
+      justifyContent: "flex-start",
+      flexDirection: "row",
+    },
   });
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }} enabled behavior={"padding"}>
+    <KeyboardAvoidingView
+      
+      style={{ flex: 1,  }}
+      enabled
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    
+    >
       <ScrollView contentContainerStyle={style.container}>
         <View style={style.formContainer}>
           <Text style={style.text}>Login</Text>
@@ -72,24 +89,24 @@ const Login: React.FC<any> = ({ navigation }) => {
             safeEntry={false}
             type="username"
             onTextChange={(text: string): void => {
-              username = text;
+              setUsername(text);
+              console.log(username, password);
             }}
           />
           <Form
             safeEntry={true}
             type="password"
             onTextChange={(text: string): void => {
-              password = text;
+             setPassword(text);
             }}
           />
-          <Text style={style.signup}>
-            No account?{" "}
-            {
-              <TouchableOpacity onPress={() => navigation.push("sign-up")}>
-                <Text style={style.link}>Signup here.</Text>
-              </TouchableOpacity>
-            }
-          </Text>
+          <View style={style.signupContainer}>
+            <Text style={style.signup}>No account? </Text>
+
+            <TouchableOpacity onPress={() => navigation.push("sign-up")}>
+              <Text style={style.link}>Signup here.</Text>
+            </TouchableOpacity>
+          </View>
         </View>
         <Text style={style.error}>{error}</Text>
         <Button
@@ -109,8 +126,8 @@ const Login: React.FC<any> = ({ navigation }) => {
                     if (user !== {}) {
                       dispatch(setUserInfo(user as AuthType));
                       dispatch(loginAction());
-            
-                      // @ts-ignore 
+
+                      // @ts-ignore
 
                       if (!user.blocked) {
                         Keyboard.dismiss();
@@ -150,11 +167,12 @@ const Login: React.FC<any> = ({ navigation }) => {
           textColor={"#ffff"}
           text={"login"}
         />
+
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("information");
           }}
-          style={{ position: "absolute", bottom: "4%", left: "7%" }}
+          style={style.informationLink}
         >
           <Feather name="info" size={40} color="black" />
         </TouchableOpacity>

@@ -8,7 +8,9 @@ import {
   Keyboard,
   ScaledSize,
   Dimensions,
+  Platform,
 } from "react-native";
+
 import Form from "../components/LoginForm";
 import Button from "../components/Button";
 import getUser from "../scripts/getUser";
@@ -54,7 +56,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
     },
   });
   return (
-    <KeyboardAvoidingView behavior={"padding"} style={{ flex: 1 }} enabled>
+    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1}} >
       <ScrollView contentContainerStyle={style.container}>
         <View style={style.formContainer}>
           <Text style={style.text}>Signup</Text>

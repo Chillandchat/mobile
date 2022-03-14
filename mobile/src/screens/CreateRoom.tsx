@@ -7,6 +7,7 @@ import {
   ScrollView,
   Keyboard,
   KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { useSelector } from "react-redux";
 import Button from "../components/Button";
@@ -51,7 +52,7 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
   });
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <ScrollView contentContainerStyle={style.container}>
         <View>
           <Text style={style.title}>Create a room...</Text>
