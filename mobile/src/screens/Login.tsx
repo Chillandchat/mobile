@@ -64,8 +64,8 @@ const Login: React.FC<any> = ({ navigation }) => {
     },
     informationLink: {
       position: "relative",
-      top: windowDimensions.width * 0.2,
-      left: windowDimensions.width * 0.4,
+      top: windowDimensions.height * 0.2,
+      left: windowDimensions.height * 0.2,
     },
     signupContainer: {
       margin: 15,
