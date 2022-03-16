@@ -42,4 +42,15 @@ git clone https://github.com/Chill-and-chat/Chill-and-chat/
 ```
 
 #
-This project is created by Alvin Cheng and Brianna Cheng 2021-2022.
+### Credits:
+
+*Alvin cheng - Software engineer*
+
+*Brianna cheng - UI&UX designer* 
+
+### Special thanks:
+
+*Manav R*
+
+*Muhammad A*
+
