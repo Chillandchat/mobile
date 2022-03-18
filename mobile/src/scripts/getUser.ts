@@ -11,12 +11,15 @@ import { AuthType } from ".";
  */
 
 const getUser = async (user: string): Promise<AuthType | {}> => {
-  let userData: AuthType | {} = {};
+  let userData: AuthType | any = {};
+
   try {
     await api.instance
       .get(`${api.endpoints.getUserInfo}?key=${api.apiKey}&user=${user}`)
       .then((data: AxiosResponse): void => {
-        userData = data.data;
+        if (data.data !== "") {
+          userData = data.data;
+        }
       })
       .catch((err: unknown): void => {
         throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
@@ -24,6 +27,7 @@ const getUser = async (user: string): Promise<AuthType | {}> => {
   } catch (err: unknown) {
     throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0022`);
   }
+
   return userData;
 };
 

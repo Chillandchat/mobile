@@ -25,9 +25,9 @@ import signup from "../scripts/signup";
 const Signup: React.FC<any> = ({ navigation }) => {
   const [error, setError] = React.useState("");
   const windowDimensions: ScaledSize = Dimensions.get("window");
-  let username: string;
-  let password: string;
-  let confirmPassword: string;
+  let [username, setUsername] = React.useState("");
+  let [password, setPassword] = React.useState("");
+  let [confirmPassword, setConfirmPassword] = React.useState("");
 
   const style = StyleSheet.create({
     container: {
@@ -56,7 +56,10 @@ const Signup: React.FC<any> = ({ navigation }) => {
     },
   });
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1}} >
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
       <ScrollView contentContainerStyle={style.container}>
         <View style={style.formContainer}>
           <Text style={style.text}>Signup</Text>
@@ -64,21 +67,21 @@ const Signup: React.FC<any> = ({ navigation }) => {
             safeEntry={false}
             type="username"
             onTextChange={(text: string): void => {
-              username = text;
+              setUsername(text);
             }}
           />
           <Form
             safeEntry={true}
             type="password"
             onTextChange={(text: string): void => {
-              password = text;
+              setPassword(text);
             }}
           />
           <Form
             safeEntry={true}
             type="confirm-password"
             onTextChange={(text: string): void => {
-              confirmPassword = text;
+              setConfirmPassword(text);
             }}
           />
         </View>
@@ -112,60 +115,31 @@ const Signup: React.FC<any> = ({ navigation }) => {
               return;
             }
 
-            /**
-             * !BUG REPORT!
-             * Cannot signup from the ui, for some reason the signup function just skips to the error stage.
-             * Further more, the code from @line 138 to @line 141 is being executed instead of @line 123 to @line 136.
-             * I think this is caused because the if statement is not being executed on @line 123.
-             * 
-             * * TO RERODUCE THE BUG:
-             * 1. Click "Signup" in the login screen.
-             * 2. Enter a username and password.
-             * 3. Make sure there is no user with the same username.
-             * 4. Click "Signup".
-             * 
-             * * FIXES:
-             * 
-             * @note Please put fixes here.
-             * 
-             * * CODE FLOW:
-             * 1. @line 133 The "getUser" function is being called(In order to check if the user exists or not.).
-             * 2. @line 137 The code checks if the data is == {}.
-             *    True:
-             *    Signup is called.
-             *    
-             *    False:
-             *    !BUG HERE!
-             *    Error is set.
-             * 
-             * 3. Continues to @line 170.
-             */
-
             getUser(username)
               .then((data: AuthType | {}): void => {
-                if (data === {}) {
-                  signup(username, password)
-                    .then((): void => {
-                      Keyboard.dismiss();
-                      navigation.push("login");
-                    })
-                    .catch((err: unknown): void => {
-                      setError("Signup error.");
-                      setTimeout(() => {
-                        setError("");
-                      }, 5000);
-                      console.error(err);
-                    });
+                if (Object.keys(data).length !== 0) {
+                  setError("Username taken, try another username.");
+                  setTimeout(() => {
+                    setError("");
+                  }, 5000);
                   return;
                 }
-              
-                setError("Username taken, try another username.");
-                setTimeout(() => {
-                  setError("");
-                }, 5000);
+
+                signup(username, password)
+                  .then((): void => {
+                    Keyboard.dismiss();
+                    navigation.push("login");
+                  })
+                  .catch((err: unknown): void => {
+                    setError("Signup error.");
+                    setTimeout(() => {
+                      setError("");
+                    }, 5000);
+                    console.error(err);
+                  });
               })
-              .catch((err:unknown): void => {
-                console.error(err)
+              .catch((err: unknown): void => {
+                console.error(err);
                 setError("Unable to signup.");
                 setTimeout(() => {
                   setError("");
