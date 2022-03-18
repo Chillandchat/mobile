@@ -28,9 +28,9 @@ import getUser from "../scripts/getUser";
 
 const Login: React.FC<any> = ({ navigation }) => {
   const windowDimensions: ScaledSize = Dimensions.get("window");
-  const [error, setError] = React.useState("");
-  const dispatch = useDispatch();
-  const [username, setUsername] = React.useState("");
+  const [error, setError]: any = React.useState("");
+  const dispatch: any = useDispatch();
+  const [username, setUsername]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
 
   const style: any = StyleSheet.create({
