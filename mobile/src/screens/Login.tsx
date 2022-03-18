@@ -90,7 +90,6 @@ const Login: React.FC<any> = ({ navigation }) => {
             type="username"
             onTextChange={(text: string): void => {
               setUsername(text);
-              console.log(username, password);
             }}
           />
           <Form
@@ -123,7 +122,7 @@ const Login: React.FC<any> = ({ navigation }) => {
               .then((): void => {
                 getUser(username)
                   .then((user: AuthType | {}): void => {
-                    if (user !== {}) {
+                    if (Object.keys(user).length !== 0) {
                       dispatch(setUserInfo(user as AuthType));
                       dispatch(loginAction());
 

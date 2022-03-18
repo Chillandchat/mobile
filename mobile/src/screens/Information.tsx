@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 /**
- * This is the information page, 
+ * This is the information page,
  * this page will show the user some information about the app version.
  */
 
@@ -47,9 +47,12 @@ const Information: React.FC<any> = ({ navigation }) => {
       <Text style={style.tittle}>Credits:</Text>
       <Text style={style.text}>Alvin cheng - Software engineer</Text>
       <Text style={style.text}>Brianna cheng - UI&UX designer</Text>
+      <View style={{ padding: 10 }} />
+      <Text style={style.tittle}>Special thanks:</Text>
+      <Text style={style.text}>Manav R</Text>
+      <Text style={style.text}>Muhammad A</Text>
     </View>
   );
 };
 
 export default Information;
- 

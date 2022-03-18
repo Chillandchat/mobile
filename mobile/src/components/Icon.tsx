@@ -16,13 +16,13 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
     container: {
       borderRadius: 10000,
       backgroundColor: props.color,
+      paddingHorizontal: 25,
+      paddingVertical: 10,
     },
     text: {
       fontFamily: "poppinsLight",
       fontSize: 30,
       color: "#ffff",
-      paddingHorizontal: 22,
-      paddingVertical: 10,
     },
   });
 
