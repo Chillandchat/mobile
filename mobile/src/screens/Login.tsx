@@ -28,10 +28,10 @@ import getUser from "../scripts/getUser";
 
 const Login: React.FC<any> = ({ navigation }) => {
   const windowDimensions: ScaledSize = Dimensions.get("window");
-  const [error, setError] = React.useState("");
-  const dispatch = useDispatch();
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword]:any = React.useState("");
+  const [error, setError]: any = React.useState("");
+  const dispatch: any = useDispatch();
+  const [username, setUsername]: any = React.useState("");
+  const [password, setPassword]: any = React.useState("");
 
   const style: any = StyleSheet.create({
     container: {
@@ -76,11 +76,9 @@ const Login: React.FC<any> = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView
-      
-      style={{ flex: 1,  }}
+      style={{ flex: 1 }}
       enabled
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-    
     >
       <ScrollView contentContainerStyle={style.container}>
         <View style={style.formContainer}>
@@ -96,7 +94,7 @@ const Login: React.FC<any> = ({ navigation }) => {
             safeEntry={true}
             type="password"
             onTextChange={(text: string): void => {
-             setPassword(text);
+              setPassword(text);
             }}
           />
           <View style={style.signupContainer}>
@@ -123,12 +121,12 @@ const Login: React.FC<any> = ({ navigation }) => {
                 getUser(username)
                   .then((user: AuthType | {}): void => {
                     if (Object.keys(user).length !== 0) {
-                      dispatch(setUserInfo(user as AuthType));
-                      dispatch(loginAction());
-
                       // @ts-ignore
 
                       if (!user.blocked) {
+                        dispatch(setUserInfo(user as AuthType));
+                        dispatch(loginAction());
+
                         Keyboard.dismiss();
                         navigation.push("menu");
                       } else {

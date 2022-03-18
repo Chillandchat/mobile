@@ -52,7 +52,10 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
   });
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
       <ScrollView contentContainerStyle={style.container}>
         <View>
           <Text style={style.title}>Create a room...</Text>
