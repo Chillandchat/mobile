@@ -33,7 +33,7 @@ The mobile app is still in the development & testing phase and will be released 
 Please check this repository for updates!
 
 ## API
-The Chill&chat is made with NodeJS, can download it in the "server" folder.
+The Chill&chat is made with NodeJS, can download it in the ["api"](https://github.com/Chillandchat/Chillandchat/tree/master/api) folder.
 
 ### To clone:
 
