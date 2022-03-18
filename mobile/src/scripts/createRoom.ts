@@ -24,7 +24,7 @@ const createRoom = async (
         id: uuid(),
         name: name,
         passcode: password,
-        users: [username],
+        user: username,
       })
       .then((_data: AxiosResponse): void => {})
       .catch((err: unknown): void => {
