@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
-import { RoomType } from ".";
+
+import { RoomType } from "./index.d";
 import api from "./api";
 
 /**

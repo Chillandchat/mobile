@@ -1,5 +1,6 @@
-import { Icon } from './../../../web/components/Icon';
 import { AxiosInstance } from "axios";
+
+import { Icon } from './../../../web/components/Icon';
 
 /**
  * This is the ApiEndpoint type, this type makes sure that the all endpoints are valid.

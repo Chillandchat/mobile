@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, BackHandler, Linking } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+
 import Button from "../components/Button";
 
 /**

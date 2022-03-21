@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
+
 import api from "./api";
-import { AuthType } from ".";
+import { AuthType } from "./index.d";
 
 /**
  * This function is responsible for returning a user's information from the remote server.

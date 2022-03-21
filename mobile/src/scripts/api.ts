@@ -1,7 +1,7 @@
 // @ts-ignore
 import { API_URL, API_KEY } from "@env";
 import axios, { AxiosInstance } from "axios";
-import { ApiEndpoints, ApiCombined } from ".";
+import { ApiEndpoints, ApiCombined } from "./index.d";
 
 export const apiKey: string = String(API_KEY);
 
