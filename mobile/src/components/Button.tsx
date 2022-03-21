@@ -1,4 +1,3 @@
-import { ButtonProps as Props } from ".";
 import React from "react";
 import {
   Text,
@@ -7,6 +6,8 @@ import {
   Dimensions,
   ScaledSize,
 } from "react-native";
+
+import { ButtonProps as Props } from "./index.d";
 
 /**
  * This is the button component that renders the button on screen and

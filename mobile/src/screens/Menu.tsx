@@ -71,6 +71,9 @@ const Menu: React.FC<any> = ({ navigation }) => {
       padding: 5,
       borderRadius: 10000,
     },
+    bar:{
+      backgroundColor:"#00AD98",
+    }
   });
 
   if (!loggedin) {
@@ -90,6 +93,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
             }}
           />
         </View>
+       <View style={style.bar}/>
         <RoomList rooms={rooms} />
         <TouchableOpacity
           style={style.addButton}
