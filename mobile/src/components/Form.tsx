@@ -1,6 +1,8 @@
 import React from "react";
 import { View, StyleSheet, TextInput } from "react-native";
+
 import { FormProps } from "./index.d";
+
 /**
  * This is the form component this component will allow the user to input text.
  * 

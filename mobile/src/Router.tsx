@@ -1,9 +1,4 @@
 import React from "react";
-import { Alert, View, StyleSheet } from "react-native";
-import loadFonts from "../assets/fonts/loader";
-import AppLoading from "expo-app-loading";
-import { StatusBar } from "expo-status-bar";
-import { StackNavigationEventMap } from "@react-navigation/stack/lib/typescript/src/types";
 import {
   createStackNavigator,
   StackNavigationOptions,
@@ -14,6 +9,11 @@ import {
   StackNavigationState,
   TypedNavigator,
 } from "@react-navigation/native";
+import { Alert, View, StyleSheet } from "react-native";
+import AppLoading from "expo-app-loading";
+import { StatusBar } from "expo-status-bar";
+import { StackNavigationEventMap } from "@react-navigation/stack/lib/typescript/src/types";
+
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
 import Chat from "./screens/Chat";
@@ -27,7 +27,7 @@ import CreateRoom from "./screens/CreateRoom";
 import AddRoom from "./screens/AddRoom";
 import JoinRoom from "./screens/JoinRoom";
 import Information from "./screens/Information";
-
+import loadFonts from "../assets/fonts/loader";
 /**
  * This is the router component for the application, This component
  * contains the stack for the navigation system and also loads important data in the application.

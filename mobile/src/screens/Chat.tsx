@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 const Chat: React.FC = () => {
-  const style = StyleSheet.create({
+  const style: any = StyleSheet.create({
     container: {
       justifyContent: "center",
       alignItems: "center",

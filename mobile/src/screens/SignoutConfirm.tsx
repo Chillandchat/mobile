@@ -12,7 +12,7 @@ import { logout } from "../redux/action";
 const SignoutConfirm: React.FC<any> = ({ navigation }) => {
   const dispatch: any = useDispatch();
 
-  const style = StyleSheet.create({
+  const style: any = StyleSheet.create({
     container: {
       flex: 1,
       alignItems: "center",

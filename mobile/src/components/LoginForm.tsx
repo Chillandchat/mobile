@@ -1,5 +1,4 @@
 import React from "react";
-import { LoginFormProps as Props } from ".";
 import { Feather } from "@expo/vector-icons";
 import {
   View,
@@ -9,6 +8,9 @@ import {
   ScaledSize,
   Text,
 } from "react-native";
+
+
+import { LoginFormProps as Props } from "./index.d";
 
 /**
  *  This is the Login form element of the login page.

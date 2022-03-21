@@ -9,7 +9,7 @@ import debug from "../utils/debug";
  *
  * @type {POST} This is a post typed endpoint.
  * @param {string} id The id of the message that is being searched for.
- * @returns {string | MessageSchemaType} Returns the result of the search in a string format or the message in the messageschema type.
+ * @returns {string | MessageSchemaType} Returns the result of the search in a string format or the message in the message schema type.
  */
 
 const seachMessage = async (

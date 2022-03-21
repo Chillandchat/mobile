@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
-import { MessageType } from ".";
+
+import { MessageType } from "./index.d";
 import api from "./api";
 
 /**

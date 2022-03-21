@@ -1,16 +1,16 @@
 //! "import "react-native-get-random-values";" MUST BE FIRST!!
 import "react-native-get-random-values";
 import React from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { v4 as uuid } from "uuid";
+
 import { RoomType } from "../scripts";
 import Icon from "./Icon";
 import { RoomListProps as Props } from "./index.d";
-import { v4 as uuid } from "uuid";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { useDispatch } from "react-redux";
 import { setSessionData } from "../redux/action";
-import { useNavigation } from "@react-navigation/native";
 
 /**
  * This is the room list component, this component will diaplay all the rooms provied.
