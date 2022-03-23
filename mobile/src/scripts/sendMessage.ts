@@ -17,11 +17,7 @@ const sendMessage = async (message: MessageType): Promise<void> => {
   const responseToken = uuid();
   const socket = io(SOCKET_URL);
 
-  try {
-    socket.emit("server-message", message, API_KEY, responseToken);
-  } catch (err: unknown) {
-    throw new Error("Error: " + err + "\n   Error code: CC_ERROR_0022");
-  }
+  socket.emit("server-message", message, API_KEY, responseToken);
 
   socket.on(`sent:token(${responseToken})`, (): void => {
     socket.disconnect();

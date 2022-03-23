@@ -13,7 +13,6 @@ import api from "./api";
 const getRoom = async (user: string): Promise<typeof rooms> => {
   const rooms: Array<RoomType> = [];
 
-  try {
     await api.instance
       .get(`${api.endpoints.getRoom}?user=${user}&key=${api.apiKey}`)
       .then((data: AxiosResponse): void => {
@@ -24,9 +23,6 @@ const getRoom = async (user: string): Promise<typeof rooms> => {
       .catch((err: unknown): void => {
         throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
       });
-  } catch (err: unknown) {
-    throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0022`);
-  }
 
   return rooms;
 };

@@ -14,23 +14,19 @@ import api from "./api";
  */
 
 const signup = async (username: string, password: string): Promise<void> => {
-  try {
-    await api.instance
-      .post(`${api.endpoints.signup}?key=${api.apiKey}`, {
-        id: uuid(),
-        username: username,
-        password: password,
-        verified: false,
-        bot: false,
-        blocked: false,
-      })
-      .then((_data: AxiosResponse): void => {})
-      .catch((err: unknown): void => {
-        throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
-      });
-  } catch (err: unknown) {
-    throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0022`);
-  }
+  await api.instance
+    .post(`${api.endpoints.signup}?key=${api.apiKey}`, {
+      id: uuid(),
+      username: username,
+      password: password,
+      verified: false,
+      bot: false,
+      blocked: false,
+    })
+    .then((_data: AxiosResponse): void => {})
+    .catch((err: unknown): void => {
+      throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
+    });
 };
 
 export default signup;
