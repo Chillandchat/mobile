@@ -80,7 +80,7 @@ io.on("connection", (socket: Socket): void => {
           });
 
           await newMessage.save().then((): void => {
-            io.emit(`sent:token-${responseToken}`);
+            io.emit(`sent:token(${responseToken})`);
             debug.log(`Message: ${payload.id} saved and emited.`);
           });
         } catch (err: unknown) {
