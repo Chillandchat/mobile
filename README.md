@@ -27,7 +27,7 @@ I look forward to seeing your contributions to Chill&chat!
 If you have found any bug(s) please post them in the [Issues](https://github.com/Chill-and-chat/Chill-chat/issues) tab in this repository. Please explain the problem and post any error messages or codes, also include a list of instructions to reproduce this bug or problem.
 
 ## Mobile App
-The mobile app is still in the development & testing phase and will be released on april 1st 2022.
+The mobile app is still in the development & testing phase and will be released soon.
 
 
 Please check this repository for updates!
@@ -49,8 +49,6 @@ git clone https://github.com/Chillandchat/Chillandchat/
 *Brianna cheng - UI&UX designer* 
 
 ### Special thanks:
-
-*Manav R*
 
 *Muhammad A*
 
