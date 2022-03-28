@@ -1,6 +1,6 @@
 <p align="center"how><img src="https://github.com/Chill-and-chat/Chill-and-chat/blob/master/logo.svg/" style="width:200px;"/></p>
 
-# Chill&chat repository 
+# Chill&chat mobile app
 ![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/issues-pr-closed/chill-and-chat/chill-chat) ![](https://img.shields.io/github/issues-pr-raw/chill-and-chat/chill-chat)
 
 
@@ -26,29 +26,8 @@ I look forward to seeing your contributions to Chill&chat!
 
 If you have found any bug(s) please post them in the [Issues](https://github.com/Chill-and-chat/Chill-chat/issues) tab in this repository. Please explain the problem and post any error messages or codes, also include a list of instructions to reproduce this bug or problem.
 
-## Mobile App
+## Download
 The mobile app is still in the development & testing phase and will be released soon.
 
 
 Please check this repository for updates!
-
-## API
-The Chill&chat is made with NodeJS, can download it in the "[api](https://github.com/Chillandchat/Chillandchat/tree/master/api)" folder.
-
-### To clone:
-
-```
-git clone https://github.com/Chillandchat/Chillandchat/
-```
-
-#
-### Credits:
-
-*Alvin cheng - Software engineer*
-
-*Brianna cheng - UI&UX designer* 
-
-### Special thanks:
-
-*Muhammad A*
-
