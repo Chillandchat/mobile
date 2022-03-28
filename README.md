@@ -31,3 +31,13 @@ The mobile app is still in the development & testing phase and will be released 
 
 
 Please check this repository for updates!
+
+### Credits:
+
+*Alvin cheng - Software engineer*
+
+*Brianna cheng - UI&UX designer* 
+
+### Special thanks:
+
+*Muhammad A*
