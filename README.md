@@ -42,6 +42,8 @@ Please check this repository for updates!
 
 - We will ban and delete accounts of users that are unruly or sharing inappropriate data.
 
+- Developers will be active to eliminate security issues / bugs
+
 All the above will be enforced to ensure Chill&chat is safe!
 
 ## Credits:
