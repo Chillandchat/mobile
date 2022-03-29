@@ -1,5 +1,13 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+  Dimensions,
+} from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 
@@ -7,11 +15,16 @@ import Form from "../components/Form";
 import ChatRoomBar from "../components/ChatRoomBar";
 import { RootState } from "../redux/index.d";
 
+/**
+ * This is the chat room as the name suggests it will display the chat room.
+ */
+
 const Chat: React.FC = () => {
   const { sessionStatus }: any = useSelector((state: RootState): RootState => {
-    console.log(state)
     return state;
   });
+
+  const windowDimensions = Dimensions.get("window");
 
   const style: any = StyleSheet.create({
     container: {
@@ -26,30 +39,44 @@ const Chat: React.FC = () => {
     sendBar: {
       flexDirection: "row",
       alignItems: "center",
+      position: "absolute",
+      bottom: windowDimensions.height * 0.05,
     },
     sendIcon: {
       padding: 10,
     },
+    chatRoomBar: {
+      position: "absolute",
+      top: windowDimensions.height * 0.1,
+      marginHorizontal: 20,
+    },
   });
 
   return (
-    <View style={style.container}>
-      <ChatRoomBar roomData={sessionStatus}/>
-
-      <View style={style.sendBar}>
-        <Form
-          placeholder={"Type a message..."}
-          onTextChange={(): void => {
-            return;
-          }}
-        />
-        <View style={style.sendIcon}>
-          <TouchableOpacity>
-            <Feather name="send" size={32} color="#00AD98" />
-          </TouchableOpacity>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      enabled
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <ScrollView contentContainerStyle={style.container}>
+        <View style={style.chatRoomBar}>
+          <ChatRoomBar roomData={sessionStatus} />
         </View>
-      </View>
-    </View>
+        <View style={style.sendBar}>
+          <Form
+            placeholder={"Type a message..."}
+            onTextChange={(): void => {
+              return;
+            }}
+          />
+          <View style={style.sendIcon}>
+            <TouchableOpacity>
+              <Feather name="send" size={32} color="#00AD98" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
