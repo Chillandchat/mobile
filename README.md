@@ -32,7 +32,19 @@ The mobile app is still in the development & testing phase and will be released 
 
 Please check this repository for updates!
 
-### Credits:
+## User safety agreement 
+
+- We will ensure that all users' private information will be private no matter what, even to the developers. 
+
+- Private data is kept safe in a database with top of the line safety and encryption, we also ensure no data is sold or shared to any third parties. 
+
+- We will also make sure to listen to any community safety concerns or complaints.
+
+- We will ban and delete accounts of users that are unruly or sharing inappropriate data.
+
+All the above will be enforced to ensure Chill&chat is safe!
+
+## Credits:
 
 *Alvin cheng - Software engineer*
 
