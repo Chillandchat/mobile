@@ -17,7 +17,7 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
     container: {
       borderRadius: 10000,
       backgroundColor: props.color,
-      paddingHorizontal: 25,
+      paddingHorizontal: 20,
       paddingVertical: 10,
     },
     text: {

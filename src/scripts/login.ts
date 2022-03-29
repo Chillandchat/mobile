@@ -11,7 +11,6 @@ import api from "./api";
  */
 
 const login = async (username: string, password: string): Promise<void> => {
-  try {
     await api.instance
       .post(`${api.endpoints.login}?key=${api.apiKey}`, {
         username: username,
@@ -21,9 +20,6 @@ const login = async (username: string, password: string): Promise<void> => {
       .catch((err: unknown): void => {
         throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
       });
-  } catch (err: unknown) {
-    throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0022`);
-  }
 };
 
 export default login;

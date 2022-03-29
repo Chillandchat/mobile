@@ -1,6 +1,16 @@
 import { RoomType } from "../scripts/index.d";
 
 /**
+ * This is the props for the chat room bar component
+ * 
+ * @see ChatRoomBar.tsx
+ */
+
+export interface ChatRoomBarProps{
+    roomData: RoomType;
+}
+
+/**
  * This is the props for the button component.
  *
  * @see Button.tsx

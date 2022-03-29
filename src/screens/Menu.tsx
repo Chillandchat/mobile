@@ -1,13 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, Touchable } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
+import { Ionicons } from "@expo/vector-icons";
+
 import RoomList from "../components/RoomList";
 import Icon from "../components/Icon";
 import { RootState } from "../redux/index.d";
 import getRoom from "../scripts/getRooms";
 import { RoomType } from "../scripts/index.d";
-import { Ionicons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.

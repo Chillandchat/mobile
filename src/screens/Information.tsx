@@ -49,7 +49,6 @@ const Information: React.FC<any> = ({ navigation }) => {
       <Text style={style.text}>Brianna cheng - UI&UX designer</Text>
       <View style={{ padding: 10 }} />
       <Text style={style.tittle}>Special thanks:</Text>
-      <Text style={style.text}>Manav R</Text>
       <Text style={style.text}>Muhammad A</Text>
     </View>
   );

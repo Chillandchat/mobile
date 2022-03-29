@@ -1,22 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
-const Chat: React.FC = () => {
+const RoomInformation: React.FC = () => {
   const style: any = StyleSheet.create({
     container: {
-      justifyContent: "center",
       alignItems: "center",
-      flex: 1,
+      justifyContent: "center",
     },
     text: {
       fontFamily: "poppins",
+      fontSize: 15,
     },
   });
+
   return (
     <View style={style.container}>
-      <Text style={style.text}>Chat</Text>
+      <Text style={style.text}>Hi there!</Text>
     </View>
   );
 };
 
-export default Chat;
+export default RoomInformation;

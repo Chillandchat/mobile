@@ -13,13 +13,11 @@ const sessionStatus = (
 ) => {
   switch (action.type) {
     case "SET_SESSION_STATUS":
-      return {
-        chatSessionId: action.payload,
-      };
+      return (state = action.payload);
+
     case "DELETE_SESSION_STATUS":
-      return {
-        chatSessionId: "",
-      };
+      return (state = {});
+
     default:
       return state;
   }
