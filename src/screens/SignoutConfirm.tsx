@@ -26,17 +26,21 @@ const SignoutConfirm: React.FC<any> = ({ navigation }) => {
         color={"red"}
         textColor={"#ffff"}
         onPress={() => {
+          let comfirmed = false;
+
           Alert.alert("Signout confirm", "Are you sure you want to signout?", [
             {
               text: "Signout",
               onPress: async () => {
                 await dispatch(logout());
-                navigation.navigate("login");
+                comfirmed = true;
               },
               style: "destructive",
             },
             { text: "Cancel", onPress: () => {} },
           ]);
+
+          comfirmed ? navigation.navigate("login") : null;
         }}
         text={"sign out"}
       />
