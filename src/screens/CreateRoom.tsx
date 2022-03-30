@@ -41,7 +41,7 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
     title: {
       fontFamily: "poppinsExtraBold",
       fontSize: 25,
-      padding: "15%",
+      padding: 60,
     },
     error: {
       color: "red",

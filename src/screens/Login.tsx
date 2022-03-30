@@ -7,8 +7,6 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Keyboard,
-  Dimensions,
-  ScaledSize,
   Platform,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
@@ -27,7 +25,6 @@ import getUser from "../scripts/getUser";
  */
 
 const Login: React.FC<any> = ({ navigation }) => {
-  const windowDimensions: ScaledSize = Dimensions.get("window");
   const [error, setError]: any = React.useState("");
   const dispatch: any = useDispatch();
   const [username, setUsername]: any = React.useState("");
@@ -44,7 +41,7 @@ const Login: React.FC<any> = ({ navigation }) => {
       fontSize: 35,
       marginBottom: 30,
       alignSelf: "flex-start",
-      marginLeft: windowDimensions.width * 0.03,
+      marginLeft: 10
     },
     formContainer: {
       marginBottom: 40,
@@ -63,9 +60,9 @@ const Login: React.FC<any> = ({ navigation }) => {
       fontFamily: "poppinsExtraBold",
     },
     informationLink: {
-      position: "relative",
-      top: windowDimensions.height * 0.2,
-      left: windowDimensions.height * 0.2,
+      position: "absolute",
+      bottom: 40,
+      right: 40
     },
     signupContainer: {
       margin: 15,

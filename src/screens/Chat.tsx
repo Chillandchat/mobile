@@ -40,15 +40,15 @@ const Chat: React.FC = () => {
       flexDirection: "row",
       alignItems: "center",
       position: "absolute",
-      bottom: windowDimensions.height * 0.05,
+      bottom: 50
     },
     sendIcon: {
       padding: 10,
     },
     chatRoomBar: {
       position: "absolute",
-      top: windowDimensions.height * 0.1,
-      marginHorizontal: 20,
+      top: 50,
+      marginHorizontal: "10%",
     },
   });
 
