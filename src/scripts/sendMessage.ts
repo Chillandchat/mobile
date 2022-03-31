@@ -6,6 +6,7 @@ import { v4 as uuid } from "uuid";
 import { io } from "socket.io-client";
 
 import { MessageType } from "./index.d";
+import filterWord from "./filterWord";
 
 /**
  * This is the send message function this function will send a mesage to the socket server.
@@ -16,6 +17,9 @@ import { MessageType } from "./index.d";
 const sendMessage = async (message: MessageType): Promise<void> => {
   const responseToken = uuid();
   const socket = io(SOCKET_URL);
+
+  const filteredContent = filterWord(message.content);
+  message.content = filteredContent;
 
   socket.emit("server-message", message, API_KEY, responseToken);
 
