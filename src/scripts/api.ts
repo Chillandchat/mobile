@@ -12,7 +12,7 @@ export const endpoints: ApiEndpoints = {
   getMessages: "/api/get-mesages",
   getUserInfo: "/api/get-user-info",
   getUsers: "/api/get-users",
-  reportUser: "/api/report-user",
+  reportRoom: "/api/report-room",
   blockUser: "/api/block-user",
   getRoom: "/api/get-rooms",
   createRoom: "/api/create-room",
