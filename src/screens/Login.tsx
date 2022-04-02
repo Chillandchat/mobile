@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
-  Keyboard,
   Platform,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
@@ -124,7 +123,6 @@ const Login: React.FC<any> = ({ navigation }) => {
                         dispatch(setUserInfo(user as AuthType));
                         dispatch(loginAction());
 
-                        Keyboard.dismiss();
                         navigation.push("menu");
                       } else {
                         navigation.push("block-error");
@@ -162,6 +160,7 @@ const Login: React.FC<any> = ({ navigation }) => {
           text={"login"}
         />
 
+      </ScrollView>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("information");
@@ -170,7 +169,6 @@ const Login: React.FC<any> = ({ navigation }) => {
         >
           <Feather name="info" size={40} color="black" />
         </TouchableOpacity>
-      </ScrollView>
     </KeyboardAvoidingView>
   );
 };

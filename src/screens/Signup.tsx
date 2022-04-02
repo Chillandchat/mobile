@@ -5,7 +5,6 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   ScrollView,
-  Keyboard,
   Platform,
 } from "react-native";
 
@@ -124,7 +123,6 @@ const Signup: React.FC<any> = ({ navigation }) => {
 
                 signup(username, password)
                   .then((): void => {
-                    Keyboard.dismiss();
                     navigation.push("login");
                   })
                   .catch((err: unknown): void => {

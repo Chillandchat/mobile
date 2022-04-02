@@ -47,7 +47,7 @@ const Chat: React.FC = () => {
     },
     chatRoomBar: {
       position: "absolute",
-      top: 50,
+      top: 70,
       marginHorizontal: "10%",
     },
   });

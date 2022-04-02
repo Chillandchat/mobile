@@ -19,8 +19,8 @@ import joinRoom from "../scripts/joinRoom";
  */
 
 const JoinRoom: React.FC<any> = ({ navigation }) => {
-  let name: string;
-  let password: string;
+  const [name, setName]: any = React.useState("");
+  const [password, setPassword]: any = React.useState("");
 
   const { username } = useSelector((state: RootState): RootState => {
     return state.userInfo;
@@ -63,7 +63,7 @@ const JoinRoom: React.FC<any> = ({ navigation }) => {
           safeEntry={false}
           placeholder={"Name"}
           onTextChange={(text: string): void => {
-            name = text;
+            setName(text);
           }}
         />
 
@@ -73,7 +73,7 @@ const JoinRoom: React.FC<any> = ({ navigation }) => {
           safeEntry
           placeholder={"Password"}
           onTextChange={(text: string): void => {
-            password = text;
+            setPassword(text);
           }}
         />
 
@@ -99,7 +99,7 @@ const JoinRoom: React.FC<any> = ({ navigation }) => {
                   }, 3000);
                 });
             } else {
-              setError("Missing data.");
+              setError("Please fill out all fields.");
               setTimeout((): void => {
                 setError("");
               }, 3000);
