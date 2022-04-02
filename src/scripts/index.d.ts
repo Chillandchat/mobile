@@ -13,7 +13,7 @@ export type ApiEndpoint =
   | "/api/get-mesages"
   | "/api/get-user-info"
   | "/api/get-users"
-  | "/api/report-user"
+  | "/api/report-room"
   | "/api/block-user"
   | "/api/create-room"
   | "/api/join-room"
@@ -40,7 +40,7 @@ export interface ApiEndpoints {
   signup: ApiEndpoint;
   getMessages: ApiEndpoint;
   getUserInfo: ApiEndpoint;
-  reportUser: ApiEndpoint;
+  reportRoom: ApiEndpoint;
   blockUser: ApiEndpoint;
   getUsers: ApiEndpoint;
   joinRoom: ApiEndpoint;
