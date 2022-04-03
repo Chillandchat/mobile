@@ -1,3 +1,8 @@
+//! "import "react-native-get-random-values";" MUST BE FIRST!!
+import "react-native-get-random-values";
+import { v4 as uuid } from "uuid";
+// @ts-ignore
+import { SOCKET_URL } from "@env";
 import React from "react";
 import {
   View,
@@ -6,25 +11,40 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
-  Dimensions,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
+import { io } from "socket.io-client";
 
 import Form from "../components/Form";
 import ChatRoomBar from "../components/ChatRoomBar";
 import { RootState } from "../redux/index.d";
+import sendMessage from "../scripts/sendMessage";
+import { MessageType } from "../scripts";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
  */
 
 const Chat: React.FC = () => {
-  const { sessionStatus }: any = useSelector((state: RootState): RootState => {
-    return state;
-  });
+  const { sessionStatus, userInfo }: any = useSelector(
+    (state: RootState): RootState => {
+      return state;
+    }
+  );
 
-  const windowDimensions = Dimensions.get("window");
+  React.useEffect((): any => {
+    const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
+    socket.on(
+      `client-message:room(${sessionStatus.id})`,
+      (message: MessageType): void => {
+        console.log(message);
+      }
+    );
+    return (): void => socket.disconnect();
+  }, []);
+
+  const [message, setMessage] = React.useState("");
 
   const style: any = StyleSheet.create({
     container: {
@@ -40,7 +60,7 @@ const Chat: React.FC = () => {
       flexDirection: "row",
       alignItems: "center",
       position: "absolute",
-      bottom: 50
+      bottom: 50,
     },
     sendIcon: {
       padding: 10,
@@ -65,12 +85,28 @@ const Chat: React.FC = () => {
         <View style={style.sendBar}>
           <Form
             placeholder={"Type a message..."}
-            onTextChange={(): void => {
-              return;
+            onTextChange={(text: string): void => {
+              setMessage(text);
             }}
+            value={message}
           />
           <View style={style.sendIcon}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={(): void => {
+                sendMessage({
+                  id: uuid(),
+                  content: message,
+                  room: sessionStatus.id,
+                  user: userInfo.username,
+                })
+                  .then((): void => {
+                    setMessage("");
+                  })
+                  .catch((err: unknown): void => {
+                    console.error(err);
+                  });
+              }}
+            >
               <Feather name="send" size={32} color="#00AD98" />
             </TouchableOpacity>
           </View>
