@@ -2,12 +2,12 @@ import { RoomType } from "../scripts/index.d";
 
 /**
  * This is the props for the chat room bar component
- * 
+ *
  * @see ChatRoomBar.tsx
  */
 
-export interface ChatRoomBarProps{
-    roomData: RoomType;
+export interface ChatRoomBarProps {
+  roomData: RoomType;
 }
 
 /**
@@ -27,7 +27,7 @@ export interface ButtonProps {
 /**
  * This is the props for the form component.
  *
- * @see Form.tsx
+ * @see LoginForm.tsx
  */
 
 export interface LoginFormProps {
@@ -59,6 +59,7 @@ export interface FormProps {
   safeEntry?: boolean;
   placeholder: string;
   onTextChange: (text: string) => void;
+  value?: string;
 }
 
 /**

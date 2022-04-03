@@ -28,6 +28,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
         placeholder={props.placeholder}
         onChangeText={props.onTextChange}
         secureTextEntry={props.safeEntry || false}
+        value={props.value || ""}
       />
     </View>
   );
