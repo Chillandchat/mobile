@@ -32,7 +32,7 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
           key={uuid()}
           style={[style.content, { fontFamily: "poppinsBold", fontSize: 18 }]}
         >
-          {props.user}
+          {props.message.user}
         </Text>
       ) : null}
       <Text key={uuid()} style={style.content}>

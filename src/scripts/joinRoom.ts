@@ -19,8 +19,8 @@ const joinRoom = async (
     await api.instance
       .post(`${api.endpoints.joinRoom}?key=${api.apiKey}`, {
         user: username,
-        id: roomId,
         passcode: roomPassword,
+        id: roomId,
       })
       .then((_data: AxiosResponse): void => {})
       .catch((err: unknown): void => {

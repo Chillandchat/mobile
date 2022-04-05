@@ -92,7 +92,7 @@ const JoinRoom: React.FC<any> = ({ navigation }) => {
                   navigation.navigate("menu");
                 })
                 .catch((err: unknown): void => {
-                  setError("Unable to create room.");
+                  setError("Unable to join room.");
                   console.error(err);
                   setTimeout((): void => {
                     setError("");
