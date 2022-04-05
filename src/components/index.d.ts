@@ -1,3 +1,4 @@
+import { MessageType } from "./../scripts/index.d";
 import { RoomType } from "../scripts/index.d";
 
 /**
@@ -77,3 +78,14 @@ export interface RoomListProps {
  */
 
 type loginFormTypeSelector = "username" | "password" | "confirm-password";
+
+/**
+ * This is the message prop for the message component.
+ *
+ * @see Message.tsx
+ */
+
+export interface MessageProps {
+  message: MessageType;
+  user: string;
+}

@@ -10,7 +10,7 @@ export type ApiEndpoint =
   | "/"
   | "/api/login"
   | "/api/signup"
-  | "/api/get-mesages"
+  | "/api/get-messages"
   | "/api/get-user-info"
   | "/api/get-users"
   | "/api/report-room"

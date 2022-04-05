@@ -11,6 +11,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
+  Text,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
@@ -21,6 +22,8 @@ import ChatRoomBar from "../components/ChatRoomBar";
 import { RootState } from "../redux/index.d";
 import sendMessage from "../scripts/sendMessage";
 import { MessageType } from "../scripts";
+import Message from "../components/Message";
+import getMessages from "../scripts/getMessages";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -33,18 +36,33 @@ const Chat: React.FC = () => {
     }
   );
 
+  const scrollRef: React.MutableRefObject<any> = React.useRef();
+
+  const [message, setMessage]: any = React.useState("");
+  const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
+  const [loading, setLoading]: any = React.useState(true);
+
   React.useEffect((): any => {
+    getMessages(sessionStatus.id)
+      .then((messages: Array<MessageType>): void => {
+        setMessageDisplayed([...messageDisplayed, ...messages]);
+        setLoading(false);
+      })
+      .catch((err: unknown): void => {
+        console.error(err);
+      });
     const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
-    socket.on(
-      `client-message:room(${sessionStatus.id})`,
-      (message: MessageType): void => {
-        console.log(message);
-      }
-    );
+
+      socket.on(
+        `client-message:room(${sessionStatus.id})`,
+        (message: MessageType): void => {
+          setMessageDisplayed((messagePrevious: any): any =>
+          messagePrevious.concat(message)
+          );
+        }
+      );
     return (): void => socket.disconnect();
   }, []);
-
-  const [message, setMessage] = React.useState("");
 
   const style: any = StyleSheet.create({
     container: {
@@ -70,6 +88,10 @@ const Chat: React.FC = () => {
       top: 70,
       marginHorizontal: "10%",
     },
+    chatArea: {
+      height: "65%",
+      width: "90%",
+    },
   });
 
   return (
@@ -81,6 +103,32 @@ const Chat: React.FC = () => {
       <ScrollView contentContainerStyle={style.container}>
         <View style={style.chatRoomBar}>
           <ChatRoomBar roomData={sessionStatus} />
+        </View>
+        <View style={style.chatArea}>
+          <ScrollView
+            ref={scrollRef}
+            onContentSizeChange={(_width, height) => {
+              scrollRef.current.scrollTo({ y: height, animated: true });
+            }}
+          >
+            {!loading ? (
+              messageDisplayed?.map((message: MessageType): any => {
+                return (
+                  <Message
+                    message={{
+                      id: message.id,
+                      user: message.user,
+                      content: message.content,
+                      room: message.room,
+                    }}
+                    user={userInfo.username}
+                  />
+                );
+              })
+            ) : (
+              <Text>Loading...</Text>
+            )}
+          </ScrollView>
         </View>
         <View style={style.sendBar}>
           <Form

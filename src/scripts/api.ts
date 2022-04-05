@@ -9,7 +9,7 @@ export const endpoints: ApiEndpoints = {
   home: "/",
   login: "/api/login",
   signup: "/api/signup",
-  getMessages: "/api/get-mesages",
+  getMessages: "/api/get-messages",
   getUserInfo: "/api/get-user-info",
   getUsers: "/api/get-users",
   reportRoom: "/api/report-room",
