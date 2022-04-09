@@ -11,15 +11,15 @@ import api from "./api";
  */
 
 const login = async (username: string, password: string): Promise<void> => {
-    await api.instance
-      .post(`${api.endpoints.login}?key=${api.apiKey}`, {
-        username: username,
-        password: password,
-      })
-      .then((_data: AxiosResponse): void => {})
-      .catch((err: unknown): void => {
-        throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
-      });
+  await api.instance
+    .post(`${api.endpoints.login}?key=${api.apiKey}`, {
+      username: username,
+      password: password,
+    })
+    .then((_data: AxiosResponse): void => {})
+    .catch((err: unknown): void => {
+      throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
+    });
 };
 
 export default login;

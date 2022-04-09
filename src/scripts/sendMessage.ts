@@ -17,8 +17,8 @@ const sendMessage = async (message: MessageType): Promise<void> => {
   const responseToken = uuid();
   const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
 
-  socket.emit("server-message", message, API_KEY, responseToken);
-
+  socket.emit("server-message", message, API_KEY, responseToken)
+  
   socket.on(`sent:token(${responseToken})`, (): void => {
     socket.disconnect();
   });

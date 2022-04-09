@@ -45,22 +45,24 @@ const Chat: React.FC = () => {
   React.useEffect((): any => {
     getMessages(sessionStatus.id)
       .then((messages: Array<MessageType>): void => {
+        setMessageDisplayed([]);
         setMessageDisplayed([...messageDisplayed, ...messages]);
         setLoading(false);
       })
       .catch((err: unknown): void => {
         console.error(err);
       });
+    console.log(SOCKET_URL);
     const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
 
-      socket.on(
-        `client-message:room(${sessionStatus.id})`,
-        (message: MessageType): void => {
-          setMessageDisplayed((messagePrevious: any): any =>
+    socket.on(
+      `client-message:room(${sessionStatus.id})`,
+      (message: MessageType): void => {
+        setMessageDisplayed((messagePrevious: any): any =>
           messagePrevious.concat(message)
-          );
-        }
-      );
+        );
+      }
+    );
     return (): void => socket.disconnect();
   }, []);
 
