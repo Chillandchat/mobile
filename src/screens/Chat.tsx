@@ -52,9 +52,9 @@ const Chat: React.FC = () => {
       .catch((err: unknown): void => {
         console.error(err);
       });
-    console.log(SOCKET_URL);
-    const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
 
+    const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
+  
     socket.on(
       `client-message:room(${sessionStatus.id})`,
       (message: MessageType): void => {
