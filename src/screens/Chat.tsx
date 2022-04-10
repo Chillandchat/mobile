@@ -80,15 +80,15 @@ const Chat: React.FC = () => {
       flexDirection: "row",
       alignItems: "center",
       position: "absolute",
-      bottom: 50,
+      bottom: "5%",
     },
     sendIcon: {
       padding: 10,
     },
     chatRoomBar: {
       position: "absolute",
-      top: 70,
-      marginHorizontal: "10%",
+      top: "7%",
+      marginHorizontal: "7%",
     },
     chatArea: {
       height: "65%",
