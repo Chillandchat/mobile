@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#fffff"
-      }
+      },
+      "package": "com.chillandchat.chillandchat"
     },
     "web": {
       "favicon": "./assets/logo.png"
