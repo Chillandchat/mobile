@@ -12,34 +12,36 @@ import { IconProps } from "./index.d";
  * @optional @prop {boolean} touchable If the icon is touchable.
  */
 
-const Icon: React.FC<IconProps> = (props: IconProps) => {
-  const style: any = StyleSheet.create({
-    container: {
-      borderRadius: 10000,
-      backgroundColor: props.color,
-      paddingHorizontal: 20,
-      paddingVertical: 10,
-    },
-    text: {
-      fontFamily: "poppinsLight",
-      fontSize: 30,
-      color: "#ffff",
-    },
-  });
+namespace Icon {
+  export const component: React.FC<IconProps> = (props: IconProps) => {
+    const style: any = StyleSheet.create({
+      container: {
+        borderRadius: 10000,
+        backgroundColor: props.color,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+      },
+      text: {
+        fontFamily: "poppinsLight",
+        fontSize: 30,
+        color: "#ffff",
+      },
+    });
 
-  if (props.touchable) {
+    if (props.touchable) {
+      return (
+        <TouchableOpacity style={style.container} onPress={props.onPress}>
+          <Text style={style.text}>{props.iconLetter.toUpperCase()}</Text>
+        </TouchableOpacity>
+      );
+    }
+
     return (
-      <TouchableOpacity style={style.container} onPress={props.onPress}>
+      <View style={style.container}>
         <Text style={style.text}>{props.iconLetter.toUpperCase()}</Text>
-      </TouchableOpacity>
+      </View>
     );
-  }
+  };
+}
 
-  return (
-    <View style={style.container}>
-      <Text style={style.text}>{props.iconLetter.toUpperCase()}</Text>
-    </View>
-  );
-};
-
-export default Icon;
+export default Icon.component;

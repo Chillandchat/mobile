@@ -20,7 +20,8 @@ import { clearSessionData } from "../redux/action";
  * will display the chat room information as well as the controls for the chat.
  */
 
-const ChatRoomBar: React.FC<Props> = (props) => {
+namespace ChatRoomBar{
+export const component: React.FC<Props> = (props) => {
   const dispatch: any = useDispatch();
 
   const windowDimensions: ScaledSize = Dimensions.get("window");
@@ -59,6 +60,6 @@ const ChatRoomBar: React.FC<Props> = (props) => {
       </TouchableOpacity>
     </View>
   );
-};
+}}
 
-export default ChatRoomBar;
+export default ChatRoomBar.component;

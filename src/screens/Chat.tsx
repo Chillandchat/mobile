@@ -29,141 +29,143 @@ import getMessages from "../scripts/getMessages";
  * This is the chat room as the name suggests it will display the chat room.
  */
 
-const Chat: React.FC = () => {
-  const { sessionStatus, userInfo }: any = useSelector(
-    (state: RootState): RootState => {
-      return state;
-    }
-  );
-
-  const scrollRef: React.MutableRefObject<any> = React.useRef();
-
-  const [message, setMessage]: any = React.useState("");
-  const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
-  const [loading, setLoading]: any = React.useState(true);
-
-  React.useEffect((): any => {
-    getMessages(sessionStatus.id)
-      .then((messages: Array<MessageType>): void => {
-        setMessageDisplayed([]);
-        setMessageDisplayed([...messageDisplayed, ...messages]);
-        setLoading(false);
-      })
-      .catch((err: unknown): void => {
-        console.error(err);
-      });
-
-    const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
-  
-    socket.on(
-      `client-message:room(${sessionStatus.id})`,
-      (message: MessageType): void => {
-        setMessageDisplayed((messagePrevious: any): any =>
-          messagePrevious.concat(message)
-        );
+namespace Chat {
+  export const component: React.FC = () => {
+    const { sessionStatus, userInfo }: any = useSelector(
+      (state: RootState): RootState => {
+        return state;
       }
     );
-    return (): void => socket.disconnect();
-  }, []);
 
-  const style: any = StyleSheet.create({
-    container: {
-      justifyContent: "center",
-      alignItems: "center",
-      flex: 1,
-      flexDirection: "column",
-    },
-    text: {
-      fontFamily: "poppins",
-    },
-    sendBar: {
-      flexDirection: "row",
-      alignItems: "center",
-      position: "absolute",
-      bottom: "5%",
-    },
-    sendIcon: {
-      padding: 10,
-    },
-    chatRoomBar: {
-      position: "absolute",
-      top: "7%",
-      marginHorizontal: "7%",
-    },
-    chatArea: {
-      height: "65%",
-      width: "90%",
-    },
-  });
+    const scrollRef: React.MutableRefObject<any> = React.useRef();
 
-  return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      enabled
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
-      <ScrollView contentContainerStyle={style.container}>
-        <View style={style.chatRoomBar}>
-          <ChatRoomBar roomData={sessionStatus} />
-        </View>
-        <View style={style.chatArea}>
-          <ScrollView
-            ref={scrollRef}
-            onContentSizeChange={(_width, height) => {
-              scrollRef.current.scrollTo({ y: height, animated: true });
-            }}
-          >
-            {!loading ? (
-              messageDisplayed?.map((message: MessageType): any => {
-                return (
-                  <Message
-                    message={{
-                      id: message.id,
-                      user: message.user,
-                      content: message.content,
-                      room: message.room,
-                    }}
-                    user={userInfo.username}
-                  />
-                );
-              })
-            ) : (
-              <Text>Loading...</Text>
-            )}
-          </ScrollView>
-        </View>
-        <View style={style.sendBar}>
-          <Form
-            placeholder={"Type a message..."}
-            onTextChange={(text: string): void => {
-              setMessage(text);
-            }}
-            value={message}
-          />
-          <View style={style.sendIcon}>
-            <TouchableOpacity
-              onPress={(): void => {
-                sendMessage({
-                  id: uuid(),
-                  content: message,
-                  room: sessionStatus.id,
-                  user: userInfo.username,
-                })
-                  .then((): void => {
-                    setMessage("");
-                  })
-                  .catch((err: unknown): void => {
-                    console.error(err);
-                  });
+    const [message, setMessage]: any = React.useState("");
+    const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
+    const [loading, setLoading]: any = React.useState(true);
+
+    React.useEffect((): any => {
+      getMessages(sessionStatus.id)
+        .then((messages: Array<MessageType>): void => {
+          setMessageDisplayed([]);
+          setMessageDisplayed([...messageDisplayed, ...messages]);
+          setLoading(false);
+        })
+        .catch((err: unknown): void => {
+          console.error(err);
+        });
+
+      const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
+
+      socket.on(
+        `client-message:room(${sessionStatus.id})`,
+        (message: MessageType): void => {
+          setMessageDisplayed((messagePrevious: any): any =>
+            messagePrevious.concat(message)
+          );
+        }
+      );
+      return (): void => socket.disconnect();
+    }, []);
+
+    const style: any = StyleSheet.create({
+      container: {
+        justifyContent: "center",
+        alignItems: "center",
+        flex: 1,
+        flexDirection: "column",
+      },
+      text: {
+        fontFamily: "poppins",
+      },
+      sendBar: {
+        flexDirection: "row",
+        alignItems: "center",
+        position: "absolute",
+        bottom: "5%",
+      },
+      sendIcon: {
+        padding: 10,
+      },
+      chatRoomBar: {
+        position: "absolute",
+        top: "7%",
+        marginHorizontal: "7%",
+      },
+      chatArea: {
+        height: "65%",
+        width: "90%",
+      },
+    });
+
+    return (
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        enabled
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <ScrollView contentContainerStyle={style.container}>
+          <View style={style.chatRoomBar}>
+            <ChatRoomBar roomData={sessionStatus} />
+          </View>
+          <View style={style.chatArea}>
+            <ScrollView
+              ref={scrollRef}
+              onContentSizeChange={(_width, height) => {
+                scrollRef.current.scrollTo({ y: height, animated: true });
               }}
             >
-              <Feather name="send" size={32} color="#00AD98" />
-            </TouchableOpacity>
+              {!loading ? (
+                messageDisplayed?.map((message: MessageType): any => {
+                  return (
+                    <Message
+                      message={{
+                        id: message.id,
+                        user: message.user,
+                        content: message.content,
+                        room: message.room,
+                      }}
+                      user={userInfo.username}
+                    />
+                  );
+                })
+              ) : (
+                <Text>Loading...</Text>
+              )}
+            </ScrollView>
           </View>
-        </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
-  );
-};
+          <View style={style.sendBar}>
+            <Form
+              placeholder={"Type a message..."}
+              onTextChange={(text: string): void => {
+                setMessage(text);
+              }}
+              value={message}
+            />
+            <View style={style.sendIcon}>
+              <TouchableOpacity
+                onPress={(): void => {
+                  sendMessage({
+                    id: uuid(),
+                    content: message,
+                    room: sessionStatus.id,
+                    user: userInfo.username,
+                  })
+                    .then((): void => {
+                      setMessage("");
+                    })
+                    .catch((err: unknown): void => {
+                      console.error(err);
+                    });
+                }}
+              >
+                <Feather name="send" size={32} color="#00AD98" />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    );
+  };
+}
 
-export default Chat;
+export default Chat.component;
