@@ -27,10 +27,8 @@ I look forward to seeing your contributions to Chill&chat!
 If you have found any bug(s) please post them in the [Issues](https://github.com/Chill-and-chat/Chill-chat/issues) tab in this repository. Please explain the problem and post any error messages or codes, also include a list of instructions to reproduce this bug or problem.
 
 ## Download
-The mobile app is still in the development & testing phase and will be released soon.
-
-
-Please check this repository for updates!
+### Manual install
+Please click the "releases" tab and download the latest version on your phone.
 
 ## User safety agreement 
 
