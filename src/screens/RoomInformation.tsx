@@ -1,9 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, Alert } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 
 import { RootState } from "../redux/index.d";
+import Button from "../components/Button";
+import reportRoom from "../scripts/reportRoom";
 
 /**
  * This is the room information screen, this screen will display the room information.
@@ -35,6 +37,10 @@ namespace RoomInformation {
         fontFamily: "poppinsBold",
         fontSize: 15,
       },
+      reportButton: {
+        position: "absolute",
+        bottom: "7%",
+      },
     });
 
     return (
@@ -58,6 +64,39 @@ namespace RoomInformation {
         <View style={{ flexDirection: "row" }}>
           <Text style={style.boldText}>Name:{"    "}</Text>
           <Text style={style.text}>{sessionStatus.name}</Text>
+        </View>
+        <View style={style.reportButton}>
+          <Button
+            color={"red"}
+            textColor={"#fff"}
+            onPress={(): void => {
+              Alert.alert(
+                "",
+                "Are you sure you want to report this room? The Chill&chat team will be notified once reported.",
+                [
+                  {
+                    text: "Report",
+                    style: "destructive",
+                    onPress: (): void => {
+                      console.log("pressed");
+                      reportRoom(sessionStatus.id)
+                        .then((): void => {
+                          Alert.alert(
+                            "Room reported",
+                            "This room has been reported, thank you for your feedback! We will take action as soon as possible."
+                          );
+                        })
+                        .catch((err: unknown): void => {
+                          console.error(err);
+                        });
+                    },
+                  },
+                  { text: "Cancel" },
+                ]
+              );
+            }}
+            text={"report room"}
+          />
         </View>
       </View>
     );
