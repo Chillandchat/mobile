@@ -129,7 +129,14 @@ namespace Chat {
                   );
                 })
               ) : (
-                <Text>Loading...</Text>
+                <Text
+                  style={[
+                    style.text,
+                    { alignSelf: "center", flex: 1 },
+                  ]}
+                >
+                  Loading, please wait...
+                </Text>
               )}
             </ScrollView>
           </View>
