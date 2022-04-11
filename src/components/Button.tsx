@@ -19,6 +19,7 @@ import { ButtonProps as Props } from "./index.d";
  * @optional @prop {boolean} disabled If the button is disabled.
  * @optional @prop {string} text The text that the button displays. OPTIONAL
  */
+
 namespace Button {
   export const component: React.FC<Props> = (props: Props) => {
     const windowDimensions: ScaledSize = Dimensions.get("window");
