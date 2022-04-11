@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+  ScaledSize,
+} from "react-native";
 import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -20,6 +27,8 @@ namespace Menu {
         return state.userInfo;
       }
     );
+
+    const windowDimensions: ScaledSize = Dimensions.get("window");
 
     const loggedin: any = useSelector((state: RootState): RootState => {
       return state.loginStatus;
@@ -42,7 +51,7 @@ namespace Menu {
       container: {
         alignItems: "center",
         justifyContent: "flex-start",
-        marginTop: "30%",
+        marginTop: windowDimensions.height * 0.3,
         flex: 1,
       },
       text: {

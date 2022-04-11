@@ -37,7 +37,7 @@ namespace RoomList {
         marginTop: 20,
       },
       titleStyle: {
-        fontFamily: "poppinsBold",
+        fontFamily: "poppins",
         fontSize: 22,
         marginHorizontal: "7%",
       },
