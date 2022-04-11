@@ -18,8 +18,10 @@ namespace Icon {
       container: {
         borderRadius: 10000,
         backgroundColor: props.color,
-        paddingHorizontal: 20,
-        paddingVertical: 10,
+        height: 60,
+        width: 60,
+        alignItems: "center",
+        justifyContent: "center",
       },
       text: {
         fontFamily: "poppinsLight",
