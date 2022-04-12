@@ -86,6 +86,14 @@ namespace CreateRoom {
             textColor={"#ffff"}
             text={"Lets' go!"}
             onPress={(): void => {
+              if (password.length < 5) {
+                setError("Password must be more than 5 characters.");
+                setTimeout((): void => {
+                  setError("");
+                }, 3000);
+                return;
+              }
+
               if (name !== undefined && password !== undefined) {
                 createRoom(name, password, username)
                   .then((): void => {
