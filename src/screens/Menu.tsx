@@ -22,7 +22,7 @@ import { RoomType } from "../scripts/index.d";
 
 namespace Menu {
   export const component: React.FC<any> = ({ navigation }) => {
-    const { username, iconColor }: any = useSelector(
+    const { id, username, iconColor }: any = useSelector(
       (state: RootState): RootState => {
         return state.userInfo;
       }
@@ -37,7 +37,7 @@ namespace Menu {
     const [rooms, setRooms] = React.useState<Array<RoomType>>([]);
 
     React.useEffect((): void => {
-      getRoom(username)
+      getRoom(id)
         .then((data: Array<RoomType>): void => {
           setRooms(data);
         })

@@ -22,7 +22,7 @@ namespace JoinRoom {
     const [name, setName]: any = React.useState("");
     const [password, setPassword]: any = React.useState("");
 
-    const { username } = useSelector((state: RootState): RootState => {
+    const { id } = useSelector((state: RootState): RootState => {
       return state.userInfo;
     });
 
@@ -86,7 +86,7 @@ namespace JoinRoom {
             text={"Lets' go!"}
             onPress={(): void => {
               if (name !== undefined && password !== undefined) {
-                joinRoom(username, name, password)
+                joinRoom(id, name, password)
                   .then((): void => {
                     Alert.alert(
                       "",
