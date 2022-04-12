@@ -62,6 +62,10 @@ namespace RoomInformation {
           <Text style={style.text}>{sessionStatus.id}</Text>
         </View>
         <View style={{ flexDirection: "row" }}>
+          <Text style={style.boldText}>Members:{"    "}</Text>
+          <Text style={style.text}>{sessionStatus.users.length.toString()}</Text>
+        </View>
+        <View style={{ flexDirection: "row" }}>
           <Text style={style.boldText}>Name:{"    "}</Text>
           <Text style={style.text}>{sessionStatus.name}</Text>
         </View>
