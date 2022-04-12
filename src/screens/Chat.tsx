@@ -24,6 +24,7 @@ import sendMessage from "../scripts/sendMessage";
 import { MessageType } from "../scripts";
 import Message from "../components/Message";
 import getMessages from "../scripts/getMessages";
+import filter from "../scripts/filter";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -81,7 +82,7 @@ namespace Chat {
         flexDirection: "row",
         alignItems: "center",
         position: "absolute",
-        bottom: "5%",
+        bottom: "7%",
       },
       sendIcon: {
         padding: 10,
@@ -129,16 +130,19 @@ namespace Chat {
                   );
                 })
               ) : (
-                <Text
-                  style={[
-                    style.text,
-                    { alignSelf: "center", flex: 1 },
-                  ]}
-                >
+                <Text style={[style.text, { alignSelf: "center", flex: 1 }]}>
                   Loading, please wait...
                 </Text>
               )}
             </ScrollView>
+            {sessionStatus.users?.length <= 1 ? (
+              <View style={{ justifyContent: "center" }}>
+                <Text style={[style.text, { opacity: 0.5 }]}>
+                  ummm... It seems like that there's nobody here. Why not invite
+                  a friend!
+                </Text>
+              </View>
+            ) : null}
           </View>
           <View style={style.sendBar}>
             <Form
@@ -151,9 +155,11 @@ namespace Chat {
             <View style={style.sendIcon}>
               <TouchableOpacity
                 onPress={(): void => {
+                  const filteredMessage = filter(message);
+
                   sendMessage({
                     id: uuid(),
-                    content: message,
+                    content: filteredMessage,
                     room: sessionStatus.id,
                     user: userInfo.username,
                   })
