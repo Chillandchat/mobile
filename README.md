@@ -24,12 +24,19 @@ I look forward to seeing your contributions to Chill&chat!
 
 ### Bugs and issues
 
-If you have found any bug(s) please post them in the [Issues](https://github.com/Chill-and-chat/Chill-chat/issues) tab in this repository. Please explain the problem and post any error messages or codes, also include a list of instructions to reproduce this bug or problem.
+If you have found any bug(s) please post them in the [Issues](https://github.com/Chill-and-chat/mobile/issues) tab in this repository. Please explain the problem and post any error messages or codes, also include a list of instructions to reproduce this bug or problem.
 
 ## Download
-### Manual install
-Please click the "releases" tab and download the latest version on your phone.
+Please click the button below to go to the releases tab and install the version you like!
 
+<a href="https://github.com/Chillandchat/mobile/releases"><img style="width:300px;" src="https://user-images.githubusercontent.com/33416429/92813512-27f0bb80-f376-11ea-8562-ee2b3e416aec.png"/><a>
+
+### Latest code
+To get the latest code, please enter the command below into your terminal to clone it:
+  
+```
+  git clone https://github.com/chillandchat/mobile/
+```
 ## User safety agreement 
 
 - We will ensure that all users' private information will be private no matter what, even to the developers. 
