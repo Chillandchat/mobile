@@ -60,8 +60,8 @@ namespace Login {
       },
       informationLink: {
         position: "absolute",
-        bottom: 40,
-        right: 40,
+        bottom: "4%"
+        ,right:"4%"
       },
       signupContainer: {
         margin: 15,
@@ -71,95 +71,95 @@ namespace Login {
     });
 
     return (
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        enabled
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-      >
-        <ScrollView contentContainerStyle={style.container}>
-          <View style={style.formContainer}>
-            <Text style={style.text}>Login</Text>
-            <Form
-              safeEntry={false}
-              type="username"
-              onTextChange={(text: string): void => {
-                setUsername(text);
-              }}
-            />
-            <Form
-              safeEntry={true}
-              type="password"
-              onTextChange={(text: string): void => {
-                setPassword(text);
-              }}
-            />
-            <View style={style.signupContainer}>
-              <Text style={style.signup}>No account? </Text>
+        <KeyboardAvoidingView
+          style={{ flex: 1 }}
+          enabled
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+        >
+          <ScrollView contentContainerStyle={style.container}>
+            <View style={style.formContainer}>
+              <Text style={style.text}>Login</Text>
+              <Form
+                safeEntry={false}
+                type="username"
+                onTextChange={(text: string): void => {
+                  setUsername(text);
+                }}
+              />
+              <Form
+                safeEntry={true}
+                type="password"
+                onTextChange={(text: string): void => {
+                  setPassword(text);
+                }}
+              />
+              <View style={style.signupContainer}>
+                <Text style={style.signup}>No account? </Text>
 
-              <TouchableOpacity onPress={() => navigation.push("sign-up")}>
-                <Text style={style.link}>Signup here.</Text>
-              </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.push("sign-up")}>
+                  <Text style={style.link}>Signup here.</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-          <Text style={style.error}>{error}</Text>
-          <Button
-            onPress={(): void => {
-              if (username === undefined || password === undefined) {
-                setError("Invalid username or password");
-                setTimeout(() => {
-                  setError("");
-                }, 5000);
-                return;
-              }
-
-              login(username, password)
-                .then((): void => {
-                  getUser(username)
-                    .then((user: AuthType | {}): void => {
-                      if (Object.keys(user).length !== 0) {
-                        // @ts-ignore
-
-                        if (!user.blocked) {
-                          dispatch(setUserInfo(user as AuthType));
-                          dispatch(loginAction());
-
-                          navigation.push("menu");
-                        } else {
-                          navigation.push("block-error");
-                          return;
-                        }
-                      } else {
-                        setError("Unable to connect.");
-                        setTimeout(() => {
-                          setError("");
-                        }, 5000);
-                        console.error(
-                          "Error: user is undefined, or not present\n   Error code: CC_ERROR_1591"
-                        );
-                        return;
-                      }
-                    })
-                    .catch((err: unknown): void => {
-                      setError("Missing data ");
-                      setTimeout(() => {
-                        setError("");
-                      }, 5000);
-                      console.error(err);
-                    });
-                })
-                .catch((err: unknown): void => {
+            <Text style={style.error}>{error}</Text>
+            <Button
+              onPress={(): void => {
+                if (username === undefined || password === undefined) {
                   setError("Invalid username or password");
                   setTimeout(() => {
                     setError("");
                   }, 5000);
-                  console.error(err);
-                });
-            }}
-            color={"#00AD98"}
-            textColor={"#ffff"}
-            text={"login"}
-          />
-        </ScrollView>
+                  return;
+                }
+
+                login(username, password)
+                  .then((): void => {
+                    getUser(username)
+                      .then((user: AuthType | {}): void => {
+                        if (Object.keys(user).length !== 0) {
+                          // @ts-ignore
+
+                          if (!user.blocked) {
+                            dispatch(setUserInfo(user as AuthType));
+                            dispatch(loginAction());
+
+                            navigation.push("menu");
+                          } else {
+                            navigation.push("block-error");
+                            return;
+                          }
+                        } else {
+                          setError("Unable to connect.");
+                          setTimeout(() => {
+                            setError("");
+                          }, 5000);
+                          console.error(
+                            "Error: user is undefined, or not present\n   Error code: CC_ERROR_1591"
+                          );
+                          return;
+                        }
+                      })
+                      .catch((err: unknown): void => {
+                        setError("Missing data ");
+                        setTimeout(() => {
+                          setError("");
+                        }, 5000);
+                        console.error(err);
+                      });
+                  })
+                  .catch((err: unknown): void => {
+                    setError("Invalid username or password");
+                    setTimeout(() => {
+                      setError("");
+                    }, 5000);
+                    console.error(err);
+                  });
+              }}
+              color={"#00AD98"}
+              textColor={"#ffff"}
+              text={"login"}
+            />
+          </ScrollView>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("information");
@@ -168,7 +168,7 @@ namespace Login {
         >
           <Feather name="info" size={40} color="black" />
         </TouchableOpacity>
-      </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
     );
   };
 }

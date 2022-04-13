@@ -10,14 +10,14 @@ import api from "./api";
  *
  * @param {string} name The name of the room.
  * @param {string} password The password of the room.
- * @param {string} username The username of the user creating the room.
+ * @param {string} id The id of the user that is creating the room.
  * @returns {Promise<void>}
  */
 
 const createRoom = async (
   name: string,
   password: string,
-  username: string
+  id: string
 ): Promise<void> => {
   try {
     await api.instance
@@ -25,7 +25,7 @@ const createRoom = async (
         id: uuid(),
         name: name,
         passcode: password,
-        user: username,
+        user: id,
       })
       .then((_data: AxiosResponse): void => {})
       .catch((err: unknown): void => {

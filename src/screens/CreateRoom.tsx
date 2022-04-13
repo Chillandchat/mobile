@@ -23,7 +23,7 @@ namespace CreateRoom {
     const [name, setName]: any = React.useState("");
     const [password, setPassword]: any = React.useState("");
 
-    const { username } = useSelector((state: RootState): RootState => {
+    const { id } = useSelector((state: RootState): RootState => {
       return state.userInfo;
     });
 
@@ -95,7 +95,7 @@ namespace CreateRoom {
               }
 
               if (name !== undefined && password !== undefined) {
-                createRoom(name, password, username)
+                createRoom(name, password, id)
                   .then((): void => {
                     Alert.alert(
                       "",

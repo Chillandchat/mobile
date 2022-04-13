@@ -135,15 +135,15 @@ namespace Chat {
                 </Text>
               )}
             </ScrollView>
-            {sessionStatus.users?.length <= 1 ? (
-              <View style={{ justifyContent: "center" }}>
-                <Text style={[style.text, { opacity: 0.5 }]}>
-                  ummm... It seems like that there's nobody here. Why not invite
-                  a friend!
-                </Text>
-              </View>
-            ) : null}
           </View>
+        {sessionStatus.users?.length <= 1 ? (
+          <View style={{ justifyContent: "center", marginHorizontal: "10%",}}>
+            <Text style={[style.text, { opacity: 0.5 }]}>
+              ummm... It seems like that there's nobody here. Why not invite a
+              friend!
+            </Text>
+          </View>
+        ) : null}
           <View style={style.sendBar}>
             <Form
               placeholder={"Type a message..."}
