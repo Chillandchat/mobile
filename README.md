@@ -64,4 +64,6 @@ All the above will be enforced to ensure Chill&chat is safe!
 
 ### Special thanks:
 
-*Muhammad A*
+*Muhammad A* 
+#
+Made With Love❤️
