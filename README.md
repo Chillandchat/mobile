@@ -2,7 +2,7 @@
 
 # Chill&chat mobile app
 ![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/issues-pr-closed/chill-and-chat/chill-chat) ![](https://img.shields.io/github/issues-pr-raw/chill-and-chat/chill-chat)
-
+[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
 
 Chill&chat is a free and open source mobile chat application that can chat send messages instantly to anyone around the world with a Chill&chat account.
 
