@@ -136,14 +136,14 @@ namespace Chat {
               )}
             </ScrollView>
           </View>
-        {sessionStatus.users?.length <= 1 ? (
-          <View style={{ justifyContent: "center", marginHorizontal: "10%",}}>
-            <Text style={[style.text, { opacity: 0.5 }]}>
-              ummm... It seems like that there's nobody here. Why not invite a
-              friend!
-            </Text>
-          </View>
-        ) : null}
+          {sessionStatus.users?.length <= 1 ? (
+            <View style={{ justifyContent: "center", marginHorizontal: "10%" }}>
+              <Text style={[style.text, { opacity: 0.5 }]}>
+                ummm... It seems like that there's nobody here. Why not invite a
+                friend!
+              </Text>
+            </View>
+          ) : null}
           <View style={style.sendBar}>
             <Form
               placeholder={"Type a message..."}
@@ -155,6 +155,10 @@ namespace Chat {
             <View style={style.sendIcon}>
               <TouchableOpacity
                 onPress={(): void => {
+                  if (message === undefined || message === "") {
+                    return;
+                  }
+
                   const filteredMessage = filter(message);
 
                   sendMessage({
