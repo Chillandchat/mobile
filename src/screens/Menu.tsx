@@ -27,7 +27,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
     }
   );
 
-  const loggedin: any = useSelector((state: RootState): RootState => {
+  const loggedIn: any = useSelector((state: RootState): RootState => {
     return state.loginStatus;
   });
 
@@ -83,7 +83,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
     }
   });
 
-  if (!loggedin) {
+  if (!loggedIn) {
     navigation.navigate("login");
     return <View></View>;
   } else {

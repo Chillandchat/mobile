@@ -38,6 +38,7 @@ const Button: React.FC<Props> = (props: Props) => {
       padding: 14,
     },
   });
+
   return (
     <TouchableOpacity
       onPress={
@@ -50,7 +51,7 @@ const Button: React.FC<Props> = (props: Props) => {
       style={style.container}
     >
       <Text style={style.content}>
-        {props.text?.toUpperCase() || "UNTITTLED BUTTON"}
+        {props.text?.toUpperCase() || "UNTITLED BUTTON"}
       </Text>
     </TouchableOpacity>
   );

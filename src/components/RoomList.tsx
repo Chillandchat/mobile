@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 import { setSessionData } from "../redux/action";
 
 /**
- * This is the room list component, this component will diaplay all the rooms provied.
+ * This is the room list component, this component will display all the rooms provided.
  *
  * @prop {Array<RoomType>} rooms The rooms to display. @see RoomType For ore information
  */
