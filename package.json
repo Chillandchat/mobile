@@ -15,7 +15,6 @@
     "url": "https://github.com/Chill-and-chat/Chill-and-chat.git"
   },
   "dependencies": {
-
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "^6.0.11",
     "@types/socket.io-client": "^3.0.0",

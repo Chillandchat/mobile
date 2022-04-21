@@ -47,7 +47,7 @@ namespace app {
         .catch((err: string): void => {
           Alert.alert(
             "Error while loading fonts",
-            "An error occurred while trying to load fonts, try restarting the application or submit a issue report on Chill&chat offical github. \nError code: CC_ERROR_0015"
+            "An error occurred while trying to load fonts, try restarting the application or submit a issue report on Chill&chat official github. \nError code: CC_ERROR_0015"
           );
           console.error(
             "Error: Unable to load fonts. \n    at Router.tsx expoAppLoading.default \n    at loader.ts \n  Error code: CC_ERROR_0015"
