@@ -15,14 +15,17 @@
     "url": "https://github.com/Chill-and-chat/Chill-and-chat.git"
   },
   "dependencies": {
+
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "^6.0.11",
     "@types/socket.io-client": "^3.0.0",
     "axios": "^0.25.0",
     "expo": "~44.0.0",
     "expo-app-loading": "~1.3.0",
+    "expo-clipboard": "~2.1.0",
     "expo-dev-client": "~0.8.4",
     "expo-font": "~10.0.4",
+    "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
     "expo-updates": "~0.11.6",
     "react": "17.0.1",
@@ -37,8 +40,7 @@
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "socket.io-client": "^4.4.1",
-    "uuid": "^8.3.2",
-    "expo-splash-screen": "~0.14.1"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
