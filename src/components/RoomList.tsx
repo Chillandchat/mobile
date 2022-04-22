@@ -20,7 +20,6 @@ import { setSessionData } from "../redux/action";
 
 const RoomList: React.FC<Props> = (props: Props) => {
   const dispatch: any = useDispatch();
-
   const navigation: any = useNavigation();
 
   const style: any = StyleSheet.create({
@@ -75,7 +74,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
               style={style.roomContainer}
               key={uuid()}
               onPress={async (): Promise<void> => {
-                await dispatch(setSessionData(room));
+                dispatch(setSessionData(room));
                 navigation.push("chat");
               }}
             >
