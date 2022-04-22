@@ -26,11 +26,6 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
   
   const [name, setName]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
-
-  const { username } = useSelector((state: RootState): RootState => {
-    return state.userInfo;
-  });
-
   const [error, setError] = React.useState("");
 
   const style: any = StyleSheet.create({
@@ -91,7 +86,7 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
           text={"Lets' go!"}
           onPress={(): void => {
             if (name !== undefined && password !== undefined) {
-              createRoom(name, password, username)
+              createRoom(name, password, id)
                 .then((): void => {
                   Alert.alert("", "Please restart the app to see the changes.");
                   navigation.navigate("menu");

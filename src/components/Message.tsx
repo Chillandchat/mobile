@@ -5,16 +5,32 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
 import { MessageProps } from "./index.d";
+import { AuthType } from "../scripts/index.d";
 
 /**
  * This is the message component, this component will display the message that users send.
- * 
+ *
  * @prop {MessageType} message The message that the user sent.
  * @prop {string} user The id of the user currently logged in.
  * @prop {Array<AuthType>} roomUserInfo The information about all the users in the room
  */
 
 const Message: React.FC<MessageProps> = (props: MessageProps) => {
+  const [userInfo, setUserInfo]: any = React.useState({});
+
+  React.useEffect((): any => {
+    let foundUserInfo: boolean = false;
+
+    !foundUserInfo
+      ? props.roomUserInfo?.forEach((user: AuthType): void => {
+          if (user.username === props.message.user) {
+            setUserInfo(user);
+            foundUserInfo = true;
+          }
+        })
+      : null;
+  });
+
   const style: any = StyleSheet.create({
     container: {
       alignSelf: props.message.user === props.user ? "flex-end" : "flex-start",
@@ -35,12 +51,12 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
 
   return (
     <View style={style.container} key={uuid()}>
-      {props.message.user !== props.user ? (
+      {props.message.user !== userInfo.username ? (
         <Text
           key={uuid()}
           style={[style.content, { fontFamily: "poppinsBold", fontSize: 18 }]}
         >
-          {props.message.user}
+          {userInfo.username}
         </Text>
       ) : null}
       <Text key={uuid()} style={style.content}>

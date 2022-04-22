@@ -25,7 +25,7 @@ import { AuthType, MessageType } from "../scripts";
 import Message from "../components/Message";
 import getMessages from "../scripts/getMessages";
 import filter from "../scripts/filter";
-import getUser from "../scripts/getUser";
+import getUserWithId from "../scripts/getUserWithId";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -56,8 +56,9 @@ const Chat: React.FC = () => {
           console.error(err);
         });
 
-      sessionStatus.users?.foreach((user: AuthType): void => {
-        getUser(user.username)
+        console.log(sessionStatus.users)
+      sessionStatus.users?.forEach((user: string): void => {
+        getUserWithId(user)
           .then((data: any): void => {
             setRoomMemberData(
               (prevState: Array<AuthType>): Array<AuthType> =>
@@ -109,7 +110,7 @@ const Chat: React.FC = () => {
     chatRoomBar: {
       position: "absolute",
       top: "7%",
-      marginHorizontal: "7%",
+      marginHorizontal: "3%",
     },
     chatArea: {
       height: "65%",
