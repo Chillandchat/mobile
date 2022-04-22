@@ -11,13 +11,13 @@ import { ButtonProps as Props } from "./index.d";
 
 /**
  * This is the button component that renders the button on screen and
- * will run the action provided.
+ * will run the function provided.
  *
  * @prop {string} color The background color of the button.
  * @prop {string} textColor The color of the text on the button.
- * @prop {void} onPress The function to call when the button is pressed.
+ * @prop {() => void} onPress The function to call when the button is pressed.
+ * @prop {string} text The text that the button displays.
  * @optional @prop {boolean} disabled If the button is disabled.
- * @optional @prop {string} text The text that the button displays. OPTIONAL
  */
 
 const Button: React.FC<Props> = (props: Props) => {
@@ -41,17 +41,11 @@ const Button: React.FC<Props> = (props: Props) => {
 
   return (
     <TouchableOpacity
-      onPress={
-        props.disabled
-          ? (): void => {
-              return;
-            }
-          : props.onPress
-      }
+      onPress={props.disabled ? (): void => undefined : props.onPress}
       style={style.container}
     >
       <Text style={style.content}>
-        {props.text?.toUpperCase() || "UNTITLED BUTTON"}
+        {props.text?.toUpperCase()}
       </Text>
     </TouchableOpacity>
   );
