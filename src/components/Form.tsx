@@ -6,9 +6,10 @@ import { FormProps } from "./index.d";
 /**
  * This is the form component this component will allow the user to input text.
  *
- * @prop {string} placeholder The placeholer of the form.
- * @prop {(text: string) => void} onChangeText The event that will be called when the text is changed.
+ * @prop {string} placeholder The placeholder of the form.
+ * @prop {(text: string) => void} onChangeText The event that will be called when the text is changed and the data will be stored in the parameter.
  * @optional @prop {boolean} safeEntry Whether the text is secure or not.
+ * @optional @prop {string} value The value of the text form.
  */
 
 const Form: React.FC<FormProps> = (props: FormProps) => {
