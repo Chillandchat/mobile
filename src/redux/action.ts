@@ -1,4 +1,4 @@
-import { RoomType } from './../scripts/index.d';
+import { RoomType } from "./../scripts/index.d";
 import { AuthType } from "../scripts/index.d";
 import {
   ActionNoParameter,
@@ -57,7 +57,7 @@ export const clearSessionData =
 /**
  * This is the set user information action for the user information reducer.
  *
- * @param {AuthType} payload The payload of the action.
+ * @param {AuthType} userInfo The payload of the action.
  */
 
 export const setUserInfo = (
@@ -75,6 +75,6 @@ export const setUserInfo = (
 
 export const deleteUserInfo = (): ActionNoParameter<UserInfoEventType> => {
   return {
-    type: "DETELE_USER_INFO",
+    type: "DELETE_USER_INFO",
   };
 };

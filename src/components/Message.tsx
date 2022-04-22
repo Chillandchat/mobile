@@ -1,10 +1,18 @@
 //! "import "react-native-get-random-values";" MUST BE FIRST!!
 import "react-native-get-random-values";
+import { v4 as uuid } from "uuid";
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import { v4 as uuid } from "uuid";
 
 import { MessageProps } from "./index.d";
+
+/**
+ * This is the message component, this component will display the message that users send.
+ * 
+ * @prop {MessageType} message The message that the user sent.
+ * @prop {string} user The id of the user currently logged in.
+ * @prop {Array<AuthType>} roomUserInfo The information about all the users in the room
+ */
 
 const Message: React.FC<MessageProps> = (props: MessageProps) => {
   const style: any = StyleSheet.create({

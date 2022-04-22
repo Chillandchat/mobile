@@ -14,7 +14,7 @@ export interface ActionNoParameter<ActionType> {
 /**
  * This is the action interface for the redux store.(With the payload)
  *
- * @extends {ActionNoParameter} This interface extends the action no paramater interface.
+ * @extends {ActionNoParameter} This interface extends the action no parameter interface.
  * @param PayloadType The type of the payload.
  * @param {PayloadType} payload The payload of the action.
  */
@@ -26,7 +26,7 @@ export interface ActionWithParameter<PayloadType, ActionType>
 
 // Redux events types:
 export type loginStatusEventType = "LOGIN" | "LOGOUT";
-export type UserInfoEventType = "SET_USER_INFO" | "DETELE_USER_INFO";
+export type UserInfoEventType = "SET_USER_INFO" | "DELETE_USER_INFO";
 export type SessionStatusEventType =
   | "SET_SESSION_STATUS"
   | "DELETE_SESSION_STATUS";

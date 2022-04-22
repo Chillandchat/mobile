@@ -15,7 +15,7 @@ const userInfo = (
     case "SET_USER_INFO":
       return (state = action.payload);
 
-    case "DETELE_USER_INFO":
+    case "DELETE_USER_INFO":
       return (state = {});
 
     default:
