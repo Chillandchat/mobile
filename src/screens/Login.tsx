@@ -120,7 +120,7 @@ const Login: React.FC<any> = ({ navigation }) => {
                       // @ts-ignore
 
                       if (!user.blocked) {
-                        dispatch(setUserInfo(user as AuthType));
+                        dispatch(setUserInfo(user as AuthType)); //! Dangerous way to convert types
                         dispatch(loginAction());
 
                         navigation.push("menu");
