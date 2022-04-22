@@ -17,15 +17,16 @@ import { clearSessionData } from "../redux/action";
 
 /**
  * This is the chat room bar component. This component will render the bar that
- * will display the chat room information as well as the controls for the chat.
+ * will display the chat room information button as well as the controls for the chat.
+ *
+ * @prop {RoomType} roomData The data about the room.
  */
 
 const ChatRoomBar: React.FC<Props> = (props) => {
   const dispatch: any = useDispatch();
+  const navigation: any = useNavigation();
 
   const windowDimensions: ScaledSize = Dimensions.get("window");
-
-  const navigation: any = useNavigation();
 
   const style: any = StyleSheet.create({
     container: {
@@ -39,11 +40,12 @@ const ChatRoomBar: React.FC<Props> = (props) => {
       fontSize: 20,
     },
   });
+
   return (
     <View style={style.container}>
       <TouchableOpacity
-        onPress={async (): Promise<void> => {
-          await dispatch(clearSessionData());
+        onPress={(): void => {
+          dispatch(clearSessionData());
           navigation.navigate("menu");
         }}
       >
@@ -52,9 +54,11 @@ const ChatRoomBar: React.FC<Props> = (props) => {
 
       <Text style={style.roomName}>{props.roomData.name}</Text>
 
-      <TouchableOpacity onPress={(): void => {
-          navigation.navigate("room-details")
-      }}>
+      <TouchableOpacity
+        onPress={(): void => {
+          navigation.navigate("room-details");
+        }}
+      >
         <Feather name="info" size={35} color="black" />
       </TouchableOpacity>
     </View>
