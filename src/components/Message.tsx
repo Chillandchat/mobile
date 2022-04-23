@@ -6,6 +6,7 @@ import { View, StyleSheet, Text } from "react-native";
 
 import { MessageProps } from "./index.d";
 import { AuthType } from "../scripts/index.d";
+import Icon from "./Icon";
 
 /**
  * This is the message component, this component will display the message that users send.
@@ -49,15 +50,19 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
     },
   });
 
+  // TODO: line 58 add positioning to icon component
   return (
     <View style={style.container} key={uuid()}>
-      {props.message.user !== userInfo.username ? (
-        <Text
-          key={uuid()}
-          style={[style.content, { fontFamily: "poppinsBold", fontSize: 18 }]}
-        >
-          {userInfo.username}
-        </Text>
+      {props.message.user !== userInfo.id ? (
+        <View>
+          <Icon iconLetter={userInfo.username[0]} color={userInfo.iconColor} />
+          <Text
+            key={uuid()}
+            style={[style.content, { fontFamily: "poppinsBold", fontSize: 18 }]}
+          >
+            {userInfo.username}
+          </Text>
+        </View>
       ) : null}
       <Text key={uuid()} style={style.content}>
         {props.message.content}
