@@ -21,10 +21,11 @@ import Form from "../components/Form";
 import ChatRoomBar from "../components/ChatRoomBar";
 import { RootState } from "../redux/index.d";
 import sendMessage from "../scripts/sendMessage";
-import { MessageType } from "../scripts";
+import { AuthType, MessageType } from "../scripts";
 import Message from "../components/Message";
 import getMessages from "../scripts/getMessages";
 import filter from "../scripts/filter";
+import getUserWithId from "../scripts/getUserWithId";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -42,25 +43,45 @@ const Chat: React.FC = () => {
   const [message, setMessage]: any = React.useState("");
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
+  const [roomMemberData, setRoomMemberData]: any = React.useState([]);
 
   React.useEffect((): any => {
-    getMessages(sessionStatus.id)
-      .then((messages: Array<MessageType>): void => {
-        setMessageDisplayed([]);
-        setMessageDisplayed([...messageDisplayed, ...messages]);
-        setLoading(false);
-      })
-      .catch((err: unknown): void => {
-        console.error(err);
+    const loadData = (): void => {
+      getMessages(sessionStatus.id)
+        .then((messages: Array<MessageType>): void => {
+          setMessageDisplayed([]);
+          setMessageDisplayed([...messageDisplayed, ...messages]);
+        })
+        .catch((err: unknown): void => {
+          console.error(err);
+        });
+
+        console.log(sessionStatus.users)
+      sessionStatus.users?.forEach((user: string): void => {
+        getUserWithId(user)
+          .then((data: any): void => {
+            setRoomMemberData(
+              (prevState: Array<AuthType>): Array<AuthType> =>
+                prevState.concat(data as AuthType) //! Dangerous way converting data types
+            );
+          })
+          .catch((err: unknown): void => {
+            console.error(err);
+          });
       });
+      setLoading(false);
+    };
+
+    loadData();
 
     const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
 
     socket.on(
       `client-message:room(${sessionStatus.id})`,
       (message: MessageType): void => {
-        setMessageDisplayed((messagePrevious: any): any =>
-          messagePrevious.concat(message)
+        setMessageDisplayed(
+          (messagePrevious: Array<MessageType>): Array<MessageType> =>
+            messagePrevious.concat(message)
         );
       }
     );
@@ -89,7 +110,7 @@ const Chat: React.FC = () => {
     chatRoomBar: {
       position: "absolute",
       top: "7%",
-      marginHorizontal: "7%",
+      marginHorizontal: "3%",
     },
     chatArea: {
       height: "65%",
@@ -124,6 +145,7 @@ const Chat: React.FC = () => {
                       content: message.content,
                       room: message.room,
                     }}
+                    roomUserInfo={roomMemberData}
                     user={userInfo.username}
                   />
                 );
@@ -164,7 +186,7 @@ const Chat: React.FC = () => {
                   id: uuid(),
                   content: filteredMessage,
                   room: sessionStatus.id,
-                  user: userInfo.username,
+                  user: userInfo.id,
                 })
                   .then((): void => {
                     setMessage("");
