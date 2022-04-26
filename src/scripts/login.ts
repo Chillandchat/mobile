@@ -5,8 +5,8 @@ import api from "./api";
 /**
  * This function will authenticate the user via the data api.
  *
- * @param {string} username The username inputed by the user.
- * @param {string} password The password inputed by the user.
+ * @param {string} username The username inputted by the user.
+ * @param {string} password The password inputted by the user.
  * @returns {Promise<void>} The return type of the function, this function will return undefined(AKA void)
  */
 

@@ -108,6 +108,20 @@ namespace app {
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen
+                  name="error"
+                  component={Error}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <NavigatorStack.Screen
+                  name="block-error"
+                  component={BlockError}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <NavigatorStack.Screen
                   name="room-details"
                   component={RoomInformation}
                   options={{ headerShown: false }}
@@ -136,28 +150,6 @@ namespace app {
                   name="join-room"
                   component={JoinRoom}
                   options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="error"
-                  component={Error}
-                  options={{
-                    headerTitle: "Unexpected Error",
-                    headerStyle: {
-                      backgroundColor: "orange",
-                    },
-                    headerTintColor: "#fff",
-                  }}
-                />
-                <NavigatorStack.Screen
-                  name="block-error"
-                  component={BlockError}
-                  options={{
-                    headerTitle: "Unexpected Error",
-                    headerStyle: {
-                      backgroundColor: "orange",
-                    },
-                    headerTintColor: "#fff",
-                  }}
                 />
               </NavigatorStack.Navigator>
             </NavigationContainer>

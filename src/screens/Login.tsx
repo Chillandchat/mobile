@@ -119,7 +119,7 @@ const Login: React.FC<any> = ({ navigation }) => {
                     if (Object.keys(user).length !== 0) {
                       // @ts-ignore
 
-                      if (!user.blocked) {
+                      if (!user.blocked && !user.bot) {
                         dispatch(setUserInfo(user as AuthType)); //! Dangerous way to convert types
                         dispatch(loginAction());
 

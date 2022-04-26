@@ -26,11 +26,12 @@ const Error: React.FC = () => {
       paddingBottom: 23,
     },
   });
+  
   return (
     <View style={style.container}>
       <MaterialIcons name="error" size={75} color="orange" />
-      <Text style={style.titleText}>Unknown error</Text>
-      <Text style={style.text}>Please restart chill&chat to continue.</Text>
+      <Text style={style.titleText}>Unexpected error</Text>
+      <Text style={style.text}>Please report bug or quit app.</Text>
       <Button
         color={"orange"}
         textColor={"#ffff"}
