@@ -14,18 +14,23 @@ import {
   Text,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
 
 import Form from "../components/Form";
 import ChatRoomBar from "../components/ChatRoomBar";
 import { RootState } from "../redux/index.d";
 import sendMessage from "../scripts/sendMessage";
-import { AuthType, MessageType } from "../scripts";
+import { AuthType, MessageType } from "../scripts/index.d";
 import Message from "../components/Message";
 import getMessages from "../scripts/getMessages";
 import filter from "../scripts/filter";
 import getUserWithId from "../scripts/getUserWithId";
+import {
+  clearSessionData,
+  deleteRoomUserInfo,
+  setRoomUserInfo,
+} from "../redux/action";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -38,41 +43,39 @@ const Chat: React.FC = () => {
     }
   );
 
+  const dispatch: any = useDispatch();
+
   const scrollRef: React.MutableRefObject<any> = React.useRef();
 
   const [message, setMessage]: any = React.useState("");
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
-  const [roomMemberData, setRoomMemberData]: any = React.useState([]);
 
   React.useEffect((): any => {
-    const loadData = (): void => {
+    const preLoad = (): void => {
       getMessages(sessionStatus.id)
         .then((messages: Array<MessageType>): void => {
-          setMessageDisplayed([]);
           setMessageDisplayed([...messageDisplayed, ...messages]);
         })
         .catch((err: unknown): void => {
           console.error(err);
         });
 
-        console.log(sessionStatus.users)
-      sessionStatus.users?.forEach((user: string): void => {
+      let roomUserInfoIndex: Array<AuthType> = [];
+      sessionStatus.users.forEach((user: string): void => {
+        console.log(user);
         getUserWithId(user)
-          .then((data: any): void => {
-            setRoomMemberData(
-              (prevState: Array<AuthType>): Array<AuthType> =>
-                prevState.concat(data as AuthType) //! Dangerous way converting data types
-            );
+        .then((data: any): void => {
+          roomUserInfoIndex.push(data);
           })
           .catch((err: unknown): void => {
             console.error(err);
           });
       });
-      setLoading(false);
+      dispatch(setRoomUserInfo(roomUserInfoIndex));
     };
-
-    loadData();
+    preLoad();
+    setLoading(false);
 
     const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
 
@@ -85,7 +88,12 @@ const Chat: React.FC = () => {
         );
       }
     );
-    return (): void => socket.disconnect();
+
+    return (): void => {
+      dispatch(deleteRoomUserInfo());
+      dispatch(clearSessionData());
+      socket.disconnect();
+    };
   }, []);
 
   const style: any = StyleSheet.create({
@@ -136,7 +144,7 @@ const Chat: React.FC = () => {
             }}
           >
             {!loading ? (
-              messageDisplayed?.map((message: MessageType): any => {
+              messageDisplayed.map((message: MessageType): any => {
                 return (
                   <Message
                     message={{
@@ -145,8 +153,6 @@ const Chat: React.FC = () => {
                       content: message.content,
                       room: message.room,
                     }}
-                    roomUserInfo={roomMemberData}
-                    user={userInfo.username}
                   />
                 );
               })

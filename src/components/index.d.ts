@@ -48,6 +48,8 @@ export interface IconProps {
   color: string;
   touchable?: boolean;
   onPress?: () => void;
+  height?: number;
+  width?: number;
 }
 
 /**
@@ -87,6 +89,4 @@ type loginFormTypeSelector = "username" | "password" | "confirm-password";
 
 export interface MessageProps {
   message: MessageType;
-  user: string;
-  roomUserInfo: Array<AuthType>;
 }

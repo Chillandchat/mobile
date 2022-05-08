@@ -2,17 +2,18 @@ import { RoomType } from "./../scripts/index.d";
 import { AuthType } from "../scripts/index.d";
 import {
   ActionNoParameter,
-  loginStatusEventType,
+  LoginStatusEventType,
   ActionWithParameter,
   UserInfoEventType,
   SessionStatusEventType,
+  RoomUserInfoEventType,
 } from "./index.d";
 
 /**
  *  This is the login action for the login reducer.
  */
 
-export const login = (): ActionNoParameter<loginStatusEventType> => {
+export const login = (): ActionNoParameter<LoginStatusEventType> => {
   return {
     type: "LOGIN",
   };
@@ -22,7 +23,7 @@ export const login = (): ActionNoParameter<loginStatusEventType> => {
  *  This is the logout action for the login reducer.
  */
 
-export const logout = (): ActionNoParameter<loginStatusEventType> => {
+export const logout = (): ActionNoParameter<LoginStatusEventType> => {
   return {
     type: "LOGOUT",
   };
@@ -42,6 +43,32 @@ export const setSessionData = (
     payload: data,
   };
 };
+
+/**
+ * This is the set room user info action for the room user info reducer.
+ *
+ * @param {Array<AuthType>} data The room user info.
+ */
+
+export const setRoomUserInfo = (
+  data: Array<AuthType>
+): ActionWithParameter<Array<AuthType>, RoomUserInfoEventType> => {
+  return {
+    type: "SET_ROOM_USER_INFO",
+    payload: data,
+  };
+};
+
+/**
+ * This is the delete room user info action for the room user info reducer.
+ */
+
+export const deleteRoomUserInfo =
+  (): ActionNoParameter<RoomUserInfoEventType> => {
+    return {
+      type: "DELETE_ROOM_USER_INFO",
+    };
+  };
 
 /**
  * This is the clear session data action, this will clear the session data.
