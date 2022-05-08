@@ -4,13 +4,13 @@ import { ActionWithParameter, SessionStatusEventType } from "./../index.d";
 /**
  * This is the session status reducer.
  *
- * @param {string} action The id of the chat room session.
+ * @param {ActionWithParameter<string>} action The id of the chat room session, @see {index.d.ts} for more information.
  */
 
 const sessionStatus = (
   state: RoomType | {} = {},
   action: ActionWithParameter<RoomType, SessionStatusEventType>
-) => {
+): typeof state => {
   switch (action.type) {
     case "SET_SESSION_STATUS":
       return (state = action.payload);

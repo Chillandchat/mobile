@@ -12,8 +12,8 @@ const BlockError: React.FC = () => {
   const style: any = StyleSheet.create({
     container: {
       justifyContent: "center",
-      flex: 1,
       alignItems: "center",
+      flex: 1,
     },
     titleText: {
       fontFamily: "poppinsExtraBold",
@@ -24,15 +24,17 @@ const BlockError: React.FC = () => {
       fontFamily: "poppins",
       fontSize: 15,
       paddingBottom: 23,
+      marginHorizontal: "7%",
+      textAlign: "center",
     },
   });
 
   return (
     <View style={style.container}>
       <MaterialIcons name="error" size={75} color="orange" />
-      <Text style={style.titleText}>Failed to connect</Text>
+      <Text style={style.titleText}>Connection declined</Text>
       <Text style={style.text}>
-        Your account is banned from all Chill&chat servers
+        We have received report(s) about your behavior, to prevent abuse we have blocked you from Chill&chat.
       </Text>
       <Button
         color={"orange"}

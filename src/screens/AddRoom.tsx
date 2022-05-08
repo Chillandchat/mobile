@@ -1,15 +1,18 @@
 import React from "react";
 import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import Button from "../components/Button";
 
 /**
  * The is the add room screen,
- * this room is where the user can select to join or create a room.
+ * this room is where the user can select ether to join or create a room.
  */
 
-const AddRoom: React.FC<any> = ({ navigation }) => {
+const AddRoom: React.FC<any> = () => {
+  const navigation: any = useNavigation();
+  
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
@@ -31,6 +34,7 @@ const AddRoom: React.FC<any> = ({ navigation }) => {
       left: "7%",
     },
   });
+
   return (
     <View style={style.container}>
       <View style={style.back}>

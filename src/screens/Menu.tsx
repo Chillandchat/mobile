@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Dimensions,
-  ScaledSize,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -21,7 +14,7 @@ import { RoomType } from "../scripts/index.d";
  */
 
 const Menu: React.FC<any> = ({ navigation }) => {
-  const { username, iconColor }: any = useSelector(
+  const { id, iconColor, username }: any = useSelector(
     (state: RootState): RootState => {
       return state.userInfo;
     }
@@ -34,7 +27,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
   const [rooms, setRooms] = React.useState<Array<RoomType>>([]);
 
   React.useEffect((): void => {
-    getRoom(username)
+    getRoom(id)
       .then((data: Array<RoomType>): void => {
         setRooms(data);
       })
@@ -78,9 +71,9 @@ const Menu: React.FC<any> = ({ navigation }) => {
       padding: 5,
       borderRadius: 10000,
     },
-    bar:{
-      backgroundColor:"#00AD98",
-    }
+    bar: {
+      backgroundColor: "#00AD98",
+    },
   });
 
   if (!loggedIn) {
@@ -92,6 +85,8 @@ const Menu: React.FC<any> = ({ navigation }) => {
         <View style={style.tittleBar}>
           <Text style={style.text}>Messages</Text>
           <Icon
+            height={60}
+            width={60}
             iconLetter={username[0] || ""}
             color={iconColor || "#0000"}
             touchable
@@ -100,7 +95,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
             }}
           />
         </View>
-       <View style={style.bar}/>
+        <View style={style.bar} />
         <RoomList rooms={rooms} />
         <TouchableOpacity
           style={style.addButton}

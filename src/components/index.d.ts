@@ -19,7 +19,7 @@ export interface ChatRoomBarProps {
 
 export interface ButtonProps {
   color: string;
-  text?: string;
+  text: string;
   onPress: () => void;
   textColor: string;
   disabled?: boolean;
@@ -48,6 +48,8 @@ export interface IconProps {
   color: string;
   touchable?: boolean;
   onPress?: () => void;
+  height?: number;
+  width?: number;
 }
 
 /**
@@ -74,7 +76,7 @@ export interface RoomListProps {
 }
 
 /**
- * This is the type ristrictions for the form component type prop.
+ * This is the type restrictions for the form component type prop.
  */
 
 type loginFormTypeSelector = "username" | "password" | "confirm-password";
@@ -87,5 +89,4 @@ type loginFormTypeSelector = "username" | "password" | "confirm-password";
 
 export interface MessageProps {
   message: MessageType;
-  user: string;
 }
