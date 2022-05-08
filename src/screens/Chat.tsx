@@ -42,7 +42,6 @@ const Chat: React.FC = () => {
   const [message, setMessage]: any = React.useState("");
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
-  const [roomMemberData, setRoomMemberData]: any = React.useState([]);
 
   React.useEffect((): any => {
     getMessages(sessionStatus.id)
