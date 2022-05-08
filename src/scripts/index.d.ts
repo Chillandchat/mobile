@@ -1,6 +1,6 @@
 import { AxiosInstance } from "axios";
 
-import { Icon } from "./../../../web/components/Icon";
+import { Icon } from './../../../web/components/Icon';
 
 /**
  * This is the ApiEndpoint type, this type makes sure that the all endpoints are valid.
@@ -17,8 +17,7 @@ export type ApiEndpoint =
   | "/api/block-user"
   | "/api/create-room"
   | "/api/join-room"
-  | "/api/get-rooms"
-  | "/api/get-user-info-id";
+  | "/api/get-rooms";
 
 /**
  * This is the ApiEndpoints type, This type works with the "ApiEndpoint"
@@ -33,10 +32,6 @@ export type ApiEndpoint =
  * @param {ApiEndpoint} getUserInfo
  * @param {ApiEndpoint} blockUser
  * @param {ApiEndpoint}reportUser
- * @param {ApiEndpoint} createRoom
- * @param {ApiEndpoint} joinRoom
- * @param {ApiEndpoint} getRoom
- * @param {ApiEndpoint} getUserInfoWithId
  */
 
 export interface ApiEndpoints {
@@ -51,7 +46,6 @@ export interface ApiEndpoints {
   joinRoom: ApiEndpoint;
   getRoom: ApiEndpoint;
   createRoom: ApiEndpoint;
-  getUserInfoWithId: ApiEndpoint;
 }
 
 /**
@@ -85,7 +79,7 @@ export interface AuthType {
   verified: boolean;
   bot: boolean;
   blocked: boolean;
-  iconColor: string;
+  iconColor: string
 }
 /**
  * This is the room object type.

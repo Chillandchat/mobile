@@ -1,5 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -14,7 +19,7 @@ import { RoomType } from "../scripts/index.d";
  */
 
 const Menu: React.FC<any> = ({ navigation }) => {
-  const { id, iconColor, username }: any = useSelector(
+  const { username, iconColor }: any = useSelector(
     (state: RootState): RootState => {
       return state.userInfo;
     }
@@ -27,7 +32,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
   const [rooms, setRooms] = React.useState<Array<RoomType>>([]);
 
   React.useEffect((): void => {
-    getRoom(id)
+    getRoom(username)
       .then((data: Array<RoomType>): void => {
         setRooms(data);
       })
@@ -85,8 +90,6 @@ const Menu: React.FC<any> = ({ navigation }) => {
         <View style={style.tittleBar}>
           <Text style={style.text}>Messages</Text>
           <Icon
-            height={60}
-            width={60}
             iconLetter={username[0] || ""}
             color={iconColor || "#0000"}
             touchable

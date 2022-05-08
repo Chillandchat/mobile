@@ -9,7 +9,6 @@ import { MessageProps } from "./index.d";
 import { AuthType } from "../scripts/index.d";
 import { RootState } from "../redux/index.d";
 import Icon from "./Icon";
-import getUserWithId from "../scripts/getUserWithId";
 
 /**
  * This is the message component, this component will display the message that users send.

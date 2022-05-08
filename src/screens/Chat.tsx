@@ -21,16 +21,10 @@ import Form from "../components/Form";
 import ChatRoomBar from "../components/ChatRoomBar";
 import { RootState } from "../redux/index.d";
 import sendMessage from "../scripts/sendMessage";
-import { AuthType, MessageType } from "../scripts/index.d";
+import { MessageType } from "../scripts";
 import Message from "../components/Message";
 import getMessages from "../scripts/getMessages";
 import filter from "../scripts/filter";
-import getUserWithId from "../scripts/getUserWithId";
-import {
-  clearSessionData,
-  deleteRoomUserInfo,
-  setRoomUserInfo,
-} from "../redux/action";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -52,39 +46,23 @@ const Chat: React.FC = () => {
   const [loading, setLoading]: any = React.useState(true);
 
   React.useEffect((): any => {
-    const preLoad = (): void => {
-      getMessages(sessionStatus.id)
-        .then((messages: Array<MessageType>): void => {
-          setMessageDisplayed([...messageDisplayed, ...messages]);
-        })
-        .catch((err: unknown): void => {
-          console.error(err);
-        });
-
-      let roomUserInfoIndex: Array<AuthType> = [];
-      sessionStatus.users.forEach((user: string): void => {
-        console.log(user);
-        getUserWithId(user)
-        .then((data: any): void => {
-          roomUserInfoIndex.push(data);
-          })
-          .catch((err: unknown): void => {
-            console.error(err);
-          });
+    getMessages(sessionStatus.id)
+      .then((messages: Array<MessageType>): void => {
+        setMessageDisplayed([]);
+        setMessageDisplayed([...messageDisplayed, ...messages]);
+        setLoading(false);
+      })
+      .catch((err: unknown): void => {
+        console.error(err);
       });
-      dispatch(setRoomUserInfo(roomUserInfoIndex));
-    };
-    preLoad();
-    setLoading(false);
 
     const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
 
     socket.on(
       `client-message:room(${sessionStatus.id})`,
       (message: MessageType): void => {
-        setMessageDisplayed(
-          (messagePrevious: Array<MessageType>): Array<MessageType> =>
-            messagePrevious.concat(message)
+        setMessageDisplayed((messagePrevious: any): any =>
+          messagePrevious.concat(message)
         );
       }
     );
@@ -153,6 +131,7 @@ const Chat: React.FC = () => {
                       content: message.content,
                       room: message.room,
                     }}
+                    user={userInfo.username}
                   />
                 );
               })
@@ -192,7 +171,7 @@ const Chat: React.FC = () => {
                   id: uuid(),
                   content: filteredMessage,
                   room: sessionStatus.id,
-                  user: userInfo.id,
+                  user: userInfo.username,
                 })
                   .then((): void => {
                     setMessage("");

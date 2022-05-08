@@ -7,7 +7,7 @@ import Button from "../components/Button";
 
 /**
  * The is the add room screen,
- * this room is where the user can select ether to join or create a room.
+ * this room is where the user can select to join or create a room.
  */
 
 const AddRoom: React.FC<any> = () => {
