@@ -74,7 +74,7 @@ export interface RoomListProps {
 }
 
 /**
- * This is the type ristrictions for the form component type prop.
+ * This is the type restrictions for the form component type prop.
  */
 
 type loginFormTypeSelector = "username" | "password" | "confirm-password";
