@@ -40,8 +40,8 @@ const Information: React.FC<any> = ({ navigation }) => {
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
       <Text style={style.tittle}>App information:</Text>
-      <Text style={style.text}>Version: Chill&chat offical runtime v0.1.0</Text>
-      <Text style={style.text}>Verified offical Chill&chat build.</Text>
+      <Text style={style.text}>Version: Chill&chat official runtime v1.0.1</Text>
+      <Text style={style.text}>Verified official Chill&chat build.</Text>
       <Text style={style.text}>Connected to Chill&chat global network</Text>
       <View style={{ padding: 10 }} />
       <Text style={style.tittle}>Credits:</Text>
