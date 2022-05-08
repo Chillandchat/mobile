@@ -87,5 +87,4 @@ type loginFormTypeSelector = "username" | "password" | "confirm-password";
 
 export interface MessageProps {
   message: MessageType;
-  user: string;
 }

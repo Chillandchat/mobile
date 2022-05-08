@@ -124,7 +124,6 @@ const Chat: React.FC = () => {
                       content: message.content,
                       room: message.room,
                     }}
-                    user={userInfo.username}
                   />
                 );
               })
