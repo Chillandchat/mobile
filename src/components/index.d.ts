@@ -48,8 +48,6 @@ export interface IconProps {
   color: string;
   touchable?: boolean;
   onPress?: () => void;
-  height?: number;
-  width?: number;
 }
 
 /**

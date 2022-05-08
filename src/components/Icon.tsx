@@ -10,8 +10,6 @@ import { IconProps } from "./index.d";
  * @prop {string} color The background color of the icon.
  * @optional @prop {() => void} onPress The function to call when the icon is pressed.
  * @optional @prop {boolean} touchable If the icon is touchable.
- * @optional @prop {number} height The height of the icon.
- * @optional @prop {number} width The width of the icon.
  */
 
 const Icon: React.FC<IconProps> = (props: IconProps) => {
@@ -19,8 +17,8 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
     container: {
       borderRadius: 10000,
       backgroundColor: props.color,
-      height: props.height || 50,
-      width: props.width || 50,
+      height: 60,
+      width: 60,
       justifyContent:"center",
       alignItems:"center"
     },

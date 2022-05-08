@@ -82,8 +82,6 @@ const RoomList: React.FC<Props> = (props: Props) => {
                 iconLetter={room.name[0]}
                 color={room.iconColor}
                 key={uuid()}
-                height={60}
-                width={60}
               />
               <Text style={style.titleStyle} numberOfLines={1} key={uuid()}>
                 {room.name}

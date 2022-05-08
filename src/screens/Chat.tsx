@@ -14,7 +14,7 @@ import {
   Text,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
 
 import Form from "../components/Form";
@@ -37,13 +37,12 @@ const Chat: React.FC = () => {
     }
   );
 
-  const dispatch: any = useDispatch();
-
   const scrollRef: React.MutableRefObject<any> = React.useRef();
 
   const [message, setMessage]: any = React.useState("");
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
+  const [roomMemberData, setRoomMemberData]: any = React.useState([]);
 
   React.useEffect((): any => {
     getMessages(sessionStatus.id)
@@ -66,12 +65,7 @@ const Chat: React.FC = () => {
         );
       }
     );
-
-    return (): void => {
-      dispatch(deleteRoomUserInfo());
-      dispatch(clearSessionData());
-      socket.disconnect();
-    };
+    return (): void => socket.disconnect();
   }, []);
 
   const style: any = StyleSheet.create({
@@ -122,7 +116,7 @@ const Chat: React.FC = () => {
             }}
           >
             {!loading ? (
-              messageDisplayed.map((message: MessageType): any => {
+              messageDisplayed?.map((message: MessageType): any => {
                 return (
                   <Message
                     message={{
