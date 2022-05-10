@@ -1,7 +1,7 @@
 // @ts-ignore
 import { API_URL, API_KEY, SOCKET_URL } from "@env";
 import axios, { AxiosInstance } from "axios";
-import { ApiEndpoints, ApiCombined } from "./index.d";
+import { ApiEndpoints } from "./index.d";
 
 export const apiKey: string = String(API_KEY);
 
@@ -23,7 +23,7 @@ export const apiInstance: AxiosInstance = axios.create({
   baseURL: String(API_URL),
 });
 
-const api: ApiCombined = {
+const api: any = {
   apiKey: apiKey,
   endpoints: endpoints,
   instance: apiInstance,

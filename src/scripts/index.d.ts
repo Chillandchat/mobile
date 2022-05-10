@@ -47,20 +47,6 @@ export interface ApiEndpoints {
 }
 
 /**
- * This is the combined type that is exported from "api.ts".
- *
- * @param {AxiosInstance} instance The Axios instance
- * @param {ApiEndpoints} endpoints All the api endpoints
- * @param {string} apiKey Api key
- */
-
-export interface ApiCombined {
-  instance: AxiosInstance;
-  endpoints: ApiEndpoints;
-  apiKey: string;
-}
-
-/**
  * This is the database schema for the message object in mongoDB database.
  *
  * @param {string} id The id of the message.
