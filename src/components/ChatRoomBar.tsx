@@ -51,9 +51,7 @@ const ChatRoomBar: React.FC<Props> = (props) => {
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-
       <Text style={style.roomName}>{props.roomData.name}</Text>
-
       <TouchableOpacity
         onPress={(): void => {
           navigation.navigate("room-details");
