@@ -89,7 +89,7 @@ const Chat: React.FC = () => {
     chatRoomBar: {
       position: "absolute",
       top: "7%",
-      marginHorizontal: "2%",
+      width:"100%"
     },
     chatArea: {
       height: "65%",
