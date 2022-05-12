@@ -1,13 +1,16 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 /**
  * This is the information page,
  * this page will show the user some information about the app version.
  */
 
-const Information: React.FC<any> = ({ navigation }) => {
+const Information: React.FC<any> = () => {
+  const navigation: any = useNavigation();
+
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
@@ -40,7 +43,9 @@ const Information: React.FC<any> = ({ navigation }) => {
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
       <Text style={style.tittle}>App information:</Text>
-      <Text style={style.text}>Version: Chill&chat official runtime v1.0.1</Text>
+      <Text style={style.text}>
+        Version: Chill&chat official runtime v1.0.1
+      </Text>
       <Text style={style.text}>Verified official Chill&chat build.</Text>
       <Text style={style.text}>Connected to Chill&chat global network</Text>
       <View style={{ padding: 10 }} />
