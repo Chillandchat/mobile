@@ -29,6 +29,7 @@ import JoinRoom from "./screens/JoinRoom";
 import Information from "./screens/Information";
 import loadFonts from "../assets/fonts/loader";
 import RoomInformation from "./screens/RoomInformation";
+import RoomDangerZone from "./screens/RoomDangerZone";
 
 /**
  * This is the router component for the application, This component
@@ -106,6 +107,13 @@ namespace app {
                   name="menu"
                   component={Menu}
                   options={{ headerShown: false }}
+                />
+                <NavigatorStack.Screen
+                  name="room-danger-zone"
+                  component={RoomDangerZone}
+                  options={{
+                    headerShown: false,
+                  }}
                 />
                 <NavigatorStack.Screen
                   name="error"

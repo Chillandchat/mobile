@@ -38,7 +38,7 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
       fontFamily: "poppinsBold",
       fontSize: 15,
     },
-    reportButton: {
+    dangerButton: {
       position: "absolute",
       bottom: "7%",
     },
@@ -74,7 +74,7 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
         />
         <Text style={style.text}>{sessionStatus.users.length.toString()}</Text>
       </View>
-      <View style={style.reportButton}>
+      <View style={style.dangerButton}>
         <TouchableOpacity
           onPress={(): void => {
             Clipboard.setString(sessionStatus.id);
@@ -94,38 +94,15 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
           />
           <Text style={style.text}>Copy information</Text>
         </TouchableOpacity>
-        <Button
-          color={"red"}
-          textColor={"#fff"}
-          onPress={(): void => {
-            Alert.alert(
-              "",
-              "Are you sure you want to report this room? The Chill&chat team will be notified once reported.",
-              [
-                {
-                  text: "Report",
-                  style: "destructive",
-                  onPress: (): void => {
-                    console.log("pressed");
-                    reportRoom(sessionStatus.id)
-                      .then((): void => {
-                        Alert.alert(
-                          "Room reported",
-                          "This room has been reported, thank you for your feedback! We will take action as soon as possible."
-                        );
-                      })
-                      .catch((err: unknown): void => {
-                        console.error(err);
-                      });
-                  },
-                },
-                { text: "Cancel" },
-              ]
-            );
-          }}
-          text={"report room"}
-        />
-      </View>
+          <Button
+            color={"red"}
+            onPress={() => {
+              navigation.push("room-danger-zone");
+            }}
+            textColor={"#ffff"}
+            text={"Danger zone"}
+          />
+        </View>
     </View>
   );
 };
