@@ -17,8 +17,8 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
     container: {
       borderRadius: 10000,
       backgroundColor: props.color,
-      height: 60,
-      width: 60,
+      height: props.size || 60,
+      width: props.size || 60,
       justifyContent:"center",
       alignItems:"center"
     },
