@@ -145,7 +145,7 @@ const Chat: React.FC = () => {
           <Text style={[style.text, { color: "red" }]}>{errorMessage}</Text>
 
           {sessionStatus.users?.length <= 1 ? (
-            <Text style={[style.text, { opacity: 0.5 }]}>
+            <Text style={[style.text, { opacity: 0.5, paddingBottom:20 }]}>
               hmmm... It seems like that there's nobody here. Why not invite a
               friend!
             </Text>
