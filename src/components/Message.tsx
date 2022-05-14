@@ -24,11 +24,11 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
   const style: any = StyleSheet.create({
     container: {
       alignSelf: props.message.user === username ? "flex-end" : "flex-start",
-      margin: 20,
+      margin: 10,
       padding: 20,
       backgroundColor: props.message.user === username ? "#00AD98" : "#E5E5E5",
-      borderTopLeftRadius: 50,
-      borderTopRightRadius: 50,
+      borderTopLeftRadius: props.message.user !== username ? 35 : 50,
+      borderTopRightRadius: props.message.user === username ? 35 : 50,
       borderBottomRightRadius: props.message.user === username ? 0 : 50,
       borderBottomLeftRadius: props.message.user === username ? 50 : 0,
     },
