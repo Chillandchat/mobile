@@ -8,12 +8,13 @@ import {
   ScaledSize,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
-import { ChatRoomBarProps as Props } from "./index.d";
 import { clearSessionData } from "../redux/action";
+import Icon from "./Icon";
+import { RootState } from "../redux/index.d";
 
 /**
  * This is the chat room bar component. This component will render the bar that
@@ -22,11 +23,13 @@ import { clearSessionData } from "../redux/action";
  * @prop {RoomType} roomData The data about the room.
  */
 
-const ChatRoomBar: React.FC<Props> = (props) => {
+const ChatRoomBar: React.FC = () => {
   const dispatch: any = useDispatch();
   const navigation: any = useNavigation();
-
+  const { sessionStatus } = useSelector((state: RootState): RootState => state);
   const windowDimensions: ScaledSize = Dimensions.get("window");
+
+  React.useEffect((): any => () => dispatch(clearSessionData()), []);
 
   const style: any = StyleSheet.create({
     container: {
@@ -35,23 +38,22 @@ const ChatRoomBar: React.FC<Props> = (props) => {
       width: "100%",
       paddingHorizontal: windowDimensions.width * 0.07,
     },
-    roomName: {
-      fontFamily: "poppinsExtraBold",
-      fontSize: 20,
-    },
   });
 
   return (
     <View style={style.container}>
       <TouchableOpacity
         onPress={(): void => {
-          dispatch(clearSessionData());
           navigation.navigate("menu");
         }}
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-      <Text style={style.roomName}>{props.roomData.name}</Text>
+      <Icon
+        iconLetter={sessionStatus.name[0]}
+        color={sessionStatus.iconColor}
+        size={50}
+      />
       <TouchableOpacity
         onPress={(): void => {
           navigation.navigate("room-details");

@@ -106,7 +106,7 @@ const Chat: React.FC = () => {
     >
       <ScrollView contentContainerStyle={style.container}>
         <View style={style.chatRoomBar}>
-          <ChatRoomBar roomData={sessionStatus} />
+          <ChatRoomBar />
         </View>
         <View style={style.chatArea}>
           <ScrollView
