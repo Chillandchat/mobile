@@ -42,6 +42,7 @@ const Chat: React.FC = () => {
   const [message, setMessage]: any = React.useState("");
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
+  const [errorMessage, setErrorMessage]: any = React.useState("");
 
   React.useEffect((): any => {
     getMessages(sessionStatus.id)
@@ -89,7 +90,7 @@ const Chat: React.FC = () => {
     chatRoomBar: {
       position: "absolute",
       top: "7%",
-      width:"100%"
+      width: "100%",
     },
     chatArea: {
       height: "65%",
@@ -134,14 +135,22 @@ const Chat: React.FC = () => {
             )}
           </ScrollView>
         </View>
-        {sessionStatus.users?.length <= 1 ? (
-          <View style={{ justifyContent: "center", marginHorizontal: "10%" }}>
+        <View
+          style={{
+            justifyContent: "center",
+            marginHorizontal: "10%",
+            marginTop: 10,
+          }}
+        >
+          <Text style={[style.text, { color: "red" }]}>{errorMessage}</Text>
+
+          {sessionStatus.users?.length <= 1 ? (
             <Text style={[style.text, { opacity: 0.5 }]}>
               hmmm... It seems like that there's nobody here. Why not invite a
               friend!
             </Text>
-          </View>
-        ) : null}
+          ) : null}
+        </View>
         <View style={style.sendBar}>
           <Form
             placeholder={"Type a message..."}
@@ -153,7 +162,17 @@ const Chat: React.FC = () => {
           <View style={style.sendIcon}>
             <TouchableOpacity
               onPress={(): void => {
-                if (message === undefined || message === "") {
+                if (message === undefined || message === "") return;
+
+                if (message.length > 400) {
+                  setErrorMessage(
+                    "Whoa there! That's a lot of characters! You can't send messages that long!"
+                  );
+
+                  setTimeout((): void => {
+                    setErrorMessage("");
+                  }, 5000);
+
                   return;
                 }
 
