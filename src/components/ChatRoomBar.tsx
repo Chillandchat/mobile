@@ -19,8 +19,6 @@ import { RootState } from "../redux/index.d";
 /**
  * This is the chat room bar component. This component will render the bar that
  * will display the chat room information button as well as the controls for the chat.
- *
- * @prop {RoomType} roomData The data about the room.
  */
 
 const ChatRoomBar: React.FC = () => {
