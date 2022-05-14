@@ -95,6 +95,7 @@ const Chat: React.FC = () => {
     chatArea: {
       height: "65%",
       width: "90%",
+      marginTop: 10,
     },
   });
 
@@ -139,7 +140,7 @@ const Chat: React.FC = () => {
           style={{
             justifyContent: "center",
             marginHorizontal: "10%",
-            marginTop: 10,
+            marginTop:5,
           }}
         >
           <Text style={[style.text, { color: "red" }]}>{errorMessage}</Text>
