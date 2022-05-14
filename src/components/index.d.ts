@@ -2,16 +2,6 @@ import { MessageType } from "./../scripts/index.d";
 import { RoomType } from "../scripts/index.d";
 
 /**
- * This is the props for the chat room bar component
- *
- * @see ChatRoomBar.tsx
- */
-
-export interface ChatRoomBarProps {
-  roomData: RoomType;
-}
-
-/**
  * This is the props for the button component.
  *
  * @see Button.tsx
@@ -48,6 +38,7 @@ export interface IconProps {
   color: string;
   touchable?: boolean;
   onPress?: () => void;
+  size?: number;
 }
 
 /**
