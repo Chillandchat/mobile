@@ -20,10 +20,6 @@ import createRoom from "../scripts/createRoom";
  */
 
 const CreateRoom: React.FC<any> = ({ navigation }) => {
-  const { id } = useSelector((state: RootState): RootState => {
-    return state.userInfo;
-  });
-  
   const [name, setName]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
 
@@ -90,7 +86,15 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
           textColor={"#ffff"}
           text={"Lets' go!"}
           onPress={(): void => {
-            if (name !== undefined && password !== undefined) {
+            if (name !== "" && password !== "") {
+              if (password.length < 5) {
+                setError("Password must be at least 5 letters long.");
+                setTimeout((): void => {
+                  setError("");
+                }, 3000);
+                return;
+              }
+
               createRoom(name, password, username)
                 .then((): void => {
                   Alert.alert("", "Please restart the app to see the changes.");

@@ -20,12 +20,12 @@ const AddRoom: React.FC<any> = () => {
       alignItems: "center",
     },
     divider: {
-      padding: 10,
+      padding: 5,
     },
     title: {
       fontFamily: "poppinsExtraBold",
       fontSize: 25,
-      padding: 30,
+      padding: 20,
     },
     back: {
       justifyContent: "flex-start",

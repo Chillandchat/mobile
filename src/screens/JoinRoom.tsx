@@ -19,10 +19,6 @@ import joinRoom from "../scripts/joinRoom";
  */
 
 const JoinRoom: React.FC<any> = ({ navigation }) => {
-  const { id } = useSelector((state: RootState): RootState => {
-    return state.userInfo;
-  });
-  
   const [name, setName]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
 
@@ -89,7 +85,7 @@ const JoinRoom: React.FC<any> = ({ navigation }) => {
           textColor={"#ffff"}
           text={"Lets' go!"}
           onPress={(): void => {
-            if (name !== undefined && password !== undefined) {
+            if (name !== "" && password !== "") {
               joinRoom(username, name, password)
                 .then((): void => {
                   Alert.alert("", "Please restart the app to see the changes.");
