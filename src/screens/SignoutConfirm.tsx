@@ -12,6 +12,8 @@ import { logout } from "../redux/action";
 const SignoutConfirm: React.FC<any> = ({ navigation }) => {
   const dispatch: any = useDispatch();
 
+  React.useEffect((): any => (): void => dispatch(logout()), []);
+  
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
@@ -26,21 +28,20 @@ const SignoutConfirm: React.FC<any> = ({ navigation }) => {
         color={"red"}
         textColor={"#ffff"}
         onPress={() => {
-          let comfirmed = false;
+          let confirmed = false;
 
           Alert.alert("Signout confirm", "Are you sure you want to signout?", [
             {
               text: "Signout",
-              onPress: async () => {
-                await dispatch(logout());
-                comfirmed = true;
+              onPress: (): void => {
+                confirmed = true;
               },
               style: "destructive",
             },
-            { text: "Cancel", onPress: () => {} },
+            { text: "Cancel", onPress: (): void => {} },
           ]);
 
-          comfirmed ? navigation.navigate("login") : null;
+          confirmed ? navigation.navigate("login") : null;
         }}
         text={"sign out"}
       />
