@@ -25,6 +25,7 @@ import { MessageType } from "../scripts";
 import Message from "../components/Message";
 import getMessages from "../scripts/getMessages";
 import filter from "../scripts/filter";
+import setKeyboardSocket from "../scripts/setKeyboardSocket";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -44,6 +45,9 @@ const Chat: React.FC = () => {
   const [loading, setLoading]: any = React.useState(true);
   const [errorMessage, setErrorMessage]: any = React.useState("");
 
+  const [typing, setTyping]: any = React.useState(false);
+  const [typingUser, setTypingUser]: any = React.useState("");
+
   React.useEffect((): any => {
     getMessages(sessionStatus.id)
       .then((messages: Array<MessageType>): void => {
@@ -56,6 +60,21 @@ const Chat: React.FC = () => {
       });
 
     const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
+
+    socket.on(
+      `keyboard-start:room(${sessionStatus.id})`,
+      (user: string): void => {
+        if (user != userInfo.username) {
+          setTyping(true);
+          setTypingUser(user);
+        }
+      }
+    );
+
+    socket.on(`keyboard-stop:room(${sessionStatus.id})`, (): void => {
+      setTyping(false);
+      setTypingUser("");
+    });
 
     socket.on(
       `client-message:room(${sessionStatus.id})`,
@@ -93,10 +112,15 @@ const Chat: React.FC = () => {
       width: "100%",
     },
     chatArea: {
-      height: "65%",
+      height: "60%",
       width: "90%",
       marginTop: 10,
     },
+    typingMessage:{
+      fontFamily: "poppins",
+      fontSize: 16,
+      alignSelf: "flex-start",
+    }
   });
 
   return (
@@ -134,19 +158,22 @@ const Chat: React.FC = () => {
                 Loading, please wait...
               </Text>
             )}
+            {typing && typingUser != "" ? (
+              <Text style={style.typingMessage}>{typingUser} is typing...</Text>
+            ) : null}
           </ScrollView>
         </View>
         <View
           style={{
             justifyContent: "center",
             marginHorizontal: "10%",
-            marginTop:5,
+            marginTop: 5,
           }}
         >
           <Text style={[style.text, { color: "red" }]}>{errorMessage}</Text>
 
           {sessionStatus.users?.length <= 1 ? (
-            <Text style={[style.text, { opacity: 0.5, paddingBottom:20 }]}>
+            <Text style={[style.text, { opacity: 0.5, paddingBottom: 20 }]}>
               hmmm... It seems like that there's nobody here. Why not invite a
               friend!
             </Text>
@@ -156,6 +183,16 @@ const Chat: React.FC = () => {
           <Form
             placeholder={"Type a message..."}
             onTextChange={(text: string): void => {
+              if (text != "" && !typing) {
+                setKeyboardSocket(
+                  sessionStatus.id,
+                  userInfo.username,
+                  "start"
+                ).catch((err: unknown): void => {
+                  console.error(err);
+                });
+              }
+
               setMessage(text);
             }}
             value={message}
@@ -165,7 +202,7 @@ const Chat: React.FC = () => {
               onPress={(): void => {
                 if (message === undefined || message === "") return;
 
-                if (message.length > 400) {
+                if (message.length > 150) {
                   setErrorMessage(
                     "Whoa there! That's a lot of characters! You can't send messages that long!"
                   );
@@ -186,6 +223,11 @@ const Chat: React.FC = () => {
                   user: userInfo.username,
                 })
                   .then((): void => {
+                    setKeyboardSocket(
+                      sessionStatus.id,
+                      userInfo.username,
+                      "stop"
+                    );
                     setMessage("");
                   })
                   .catch((err: unknown): void => {
