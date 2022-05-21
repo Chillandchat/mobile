@@ -63,7 +63,7 @@ export interface AuthType {
   verified: boolean;
   bot: boolean;
   blocked: boolean;
-  iconColor: string
+  iconColor: string;
 }
 /**
  * This is the room object type.
@@ -97,3 +97,12 @@ export interface MessageType {
   content: string;
   room: string;
 }
+
+/**
+ * This is the keyboard mode type, this is used to validate the keyboard mode.
+ *
+ * @option 'start' The start mode.
+ * @option 'stop' The stop mode.
+ */
+
+export type KeyboardMode = "start" | "stop";
