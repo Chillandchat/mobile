@@ -13,7 +13,7 @@ const SignoutConfirm: React.FC<any> = ({ navigation }) => {
   const dispatch: any = useDispatch();
 
   React.useEffect((): any => (): void => dispatch(logout()), []);
-  
+
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
@@ -28,20 +28,16 @@ const SignoutConfirm: React.FC<any> = ({ navigation }) => {
         color={"red"}
         textColor={"#ffff"}
         onPress={() => {
-          let confirmed = false;
-
           Alert.alert("Signout confirm", "Are you sure you want to signout?", [
             {
               text: "Signout",
               onPress: (): void => {
-                confirmed = true;
+                navigation.navigate("login");
               },
               style: "destructive",
             },
             { text: "Cancel", onPress: (): void => {} },
           ]);
-
-          confirmed ? navigation.navigate("login") : null;
         }}
         text={"sign out"}
       />
