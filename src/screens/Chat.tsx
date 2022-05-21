@@ -159,7 +159,9 @@ const Chat: React.FC = () => {
               </Text>
             )}
             {typing && typingUser != "" ? (
-              <Text style={style.typingMessage}>{typingUser} is typing...</Text>
+              <Text style={style.typingMessage}>
+                {typingUser} is typing 💬...
+              </Text>
             ) : null}
           </ScrollView>
         </View>
