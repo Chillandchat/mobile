@@ -48,7 +48,7 @@ To get the latest code, please enter the command below into your terminal to clo
 
 - We will also make sure to listen to any community safety concerns or complaints.
 
-- We will ban and delete accounts of users that are unruly or sharing inappropriate data.
+- We will ban and delete accounts of users that are unruly or share inappropriate data.
 
 - Developers will be active to eliminate security issues/bugs
 
