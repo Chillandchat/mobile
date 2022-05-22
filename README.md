@@ -4,18 +4,18 @@
 ![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/issues-pr-closed/chill-and-chat/chill-chat) ![](https://img.shields.io/github/issues-pr-raw/chill-and-chat/chill-chat)
 [![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
 
-Chill&chat is a free and open source mobile chat application that can chat send messages instantly to anyone around the world with a Chill&chat account.
+Chill&chat is a free and open-source mobile chat application that can chat send messages instantly to anyone around the world with a Chill&chat account.
 
 ### License
 
-This repository is licensed under the MIT License and is free for use. Please see the [LICENSE](https://github.com/Chill-and-chat/Chill-chat/blob/master/LICENSE) file for full license.
+This repository is licensed under the MIT License and is free for use. Please see the [LICENSE](https://github.com/Chill-and-chat/Chill-chat/blob/master/LICENSE) file for a full license.
 
 
 *Copyright (C) 2021-2022 Alvin cheng*
 
 ## Contribution
 
-You are welcome to contribute to this project at anytime. To contribute, please fork the project and make changes in the forked repository. Then make a pull request under the [Pull request tab](https://github.com/Chill-and-chat/Chill-chat/pulls). Please make sure your code has passed all tests, and the code explanation is clear before submitting, and please make sure follow the github offical community guidelines when submitting any code to the Chill&chat repository.
+You are welcome to contribute to this project at any time. To contribute, please fork the project and make changes in the forked repository. Then make a pull request under the [Pull request tab](https://github.com/Chill-and-chat/Chill-chat/pulls). Please make sure your code has passed all tests, and the code explanation is clear before submitting, and please make sure to follow the GitHub official community guidelines when submitting any code to the Chill&chat repository.
 
 
 I look forward to seeing your contributions to Chill&chat!
@@ -44,13 +44,13 @@ To get the latest code, please enter the command below into your terminal to clo
 
 - We will ensure that all users' private information will be private no matter what, even to the developers. 
 
-- Private data is kept safe in a database with top of the line safety and encryption, we also ensure no data is sold or shared to any third parties. 
+- Private data is kept safe in a database with top-of-the-line safety and encryption, we also ensure no data is sold or shared with any third parties. 
 
 - We will also make sure to listen to any community safety concerns or complaints.
 
 - We will ban and delete accounts of users that are unruly or sharing inappropriate data.
 
-- Developers will be active to eliminate security issues / bugs
+- Developers will be active to eliminate security issues/bugs
 
 All the above will be enforced to ensure Chill&chat is safe!
 
