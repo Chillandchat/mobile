@@ -5,13 +5,13 @@ import { v4 as uuid } from "uuid";
 import { SOCKET_URL } from "@env";
 import React from "react";
 import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
   KeyboardAvoidingView,
-  ScrollView,
   Platform,
+  ScrollView,
+  StyleSheet,
   Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
@@ -64,9 +64,10 @@ const Chat: React.FC = () => {
     socket.on(
       `keyboard-start:room(${sessionStatus.id})`,
       (user: string): void => {
-        if (user != userInfo.username) {
+        if (user == userInfo.username) {
           setTyping(true);
           setTypingUser(user);
+          setAnimationFrame((prevState: number): number => prevState + 1);
         }
       }
     );
@@ -84,8 +85,33 @@ const Chat: React.FC = () => {
         );
       }
     );
-    return (): void => socket.disconnect();
+    return (): void => {
+      socket.disconnect();
+      setAnimationFrame(0);
+    };
   }, []);
+
+  const [animationFrame, setAnimationFrame]: any = React.useState(0);
+  const [animationIndexArray, setAnimationIndexArray]: any = React.useState([
+    0, 0, 0,
+  ]);
+
+  React.useEffect((): void => {
+    if (typing) {
+      setTimeout((): void => {
+        setAnimationFrame((prevState: number): number => prevState + 1);
+        setAnimationIndexArray((prevState: Array<number>): Array<number> => {
+          if (prevState[0] == 1) {
+            return [0, 1, 0];
+          }
+          if (prevState[1] == 1) {
+            return [0, 0, 1];
+          }
+          return [1, 0, 0];
+        });
+      }, 1200);
+    }
+  }, [animationFrame]);
 
   const style: any = StyleSheet.create({
     container: {
@@ -93,6 +119,9 @@ const Chat: React.FC = () => {
       alignItems: "center",
       flex: 1,
       flexDirection: "column",
+    },
+    keyboardMessageContainer: {
+      flexDirection: "row",
     },
     text: {
       fontFamily: "poppins",
@@ -116,11 +145,22 @@ const Chat: React.FC = () => {
       width: "90%",
       marginTop: 10,
     },
-    typingMessage:{
+    typingMessage: {
       fontFamily: "poppins",
       fontSize: 16,
       alignSelf: "flex-start",
-    }
+      marginLeft: 5
+    },
+    typingMessageContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+    typingAnimationComponent: {
+      height: 10,
+      width: 10,
+      marginHorizontal: 3,
+      borderRadius: 5,
+    },
   });
 
   return (
@@ -158,11 +198,6 @@ const Chat: React.FC = () => {
                 Loading, please wait...
               </Text>
             )}
-            {typing && typingUser != "" ? (
-              <Text style={style.typingMessage}>
-                {typingUser} is typing 💬...
-              </Text>
-            ) : null}
           </ScrollView>
         </View>
         <View
@@ -173,6 +208,44 @@ const Chat: React.FC = () => {
           }}
         >
           <Text style={[style.text, { color: "red" }]}>{errorMessage}</Text>
+
+          {typing ? (
+            <View style={style.typingMessageContainer}>
+              <View
+                style={[
+                  style.typingAnimationComponent,
+                  {
+                    backgroundColor:
+                      animationIndexArray[0] === 1 ? "#00AD98" : "black",
+                    opacity: animationIndexArray[0] === 1 ? 1 : 0.2,
+                  },
+                ]}
+              />
+              <View
+                style={[
+                  style.typingAnimationComponent,
+                  {
+                    backgroundColor:
+                      animationIndexArray[1] === 1 ? "#00AD98" : "black",
+                    opacity: animationIndexArray[1] === 1 ? 1 : 0.2,
+                  },
+                ]}
+              />
+              <View
+                style={[
+                  style.typingAnimationComponent,
+                  {
+                    backgroundColor:
+                      animationIndexArray[2] === 1 ? "#00AD98" : "black",
+                    opacity: animationIndexArray[2] === 1 ? 1 : 0.2,
+                  },
+                ]}
+              />
+              <Text style={style.typingMessage}>
+                {typingUser} is typing...
+              </Text>
+            </View>
+          ) : null}
 
           {sessionStatus.users?.length <= 1 ? (
             <Text style={[style.text, { opacity: 0.5, paddingBottom: 20 }]}>
@@ -185,11 +258,21 @@ const Chat: React.FC = () => {
           <Form
             placeholder={"Type a message..."}
             onTextChange={(text: string): void => {
-              if (text != "" && !typing) {
+              if (text !== "" && !typing) {
                 setKeyboardSocket(
                   sessionStatus.id,
                   userInfo.username,
                   "start"
+                ).catch((err: unknown): void => {
+                  console.error(err);
+                });
+              }
+
+              if (text === "") {
+                setKeyboardSocket(
+                  sessionStatus.id,
+                  userInfo.username,
+                  "stop"
                 ).catch((err: unknown): void => {
                   console.error(err);
                 });

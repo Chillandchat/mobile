@@ -3,7 +3,7 @@ import { AxiosResponse } from "axios";
 import api from "./api";
 
 /**
- * This is the the join room function this function will call the server to join a room.
+ * This is the join room function this function will call the server to join a room.
  *
  * @param {string} id The id of the user.
  * @param {string} roomId The room id.
