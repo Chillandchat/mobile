@@ -13,11 +13,11 @@ const RoomDangerZone: React.FC = () => {
   const navigation: any = useNavigation();
 
   const style: any = StyleSheet.create({
-      text:{
-          fontFamily:"poppinsBold",
-          fontSize:17,
-          padding: 30
-      },
+    text: {
+      fontFamily: "poppinsBold",
+      fontSize: 17,
+      padding: 30,
+    },
     back: {
       position: "absolute",
       top: "7%",
@@ -40,7 +40,7 @@ const RoomDangerZone: React.FC = () => {
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-      <Text style= {style.text}>Seriously, continue with caution! </Text>
+      <Text style={style.text}>Seriously, continue with caution! </Text>
       <Button
         color={"red"}
         textColor={"#fff"}
