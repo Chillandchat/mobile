@@ -88,6 +88,7 @@ const Chat: React.FC = () => {
     return (): void => {
       socket.disconnect();
       setAnimationFrame(0);
+      setMessageDisplayed([]);
     };
   }, []);
 
@@ -141,15 +142,15 @@ const Chat: React.FC = () => {
       width: "100%",
     },
     chatArea: {
-      height: "60%",
+      height: "65%",
       width: "90%",
-      marginTop: 10,
+      marginTop: 2,
     },
     typingMessage: {
       fontFamily: "poppins",
       fontSize: 16,
       alignSelf: "flex-start",
-      marginLeft: 5
+      marginLeft: 5,
     },
     typingMessageContainer: {
       flexDirection: "row",
@@ -241,9 +242,7 @@ const Chat: React.FC = () => {
                   },
                 ]}
               />
-              <Text style={style.typingMessage}>
-                {typingUser} is typing...
-              </Text>
+              <Text style={style.typingMessage}>{typingUser} is typing...</Text>
             </View>
           ) : null}
 
