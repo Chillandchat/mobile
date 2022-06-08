@@ -7,7 +7,6 @@ import * as Clipboard from "expo-clipboard";
 
 import { RootState } from "../redux/index.d";
 import Button from "../components/Button";
-import reportRoom from "../scripts/reportRoom";
 
 /**
  * This is the room information screen, this screen will display the room information.
