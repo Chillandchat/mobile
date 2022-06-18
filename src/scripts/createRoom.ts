@@ -19,7 +19,6 @@ const createRoom = async (
   password: string,
   id: string
 ): Promise<void> => {
-  try {
     await api.instance
       .post(`${api.endpoints.createRoom}?key=${api.apiKey}`, {
         id: uuid(),
@@ -31,9 +30,6 @@ const createRoom = async (
       .catch((err: unknown): void => {
         throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
       });
-  } catch (err: unknown) {
-    throw new Error(`Error: ${err} \n   Error code: CC_ERROR_0022`);
-  }
 };
 
 export default createRoom;
