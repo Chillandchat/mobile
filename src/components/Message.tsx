@@ -39,15 +39,16 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
   });
 
   return (
-    <View style={style.container}>
+    <View style={style.container} key={uuid()}>
       {props.message.user !== username ? (
         <Text
+          key={uuid()}
           style={[style.content, { fontFamily: "poppinsBold", fontSize: 18 }]}
         >
           {props.message.user}
         </Text>
       ) : null}
-      <Text style={style.content}>
+      <Text key={uuid()} style={style.content}>
         {props.message.content}
       </Text>
     </View>
