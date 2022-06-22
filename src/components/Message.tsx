@@ -1,6 +1,3 @@
-//! "import "react-native-get-random-values";" MUST BE FIRST!!
-import "react-native-get-random-values";
-import { v4 as uuid } from "uuid";
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { useSelector } from "react-redux";
@@ -39,18 +36,15 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
   });
 
   return (
-    <View style={style.container} key={uuid()}>
+    <View style={style.container}>
       {props.message.user !== username ? (
         <Text
-          key={uuid()}
           style={[style.content, { fontFamily: "poppinsBold", fontSize: 18 }]}
         >
           {props.message.user}
         </Text>
       ) : null}
-      <Text key={uuid()} style={style.content}>
-        {props.message.content}
-      </Text>
+      <Text style={style.content}>{props.message.content}</Text>
     </View>
   );
 };

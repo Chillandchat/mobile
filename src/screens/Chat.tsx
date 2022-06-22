@@ -185,6 +185,7 @@ const Chat: React.FC = () => {
               messageDisplayed?.map((message: MessageType): any => {
                 return (
                   <Message
+                    key={uuid()}
                     message={{
                       id: message.id,
                       user: message.user,
