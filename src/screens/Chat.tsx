@@ -287,7 +287,7 @@ const Chat: React.FC = () => {
               onPress={(): void => {
                 if (message === undefined || message === "") return;
 
-                if (message.length > 150) {
+                if (message.length > 200) {
                   setErrorMessage(
                     "Whoa there! That's a lot of characters! You can't send messages that long!"
                   );
