@@ -12,8 +12,6 @@ import { logout } from "../redux/action";
 const SignoutConfirm: React.FC<any> = ({ navigation }) => {
   const dispatch: any = useDispatch();
 
-  React.useEffect((): any => (): void => dispatch(logout()), []);
-
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
@@ -32,6 +30,7 @@ const SignoutConfirm: React.FC<any> = ({ navigation }) => {
             {
               text: "Signout",
               onPress: (): void => {
+                dispatch(logout());
                 navigation.navigate("login");
               },
               style: "destructive",
