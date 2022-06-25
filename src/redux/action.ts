@@ -6,6 +6,7 @@ import {
   ActionWithParameter,
   UserInfoEventType,
   SessionStatusEventType,
+  RoomUserInfoEventType,
 } from "./index.d";
 
 /**
@@ -76,5 +77,31 @@ export const setUserInfo = (
 export const deleteUserInfo = (): ActionNoParameter<UserInfoEventType> => {
   return {
     type: "DELETE_USER_INFO",
+  };
+};
+
+/**
+ * This is the clear room user info action, this action is used for clearing the room user info reducer.
+ */
+
+export const clearRoomUserInfo =
+  (): ActionNoParameter<RoomUserInfoEventType> => {
+    return {
+      type: "CLEAR_ROOM_USER_INFO",
+    };
+  };
+
+/**
+ * This action is used for storing the users' info into the room user info reducer.
+ * 
+ * @param {Array<AuthType>} payload The users' info.
+ */
+
+export const setRoomUserInfo = (
+  payload: Array<AuthType>
+): ActionWithParameter<Array<AuthType>, RoomUserInfoEventType> => {
+  return {
+    type: "SET_ROOM_USER_INFO",
+    payload: payload,
   };
 };

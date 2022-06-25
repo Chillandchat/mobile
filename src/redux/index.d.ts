@@ -25,6 +25,7 @@ export interface ActionWithParameter<PayloadType, ActionType>
 }
 
 // Redux events types:
+export type RoomUserInfoEventType = "SET_ROOM_USER_INFO" | "CLEAR_ROOM_USER_INFO"
 export type loginStatusEventType = "LOGIN" | "LOGOUT";
 export type UserInfoEventType = "SET_USER_INFO" | "DELETE_USER_INFO";
 export type SessionStatusEventType =
