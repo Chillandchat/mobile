@@ -93,7 +93,7 @@ export const clearRoomUserInfo =
 
 /**
  * This action is used for storing the users' info into the room user info reducer.
- * 
+ *
  * @param {Array<AuthType>} payload The users' info.
  */
 
