@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
-import { clearSessionData } from "../redux/action";
+import { clearRoomUserInfo, clearSessionData } from "../redux/action";
 import Icon from "./Icon";
 import { RootState } from "../redux/index.d";
 

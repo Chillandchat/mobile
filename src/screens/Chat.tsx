@@ -14,29 +14,33 @@ import {
   View,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
 
 import Form from "../components/Form";
 import ChatRoomBar from "../components/ChatRoomBar";
 import { RootState } from "../redux/index.d";
 import sendMessage from "../scripts/sendMessage";
-import { MessageType } from "../scripts";
+import { AuthType, MessageType } from "../scripts";
 import Message from "../components/Message";
 import getMessages from "../scripts/getMessages";
 import filter from "../scripts/filter";
 import setKeyboardSocket from "../scripts/setKeyboardSocket";
+import getUser from "../scripts/getUser";
+import { setRoomUserInfo } from "../redux/action";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
  */
 
 const Chat: React.FC = () => {
-  const { sessionStatus, userInfo }: any = useSelector(
+  const { sessionStatus, userInfo, roomUserInfo }: any = useSelector(
     (state: RootState): RootState => {
       return state;
     }
   );
+
+  const dispatch: any = useDispatch();
 
   const scrollRef: React.MutableRefObject<any> = React.useRef();
 
@@ -53,7 +57,27 @@ const Chat: React.FC = () => {
       .then((messages: Array<MessageType>): void => {
         setMessageDisplayed([]);
         setMessageDisplayed([...messageDisplayed, ...messages]);
-        setLoading(false);
+        let users: Array<AuthType> = [];
+
+        sessionStatus.users.forEach((user: string): void => {
+          if (user !== userInfo.username) {
+            getUser(user)
+              .then((data: AuthType | {}): void => {
+                if (Object.keys(data).length !== 0) {
+                  users.push(data as AuthType);
+                  if (users.length === sessionStatus.users.length - 1) {
+                    dispatch(setRoomUserInfo(users));
+                    setLoading(false);
+                  }
+                }
+              })
+              .catch((err: unknown): void => {
+                console.error(err);
+              });
+          }
+          if (users.length === sessionStatus.users.length - 1)
+            setLoading(false);
+        });
       })
       .catch((err: unknown): void => {
         console.error(err);
@@ -85,6 +109,7 @@ const Chat: React.FC = () => {
         );
       }
     );
+
     return (): void => {
       socket.disconnect();
       setAnimationFrame(0);
@@ -186,6 +211,14 @@ const Chat: React.FC = () => {
                 return (
                   <Message
                     key={uuid()}
+                    messageUserInfo={
+                      message.user !== userInfo.username
+                        ? roomUserInfo.find(
+                            (user: AuthType): boolean =>
+                              user.username === message.user
+                          )
+                        : userInfo
+                    }
                     message={{
                       id: message.id,
                       user: message.user,
