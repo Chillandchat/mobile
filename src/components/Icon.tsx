@@ -19,12 +19,12 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
       backgroundColor: props.color,
       height: props.size || 60,
       width: props.size || 60,
-      justifyContent:"center",
-      alignItems:"center"
+      justifyContent: "center",
+      alignItems: "center",
     },
     text: {
       fontFamily: "poppinsLight",
-      fontSize: 30,
+      fontSize: props.size !== undefined ? props.size - 10 : 50,
       color: "#ffff",
     },
   });
