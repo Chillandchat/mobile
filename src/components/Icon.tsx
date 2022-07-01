@@ -15,7 +15,7 @@ import { IconProps } from "./index.d";
 const Icon: React.FC<IconProps> = (props: IconProps) => {
   const style: any = StyleSheet.create({
     container: {
-      borderRadius: 10000,
+      borderRadius: 1000,
       backgroundColor: props.color,
       height: props.size || 60,
       width: props.size || 60,
@@ -24,7 +24,7 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
     },
     text: {
       fontFamily: "poppinsLight",
-      fontSize: props.size !== undefined ? props.size - 10 : 50,
+      fontSize: 30,
       color: "#ffff",
     },
   });

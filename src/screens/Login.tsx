@@ -38,19 +38,19 @@ const Login: React.FC<any> = ({ navigation }) => {
     text: {
       fontFamily: "poppinsExtraBold",
       fontSize: 35,
-      marginBottom: 30,
+      marginBottom: 10,
       alignSelf: "flex-start",
       marginLeft: 10
     },
     formContainer: {
-      marginBottom: 40,
+ 
     },
     signup: {
       fontFamily: "poppinsExtraBold",
     },
     error: {
       color: "red",
-      marginTop: -20,
+      marginTop: 10,
       marginBottom: 20,
       fontFamily: "poppinsLight",
     },

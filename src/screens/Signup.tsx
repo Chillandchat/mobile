@@ -30,20 +30,20 @@ const Signup: React.FC<any> = ({ navigation }) => {
       justifyContent: "center",
       flex: 1,
       alignItems: "center",
+      marginTop:40
     },
     text: {
       fontFamily: "poppinsExtraBold",
       fontSize: 35,
-      marginBottom: 30,
+      marginBottom: 10,
       alignSelf: "flex-start",
       marginLeft: 10 
     },
     formContainer: {
-      marginBottom: 25,
     },
     error: {
       color: "red",
-      marginTop: -20,
+      marginTop: 10,
       marginBottom: 20,
       fontFamily: "poppinsLight",
     },
