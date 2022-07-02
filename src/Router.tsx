@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   createStackNavigator,
@@ -54,8 +55,6 @@ namespace app {
             "Error: Unable to load fonts. \n    at Router.tsx expoAppLoading.default \n    at loader.ts \n  Error code: CC_ERROR_0015"
           );
           console.error(`Expo error message: ${err}`);
-
-          return;
         });
     }, []);
 
@@ -169,3 +168,5 @@ namespace app {
 }
 
 export default app.Router;
+
+// End of Brianna Cheng's code
