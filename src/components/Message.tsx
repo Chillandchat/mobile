@@ -1,11 +1,12 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { useSelector } from "react-redux";
+import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 import { MessageProps } from "./index.d";
 import { RootState } from "../redux/index.d";
 import Icon from "./Icon";
-import { AuthType } from "../scripts/index.d";
 
 /**
  * This is the message component, this component will display the message that users send.
@@ -15,11 +16,9 @@ import { AuthType } from "../scripts/index.d";
  */
 
 const Message: React.FC<MessageProps> = (props: MessageProps) => {
-  const { userInfo }: any = useSelector(
-    (state: RootState): RootState => {
-      return state;
-    }
-  );
+  const { userInfo }: any = useSelector((state: RootState): RootState => {
+    return state;
+  });
 
   const style: any = StyleSheet.create({
     container: {
@@ -44,6 +43,9 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
     icon: {
       marginBottom: -30,
     },
+    usernameBox: {
+      flexDirection: "row",
+    },
   });
 
   return (
@@ -59,15 +61,21 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
       ) : null}
       <View style={style.container}>
         {props.message.user !== userInfo.username ? (
-          <View>
+          <View style={style.usernameBox}>
             <Text
               style={[
                 style.content,
-                { fontFamily: "poppinsBold", fontSize: 18 },
+                { fontFamily: "poppinsBold", fontSize: 18, marginRight: 10 },
               ]}
             >
               {props.message.user}
             </Text>
+            {props.messageUserInfo.verified ? (
+              <MaterialIcons name="verified-user" size={24} color={"#00AD98"} />
+            ) : null}
+            {props.messageUserInfo.bot ? (
+              <FontAwesome5 name="robot" size={24} color={"#00AD98"} />
+            ) : null}
           </View>
         ) : null}
         <Text style={style.content}>{props.message.content}</Text>
