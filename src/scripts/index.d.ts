@@ -15,7 +15,8 @@ export type ApiEndpoint =
   | "/api/block-user"
   | "/api/create-room"
   | "/api/join-room"
-  | "/api/get-rooms";
+  | "/api/get-rooms"
+  | "/api/remove-room";
 
 /**
  * This is the ApiEndpoints type, This type works with the "ApiEndpoint"
@@ -29,7 +30,8 @@ export type ApiEndpoint =
  * @param {ApiEndpoint} getUsers
  * @param {ApiEndpoint} getUserInfo
  * @param {ApiEndpoint} blockUser
- * @param {ApiEndpoint}reportUser
+ * @param {ApiEndpoint} reportUser
+ * @param {ApiEndpoint} reportRoom
  */
 
 export interface ApiEndpoints {
@@ -44,6 +46,7 @@ export interface ApiEndpoints {
   joinRoom: ApiEndpoint;
   getRoom: ApiEndpoint;
   createRoom: ApiEndpoint;
+  removeRoom: ApiEndpoint;
 }
 
 /**
