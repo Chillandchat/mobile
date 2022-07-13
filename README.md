@@ -52,7 +52,7 @@ To get the latest code, please enter the command below into your terminal to clo
 
 - Developers will be active to eliminate security issues/bugs
   
-- If a security issue is found, developers may shut down or remove affected features.
+- If a security issue is found, developers may shut down and remove affected features.
   
 - If needed developers may also shut down the whole system until the issue is fixed.
 
