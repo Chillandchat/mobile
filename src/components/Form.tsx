@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import { View, StyleSheet, TextInput, Platform } from "react-native";
 
 import { FormProps } from "./index.d";
 
@@ -20,6 +20,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
       justifyContent: "center",
       padding: 20,
       borderRadius: 10000,
+      margin: Platform.OS === "android" ? -10 : 0,
     },
   });
 

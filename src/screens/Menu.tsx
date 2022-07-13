@@ -46,7 +46,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
     container: {
       alignItems: "center",
       justifyContent: "flex-start",
-      marginTop: 250,  // Style of the header offset
+      marginTop: "50%",  // Style of the header offset
       flex: 1,
     },
     text: {

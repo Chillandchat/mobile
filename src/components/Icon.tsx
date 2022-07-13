@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from "react-native";
 
 import { IconProps } from "./index.d";
 
@@ -25,6 +25,7 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
     text: {
       fontFamily: "poppinsLight",
       fontSize: 30,
+      paddingTop: Platform.OS === "ios" ? 0 : 3,
       color: "#ffff",
     },
   });

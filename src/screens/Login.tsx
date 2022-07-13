@@ -7,6 +7,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Keyboard,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
@@ -28,6 +29,17 @@ const Login: React.FC<any> = ({ navigation }) => {
   const dispatch: any = useDispatch();
   const [username, setUsername]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
+  const [keyboardOpen, setKeyboardOpen]: any = React.useState(false);
+
+  React.useEffect((): any => {
+    Keyboard.addListener("keyboardDidShow", (): void => {
+      setKeyboardOpen(true);
+    });
+
+    Keyboard.addListener("keyboardDidHide", (): void => {
+      setKeyboardOpen(false);
+    });
+  });
 
   const style: any = StyleSheet.create({
     container: {
@@ -40,11 +52,9 @@ const Login: React.FC<any> = ({ navigation }) => {
       fontSize: 35,
       marginBottom: 10,
       alignSelf: "flex-start",
-      marginLeft: 10
+      marginLeft: 10,
     },
-    formContainer: {
- 
-    },
+    formContainer: {},
     signup: {
       fontFamily: "poppinsExtraBold",
     },
@@ -61,7 +71,7 @@ const Login: React.FC<any> = ({ navigation }) => {
     informationLink: {
       position: "absolute",
       bottom: 40,
-      right: 40
+      right: 40,
     },
     signupContainer: {
       margin: 15,
@@ -159,8 +169,8 @@ const Login: React.FC<any> = ({ navigation }) => {
           textColor={"#ffff"}
           text={"login"}
         />
-
       </ScrollView>
+      {!keyboardOpen ? (
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("information");
@@ -169,6 +179,7 @@ const Login: React.FC<any> = ({ navigation }) => {
         >
           <Feather name="info" size={40} color="black" />
         </TouchableOpacity>
+      ) : null}
     </KeyboardAvoidingView>
   );
 };

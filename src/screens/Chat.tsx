@@ -158,19 +158,26 @@ const Chat: React.FC = () => {
       alignItems: "center",
       position: "absolute",
       bottom: "7%",
+      marginLeft: Platform.OS === "android" ? 30 : 0,
     },
     sendIcon: {
-      padding: 10,
+      marginLeft: Platform.OS === "android" ? 30 : 0,
     },
     chatRoomBar: {
       position: "absolute",
       top: "7%",
       width: "100%",
+      zIndex: 1000,
     },
     chatArea: {
       height: "65%",
       width: "90%",
       marginTop: 2,
+    },
+    loadingMessageContainer: {
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: "70%",
     },
     typingMessage: {
       fontFamily: "poppins",
@@ -230,9 +237,9 @@ const Chat: React.FC = () => {
                 );
               })
             ) : (
-              <Text style={[style.text, { alignSelf: "center", flex: 1 }]}>
-                Loading, please wait...
-              </Text>
+              <View style={style.loadingMessageContainer}>
+                <Text style={style.text}>Loading, please wait...</Text>
+              </View>
             )}
           </ScrollView>
         </View>
@@ -282,7 +289,15 @@ const Chat: React.FC = () => {
           ) : null}
 
           {sessionStatus.users?.length <= 1 ? (
-            <Text style={[style.text, { opacity: 0.5, paddingBottom: 20 }]}>
+            <Text
+              style={[
+                style.text,
+                {
+                  opacity: 0.5,
+                  paddingBottom: Platform.OS === "android" ? 40 : 20,
+                },
+              ]}
+            >
               hmmm... It seems like that there's nobody here. Why not invite a
               friend!
             </Text>
