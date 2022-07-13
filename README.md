@@ -6,7 +6,7 @@
 
 Chill&chat is a free and open-source mobile chat application that can send messages instantly to anyone around the world with a Chill&chat account. It's an amazing way to socialize and connect with your friends, especially in lockdown! 
 
-Register! Join, and Chat! It's that simple! Available in iOS and android via Expo GO
+Register! Join, and Chat! It's that simple! Available in iOS and android via Expo GO!
 
 ### License
 
