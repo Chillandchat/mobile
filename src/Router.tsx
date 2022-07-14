@@ -31,6 +31,7 @@ import Information from "./screens/Information";
 import loadFonts from "../assets/fonts/loader";
 import RoomInformation from "./screens/RoomInformation";
 import RoomDangerZone from "./screens/RoomDangerZone";
+import SendImage from "./screens/SendImage";
 
 /**
  * This is the router component for the application, This component
@@ -95,6 +96,11 @@ namespace app {
                 <NavigatorStack.Screen
                   name="information"
                   component={Information}
+                  options={{ headerShown: false }}
+                />
+                <NavigatorStack.Screen
+                  name="send-image"
+                  component={SendImage}
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen

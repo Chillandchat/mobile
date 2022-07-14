@@ -16,6 +16,8 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import Form from "../components/Form";
 import ChatRoomBar from "../components/ChatRoomBar";
@@ -41,6 +43,8 @@ const Chat: React.FC = () => {
   );
 
   const dispatch: any = useDispatch();
+
+  const navigator:any = useNavigation();
 
   const scrollRef: React.MutableRefObject<any> = React.useRef();
 
@@ -158,10 +162,11 @@ const Chat: React.FC = () => {
       alignItems: "center",
       position: "absolute",
       bottom: "7%",
-      marginLeft:  30 ,
+      marginLeft: 30,
+      paddingHorizontal: 30,
     },
     sendIcon: {
-      marginLeft: 30,
+      marginLeft: 10,
     },
     chatRoomBar: {
       position: "absolute",
@@ -194,6 +199,9 @@ const Chat: React.FC = () => {
       width: 10,
       marginHorizontal: 3,
       borderRadius: 5,
+    },
+    sendImage: {
+      marginRight: 10,
     },
   });
 
@@ -304,6 +312,14 @@ const Chat: React.FC = () => {
           ) : null}
         </View>
         <View style={style.sendBar}>
+          <TouchableOpacity
+            style={style.sendImage}
+            onPress={(): void => {
+              navigator.navigate("send-image");
+            }}
+          >
+            <Ionicons name="images-outline" size={32} color="#00AD98" />
+          </TouchableOpacity>
           <Form
             placeholder={"Type a message..."}
             onTextChange={(text: string): void => {
