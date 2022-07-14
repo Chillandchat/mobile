@@ -158,10 +158,10 @@ const Chat: React.FC = () => {
       alignItems: "center",
       position: "absolute",
       bottom: "7%",
-      marginLeft: Platform.OS === "android" ? 30 : 0,
+      marginLeft:  30 ,
     },
     sendIcon: {
-      marginLeft: Platform.OS === "android" ? 30 : 0,
+      marginLeft: 30,
     },
     chatRoomBar: {
       position: "absolute",
