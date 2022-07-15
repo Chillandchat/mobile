@@ -45,12 +45,13 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
     },
     usernameBox: {
       flexDirection: "row",
+      marginBottom: props.message.content.includes("!IMG") ? 10 : 0,
     },
-    imageContent:{
+    imageContent: {
       height: 150,
       width: 150,
-      borderRadius: 10,
-    }
+      borderRadius: 5,
+    },
   });
 
   return (
@@ -84,7 +85,10 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
           </View>
         ) : null}
         {props.message.content.includes("!IMG") ? (
-          <Image source={{ uri: props.message.content.slice(5, -1) }} style={style.imageContent} />
+          <Image
+            source={{ uri: props.message.content.slice(5, -1) }}
+            style={style.imageContent}
+          />
         ) : (
           <Text style={style.content}>{props.message.content}</Text>
         )}
