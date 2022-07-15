@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import { useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -46,6 +46,11 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
     usernameBox: {
       flexDirection: "row",
     },
+    imageContent:{
+      height: 150,
+      width: 150,
+      borderRadius: 10,
+    }
   });
 
   return (
@@ -78,7 +83,11 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
             ) : null}
           </View>
         ) : null}
-        <Text style={style.content}>{props.message.content}</Text>
+        {props.message.content.includes("!IMG") ? (
+          <Image source={{ uri: props.message.content.slice(5, -1) }} style={style.imageContent} />
+        ) : (
+          <Text style={style.content}>{props.message.content}</Text>
+        )}
       </View>
     </View>
   );

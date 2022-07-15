@@ -44,7 +44,7 @@ const Chat: React.FC = () => {
 
   const dispatch: any = useDispatch();
 
-  const navigator:any = useNavigation();
+  const navigator: any = useNavigation();
 
   const scrollRef: React.MutableRefObject<any> = React.useRef();
 
@@ -163,10 +163,7 @@ const Chat: React.FC = () => {
       position: "absolute",
       bottom: "7%",
       marginLeft: 30,
-      paddingHorizontal: 30,
-    },
-    sendIcon: {
-      marginLeft: 10,
+      justifyContent: "space-between",
     },
     chatRoomBar: {
       position: "absolute",
@@ -199,9 +196,6 @@ const Chat: React.FC = () => {
       width: 10,
       marginHorizontal: 3,
       borderRadius: 5,
-    },
-    sendImage: {
-      marginRight: 10,
     },
   });
 
