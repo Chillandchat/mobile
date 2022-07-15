@@ -28,7 +28,7 @@ import setKeyboardSocket from "../scripts/setKeyboardSocket";
 
 const SendImage: React.FC = () => {
   const [link, setLink]: any = React.useState("");
-  const [error, setError]: any = React.useState(false);
+  const [error, setError]: any = React.useState(true);
   const navigation: any = useNavigation();
 
   const { sessionStatus, userInfo }: any = useSelector(
@@ -63,7 +63,7 @@ const SendImage: React.FC = () => {
     },
     errorText: {
       fontFamily: "poppins",
-      fontSize: 17,
+      fontSize: 15,
       margin: 10,
     },
     buttonContainer: {

@@ -163,18 +163,16 @@ const Chat: React.FC = () => {
       position: "absolute",
       bottom: "7%",
       marginLeft: 30,
-      justifyContent: "space-between",
     },
     chatRoomBar: {
       position: "absolute",
       top: "7%",
       width: "100%",
-      zIndex: 1000,
     },
     chatArea: {
       height: "65%",
       width: "90%",
-      marginTop: 2,
+      marginBottom: -20
     },
     loadingMessageContainer: {
       alignItems: "center",
@@ -196,6 +194,12 @@ const Chat: React.FC = () => {
       width: 10,
       marginHorizontal: 3,
       borderRadius: 5,
+    },
+    sendIcon: {
+      marginLeft: 15,
+    },
+    sendImage: {
+      marginRight: 15,
     },
   });
 
@@ -296,7 +300,7 @@ const Chat: React.FC = () => {
                 style.text,
                 {
                   opacity: 0.5,
-                  paddingBottom: Platform.OS === "android" ? 40 : 20,
+                  paddingBottom: Platform.OS === "android" ? 30 : 20,
                 },
               ]}
             >
