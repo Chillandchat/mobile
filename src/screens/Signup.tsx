@@ -21,16 +21,16 @@ import signup from "../scripts/signup";
 
 const Signup: React.FC<any> = ({ navigation }) => {
   const [error, setError] = React.useState("");
-  let [username, setUsername] = React.useState("");
-  let [password, setPassword] = React.useState("");
-  let [confirmPassword, setConfirmPassword] = React.useState("");
-
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
+  
   const style = StyleSheet.create({
     container: {
       justifyContent: "center",
       flex: 1,
       alignItems: "center",
-      marginTop: 35
+      marginTop: 35,
     },
     text: {
       fontFamily: "poppinsExtraBold",
