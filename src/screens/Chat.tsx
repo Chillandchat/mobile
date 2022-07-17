@@ -162,7 +162,7 @@ const Chat: React.FC = () => {
       alignItems: "center",
       position: "absolute",
       bottom: "7%",
-      marginLeft: 30,
+      marginHorizontal: 50,
     },
     chatRoomBar: {
       position: "absolute",
