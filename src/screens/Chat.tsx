@@ -140,7 +140,7 @@ const Chat: React.FC = () => {
           }
           return [1, 0, 0];
         });
-      }, 1200);
+      }, 200);
     }
   }, [animationFrame]);
 
