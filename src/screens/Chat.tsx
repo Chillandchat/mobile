@@ -121,7 +121,7 @@ const Chat: React.FC = () => {
         setMessageDisplayed(
           (messagePrevious: Array<MessageType>): Array<MessageType> =>
             messagePrevious.filter(
-              (message: MessageType): boolean => message.id === id
+              (message: MessageType): boolean => message.id !== id
             )
         );
       }
