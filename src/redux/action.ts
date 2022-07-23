@@ -1,4 +1,4 @@
-import { RoomType } from "./../scripts/index.d";
+import { MessageType, RoomType } from "./../scripts/index.d";
 import { AuthType } from "../scripts/index.d";
 import {
   ActionNoParameter,
@@ -7,6 +7,7 @@ import {
   UserInfoEventType,
   SessionStatusEventType,
   RoomUserInfoEventType,
+  MessageInfoEventType,
 } from "./index.d";
 
 /**
@@ -104,4 +105,27 @@ export const setRoomUserInfo = (
     type: "SET_ROOM_USER_INFO",
     payload: payload,
   };
+};
+
+/**
+ * This is the set message info action for the message information reducer, this action will set the message information.
+ *
+ * @param {MessageType} payload The message information.
+ */
+
+export const setMessageInfo = (
+  payload: MessageType
+): ActionWithParameter<MessageType, MessageInfoEventType> => {
+  return {
+    type: "SET_MESSAGE_INFO",
+    payload: payload,
+  };
+};
+
+/**
+ * This is the clear message information action for the message information reducer, this action will clear the message information data state.
+ */
+
+export const clearMessageInfo = (): ActionNoParameter<MessageInfoEventType> => {
+  return { type: "CLEAR_MESSAGE_INFO" };
 };

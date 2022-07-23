@@ -28,6 +28,7 @@ export interface ActionWithParameter<PayloadType, ActionType>
 export type RoomUserInfoEventType = "SET_ROOM_USER_INFO" | "CLEAR_ROOM_USER_INFO";
 export type loginStatusEventType = "LOGIN" | "LOGOUT";
 export type UserInfoEventType = "SET_USER_INFO" | "DELETE_USER_INFO";
+export type MessageInfoEventType = "SET_MESSAGE_INFO" | "CLEAR_MESSAGE_INFO";
 export type SessionStatusEventType =
   | "SET_SESSION_STATUS"
   | "DELETE_SESSION_STATUS";
