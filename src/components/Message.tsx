@@ -1,12 +1,14 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
-import { useSelector } from "react-redux";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import { MessageProps } from "./index.d";
 import { RootState } from "../redux/index.d";
 import Icon from "./Icon";
+import { setMessageInfo } from "../redux/action";
 
 /**
  * This is the message component, this component will display the message that users send.
@@ -16,9 +18,12 @@ import Icon from "./Icon";
  */
 
 const Message: React.FC<MessageProps> = (props: MessageProps) => {
+  const dispatch = useDispatch();
   const { userInfo }: any = useSelector((state: RootState): RootState => {
     return state;
   });
+
+  const navigator: any = useNavigation();
 
   const style: any = StyleSheet.create({
     container: {
@@ -52,10 +57,20 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
       width: 150,
       borderRadius: 5,
     },
+    delete: {
+      padding: 10,
+      alignSelf: "flex-end",
+    },
   });
 
   return (
-    <View>
+    <TouchableOpacity
+      disabled={props.message.user !== userInfo.username}
+      onPress={(): void => {
+        dispatch(setMessageInfo(props.message));
+        navigator.navigate("message-options");
+      }}
+    >
       {props.message.user !== userInfo.username ? (
         <View style={style.icon}>
           <Icon
@@ -93,7 +108,7 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
           <Text style={style.content}>{props.message.content}</Text>
         )}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
