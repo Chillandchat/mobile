@@ -115,6 +115,18 @@ const Chat: React.FC = () => {
       }
     );
 
+    socket.on(
+      `client-message-delete:room(${sessionStatus.id})`,
+      (id: string): void => {
+        setMessageDisplayed(
+          (messagePrevious: Array<MessageType>): Array<MessageType> =>
+            messagePrevious.filter(
+              (message: MessageType): boolean => message.id === id
+            )
+        );
+      }
+    );
+
     return (): void => {
       socket.disconnect();
       setAnimationFrame(0);
@@ -172,7 +184,7 @@ const Chat: React.FC = () => {
     chatArea: {
       height: "65%",
       width: "90%",
-      marginBottom: -20
+      marginBottom: -20,
     },
     loadingMessageContainer: {
       alignItems: "center",
