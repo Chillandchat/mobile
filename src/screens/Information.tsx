@@ -44,7 +44,7 @@ const Information: React.FC<any> = () => {
       </TouchableOpacity>
       <Text style={style.tittle}>App information:</Text>
       <Text style={style.text}>
-        Version: Chill&chat official runtime v1.3.1
+        Version: Chill&chat official runtime v1.5.0
       </Text>
       <Text style={style.text}>Verified official Chill&chat build.</Text>
       <Text style={style.text}>Connected to Chill&chat global network</Text>
@@ -52,7 +52,6 @@ const Information: React.FC<any> = () => {
       <Text style={style.tittle}>Credits:</Text>
       <Text style={style.text}>Alvin cheng - Software engineer</Text>
       <Text style={style.text}>Brianna cheng - UI&UX designer</Text>
-      <Text style={style.text}>Manav Rangarajan - Designer</Text>
     </View>
   );
 };
