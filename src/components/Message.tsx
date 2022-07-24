@@ -18,6 +18,7 @@ import { setMessageInfo } from "../redux/action";
  */
 
 const Message: React.FC<MessageProps> = (props: MessageProps) => {
+  const [imageError, setImageError] = React.useState(false);
   const dispatch = useDispatch();
   const { userInfo }: any = useSelector((state: RootState): RootState => {
     return state;
@@ -99,11 +100,18 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
             ) : null}
           </View>
         ) : null}
-        {props.message.content.includes("!IMG") ? (
+        {props.message.content.includes("!IMG") && !imageError ? (
           <Image
             source={{ uri: props.message.content.slice(5, -1) }}
             style={style.imageContent}
+            onError={(): void => {
+              setImageError(true);
+            }}
           />
+        ) : imageError ? (
+          <View style={[style.imageContent,{justifyContent:"center",alignItems:"center"}]}>
+            <Text style={style.content}>Image unavailable</Text>
+          </View>
         ) : (
           <Text style={style.content}>{props.message.content}</Text>
         )}
