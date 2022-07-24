@@ -49,9 +49,12 @@ const Chat: React.FC = () => {
   const scrollRef: React.MutableRefObject<any> = React.useRef();
 
   const [message, setMessage]: any = React.useState("");
+  let messageStateHelper: string = "";
+
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
   const [errorMessage, setErrorMessage]: any = React.useState("");
+  const [textBox, setTextBox]: any = React.useState(undefined);
 
   const [typing, setTyping]: any = React.useState(false);
   const [typingUser, setTypingUser]: any = React.useState("");
@@ -353,13 +356,15 @@ const Chat: React.FC = () => {
                 });
               }
 
-              setMessage(text);
+              messageStateHelper = text;
             }}
-            value={message}
+            value={textBox}
           />
           <View style={style.sendIcon}>
             <TouchableOpacity
               onPress={(): void => {
+                setMessage(messageStateHelper);
+
                 if (message === undefined || message === "") return;
 
                 if (message.length > 200) {
@@ -388,7 +393,8 @@ const Chat: React.FC = () => {
                       userInfo.username,
                       "stop"
                     );
-                    setMessage("");
+                    setTextBox("");
+                    setTextBox(undefined)
                   })
                   .catch((err: unknown): void => {
                     console.error(err);
