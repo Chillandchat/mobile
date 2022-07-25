@@ -192,7 +192,7 @@ const Chat: React.FC = () => {
     loadingMessageContainer: {
       alignItems: "center",
       justifyContent: "center",
-      marginTop: "70%",
+      height: "100%"
     },
     typingMessage: {
       fontFamily: "poppins",
@@ -229,14 +229,14 @@ const Chat: React.FC = () => {
           <ChatRoomBar />
         </View>
         <View style={style.chatArea}>
-          <ScrollView
-            ref={scrollRef}
-            onContentSizeChange={(_width, height) => {
-              scrollRef.current.scrollTo({ y: height, animated: true });
-            }}
-          >
-            {!loading ? (
-              messageDisplayed?.map((message: MessageType): any => {
+          {!loading ? (
+            <ScrollView
+              ref={scrollRef}
+              onContentSizeChange={(_width, height) => {
+                scrollRef.current.scrollTo({ y: height, animated: true });
+              }}
+            >
+              {messageDisplayed?.map((message: MessageType): any => {
                 return (
                   <Message
                     key={uuid()}
@@ -256,13 +256,13 @@ const Chat: React.FC = () => {
                     }}
                   />
                 );
-              })
-            ) : (
-              <View style={style.loadingMessageContainer}>
-                <Text style={style.text}>Loading, please wait...</Text>
-              </View>
-            )}
-          </ScrollView>
+              })}
+            </ScrollView>
+          ) : (
+            <View style={style.loadingMessageContainer}>
+              <Text style={style.text}>Loading, please wait...</Text>
+            </View>
+          )}
         </View>
         <View
           style={{
@@ -394,7 +394,7 @@ const Chat: React.FC = () => {
                       "stop"
                     );
                     setTextBox("");
-                    setTextBox(undefined)
+                    setTextBox(undefined);
                   })
                   .catch((err: unknown): void => {
                     console.error(err);
