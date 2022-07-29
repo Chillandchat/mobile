@@ -1,10 +1,12 @@
-//! "import "react-native-get-random-values";" MUST BE FIRST!!
-import "react-native-get-random-values";
-import React from "react";
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { v4 as uuid } from "uuid";
 
 import { RoomType } from "../scripts";
 import Icon from "./Icon";
@@ -26,7 +28,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
     roomContainer: {
       flexDirection: "row",
       alignItems: "center",
-      marginTop:20,
+      marginTop: 20,
     },
     titleStyle: {
       fontFamily: "poppins",
@@ -72,7 +74,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
           return (
             <TouchableOpacity
               style={style.roomContainer}
-              key={uuid()}
+              key={room.id.concat("-a")}
               onPress={async (): Promise<void> => {
                 dispatch(setSessionData(room));
                 navigation.push("chat");
@@ -81,9 +83,13 @@ const RoomList: React.FC<Props> = (props: Props) => {
               <Icon
                 iconLetter={room.name[0]}
                 color={room.iconColor}
-                key={uuid()}
+                key={room.id.concat("-b")}
               />
-              <Text style={style.titleStyle} numberOfLines={1} key={uuid()}>
+              <Text
+                style={style.titleStyle}
+                numberOfLines={1}
+                key={room.id.concat("-c")}
+              >
                 {room.name}
               </Text>
             </TouchableOpacity>
