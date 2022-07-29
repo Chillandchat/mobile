@@ -113,13 +113,18 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
 
           {roomUserInfo.map((user: AuthType): any => {
             return (
-              <View style={style.user}>
-                <Icon iconLetter={user.username[0]} color={user.iconColor} />
+              <View style={style.user} key={user.id.concat("-e")}>
+                <Icon
+                  iconLetter={user.username[0]}
+                  color={user.iconColor}
+                  key={user.id.concat("-a")}
+                />
                 <Text
                   style={[
                     style.text,
                     { fontSize: 22, marginLeft: 20, marginRight: 10 },
                   ]}
+                  key={user.id.concat("-b")}
                 >
                   {user.username}
                 </Text>
@@ -128,11 +133,16 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
                     name="verified-user"
                     size={24}
                     color={"#00AD98"}
+                    key={user.id.concat("-c")}
                   />
                 ) : null}
-
                 {user.bot ? (
-                  <FontAwesome5 name="robot" size={24} color={"#00AD98"} />
+                  <FontAwesome5
+                    name="robot"
+                    size={24}
+                    color={"#00AD98"}
+                    key={user.id.concat("-d")}
+                  />
                 ) : null}
               </View>
             );
