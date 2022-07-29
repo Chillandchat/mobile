@@ -67,7 +67,7 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
   return (
     <TouchableOpacity
       disabled={props.message.user !== userInfo.username}
-      onPress={(): void => {
+      onLongPress={(): void => {
         dispatch(setMessageInfo(props.message));
         navigator.navigate("message-options");
       }}
