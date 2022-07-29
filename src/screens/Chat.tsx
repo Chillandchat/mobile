@@ -237,7 +237,7 @@ const Chat: React.FC = () => {
               {messageDisplayed?.map((message: MessageType): any => {
                 return (
                   <Message
-                    key={uuid()}
+                    key={message.id}
                     messageUserInfo={
                       message.user !== userInfo.username
                         ? roomUserInfo.find(
