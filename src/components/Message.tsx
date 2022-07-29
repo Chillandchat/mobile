@@ -1,10 +1,9 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import ExpoFastImage from "expo-fast-image";
 
 import { MessageProps } from "./index.d";
 import { RootState } from "../redux/index.d";
@@ -68,7 +67,7 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
   return (
     <TouchableOpacity
       disabled={props.message.user !== userInfo.username}
-      onLongPress={(): void => {
+      onPress={(): void => {
         dispatch(setMessageInfo(props.message));
         navigator.navigate("message-options");
       }}
@@ -102,21 +101,15 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
           </View>
         ) : null}
         {props.message.content.includes("!IMG") && !imageError ? (
-          <ExpoFastImage
-            uri={props.message.content.slice(5, -1)}
-            cacheKey={props.message.id}
+          <Image
+            source={{ uri: props.message.content.slice(5, -1) }}
             style={style.imageContent}
             onError={(): void => {
               setImageError(true);
             }}
           />
         ) : imageError ? (
-          <View
-            style={[
-              style.imageContent,
-              { justifyContent: "center", alignItems: "center" },
-            ]}
-          >
+          <View style={[style.imageContent,{justifyContent:"center",alignItems:"center"}]}>
             <Text style={style.content}>Image unavailable</Text>
           </View>
         ) : (
