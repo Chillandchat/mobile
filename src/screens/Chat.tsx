@@ -54,6 +54,8 @@ const Chat: React.FC = () => {
   const [loading, setLoading]: any = React.useState(true);
   const [errorMessage, setErrorMessage]: any = React.useState("");
 
+  const [scrollViewHeight, setScrollViewHeight]: any = React.useState(0);
+
   const [typing, setTyping]: any = React.useState(false);
   const [typingUser, setTypingUser]: any = React.useState("");
 
@@ -81,8 +83,9 @@ const Chat: React.FC = () => {
                 console.error(err);
               });
           }
-          if (users.length === sessionStatus.users.length - 1)
+          if (users.length === sessionStatus.users.length - 1) {
             setLoading(false);
+          }
         });
       })
       .catch((err: unknown): void => {
@@ -113,6 +116,7 @@ const Chat: React.FC = () => {
         setMessageDisplayed((messagePrevious: any): any =>
           messagePrevious.concat(message)
         );
+        scrollRef.current.scrollTo({ y: scrollViewHeight, animated: true });
       }
     );
 
@@ -231,7 +235,13 @@ const Chat: React.FC = () => {
             <ScrollView
               ref={scrollRef}
               onContentSizeChange={(_width, height) => {
-                scrollRef.current.scrollTo({ y: height, animated: true });
+                if (scrollViewHeight === 0)
+                  scrollRef.current.scrollTo({
+                    y: height,
+                    animated: false,
+                  });
+
+                setScrollViewHeight(height);
               }}
             >
               {messageDisplayed?.map((message: MessageType): any => {
