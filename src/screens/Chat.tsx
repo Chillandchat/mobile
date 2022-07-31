@@ -254,7 +254,10 @@ const Chat: React.FC = () => {
                     y: height,
                     animated: false,
                   });
-                else if (scrollViewHeight < height)
+                else if (
+                  scrollViewHeight < height &&
+                  scrollPosition + windowDimensions.height >= scrollViewHeight
+                )
                   scrollRef.current.scrollTo({
                     y: height,
                     animated: true,
