@@ -12,12 +12,15 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions,
+  ScaledSize,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { AntDesign } from "@expo/vector-icons";
 
 import Form from "../components/Form";
 import ChatRoomBar from "../components/ChatRoomBar";
@@ -48,6 +51,8 @@ const Chat: React.FC = () => {
 
   const scrollRef: React.MutableRefObject<any> = React.useRef();
 
+  const windowDimensions: ScaledSize = Dimensions.get("window");
+
   const [message, setMessage]: any = React.useState("");
   const [textBoxHelper, setTextBoxHelper]: any = React.useState(undefined);
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
@@ -55,6 +60,7 @@ const Chat: React.FC = () => {
   const [errorMessage, setErrorMessage]: any = React.useState("");
 
   const [scrollViewHeight, setScrollViewHeight]: any = React.useState(0);
+  const [scrollPosition, setScrollPosition]: any = React.useState(0);
 
   const [typing, setTyping]: any = React.useState(false);
   const [typingUser, setTypingUser]: any = React.useState("");
@@ -116,7 +122,6 @@ const Chat: React.FC = () => {
         setMessageDisplayed((messagePrevious: any): any =>
           messagePrevious.concat(message)
         );
-        scrollRef.current.scrollTo({ y: scrollViewHeight, animated: true });
       }
     );
 
@@ -218,6 +223,11 @@ const Chat: React.FC = () => {
     sendImage: {
       marginRight: 15,
     },
+    downButton: {
+      alignItems: "flex-start",
+      flexDirection: "row",
+      width: "80%",
+    },
   });
 
   return (
@@ -234,11 +244,20 @@ const Chat: React.FC = () => {
           {!loading ? (
             <ScrollView
               ref={scrollRef}
+              scrollEventThrottle={16}
+              onScroll={(event: any): void => {
+                setScrollPosition(event.nativeEvent.contentOffset.y);
+              }}
               onContentSizeChange={(_width, height) => {
                 if (scrollViewHeight === 0)
                   scrollRef.current.scrollTo({
                     y: height,
                     animated: false,
+                  });
+                else if (scrollViewHeight < height)
+                  scrollRef.current.scrollTo({
+                    y: height,
+                    animated: true,
                   });
 
                 setScrollViewHeight(height);
@@ -272,6 +291,19 @@ const Chat: React.FC = () => {
             </View>
           )}
         </View>
+        {scrollPosition + windowDimensions.height <= scrollViewHeight ? (
+          <TouchableOpacity
+            style={style.downButton}
+            onPress={(): void => {
+              scrollRef.current.scrollTo({
+                y: scrollViewHeight,
+                animated: true,
+              });
+            }}
+          >
+            <AntDesign name="arrowdown" size={32} color={"#00AD98"} />
+          </TouchableOpacity>
+        ) : null}
         <View
           style={{
             justifyContent: "center",
