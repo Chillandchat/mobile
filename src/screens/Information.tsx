@@ -1,5 +1,11 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
@@ -30,6 +36,11 @@ const Information: React.FC<any> = () => {
       top: "7%",
       left: "7%",
     },
+    githubLink: {
+      position: "absolute",
+      bottom: "7%",
+      right: "7%",
+    },
   });
 
   return (
@@ -52,6 +63,14 @@ const Information: React.FC<any> = () => {
       <Text style={style.tittle}>Credits:</Text>
       <Text style={style.text}>Alvin cheng - Software engineer</Text>
       <Text style={style.text}>Brianna cheng - UI&UX designer</Text>
+      <TouchableOpacity
+        style={style.githubLink}
+        onPress={(): void => {
+          Linking.openURL("https://github.com/chillandchat/mobile");
+        }}
+      >
+        <AntDesign name="github" size={36} color="black" />
+      </TouchableOpacity>
     </View>
   );
 };
