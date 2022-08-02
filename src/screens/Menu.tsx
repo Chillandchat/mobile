@@ -4,6 +4,8 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  ScaledSize,
+  Dimensions,
 } from "react-native";
 import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
@@ -24,6 +26,8 @@ const Menu: React.FC<any> = ({ navigation }) => {
       return state.userInfo;
     }
   );
+
+  const windowSize: ScaledSize = Dimensions.get("window");
 
   const loggedIn: any = useSelector((state: RootState): RootState => {
     return state.loginStatus;
@@ -46,7 +50,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
     container: {
       alignItems: "center",
       justifyContent: "flex-start",
-      marginTop: "50%",  // Style of the header offset
+      marginTop: windowSize.height / 4, // Style of the header offset
       flex: 1,
     },
     text: {
@@ -76,9 +80,9 @@ const Menu: React.FC<any> = ({ navigation }) => {
       padding: 5,
       borderRadius: 10000,
     },
-    bar:{
-      backgroundColor:"#00AD98",
-    }
+    bar: {
+      backgroundColor: "#00AD98",
+    },
   });
 
   if (!loggedIn) {
@@ -98,7 +102,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
             }}
           />
         </View>
-       <View style={style.bar}/>
+        <View style={style.bar} />
         <RoomList rooms={rooms} />
         <TouchableOpacity
           style={style.addButton}
