@@ -29,6 +29,12 @@ If you have found any bug(s) please post them in the [Issues](https://github.com
 Please click the link below and run the app in expo go:
 
 <a href="https://expo.dev/@cheng-alvin/chill-and-chat-mobile-app?serviceType=classic&distribution=expo-go"><img style="width:300px;" src="https://images.squarespace-cdn.com/content/v1/602d0aa03d9bab5833f89e28/1615402085435-KPC9C9YMJD2IUD18D9XS/apple-app-store-badge-white.png"/><a>
+
+### Amazon app store
+Please click the link below to download via the Amazon app store, please note that it's only avalible on Android systems.
+
+
+
 ### Manual install
 Please click the button below to go to the releases tab and install the version you like!
 
