@@ -1,4 +1,4 @@
-<p align="center"how><img src="https://github.com/Chill-and-chat/Chill-and-chat/blob/master/logo.svg/" style="width:200px;"/></p>
+<p align="center"how><img src="https://github.com/Chill-and-chat/Chill-and-chat/blob/master/logo.svg/" style="width:12rem;"/></p>
 
 # Chill&chat mobile app
 ![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/issues-pr-closed/chill-and-chat/chill-chat) ![](https://img.shields.io/github/issues-pr-raw/chill-and-chat/chill-chat)
@@ -28,17 +28,16 @@ If you have found any bug(s) please post them in the [Issues](https://github.com
 ### Expo go
 Please click the link below and run the app in expo go:
 
-<a href="https://expo.dev/@cheng-alvin/chill-and-chat-mobile-app?serviceType=classic&distribution=expo-go"><img style="width:300px;" src="https://images.squarespace-cdn.com/content/v1/602d0aa03d9bab5833f89e28/1615402085435-KPC9C9YMJD2IUD18D9XS/apple-app-store-badge-white.png"/><a>
+<a href="https://expo.dev/@cheng-alvin/chill-and-chat-mobile-app?serviceType=classic&distribution=expo-go"><img style="width:15rem;" src="https://images.squarespace-cdn.com/content/v1/602d0aa03d9bab5833f89e28/1615402085435-KPC9C9YMJD2IUD18D9XS/apple-app-store-badge-white.png"/><a>
 
 ### Amazon app store
 Please click the link below to download via the Amazon app store, please note that it's only avalible on Android systems.
-
-
+<a href=""><img style="width: 15rem;" src="https://user-images.githubusercontent.com/88267875/182995175-fc0e11de-756f-47fa-8641-5045acbdc2c3.png"/></a>
 
 ### Manual install
 Please click the button below to go to the releases tab and install the version you like!
 
-<a href="https://github.com/Chillandchat/mobile/releases"><img style="width:300px;" src="https://user-images.githubusercontent.com/33416429/92813512-27f0bb80-f376-11ea-8562-ee2b3e416aec.png"/><a>
+<a href="https://github.com/Chillandchat/mobile/releases"><img style="width:15rem;" src="https://user-images.githubusercontent.com/33416429/92813512-27f0bb80-f376-11ea-8562-ee2b3e416aec.png"/><a>
 
 ### Latest code
 To get the latest code, please enter the command below into your terminal to clone it:
