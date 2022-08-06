@@ -1,7 +1,6 @@
 //! "import "react-native-get-random-values";" MUST BE FIRST!!
 import "react-native-get-random-values";
-// @ts-ignore
-import { SOCKET_URL, API_KEY } from "@env";
+import Constants from "expo-constants";
 import { v4 as uuid } from "uuid";
 import { io } from "socket.io-client";
 
@@ -15,9 +14,16 @@ import { MessageType } from "./index.d";
 
 const sendMessage = async (message: MessageType): Promise<void> => {
   const responseToken: string = uuid();
-  const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
+  const socket: any = io(String(Constants.manifest?.extra?.SOCKET_URL), {
+    transports: ["websocket"],
+  });
 
-  socket.emit("server-message", message, API_KEY, responseToken);
+  socket.emit(
+    "server-message",
+    message,
+    String(Constants.manifest?.extra?.API_KEY),
+    responseToken
+  );
 
   socket.on(`sent:token(${responseToken})`, (): void => {
     socket.disconnect();

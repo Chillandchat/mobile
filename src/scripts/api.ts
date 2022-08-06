@@ -1,9 +1,8 @@
-// @ts-ignore
-import { API_URL, API_KEY, SOCKET_URL } from "@env";
+import Constants from "expo-constants";
 import axios, { AxiosInstance } from "axios";
 import { ApiEndpoints } from "./index.d";
 
-export const apiKey: string = String(API_KEY);
+export const apiKey: string = String(Constants.manifest?.extra?.API_KEY);
 
 export const endpoints: ApiEndpoints = {
   home: "/",
@@ -21,7 +20,7 @@ export const endpoints: ApiEndpoints = {
 };
 
 export const apiInstance: AxiosInstance = axios.create({
-  baseURL: String(API_URL),
+  baseURL: String(Constants.manifest?.extra?.API_URL),
 });
 
 const api: any = {
@@ -30,8 +29,14 @@ const api: any = {
   instance: apiInstance,
 };
 
-if (API_KEY === undefined || API_URL === undefined || SOCKET_URL === undefined) {
-    console.error("Error: API key or API url not found in the .env file, please make sure the variable is set and present. \nError code: CC_ERROR_1591")
+if (
+  Constants.manifest?.extra?.API_KEY === undefined ||
+  Constants.manifest?.extra?.API_URL === undefined ||
+  Constants.manifest?.extra?.SOCKET_URL === undefined
+) {
+  console.error(
+    "Error: API key or API url not found in the .env file, please make sure the variable is set and present. \nError code: CC_ERROR_1591"
+  );
 }
 
 export default api;

@@ -1,7 +1,6 @@
 //! "import "react-native-get-random-values";" MUST BE FIRST!!
 import "react-native-get-random-values";
-// @ts-ignore
-import { SOCKET_URL, API_KEY } from "@env";
+import Constants from "expo-constants";
 import { v4 as uuid } from "uuid";
 import { io } from "socket.io-client";
 
@@ -14,9 +13,17 @@ import { io } from "socket.io-client";
 
 const deleteMessage = async (id: string, room: string): Promise<void> => {
   const responseToken: string = uuid();
-  const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
+  const socket: any = io(String(Constants.manifest?.extra?.SOCKET_URL), {
+    transports: ["websocket"],
+  });
 
-  socket.emit("server-message-delete",id, room, responseToken, API_KEY);
+  socket.emit(
+    "server-message-delete",
+    id,
+    room,
+    responseToken,
+    String(Constants.manifest?.extra?.API_KEY)
+  );
 
   socket.on(`deleted:token(${responseToken})`, (): void => {
     socket.disconnect();

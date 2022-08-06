@@ -1,7 +1,6 @@
 //! "import "react-native-get-random-values";" MUST BE FIRST!!
 import "react-native-get-random-values";
-// @ts-ignore
-import { SOCKET_URL, API_KEY } from "@env";
+import Constants from "expo-constants";
 import { v4 as uuid } from "uuid";
 import { io } from "socket.io-client";
 
@@ -21,9 +20,18 @@ const setKeyboardSocket = async (
   mode: KeyboardMode
 ): Promise<void> => {
   const responseToken: string = uuid();
-  const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
+  const socket: any = io(String(Constants.manifest?.extra?.SOCKET_URL), {
+    transports: ["websocket"],
+  });
 
-  socket.emit("server-keyboard", room, user, API_KEY, responseToken, mode);
+  socket.emit(
+    "server-keyboard",
+    room,
+    user,
+    String(Constants.manifest?.extra?.API_KEY),
+    responseToken,
+    mode
+  );
 
   socket.on("connect-error", (): void => {
     throw new Error(
