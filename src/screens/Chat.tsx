@@ -1,8 +1,7 @@
 //! "import "react-native-get-random-values";" MUST BE FIRST!!
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
-// @ts-ignore
-import { SOCKET_URL } from "@env";
+import Constants from "expo-constants";
 import React from "react";
 import {
   KeyboardAvoidingView,
@@ -98,7 +97,7 @@ const Chat: React.FC = () => {
         console.error(err);
       });
 
-    const socket: any = io(SOCKET_URL, { transports: ["websocket"] });
+    const socket: any = io(Constants.manifest?.extra?.SOCKET_URL, { transports: ["websocket"] });
 
     socket.on(
       `keyboard-start:room(${sessionStatus.id})`,
