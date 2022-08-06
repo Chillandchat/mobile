@@ -10,6 +10,9 @@ jobs:
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
+        
+      - name: 🔧 Create .env file
+        uses: SpicyPizza/create-envfile@v1.3.0
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
