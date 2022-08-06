@@ -1,4 +1,4 @@
-name: Deploy to Expo.dev
+name: Deploy app
 
 on:
   release:
