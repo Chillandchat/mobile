@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: 🔧 Create .env file
-        run: cd mobile && echo "Creating the .env file..." && touch .env && echo "API_URL=env:API_URL \nAPI_KEY=env:API_KEY \nSOCKET_URL=env:SOCKET_URL" > .env && echo "Done!"
+        run: echo "Creating the .env file..." && touch .env && echo "API_URL=env:API_URL \nAPI_KEY=env:API_KEY \nSOCKET_URL=env:SOCKET_URL" > .env && echo "Done!"
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
