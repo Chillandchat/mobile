@@ -64,5 +64,9 @@ All the above will be enforced to ensure Chill&chat is safe!
 *Alvin cheng - Software engineer*
 
 *Brianna cheng - UI&UX designer* 
+
+## Special thanks
+Jonathan yao
+
 #
 ❤️ Made With Love ❤️
