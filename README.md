@@ -65,7 +65,7 @@ All the above will be enforced to ensure Chill&chat is safe!
 
 *Brianna cheng - UI&UX designer* 
 
-## Special thanks
+### Special thanks
 Jonathan yao
 
 #
