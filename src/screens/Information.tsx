@@ -63,6 +63,9 @@ const Information: React.FC<any> = () => {
       <Text style={style.tittle}>Credits:</Text>
       <Text style={style.text}>Alvin cheng - Software engineer</Text>
       <Text style={style.text}>Brianna cheng - UI&UX designer</Text>
+      <View style={{ padding: 10 }} />
+      <Text style={style.tittle}>Special thanks:</Text>
+      <Text style={style.text}>Jonathan yao</Text>
       <TouchableOpacity
         style={style.githubLink}
         onPress={(): void => {
