@@ -32,6 +32,7 @@ Please click the link below and run the app in expo go:
 
 ### Amazon app store
 Please click the link below to download via the Amazon app store, please note that it's only avalible on Android systems.
+
 <a href=""><img style="width: 15rem;" src="https://user-images.githubusercontent.com/88267875/182995175-fc0e11de-756f-47fa-8641-5045acbdc2c3.png"/></a>
 
 ### Manual install
