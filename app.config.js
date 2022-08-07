@@ -16,7 +16,7 @@ export default {
   splash: {
     image: "./assets/splash.png",
     resizeMode: "contain",
-    backgroundColor: "#fffff",
+    backgroundColor: "#ffffff",
   },
   updates: {
     fallbackToCacheTimeout: 0,
@@ -29,7 +29,7 @@ export default {
   android: {
     adaptiveIcon: {
       foregroundImage: "./assets/logo.png",
-      backgroundColor: "#fffff",
+      backgroundColor: "#ffffff",
     },
     package: "com.chillandchat.chillandchat",
   },
