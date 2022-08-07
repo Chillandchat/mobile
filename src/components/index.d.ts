@@ -52,6 +52,7 @@ export interface FormProps {
   placeholder: string;
   onTextChange: (text: string) => void;
   value?: string;
+  width?: number | string;
 }
 
 /**
