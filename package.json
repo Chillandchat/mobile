@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "author": "Alvin cheng",
   "license": "MIT",
-   "main": "index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web",
-    "eject": "expo eject",
-    "expo-publish": "expo publish"
+    "start": "echo 'Staring Metro...' && expo start",
+    "android": "echo 'Starting Android...' && expo run:android",
+    "ios": "echo 'Starting iOS...' && expo run:ios",
+    "web": "echo 'Stating web...' && expo start --web",
+    "eject": "echo 'Ejecting...' && expo eject",
+    "publish": "echo 'Publishing to expo and building bundle for Amazon app store...' && expo publish && eas build -p android"
   },
   "repository": {
     "type": "git",
@@ -55,5 +55,5 @@
     "@types/uuid": "^8.3.4",
     "typescript": "~4.3.5"
   },
-  "private": true
+  "private": false
 }
