@@ -56,7 +56,8 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
     imageContent: {
       height: 150,
       width: 150,
-      borderRadius: 5,
+      borderRadius: 10,
+      resizeMode: "cover",
     },
     delete: {
       padding: 10,
@@ -109,7 +110,12 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
             }}
           />
         ) : imageError ? (
-          <View style={[style.imageContent,{justifyContent:"center",alignItems:"center"}]}>
+          <View
+            style={[
+              style.imageContent,
+              { justifyContent: "center", alignItems: "center" },
+            ]}
+          >
             <Text style={style.content}>Image unavailable</Text>
           </View>
         ) : (

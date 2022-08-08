@@ -97,7 +97,9 @@ const Chat: React.FC = () => {
         console.error(err);
       });
 
-    const socket: any = io(Constants.manifest?.extra?.SOCKET_URL, { transports: ["websocket"] });
+    const socket: any = io(Constants.manifest?.extra?.SOCKET_URL, {
+      transports: ["websocket"],
+    });
 
     socket.on(
       `keyboard-start:room(${sessionStatus.id})`,
@@ -217,10 +219,10 @@ const Chat: React.FC = () => {
       borderRadius: 5,
     },
     sendIcon: {
-      marginLeft: 15,
+      marginLeft: Platform.OS == "android" ? 30 : 15,
     },
     sendImage: {
-      marginRight: 15,
+      marginRight: Platform.OS == "android" ? 30 : 15,
     },
     downButton: {
       alignItems: "flex-start",
