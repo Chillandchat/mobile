@@ -11,6 +11,7 @@ import { FormProps } from "./index.d";
  * @optional @prop {boolean} safeEntry Whether the text is secure or not.
  * @optional @prop {string} value The value of the text form.
  * @optional @prop {number | string} width The width of the form.
+ * @optional @prop {number | string} height The height of the form
  */
 
 const Form: React.FC<FormProps> = (props: FormProps) => {
@@ -20,6 +21,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
       width: props.width || "80%",
       justifyContent: "center",
       padding: 20,
+      height:props?.height,
       borderRadius: 10000,
       margin: Platform.OS === "android" ? -10 : 0,
     },

@@ -53,6 +53,7 @@ export interface FormProps {
   onTextChange: (text: string) => void;
   value?: string;
   width?: number | string;
+  height?:number|string
 }
 
 /**
