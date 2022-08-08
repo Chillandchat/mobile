@@ -73,8 +73,8 @@ const Menu: React.FC<any> = ({ navigation }) => {
       alignItems: "center",
       marginLeft: "10%",
       height: 55,
-      marginTop: 15,
-      marginBottom: 10,
+      marginTop: 5,
+      marginBottom: 30,
     },
     divider: {
       padding: 5,
@@ -118,18 +118,16 @@ const Menu: React.FC<any> = ({ navigation }) => {
           <Form
             placeholder={"Search"}
             width={"75%"}
+            height={55}
             onTextChange={(text: string): void => {
               setRooms(
                 defaultRooms.filter((room: RoomType): boolean =>
-                  room.name.includes(text)
+                  room.name.includes(text.toLowerCase())
                 )
               );
               if (text === "") setRooms(defaultRooms);
             }}
           />
-          <View style={style.searchIcon}>
-            <FontAwesome5 name="search" size={24} color="#00ad98" />
-          </View>
         </View>
         <RoomList rooms={rooms} />
         <TouchableOpacity
