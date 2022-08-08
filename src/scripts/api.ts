@@ -17,6 +17,9 @@ export const endpoints: ApiEndpoints = {
   createRoom: "/api/create-room",
   joinRoom: "/api/join-room",
   removeRoom: "/api/remove-room",
+  followUser: "/api/follow-user",
+  unfollowUser: "/api/unfollow-user",
+  updateDescription: "/api/update-description",
 };
 
 export const apiInstance: AxiosInstance = axios.create({
