@@ -9,12 +9,14 @@ import {
 } from "react-native";
 import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 import RoomList from "../components/RoomList";
 import Icon from "../components/Icon";
 import { RootState } from "../redux/index.d";
 import getRoom from "../scripts/getRooms";
 import { RoomType } from "../scripts/index.d";
+import Form from "../components/Form";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
@@ -34,11 +36,13 @@ const Menu: React.FC<any> = ({ navigation }) => {
   });
 
   const [rooms, setRooms] = React.useState<Array<RoomType>>([]);
+  const [defaultRooms, setDefaultRooms] = React.useState<Array<RoomType>>([]);
 
   React.useEffect((): void => {
     getRoom(username)
       .then((data: Array<RoomType>): void => {
         setRooms(data);
+        setDefaultRooms(data);
       })
       .catch((err: unknown) => {
         console.error(err);
@@ -65,8 +69,12 @@ const Menu: React.FC<any> = ({ navigation }) => {
     },
     searchContainer: {
       width: "100%",
-      marginTop: "5%",
-      marginLeft: "5%",
+      flexDirection: "row",
+      alignItems: "center",
+      marginLeft: "10%",
+      height: 55,
+      marginTop: 5,
+      marginBottom: 30,
     },
     divider: {
       padding: 5,
@@ -82,6 +90,9 @@ const Menu: React.FC<any> = ({ navigation }) => {
     },
     bar: {
       backgroundColor: "#00AD98",
+    },
+    searchIcon: {
+      marginLeft: 15,
     },
   });
 
@@ -103,6 +114,21 @@ const Menu: React.FC<any> = ({ navigation }) => {
           />
         </View>
         <View style={style.bar} />
+        <View style={style.searchContainer}>
+          <Form
+            placeholder={"Search"}
+            width={"75%"}
+            height={55}
+            onTextChange={(text: string): void => {
+              setRooms(
+                defaultRooms.filter((room: RoomType): boolean =>
+                  room.name.includes(text.toLowerCase())
+                )
+              );
+              if (text === "") setRooms(defaultRooms);
+            }}
+          />
+        </View>
         <RoomList rooms={rooms} />
         <TouchableOpacity
           style={style.addButton}

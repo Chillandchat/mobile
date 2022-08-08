@@ -57,6 +57,9 @@ export interface ApiEndpoints {
  * @param {string} content The content of the message.
  * @param {boolean} verified Whether the sender of the message is verified.
  * @param {string} iconColor The icon color.
+ * @param {string} description The description of the user profile.
+ * @param {number} followers The number of followers of the user.
+ * @param {Array<string>} following The array of following users of the user.
  */
 
 export interface AuthType {
@@ -67,7 +70,11 @@ export interface AuthType {
   bot: boolean;
   blocked: boolean;
   iconColor: string;
+  description: string;
+  followers: number;
+  following: Array<string>;
 }
+
 /**
  * This is the room object type.
  *
