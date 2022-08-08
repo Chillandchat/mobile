@@ -74,7 +74,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
       marginLeft: "10%",
       height: 55,
       marginTop: 5,
-      marginBottom: 30,
+      marginBottom: 10,
     },
     divider: {
       padding: 5,
