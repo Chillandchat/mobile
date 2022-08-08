@@ -21,7 +21,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
       width: props.width || "80%",
       justifyContent: "center",
       padding: 20,
-      height:props?.height,
+      height: props?.height,
       borderRadius: 10000,
       margin: Platform.OS === "android" ? -10 : 0,
     },
