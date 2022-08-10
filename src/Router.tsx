@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   createStackNavigator,
@@ -23,7 +22,7 @@ import Error from "./screens/Error";
 import Menu from "./screens/Menu";
 import store from "./redux/index";
 import BlockError from "./screens/BlockError";
-import SignoutConfirm from "./screens/SignoutConfirm";
+import UserMenu from "./screens/UserMenu";
 import CreateRoom from "./screens/CreateRoom";
 import AddRoom from "./screens/AddRoom";
 import JoinRoom from "./screens/JoinRoom";
@@ -152,7 +151,7 @@ namespace app {
                 />
                 <NavigatorStack.Screen
                   name="signout-confirm"
-                  component={SignoutConfirm}
+                  component={UserMenu}
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen
