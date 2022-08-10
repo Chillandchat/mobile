@@ -12,6 +12,7 @@ import { FormProps } from "./index.d";
  * @optional @prop {string} value The value of the text form.
  * @optional @prop {number | string} width The width of the form.
  * @optional @prop {number | string} height The height of the form
+ * @optional @prop {boolean} multiline Whether the text is multiline or not.
  */
 
 const Form: React.FC<FormProps> = (props: FormProps) => {
@@ -22,7 +23,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
       justifyContent: "center",
       padding: 20,
       height: props?.height,
-      borderRadius: 10000,
+      borderRadius: 20,
       margin: Platform.OS === "android" ? -10 : 0,
     },
   });
@@ -34,6 +35,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
         onChangeText={props.onTextChange}
         secureTextEntry={props.safeEntry || false}
         value={props.value}
+        multiline={props?.multiline || false}
       />
     </View>
   );
