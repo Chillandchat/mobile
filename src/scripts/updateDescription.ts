@@ -14,8 +14,8 @@ const updateDescription = async (
   description: string
 ): Promise<void> => {
   await api.instance
-    .post(api.endpoints.updateDescription, {
-      user: user,
+    .post(`${api.endpoints.updateDescription}?key=${api.apiKey}`, {
+      username: user,
       description: description,
     })
     .then((_data: AxiosResponse): void => {})
