@@ -8,6 +8,7 @@ import {
   SessionStatusEventType,
   RoomUserInfoEventType,
   MessageInfoEventType,
+  ProfileInfoEventType,
 } from "./index.d";
 
 /**
@@ -128,4 +129,23 @@ export const setMessageInfo = (
 
 export const clearMessageInfo = (): ActionNoParameter<MessageInfoEventType> => {
   return { type: "CLEAR_MESSAGE_INFO" };
+};
+
+/**
+ * This is the set profile info action, this action will change the profile information. In the profile info reducer.
+ * @param {AuthType} payload
+ */
+
+export const setProfileInfo = (
+  payload: AuthType
+): ActionWithParameter<AuthType, ProfileInfoEventType> => {
+  return { type: "SET_PROFILE_INFO", payload: payload };
+};
+
+/**
+ * This is the clear profile info action, this action will clear the profile information. In the profile info reducer.
+ */
+
+export const clearProfileInfo = (): ActionNoParameter<ProfileInfoEventType> => {
+  return { type: "CLEAR_PROFILE_INFO" };
 };
