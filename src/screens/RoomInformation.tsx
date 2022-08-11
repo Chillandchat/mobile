@@ -7,7 +7,7 @@ import {
   Alert,
   ScrollView,
 } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -18,6 +18,7 @@ import { RootState } from "../redux/index.d";
 import Button from "../components/Button";
 import { AuthType } from "../scripts";
 import Icon from "../components/Icon";
+import { setProfileInfo } from "../redux/action";
 
 /**
  * This is the room information screen, this screen will display the room information.
@@ -29,6 +30,7 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
       return state;
     }
   );
+  const dispatch: any = useDispatch();
 
   const style: any = StyleSheet.create({
     container: {
@@ -113,38 +115,46 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
 
           {roomUserInfo.map((user: AuthType): any => {
             return (
-              <View style={style.user} key={user.id.concat("-e")}>
-                <Icon
-                  iconLetter={user.username[0]}
-                  color={user.iconColor}
-                  key={user.id.concat("-a")}
-                />
-                <Text
-                  style={[
-                    style.text,
-                    { fontSize: 22, marginLeft: 20, marginRight: 10 },
-                  ]}
-                  key={user.id.concat("-b")}
-                >
-                  {user.username}
-                </Text>
-                {user.verified ? (
-                  <MaterialIcons
-                    name="verified-user"
-                    size={24}
-                    color={"#00AD98"}
-                    key={user.id.concat("-c")}
+              <TouchableOpacity
+                disabled={user.username === userInfo.username}
+                onPress={(): void => {
+                  dispatch(setProfileInfo(user));
+                  navigation.navigate("user-profile");
+                }}
+              >
+                <View style={style.user} key={user.id.concat("-e")}>
+                  <Icon
+                    iconLetter={user.username[0]}
+                    color={user.iconColor}
+                    key={user.id.concat("-a")}
                   />
-                ) : null}
-                {user.bot ? (
-                  <FontAwesome5
-                    name="robot"
-                    size={24}
-                    color={"#00AD98"}
-                    key={user.id.concat("-d")}
-                  />
-                ) : null}
-              </View>
+                  <Text
+                    style={[
+                      style.text,
+                      { fontSize: 22, marginLeft: 20, marginRight: 10 },
+                    ]}
+                    key={user.id.concat("-b")}
+                  >
+                    {user.username}
+                  </Text>
+                  {user.verified ? (
+                    <MaterialIcons
+                      name="verified-user"
+                      size={24}
+                      color={"#00AD98"}
+                      key={user.id.concat("-c")}
+                    />
+                  ) : null}
+                  {user.bot ? (
+                    <FontAwesome5
+                      name="robot"
+                      size={24}
+                      color={"#00AD98"}
+                      key={user.id.concat("-d")}
+                    />
+                  ) : null}
+                </View>
+              </TouchableOpacity>
             );
           })}
         </ScrollView>
