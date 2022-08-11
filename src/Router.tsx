@@ -32,6 +32,7 @@ import RoomInformation from "./screens/RoomInformation";
 import RoomDangerZone from "./screens/RoomDangerZone";
 import SendImage from "./screens/SendImage";
 import MessageOptions from "./screens/MessageOptions";
+import UserProfile from "./screens/UserProfile";
 
 /**
  * This is the router component for the application, This component
@@ -106,6 +107,11 @@ namespace app {
                 <NavigatorStack.Screen
                   name="message-options"
                   component={MessageOptions}
+                  options={{ headerShown: false }}
+                />
+                <NavigatorStack.Screen
+                  name="user-profile"
+                  component={UserProfile}
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen

@@ -11,7 +11,7 @@ import api from "./api";
 
 const followUser = async (targetUser: string, user: string): Promise<void> => {
   await api.instance
-    .post(api.endpoints.followUser, {
+    .post(`${api.endpoints.followUser}?key=${api.apiKey}`, {
       user: user,
       targetUser: targetUser,
     })

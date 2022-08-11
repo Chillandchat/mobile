@@ -9,9 +9,12 @@ import api from "./api";
  * @param {string} user The user unfollowing.
  */
 
-const unfollowUser = async (targetUser: string, user: string): Promise<void> => {
+const unfollowUser = async (
+  targetUser: string,
+  user: string
+): Promise<void> => {
   await api.instance
-    .post(api.endpoints.unfollowUser, {
+    .post(`${api.endpoints.unfollowUser}?key=${api.apiKey}`, {
       user: user,
       targetUser: targetUser,
     })
