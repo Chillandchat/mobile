@@ -54,6 +54,7 @@ export interface FormProps {
   value?: string;
   width?: number | string;
   height?: number | string;
+  multiline?: boolean;
 }
 
 /**

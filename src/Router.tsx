@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   createStackNavigator,
@@ -23,7 +22,7 @@ import Error from "./screens/Error";
 import Menu from "./screens/Menu";
 import store from "./redux/index";
 import BlockError from "./screens/BlockError";
-import SignoutConfirm from "./screens/SignoutConfirm";
+import UserMenu from "./screens/UserMenu";
 import CreateRoom from "./screens/CreateRoom";
 import AddRoom from "./screens/AddRoom";
 import JoinRoom from "./screens/JoinRoom";
@@ -33,6 +32,7 @@ import RoomInformation from "./screens/RoomInformation";
 import RoomDangerZone from "./screens/RoomDangerZone";
 import SendImage from "./screens/SendImage";
 import MessageOptions from "./screens/MessageOptions";
+import UserProfile from "./screens/UserProfile";
 
 /**
  * This is the router component for the application, This component
@@ -110,6 +110,11 @@ namespace app {
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen
+                  name="user-profile"
+                  component={UserProfile}
+                  options={{ headerShown: false }}
+                />
+                <NavigatorStack.Screen
                   name="sign-up"
                   component={Signup}
                   options={{ headerShown: false }}
@@ -152,7 +157,7 @@ namespace app {
                 />
                 <NavigatorStack.Screen
                   name="signout-confirm"
-                  component={SignoutConfirm}
+                  component={UserMenu}
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen
@@ -180,5 +185,3 @@ namespace app {
 }
 
 export default app.Router;
-
-// End of Brianna Cheng's code

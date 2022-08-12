@@ -10,7 +10,7 @@
     "ios": "echo 'Starting iOS...' && expo run:ios",
     "web": "echo 'Stating web...' && expo start --web",
     "eject": "echo 'Ejecting...' && expo eject",
-    "publish": "echo 'Publishing to expo and building bundle for Amazon app store...' && expo publish && eas build -p android"
+    "publish-app": "echo 'Publishing to expo and building bundle for Amazon app store...' && expo publish && eas build -p android"
   },
   "repository": {
     "type": "git",

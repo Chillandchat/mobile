@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 
 import RoomList from "../components/RoomList";
 import Icon from "../components/Icon";
@@ -74,7 +73,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
       marginLeft: "10%",
       height: 55,
       marginTop: 5,
-      marginBottom: 30,
+      marginBottom: 10,
     },
     divider: {
       padding: 5,

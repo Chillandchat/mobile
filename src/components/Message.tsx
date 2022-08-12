@@ -8,7 +8,8 @@ import { useNavigation } from "@react-navigation/native";
 import { MessageProps } from "./index.d";
 import { RootState } from "../redux/index.d";
 import Icon from "./Icon";
-import { setMessageInfo } from "../redux/action";
+import { setMessageInfo, setProfileInfo } from "../redux/action";
+import getUser from "../scripts/getUser";
 
 /**
  * This is the message component, this component will display the message that users send.
@@ -56,7 +57,8 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
     imageContent: {
       height: 150,
       width: 150,
-      borderRadius: 5,
+      borderRadius: 10,
+      resizeMode: "cover",
     },
     delete: {
       padding: 10,
@@ -78,6 +80,11 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
             color={props.messageUserInfo.iconColor}
             iconLetter={props.messageUserInfo.username[0]}
             size={50}
+            touchable={true}
+            onPress={(): void => {
+              dispatch(setProfileInfo(props.messageUserInfo));
+              navigator.navigate("user-profile");
+            }}
           />
         </View>
       ) : null}
@@ -109,7 +116,12 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
             }}
           />
         ) : imageError ? (
-          <View style={[style.imageContent,{justifyContent:"center",alignItems:"center"}]}>
+          <View
+            style={[
+              style.imageContent,
+              { justifyContent: "center", alignItems: "center" },
+            ]}
+          >
             <Text style={style.content}>Image unavailable</Text>
           </View>
         ) : (
