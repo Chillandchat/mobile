@@ -185,5 +185,3 @@ namespace app {
 }
 
 export default app.Router;
-
-// End of Brianna Cheng's code
