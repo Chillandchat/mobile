@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  Alert,
   ScrollView,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +11,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-import * as Clipboard from "expo-clipboard";
+import { Ionicons } from "@expo/vector-icons";
 
 import { RootState } from "../redux/index.d";
 import Button from "../components/Button";
@@ -163,22 +162,22 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
       <View style={style.dangerButton}>
         <TouchableOpacity
           onPress={(): void => {
-            Clipboard.setString(sessionStatus.id);
-            Alert.alert("Room ID copied to clipboard");
+            navigation.navigate("room-id");
           }}
           style={{
             flexDirection: "row",
+            alignItems: "center",
             paddingBottom: 20,
             justifyContent: "center",
           }}
         >
-          <AntDesign
-            name="copy1"
-            size={24}
+          <Ionicons
+            name="ios-enter-outline"
+            size={30}
             color="black"
             style={{ paddingHorizontal: 10 }}
           />
-          <Text style={style.text}>Copy information</Text>
+          <Text style={style.text}>Invite people</Text>
         </TouchableOpacity>
         <Button
           color={"red"}

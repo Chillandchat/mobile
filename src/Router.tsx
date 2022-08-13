@@ -33,6 +33,7 @@ import RoomDangerZone from "./screens/RoomDangerZone";
 import SendImage from "./screens/SendImage";
 import MessageOptions from "./screens/MessageOptions";
 import UserProfile from "./screens/UserProfile";
+import RoomId from "./screens/RoomId";
 
 /**
  * This is the router component for the application, This component
@@ -173,6 +174,11 @@ namespace app {
                 <NavigatorStack.Screen
                   name="join-room"
                   component={JoinRoom}
+                  options={{ headerShown: false }}
+                />
+                <NavigatorStack.Screen
+                  name="room-id"
+                  component={RoomId}
                   options={{ headerShown: false }}
                 />
               </NavigatorStack.Navigator>
