@@ -60,6 +60,8 @@ const RoomId: React.FC = () => {
         value={sessionStatus.id}
         logo={require("../../assets/logo.png")}
         size={250}
+        backgroundColor="transparent"
+        logoBackgroundColor="transparent"
       />
       <TouchableOpacity
         onPress={(): void => {
