@@ -57,7 +57,8 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
       alignItems: "center",
       alignSelf: "flex-start",
       paddingLeft: 30,
-      marginTop: windowSize.height / 5,
+      paddingVertical: 0,
+      marginTop: windowSize.height / (Platform.OS === "android" ? 3 : 6),
     },
     tittle: {
       fontSize: 25,

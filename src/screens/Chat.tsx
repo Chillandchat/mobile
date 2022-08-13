@@ -219,10 +219,10 @@ const Chat: React.FC = () => {
       borderRadius: 5,
     },
     sendIcon: {
-      marginLeft: Platform.OS == "android" ? 30 : 15,
+      marginLeft: Platform.OS == "android" ? 23 : 15,
     },
     sendImage: {
-      marginRight: Platform.OS == "android" ? 30 : 15,
+      marginRight: Platform.OS == "android" ? 23 : 15,
     },
     downButton: {
       alignItems: "flex-start",
