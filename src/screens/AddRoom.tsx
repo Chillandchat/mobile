@@ -12,7 +12,7 @@ import Button from "../components/Button";
 
 const AddRoom: React.FC<any> = () => {
   const navigation: any = useNavigation();
-  
+
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
@@ -25,7 +25,7 @@ const AddRoom: React.FC<any> = () => {
     title: {
       fontFamily: "poppinsExtraBold",
       fontSize: 25,
-      padding: 20,
+      padding: 40,
     },
     back: {
       justifyContent: "flex-start",
@@ -46,7 +46,7 @@ const AddRoom: React.FC<any> = () => {
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <Text style={style.title}>Create or join room?</Text>
+      <Text style={style.title}>Add a room...</Text>
       <Button
         textColor="white"
         color={"#00AD98"}
@@ -57,8 +57,8 @@ const AddRoom: React.FC<any> = () => {
       />
       <View style={style.divider} />
       <Button
-        textColor="white"
-        color={"#00AD98"}
+        textColor="black"
+        color={"transparent"}
         onPress={(): void => {
           navigation.navigate("join-room");
         }}

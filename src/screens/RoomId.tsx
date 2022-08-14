@@ -57,7 +57,7 @@ const RoomId: React.FC = () => {
         Room ID QR code
       </Text>
       <QRCode
-        value={sessionStatus.id}
+        value={`!chillandchat-room-invite(${sessionStatus.id})`}
         logo={require("../../assets/logo.png")}
         size={250}
         backgroundColor="transparent"
