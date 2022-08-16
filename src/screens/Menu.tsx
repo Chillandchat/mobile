@@ -6,6 +6,9 @@ import {
   TouchableOpacity,
   ScaledSize,
   Dimensions,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
 } from "react-native";
 import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
@@ -53,7 +56,6 @@ const Menu: React.FC<any> = ({ navigation }) => {
     container: {
       alignItems: "center",
       justifyContent: "flex-start",
-      marginTop: windowSize.height / 4, // Style of the header offset
       flex: 1,
     },
     text: {
@@ -65,6 +67,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
       flexDirection: "row",
       justifyContent: "space-between",
       marginHorizontal: "5%",
+      marginTop: windowSize.height / 4, // Style of the header offset
     },
     searchContainer: {
       width: "100%",
@@ -87,9 +90,6 @@ const Menu: React.FC<any> = ({ navigation }) => {
       padding: 5,
       borderRadius: 10000,
     },
-    bar: {
-      backgroundColor: "#00AD98",
-    },
     searchIcon: {
       marginLeft: 15,
     },
@@ -100,44 +100,49 @@ const Menu: React.FC<any> = ({ navigation }) => {
     return <View></View>;
   } else {
     return (
-      <View style={style.container}>
-        <View style={style.tittleBar}>
-          <Text style={style.text}>Messages</Text>
-          <Icon
-            iconLetter={username[0] || ""}
-            color={iconColor || "#0000"}
-            touchable
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        enabled
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <ScrollView contentContainerStyle={style.container}>
+          <View style={style.tittleBar}>
+            <Text style={style.text}>Messages</Text>
+            <Icon
+              iconLetter={username[0] || ""}
+              color={iconColor || "#0000"}
+              touchable
+              onPress={(): void => {
+                navigation.push("signout-confirm");
+              }}
+            />
+          </View>
+          <View style={style.searchContainer}>
+            <Form
+              placeholder={"Search"}
+              width={"75%"}
+              height={55}
+              onTextChange={(text: string): void => {
+                setRooms(
+                  defaultRooms.filter((room: RoomType): boolean =>
+                    room.name.toLowerCase().includes(text.toLowerCase())
+                  )
+                );
+                if (text === "") setRooms(defaultRooms);
+              }}
+            />
+          </View>
+          <RoomList rooms={rooms} />
+          <TouchableOpacity
+            style={style.addButton}
             onPress={(): void => {
-              navigation.push("signout-confirm");
+              navigation.navigate("add-room");
             }}
-          />
-        </View>
-        <View style={style.bar} />
-        <View style={style.searchContainer}>
-          <Form
-            placeholder={"Search"}
-            width={"75%"}
-            height={55}
-            onTextChange={(text: string): void => {
-              setRooms(
-                defaultRooms.filter((room: RoomType): boolean =>
-                  room.name.toLowerCase().includes(text.toLowerCase())
-                )
-              );
-              if (text === "") setRooms(defaultRooms);
-            }}
-          />
-        </View>
-        <RoomList rooms={rooms} />
-        <TouchableOpacity
-          style={style.addButton}
-          onPress={(): void => {
-            navigation.navigate("add-room");
-          }}
-        >
-          <Ionicons name="ios-add" size={50} color="white" />
-        </TouchableOpacity>
-      </View>
+          >
+            <Ionicons name="ios-add" size={50} color="white" />
+          </TouchableOpacity>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 };
