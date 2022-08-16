@@ -121,7 +121,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
             onTextChange={(text: string): void => {
               setRooms(
                 defaultRooms.filter((room: RoomType): boolean =>
-                  room.name.includes(text.toLowerCase())
+                  room.name.toLowerCase().includes(text.toLowerCase())
                 )
               );
               if (text === "") setRooms(defaultRooms);
