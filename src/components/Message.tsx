@@ -77,10 +77,18 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
       {props.message.user !== userInfo.username ? (
         <View style={style.icon}>
           <Icon
-            color={props.messageUserInfo.iconColor}
-            iconLetter={props.messageUserInfo.username[0]}
+            color={
+              props.messageUserInfo?.iconColor === undefined
+                ? "red"
+                : props.messageUserInfo.iconColor
+            }
+            iconLetter={
+              props.messageUserInfo?.username[0] === undefined
+                ? "?"
+                : props.messageUserInfo
+            }
             size={50}
-            touchable={true}
+            touchable={props.messageUserInfo !== undefined}
             onPress={(): void => {
               dispatch(setProfileInfo(props.messageUserInfo));
               navigator.navigate("user-profile");
@@ -97,12 +105,14 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
                 { fontFamily: "poppinsBold", fontSize: 18, marginRight: 10 },
               ]}
             >
-              {props.message.user}
+              {props.messageUserInfo?.username === undefined
+                ? "Deleted user"
+                : props.message.user}
             </Text>
-            {props.messageUserInfo.verified ? (
+            {props.messageUserInfo?.verified ? (
               <MaterialIcons name="verified-user" size={24} color={"#00AD98"} />
             ) : null}
-            {props.messageUserInfo.bot ? (
+            {props.messageUserInfo?.bot ? (
               <FontAwesome5 name="robot" size={24} color={"#00AD98"} />
             ) : null}
           </View>
