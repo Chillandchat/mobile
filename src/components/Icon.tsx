@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Platform } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
 
 import { IconProps } from "./index.d";
 
@@ -33,7 +39,7 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
   if (props.touchable) {
     return (
       <TouchableOpacity style={style.container} onPress={props.onPress}>
-        <Text style={style.text}>{props.iconLetter.toUpperCase()}</Text>
+        <Text style={style.text}>{props.iconLetter?.toUpperCase()}</Text>
       </TouchableOpacity>
     );
   }

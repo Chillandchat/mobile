@@ -104,7 +104,7 @@ const Chat: React.FC = () => {
     socket.on(
       `keyboard-start:room(${sessionStatus.id})`,
       (user: string): void => {
-        if (user != userInfo.username) {
+        if (user == userInfo.username) {
           setTyping(true);
           setTypingUser(user);
           setAnimationFrame((prevState: number): number => prevState + 1);
@@ -153,6 +153,7 @@ const Chat: React.FC = () => {
   React.useEffect((): void => {
     if (typing) {
       setTimeout((): void => {
+        if (animationFrame >= Math.pow(2, 31) - 2) setAnimationFrame(0);
         setAnimationFrame((prevState: number): number => prevState + 1);
         setAnimationIndexArray((prevState: Array<number>): Array<number> => {
           if (prevState[0] == 1) {
@@ -163,7 +164,7 @@ const Chat: React.FC = () => {
           }
           return [1, 0, 0];
         });
-      }, 200);
+      }, 700);
     }
   }, [animationFrame]);
 

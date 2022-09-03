@@ -85,7 +85,7 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
             iconLetter={
               props.messageUserInfo?.username[0] === undefined
                 ? "?"
-                : props.messageUserInfo
+                : props.messageUserInfo?.username[0]
             }
             size={50}
             touchable={props.messageUserInfo !== undefined}
