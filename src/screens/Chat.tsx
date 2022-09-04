@@ -104,7 +104,7 @@ const Chat: React.FC = () => {
     socket.on(
       `keyboard-start:room(${sessionStatus.id})`,
       (user: string): void => {
-        if (user == userInfo.username) {
+        if (user !== userInfo.username) {
           setTyping(true);
           setTypingUser(user);
           setAnimationFrame((prevState: number): number => prevState + 1);
