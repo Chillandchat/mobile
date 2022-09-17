@@ -187,6 +187,7 @@ const Chat: React.FC = () => {
       position: "absolute",
       bottom: "7%",
       marginHorizontal: 50,
+      maxHeight: 100,
     },
     chatRoomBar: {
       position: "absolute",
@@ -224,6 +225,7 @@ const Chat: React.FC = () => {
     },
     sendImage: {
       marginRight: Platform.OS == "android" ? 23 : 15,
+      marginLeft: -10,
     },
     downButton: {
       alignItems: "flex-start",
@@ -380,6 +382,7 @@ const Chat: React.FC = () => {
           </TouchableOpacity>
           <Form
             placeholder={"Type a message..."}
+            multiline
             onTextChange={(text: string): void => {
               if (text !== "" && !typing) {
                 setKeyboardSocket(

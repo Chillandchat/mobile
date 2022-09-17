@@ -33,7 +33,7 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
         props.message.user === userInfo.username ? "flex-end" : "flex-start",
       margin: 10,
       marginLeft: props.message.user === userInfo.username ? 0 : 60,
-      padding: 20,
+      padding: 25,
       backgroundColor:
         props.message.user === userInfo.username ? "#00AD98" : "#E5E5E5",
       borderTopLeftRadius: props.message.user === userInfo.username ? 50 : 0,
