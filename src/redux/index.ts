@@ -1,5 +1,6 @@
 import { Action, combineReducers, createStore, Store } from "redux";
 
+import imageBase from "./reducers/imageBase";
 import loginStatus from "./reducers/loginStatus";
 import messageInfo from "./reducers/messageInfo";
 import profileInfo from "./reducers/profileInfo";
@@ -14,6 +15,7 @@ export const reducers: any = combineReducers({
   roomUserInfo: roomUserInfo,
   messageInfo: messageInfo,
   profileInfo: profileInfo,
+  imageBase: imageBase,
 });
 
 const store: Store<unknown, Action<any>> = createStore(reducers);

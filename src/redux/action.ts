@@ -9,6 +9,7 @@ import {
   RoomUserInfoEventType,
   MessageInfoEventType,
   ProfileInfoEventType,
+  ImageBaseEventType,
 } from "./index.d";
 
 /**
@@ -148,4 +149,24 @@ export const setProfileInfo = (
 
 export const clearProfileInfo = (): ActionNoParameter<ProfileInfoEventType> => {
   return { type: "CLEAR_PROFILE_INFO" };
+};
+
+/**
+ * This is the set image base action, this action will set the parameter into the reducer.
+ *
+ * @param payload The link of the image's link.
+ */
+
+export const setImageBase = (
+  payload: string
+): ActionWithParameter<string, ImageBaseEventType> => {
+  return { type: "SET_IMAGE_LINK", payload: payload };
+};
+
+/**
+ * This is the clear image base action, this action will, as the name suggests will clear the image base reducer.
+ */
+
+export const clearImageBase = (): ActionNoParameter<ImageBaseEventType> => {
+  return { type: "DELETE_IMAGE_LINK" };
 };
