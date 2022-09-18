@@ -11,10 +11,13 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
+  Keyboard,
+  TouchableOpacity,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
+import { AntDesign } from "@expo/vector-icons";
 
 import Form from "../components/Form";
 import Button from "../components/Button";
@@ -29,7 +32,18 @@ import setKeyboardSocket from "../scripts/setKeyboardSocket";
 const SendImage: React.FC = () => {
   const [link, setLink]: any = React.useState("");
   const [error, setError]: any = React.useState(true);
+  const [keyboardOpen, setKeyboardOpen]: any = React.useState(false);
   const navigation: any = useNavigation();
+
+  React.useEffect((): any => {
+    Keyboard.addListener("keyboardDidShow", (): void => {
+      setKeyboardOpen(true);
+    });
+
+    Keyboard.addListener("keyboardDidHide", (): void => {
+      setKeyboardOpen(false);
+    });
+  });
 
   const { sessionStatus, userInfo }: any = useSelector(
     (state: RootState): RootState => {
@@ -68,6 +82,11 @@ const SendImage: React.FC = () => {
     },
     buttonContainer: {
       marginTop: 50,
+    },
+    find: {
+      position: "absolute",
+      bottom: 40,
+      left: 40,
     },
   });
 
@@ -164,6 +183,16 @@ const SendImage: React.FC = () => {
           />
         </View>
       </ScrollView>
+      {!keyboardOpen ? (
+        <TouchableOpacity
+          style={style.find}
+          onPress={(): void => {
+            navigation.navigate("image-base");
+          }}
+        >
+          <AntDesign name="find" size={35} color="black" />
+        </TouchableOpacity>
+      ) : null}
     </KeyboardAvoidingView>
   );
 };
