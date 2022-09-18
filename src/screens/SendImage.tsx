@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
 
 import Form from "../components/Form";
@@ -24,6 +24,7 @@ import Button from "../components/Button";
 import sendMessage from "../scripts/sendMessage";
 import { RootState } from "../redux/index.d";
 import setKeyboardSocket from "../scripts/setKeyboardSocket";
+import { clearImageBase } from "../redux/action";
 
 /**
  * This is the send image screen, this screen will allow the user to send an image.
@@ -34,6 +35,10 @@ const SendImage: React.FC = () => {
   const [error, setError]: any = React.useState(true);
   const [keyboardOpen, setKeyboardOpen]: any = React.useState(false);
   const navigation: any = useNavigation();
+  const dispatch: any = useDispatch();
+  const imageBase: any = useSelector(
+    (state: RootState): RootState => state.imageBase
+  );
 
   React.useEffect((): any => {
     Keyboard.addListener("keyboardDidShow", (): void => {
@@ -58,6 +63,12 @@ const SendImage: React.FC = () => {
       }
     );
   }, []);
+
+  React.useEffect((): void => {
+    if (imageBase === null) return;
+    setLink(imageBase);
+    setError(false);
+  }, [imageBase]);
 
   const style: any = StyleSheet.create({
     container: {
@@ -125,8 +136,10 @@ const SendImage: React.FC = () => {
 
         <Form
           placeholder={"Image link"}
+          value={imageBase === null ? undefined : imageBase}
           onTextChange={(text: string): void => {
             setLink(text);
+            console.log("bi");
             setError(false);
           }}
         />
@@ -158,6 +171,7 @@ const SendImage: React.FC = () => {
                   ).catch((err: unknown): void => {
                     console.error(err);
                   });
+                  dispatch(clearImageBase());
                   navigation.navigate("chat");
                 })
                 .catch((err: unknown): void => {
@@ -177,7 +191,7 @@ const SendImage: React.FC = () => {
               ).catch((err: unknown): void => {
                 console.error(err);
               });
-
+              dispatch(clearImageBase());
               navigation.navigate("chat");
             }}
           />
@@ -187,6 +201,7 @@ const SendImage: React.FC = () => {
         <TouchableOpacity
           style={style.find}
           onPress={(): void => {
+            dispatch(clearImageBase());
             navigation.navigate("image-base");
           }}
         >
