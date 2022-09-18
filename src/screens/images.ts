@@ -1,5 +1,11 @@
 namespace Images {
-  interface ImageType {
+  /**
+   * This is the image type for the image bank.
+   *
+   * @param {string} name The name of the image, so it can be searched up.
+   * @param {string} link The CDN link of the image.
+   */
+  export interface ImageType {
     name: string;
     link: string;
   }
@@ -20,10 +26,6 @@ namespace Images {
     {
       link: "https://images.pexels.com/photos/9016977/pexels-photo-9016977.jpeg?cs=srgb&dl=pexels-kevin-malik-9016977.jpg&fm=jpg",
       name: "Waving hand",
-    },
-    {
-      name: "Person waving",
-      link: "https://images.pexels.com/photos/9016977/pexels-photo-9016977.jpeg?cs=srgb&dl=pexels-kevin-malik-9016977.jpg&fm=jpg",
     },
     {
       name: "Whale",
