@@ -34,6 +34,7 @@ import SendImage from "./screens/SendImage";
 import MessageOptions from "./screens/MessageOptions";
 import UserProfile from "./screens/UserProfile";
 import RoomId from "./screens/RoomId";
+import ImageBase from "./screens/ImageBase";
 
 /**
  * This is the router component for the application, This component
@@ -98,6 +99,11 @@ namespace app {
                 <NavigatorStack.Screen
                   name="information"
                   component={Information}
+                  options={{ headerShown: false }}
+                />
+                <NavigatorStack.Screen
+                  name="image-base"
+                  component={ImageBase}
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen
