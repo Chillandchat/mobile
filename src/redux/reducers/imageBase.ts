@@ -7,7 +7,7 @@ import { ActionWithParameter, ImageBaseEventType } from "./../index.d";
  */
 
 const imageBase = (
-  state: string | undefined = undefined,
+  state: string | null = null,
   action: ActionWithParameter<string, ImageBaseEventType>
 ): typeof state => {
   switch (action.type) {
@@ -15,7 +15,7 @@ const imageBase = (
       return (state = action.payload);
 
     case "DELETE_IMAGE_LINK":
-      return (state = undefined);
+      return (state = null);
 
     default:
       return state;
