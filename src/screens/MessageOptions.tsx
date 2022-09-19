@@ -1,8 +1,17 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Image,
+  Button,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
+import * as Speech from "expo-speech";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 import deleteMessage from "../scripts/deleteMessage";
 import { RootState } from "../redux/index.d";
@@ -37,7 +46,7 @@ const MessageOptions: React.FC = () => {
     text: {
       fontFamily: "poppins",
       fontSize: 20,
-      color: "red",
+      color: "#000",
       margin: 10,
     },
     delete: {
@@ -51,6 +60,11 @@ const MessageOptions: React.FC = () => {
       borderRadius: 20,
       margin: 50,
       backgroundColor: "#E5E5E5",
+    },
+    readMessage: {
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
     },
   });
 
@@ -72,13 +86,30 @@ const MessageOptions: React.FC = () => {
           style={style.image}
           source={{ uri: messageInfo?.content.slice(5, -1) }}
         />
-      ) : null}
+      ) : (
+        <TouchableOpacity
+          style={style.readMessage}
+          onPress={(): void => {
+            Speech.speak(
+              `${
+                messageInfo.user === userInfo.username
+                  ? "You"
+                  : messageInfo.user
+              } said: ${messageInfo.content}`
+            );
+          }}
+        >
+          <FontAwesome5 name="readme" size={35} color="black" />
+          <Text style={style.text}>Read message</Text>
+        </TouchableOpacity>
+      )}
       {messageInfo.user === userInfo.username ? (
         <TouchableOpacity
           style={style.delete}
           onPress={(): void => {
             deleteMessage(messageInfo.id, messageInfo.room)
               .then((): void => {
+                setProcessing(true);
                 dispatch(clearMessageInfo());
                 navigation.navigate("chat");
               })
@@ -88,7 +119,7 @@ const MessageOptions: React.FC = () => {
           }}
         >
           <AntDesign name="delete" size={30} color="red" />
-          <Text style={style.text}>Delete message</Text>
+          <Text style={[style.text, { color: "red" }]}>Delete message</Text>
         </TouchableOpacity>
       ) : null}
     </View>

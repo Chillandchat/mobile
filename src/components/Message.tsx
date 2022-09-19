@@ -68,11 +68,6 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
 
   return (
     <TouchableOpacity
-      disabled={
-        props.message.user === userInfo.username
-          ? false
-          : !props.message.content.includes("!IMG")
-      }
       onLongPress={(): void => {
         dispatch(setMessageInfo(props.message));
         navigator.navigate("message-options");
