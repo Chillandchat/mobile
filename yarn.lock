@@ -2907,6 +2907,11 @@ expo-modules-core@0.6.4:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
 
+expo-speech@~10.1.0:
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/expo-speech/-/expo-speech-10.1.1.tgz#fc4a820fd1bd6203c388837ab3947e24242c3615"
+  integrity sha512-tovcfD3Qi5WvY91d+N+dMVDMz+GwW/c9ze/Ct3cZQLBJQubqlVtlDqb/cDD2Uwuwb+zjAH3N6NfAFSgCdhqwAQ==
+
 expo-splash-screen@~0.14.0:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.14.1.tgz#7647c8b98c679b8313d24a7c14729402c3c16631"
