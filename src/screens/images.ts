@@ -184,6 +184,26 @@ namespace Images {
       link: "https://images.pexels.com/photos/1656564/pexels-photo-1656564.jpeg?cs=srgb&dl=pexels-brett-sayles-1656564.jpg&fm=jpg",
       name: "Merry christmas",
     },
+    {
+      link: "https://images.pexels.com/photos/11747534/pexels-photo-11747534.jpeg?cs=srgb&dl=pexels-jamo-images-11747534.jpg&fm=jpg",
+      name: "Halloween",
+    },
+    {
+      link: "https://images.pexels.com/photos/2072149/pexels-photo-2072149.jpeg?cs=srgb&dl=pexels-george-dolgikh-2072149.jpg&fm=jpg",
+      name: "Happy birthday",
+    },
+    {
+      link: "https://images.pexels.com/photos/2072167/pexels-photo-2072167.jpeg?cs=srgb&dl=pexels-george-dolgikh-2072167.jpg&fm=jpg",
+      name: "I love you",
+    },
+    {
+      link: "https://images.pexels.com/photos/2072160/pexels-photo-2072160.jpeg?cs=srgb&dl=pexels-george-dolgikh-2072160.jpg&fm=jpg",
+      name: "Happy mother's day",
+    },
+    {
+      link: "https://images.pexels.com/photos/3626241/pexels-photo-3626241.jpeg?cs=srgb&dl=pexels-felix-haumann-3626241.jpg&fm=jpg",
+      name: "Old car",
+    },
   ];
 }
 
