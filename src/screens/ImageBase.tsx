@@ -6,13 +6,15 @@ import {
   Image,
   TouchableOpacity,
   Text,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
 
 import Form from "../components/Form";
 import Images from "./images";
-import { useNavigation } from "@react-navigation/native";
-import { useDispatch } from "react-redux";
 import { setImageBase } from "../redux/action";
 
 /**
@@ -81,51 +83,57 @@ const ImageBase: React.FC = () => {
   });
 
   return (
-    <View style={style.container}>
-      <TouchableOpacity
-        style={style.back}
-        onPress={(): void => {
-          navigation.navigate("send-image");
-        }}
-      >
-        <AntDesign name="back" size={24} color="black" />
-      </TouchableOpacity>
-      <Text style={style.heading}>Chill&chat images</Text>
-      <Form
-        placeholder="Search"
-        onTextChange={(text: string): void => {
-          setFilter(text);
-        }}
-      />
-      <View style={style.imageListContainer}>
-        <ScrollView>
-          {Images.images.map((image: Images.ImageType): any => {
-            return filter == "" ||
-              image.name.toLowerCase().includes(filter.toLowerCase()) ? (
-              <TouchableOpacity
-                key={image.link}
-                style={style.imageContainer}
-                onPress={(): void => {
-                  dispatch(setImageBase(image.link));
-                  navigation.navigate("send-image");
-                }}
-              >
-                <Image source={{ uri: image.link }} style={style.image} />
-              </TouchableOpacity>
-            ) : null;
-          })}
-        </ScrollView>
-      </View>
-      <View style={style.pexelsContainer}>
-        <Image
-          source={{
-            uri: "https://seeklogo.com/images/P/pexels-logo-EFB9232709-seeklogo.com.png",
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      enabled
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <ScrollView contentContainerStyle={style.container}>
+        <TouchableOpacity
+          style={style.back}
+          onPress={(): void => {
+            navigation.navigate("send-image");
           }}
-          style={style.pexels}
+        >
+          <AntDesign name="back" size={24} color="black" />
+        </TouchableOpacity>
+        <Text style={style.heading}>Chill&chat images</Text>
+        <Form
+          placeholder="Search"
+          onTextChange={(text: string): void => {
+            setFilter(text);
+          }}
         />
-        <Text style={style.credit}>Images from Pexels(Not sponsored)</Text>
-      </View>
-    </View>
+        <View style={style.imageListContainer}>
+          <ScrollView>
+            {Images.images.map((image: Images.ImageType): any => {
+              return filter == "" ||
+                image.name.toLowerCase().includes(filter.toLowerCase()) ? (
+                <TouchableOpacity
+                  key={image.link}
+                  style={style.imageContainer}
+                  onPress={(): void => {
+                    dispatch(setImageBase(image.link));
+                    navigation.navigate("send-image");
+                  }}
+                >
+                  <Image source={{ uri: image.link }} style={style.image} />
+                </TouchableOpacity>
+              ) : null;
+            })}
+          </ScrollView>
+        </View>
+        <View style={style.pexelsContainer}>
+          <Image
+            source={{
+              uri: "https://seeklogo.com/images/P/pexels-logo-EFB9232709-seeklogo.com.png",
+            }}
+            style={style.pexels}
+          />
+          <Text style={style.credit}>Images from Pexels(Not sponsored)</Text>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
