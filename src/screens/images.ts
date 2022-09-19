@@ -156,6 +156,34 @@ namespace Images {
       link: "https://images.pexels.com/photos/4587979/pexels-photo-4587979.jpeg?cs=srgb&dl=pexels-anna-shvets-4587979.jpg&fm=jpg",
       name: "Dog",
     },
+    {
+      link: "https://images.pexels.com/photos/3709091/pexels-photo-3709091.jpeg?cs=srgb&dl=pexels-lil-artsy-3709091.jpg&fm=jpg",
+      name: "Have a great day",
+    },
+    {
+      link: "https://images.pexels.com/photos/6973711/pexels-photo-6973711.jpeg?cs=srgb&dl=pexels-monstera-6973711.jpg&fm=jpg",
+      name: "Laughing person",
+    },
+    {
+      link: "https://images.pexels.com/photos/4681461/pexels-photo-4681461.jpeg?cs=srgb&dl=pexels-skyler-ewing-4681461.jpg&fm=jpg",
+      name: "Laughing baby",
+    },
+    {
+      link: "https://images.pexels.com/photos/207983/pexels-photo-207983.jpeg?cs=srgb&dl=pexels-pixabay-207983.jpg&fm=jpg",
+      name: "Happy face",
+    },
+    {
+      link: "https://images.pexels.com/photos/437716/pexels-photo-437716.jpeg?cs=srgb&dl=pexels-aphiwat-chuangchoem-437716.jpg&fm=jpg",
+      name: "Good morning",
+    },
+    {
+      link: "https://images.pexels.com/photos/3334355/pexels-photo-3334355.jpeg?cs=srgb&dl=pexels-jill-wellington-3334355.jpg&fm=jpg",
+      name: "Happy new year",
+    },
+    {
+      link: "https://images.pexels.com/photos/1656564/pexels-photo-1656564.jpeg?cs=srgb&dl=pexels-brett-sayles-1656564.jpg&fm=jpg",
+      name: "Merry christmas",
+    },
   ];
 }
 
