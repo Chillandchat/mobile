@@ -15,7 +15,10 @@ import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { setImageBase } from "../redux/action";
 
-//! WORK-IN-PROGRESS
+/**
+ * This is the image base component/screen.
+ * This screen allows users to send one of the provided Chill&chat images in the chat room.
+ */
 
 const ImageBase: React.FC = () => {
   const [filter, setFilter]: any = React.useState("");
