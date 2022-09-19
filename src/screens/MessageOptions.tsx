@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,9 +15,12 @@ import { clearMessageInfo } from "../redux/action";
 const MessageOptions: React.FC = () => {
   const navigation: any = useNavigation();
   const dispatch: any = useDispatch();
-  const messageInfo: any = useSelector(
-    (state: RootState): RootState => state.messageInfo
+
+  const { messageInfo, userInfo }: any = useSelector(
+    (state: RootState): RootState => state
   );
+
+  const [processing, setProcessing] = React.useState(false);
 
   const style: any = StyleSheet.create({
     container: {
@@ -42,13 +45,21 @@ const MessageOptions: React.FC = () => {
       justifyContent: "center",
       alignItems: "center",
     },
+    image: {
+      height: 300,
+      width: 300,
+      borderRadius: 20,
+      margin: 50,
+      backgroundColor: "#E5E5E5",
+    },
   });
 
-  return (
+  return !processing ? (
     <View style={style.container}>
       <View style={style.back}>
         <TouchableOpacity
           onPress={(): void => {
+            setProcessing(true);
             dispatch(clearMessageInfo());
             navigation.navigate("chat");
           }}
@@ -56,24 +67,32 @@ const MessageOptions: React.FC = () => {
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        style={style.delete}
-        onPress={(): void => {
-          deleteMessage(messageInfo.id, messageInfo.room)
-            .then((): void => {
-              dispatch(clearMessageInfo());
-              navigation.navigate("chat");
-            })
-            .catch((err: unknown): void => {
-              console.error(err);
-            });
-        }}
-      >
-        <AntDesign name="delete" size={30} color="red" />
-        <Text style={style.text}>Delete message</Text>
-      </TouchableOpacity>
+      {messageInfo.content.includes("!IMG") ? (
+        <Image
+          style={style.image}
+          source={{ uri: messageInfo?.content.slice(5, -1) }}
+        />
+      ) : null}
+      {messageInfo.user === userInfo.username ? (
+        <TouchableOpacity
+          style={style.delete}
+          onPress={(): void => {
+            deleteMessage(messageInfo.id, messageInfo.room)
+              .then((): void => {
+                dispatch(clearMessageInfo());
+                navigation.navigate("chat");
+              })
+              .catch((err: unknown): void => {
+                console.error(err);
+              });
+          }}
+        >
+          <AntDesign name="delete" size={30} color="red" />
+          <Text style={style.text}>Delete message</Text>
+        </TouchableOpacity>
+      ) : null}
     </View>
-  );
+  ) : null;
 };
 
 export default MessageOptions;
