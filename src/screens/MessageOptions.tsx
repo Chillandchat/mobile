@@ -79,23 +79,24 @@ const MessageOptions: React.FC = () => {
           style={style.image}
           source={{ uri: messageInfo?.content.slice(5, -1) }}
         />
-      ) : (
-        <TouchableOpacity
-          style={style.readMessage}
-          onPress={(): void => {
-            Speech.speak(
-              `${
-                messageInfo.user === userInfo.username
-                  ? "You"
-                  : messageInfo.user
-              } said: ${messageInfo.content}`
-            );
-          }}
-        >
-          <FontAwesome5 name="readme" size={35} color="black" />
-          <Text style={style.text}>Read message</Text>
-        </TouchableOpacity>
-      )}
+      ) : null}
+      <TouchableOpacity
+        style={style.readMessage}
+        onPress={(): void => {
+          Speech.speak(
+            `${
+              messageInfo.user === userInfo.username ? "You" : messageInfo.user
+            } ${messageInfo.content.includes("!IMG") ? "sent" : "said:"} ${
+              messageInfo.content.includes("!IMG")
+                ? "an image"
+                : messageInfo.content
+            }`
+          );
+        }}
+      >
+        <FontAwesome5 name="readme" size={35} color="black" />
+        <Text style={style.text}>Read message</Text>
+      </TouchableOpacity>
       {messageInfo.user === userInfo.username ? (
         <TouchableOpacity
           style={style.delete}
