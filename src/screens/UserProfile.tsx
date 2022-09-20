@@ -92,6 +92,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
       position: "absolute",
       top: "7%",
       alignSelf: "center",
+      maxWidth: "65%",
     },
     descriptionBody: {
       height: "60%",
@@ -128,8 +129,8 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
         >
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
-        <Text style={style.heading}>
-          {state.profileInfo.username}'s profile
+        <Text style={style.heading} numberOfLines={1}>
+          {state.profileInfo.username}
         </Text>
         <View style={style.nameInfo}>
           <Icon

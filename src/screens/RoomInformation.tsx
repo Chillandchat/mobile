@@ -24,7 +24,7 @@ import { setProfileInfo } from "../redux/action";
  */
 
 const RoomInformation: React.FC<any> = ({ navigation }) => {
-  const { sessionStatus, roomUserInfo, userInfo } = useSelector(
+  const { roomUserInfo, userInfo } = useSelector(
     (state: RootState): RootState => {
       return state;
     }
@@ -120,6 +120,7 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
                   dispatch(setProfileInfo(user));
                   navigation.navigate("user-profile");
                 }}
+                key={user.id}
               >
                 <View style={style.user} key={user.id.concat("-e")}>
                   <Icon
