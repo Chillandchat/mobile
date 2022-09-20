@@ -18,7 +18,7 @@ const MessageOptions: React.FC = () => {
   const navigation: any = useNavigation();
   const dispatch: any = useDispatch();
 
-  const { messageInfo, userInfo }: any = useSelector(
+  const { messageInfo, userInfo, sessionStatus }: any = useSelector(
     (state: RootState): RootState => state
   );
 
@@ -83,15 +83,23 @@ const MessageOptions: React.FC = () => {
       <TouchableOpacity
         style={style.readMessage}
         onPress={(): void => {
-          Speech.speak(
-            `${
-              messageInfo.user === userInfo.username ? "You" : messageInfo.user
-            } ${messageInfo.content.includes("!IMG") ? "sent" : "said:"} ${
-              messageInfo.content.includes("!IMG")
-                ? "an image"
-                : messageInfo.content
-            }`
-          );
+          Speech.isSpeakingAsync().then((isSpeaking: boolean): void => {
+            if (isSpeaking) return;
+
+            Speech.speak(
+              `${
+                sessionStatus.users.indexOf(messageInfo.user) === -1
+                  ? "a deleted user"
+                  : messageInfo.user === userInfo.username
+                  ? "You"
+                  : messageInfo.user
+              } ${messageInfo.content.includes("!IMG") ? "sent" : "said:"} ${
+                messageInfo.content.includes("!IMG")
+                  ? "an image"
+                  : messageInfo.content
+              }`
+            );
+          });
         }}
       >
         <FontAwesome5 name="readme" size={35} color="black" />
