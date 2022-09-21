@@ -61,14 +61,16 @@ export interface ApiEndpoints {
 /**
  * This is the database schema for the message object in mongoDB database.
  *
- * @param {string} id The id of the message.
- * @param {string} message The user that sent the message.
- * @param {string} content The content of the message.
- * @param {boolean} verified Whether the sender of the message is verified.
+ * @param {string} id The id of the user.
  * @param {string} iconColor The icon color.
  * @param {string} description The description of the user profile.
  * @param {number} followers The number of followers of the user.
  * @param {Array<string>} following The array of following users of the user.
+ * @param {string} username The username of the user.
+ * @param {boolean} verified Whether the user is verified.
+ * @param {string} password The password of the user.
+ * @param {boolean} bot Whether the user is a bot.
+ * @param {boolean} blocked Wether the user is blocked.
  */
 
 export interface AuthType {
