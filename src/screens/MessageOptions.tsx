@@ -22,7 +22,6 @@ const MessageOptions: React.FC = () => {
     (state: RootState): RootState => state
   );
 
-  const [processing, setProcessing] = React.useState(false);
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
@@ -60,12 +59,12 @@ const MessageOptions: React.FC = () => {
     },
   });
 
-  return !processing ? (
+  return (
     <View style={style.container}>
       <View style={style.back}>
         <TouchableOpacity
           onPress={(): void => {
-            setProcessing(true);
+            Speech.stop();
             dispatch(clearMessageInfo());
             navigation.navigate("chat");
           }}
@@ -73,10 +72,10 @@ const MessageOptions: React.FC = () => {
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      {messageInfo.message.content.includes("!IMG") ? (
+      {messageInfo?.message.content.includes("!IMG") ? (
         <Image
           style={style.image}
-          source={{ uri: messageInfo.message?.content.slice(5, -1) }}
+          source={{ uri: messageInfo?.message?.content.slice(5, -1) }}
         />
       ) : null}
       <TouchableOpacity
@@ -87,17 +86,17 @@ const MessageOptions: React.FC = () => {
 
             Speech.speak(
               `${
-                sessionStatus.users.indexOf(messageInfo.message.user) === -1
+                sessionStatus.users.indexOf(messageInfo?.message.user) === -1
                   ? "a deleted user"
-                  : messageInfo.message.user === userInfo.username
+                  : messageInfo?.message.user === userInfo.username
                   ? "You"
-                  : messageInfo.message.user
+                  : messageInfo?.message.user
               } ${
-                messageInfo.message.content.includes("!IMG") ? "sent" : "said:"
+                messageInfo?.message.content.includes("!IMG") ? "sent" : "said:"
               } ${
-                messageInfo.message.content.includes("!IMG")
+                messageInfo?.message.content.includes("!IMG")
                   ? "an image"
-                  : messageInfo.readMessage
+                  : messageInfo?.readMessage
               }`
             );
           });
@@ -106,13 +105,12 @@ const MessageOptions: React.FC = () => {
         <FontAwesome5 name="readme" size={35} color="black" />
         <Text style={style.text}>Read message</Text>
       </TouchableOpacity>
-      {messageInfo.message.user === userInfo.username ? (
+      {messageInfo?.message.user === userInfo.username ? (
         <TouchableOpacity
           style={style.delete}
           onPress={(): void => {
-            deleteMessage(messageInfo.message.id, messageInfo.message.room)
+            deleteMessage(messageInfo?.message.id, messageInfo?.message.room)
               .then((): void => {
-                setProcessing(true);
                 dispatch(clearMessageInfo());
                 navigation.navigate("chat");
               })
@@ -126,7 +124,7 @@ const MessageOptions: React.FC = () => {
         </TouchableOpacity>
       ) : null}
     </View>
-  ) : null;
+  );
 };
 
 export default MessageOptions;
