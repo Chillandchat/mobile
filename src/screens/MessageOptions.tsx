@@ -97,7 +97,8 @@ const MessageOptions: React.FC = () => {
                 messageInfo?.message.content.includes("!IMG")
                   ? "an image"
                   : messageInfo?.readMessage
-              }`
+              }`,
+              { language: "en" }
             );
           });
         }}
