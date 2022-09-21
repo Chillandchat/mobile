@@ -234,7 +234,7 @@ const Chat: React.FC = () => {
     },
   });
 
-  return (
+  return sessionStatus.users.includes(userInfo.username) ? (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       enabled
@@ -487,7 +487,7 @@ const Chat: React.FC = () => {
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
-  );
+  ) : null;
 };
 
 export default Chat;
