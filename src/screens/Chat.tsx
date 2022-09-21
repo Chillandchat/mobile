@@ -273,10 +273,7 @@ const Chat: React.FC = () => {
               {messageDisplayed?.map((tmpMessage: MessageType): any => {
                 const readMessage: string = tmpMessage.content;
 
-                // Parsing to avoid mutations
-                let message: MessageType = JSON.parse(
-                  JSON.stringify(tmpMessage)
-                );
+                let message: MessageType = { ...tmpMessage };
 
                 if (message.content.includes("@")) {
                   sessionStatus.users.forEach((username: string): void => {
