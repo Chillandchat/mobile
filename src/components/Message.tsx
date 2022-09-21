@@ -5,21 +5,25 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
+// @ts-ignore
+import JsxParser from "react-native-jsx-parser";
+
 import { MessageProps } from "./index.d";
 import { RootState } from "../redux/index.d";
 import Icon from "./Icon";
 import { setMessageInfo, setProfileInfo } from "../redux/action";
-import getUser from "../scripts/getUser";
 
 /**
  * This is the message component, this component will display the message that users send.
  *
  * @prop {MessageType} message The message that the user sent.
- * @prop {AuthType} messageUserInfo The information about all the users in the room
+ * @prop {AuthType} messageUserInfo The information about all the users in the room.
+ * @prop {string} readMessage The message used in the message reading.
  */
 
 const Message: React.FC<MessageProps> = (props: MessageProps) => {
   const [imageError, setImageError] = React.useState(false);
+
   const dispatch = useDispatch();
   const { userInfo }: any = useSelector((state: RootState): RootState => {
     return state;
@@ -64,12 +68,26 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
       padding: 10,
       alignSelf: "flex-end",
     },
+    notification: {
+      height: 15,
+      width: 15,
+      backgroundColor: "red",
+      borderRadius: 1000,
+      position: "absolute",
+      right: 5,
+      top: 10,
+    },
   });
 
   return (
     <TouchableOpacity
       onLongPress={(): void => {
-        dispatch(setMessageInfo(props.message));
+        dispatch(
+          setMessageInfo({
+            message: props.message,
+            readMessage: props.readMessage,
+          })
+        );
         navigator.navigate("message-options");
       }}
     >
@@ -96,6 +114,10 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
         </View>
       ) : null}
       <View style={style.container}>
+        {props.message.content.includes(`@${userInfo.username}`) &&
+        props.message.user !== userInfo.username ? (
+          <View style={style.notification} />
+        ) : null}
         {props.message.user !== userInfo.username ? (
           <View style={style.usernameBox}>
             <Text
@@ -134,7 +156,13 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
             <Text style={style.content}>Image unavailable</Text>
           </View>
         ) : (
-          <Text style={style.content}>{props.message.content}</Text>
+          <Text style={style.content}>
+            <JsxParser
+              components={{ Text }}
+              bindings={{ bindingStyle: style }}
+              jsx={`${props.message.content}`}
+            />
+          </Text>
         )}
       </View>
     </TouchableOpacity>

@@ -23,7 +23,6 @@ const MessageOptions: React.FC = () => {
   );
 
   const [processing, setProcessing] = React.useState(false);
-
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
@@ -74,10 +73,10 @@ const MessageOptions: React.FC = () => {
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      {messageInfo.content.includes("!IMG") ? (
+      {messageInfo.message.content.includes("!IMG") ? (
         <Image
           style={style.image}
-          source={{ uri: messageInfo?.content.slice(5, -1) }}
+          source={{ uri: messageInfo.message?.content.slice(5, -1) }}
         />
       ) : null}
       <TouchableOpacity
@@ -88,15 +87,17 @@ const MessageOptions: React.FC = () => {
 
             Speech.speak(
               `${
-                sessionStatus.users.indexOf(messageInfo.user) === -1
+                sessionStatus.users.indexOf(messageInfo.message.user) === -1
                   ? "a deleted user"
-                  : messageInfo.user === userInfo.username
+                  : messageInfo.message.user === userInfo.username
                   ? "You"
-                  : messageInfo.user
-              } ${messageInfo.content.includes("!IMG") ? "sent" : "said:"} ${
-                messageInfo.content.includes("!IMG")
+                  : messageInfo.message.user
+              } ${
+                messageInfo.message.content.includes("!IMG") ? "sent" : "said:"
+              } ${
+                messageInfo.message.content.includes("!IMG")
                   ? "an image"
-                  : messageInfo.content
+                  : messageInfo.readMessage
               }`
             );
           });
@@ -105,11 +106,11 @@ const MessageOptions: React.FC = () => {
         <FontAwesome5 name="readme" size={35} color="black" />
         <Text style={style.text}>Read message</Text>
       </TouchableOpacity>
-      {messageInfo.user === userInfo.username ? (
+      {messageInfo.message.user === userInfo.username ? (
         <TouchableOpacity
           style={style.delete}
           onPress={(): void => {
-            deleteMessage(messageInfo.id, messageInfo.room)
+            deleteMessage(messageInfo.message.id, messageInfo.message.room)
               .then((): void => {
                 setProcessing(true);
                 dispatch(clearMessageInfo());

@@ -69,7 +69,7 @@ const Chat: React.FC = () => {
     getMessages(sessionStatus.id)
       .then((messages: Array<MessageType>): void => {
         setMessageDisplayed([]);
-        setMessageDisplayed([...messageDisplayed, ...messages]);
+        setMessageDisplayed([...messages]);
         let users: Array<AuthType> = [];
 
         sessionStatus.users.forEach((user: string): void => {
@@ -270,9 +270,42 @@ const Chat: React.FC = () => {
                 setScrollViewHeight(height);
               }}
             >
-              {messageDisplayed?.map((message: MessageType): any => {
+              {messageDisplayed?.map((tmpMessage: MessageType): any => {
+                const readMessage: string = tmpMessage.content;
+
+                // Parsing to avoid mutations
+                let message: MessageType = JSON.parse(
+                  JSON.stringify(tmpMessage)
+                );
+
+                if (message.content.includes("@")) {
+                  sessionStatus.users.forEach((username: string): void => {
+                    if (
+                      message.content.includes(`@${username}`) &&
+                      !message.content.includes(
+                        `<Text style={[bindingStyle.content, {fontFamily: "poppinsExtraBold"}]}>@${username}</Text>`
+                      )
+                    ) {
+                      message.content = message.content.replace(
+                        `@${username}`,
+                        `<Text style={[bindingStyle.content, {fontFamily: "poppinsExtraBold"}]}>@${username}</Text>`
+                      );
+                      if (
+                        message.user !== userInfo.username &&
+                        username === userInfo.username
+                      ) {
+                        message.content = message.content.replace(
+                          `@${username}`,
+                          `<Text style={[bindingStyle.content, {fontFamily: "poppinsExtraBold", color:"red"}]}>@${username}</Text>`
+                        );
+                      }
+                    }
+                  });
+                }
+
                 return (
                   <Message
+                    readMessage={readMessage}
                     key={message.id}
                     messageUserInfo={
                       message.user !== userInfo.username

@@ -139,7 +139,6 @@ const SendImage: React.FC = () => {
           value={imageBase === null ? undefined : imageBase}
           onTextChange={(text: string): void => {
             setLink(text);
-            console.log("bi");
             setError(false);
           }}
         />
