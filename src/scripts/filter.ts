@@ -12,7 +12,7 @@ const filter = (text: string): string => {
 
   Words.BAD_WORDS.forEach((word: string) => {
     if (text.toLowerCase().includes(` ${word} `)) {
-      text = text.toLowerCase().replace(word, "*".repeat(word.length));
+      text = text.toLowerCase().replaceAll(word, "*".repeat(word.length));
     }
   });
 
