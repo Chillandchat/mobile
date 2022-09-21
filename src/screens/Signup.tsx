@@ -24,7 +24,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  
+
   const style = StyleSheet.create({
     container: {
       justifyContent: "center",
@@ -96,6 +96,14 @@ const Signup: React.FC<any> = ({ navigation }) => {
 
             if (password !== confirmPassword) {
               setError("Passwords does not match.");
+              setTimeout(() => {
+                setError("");
+              }, 5000);
+              return;
+            }
+
+            if (username.includes(" ")) {
+              setError("Usernames cannot contain spaces.");
               setTimeout(() => {
                 setError("");
               }, 5000);
