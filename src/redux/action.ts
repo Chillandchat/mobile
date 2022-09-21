@@ -10,6 +10,7 @@ import {
   MessageInfoEventType,
   ProfileInfoEventType,
   ImageBaseEventType,
+  MessageInfoType,
 } from "./index.d";
 
 /**
@@ -112,12 +113,12 @@ export const setRoomUserInfo = (
 /**
  * This is the set message info action for the message information reducer, this action will set the message information.
  *
- * @param {MessageType} payload The message information.
+ * @param {MessageInfoType} payload The message information.
  */
 
 export const setMessageInfo = (
-  payload: MessageType
-): ActionWithParameter<MessageType, MessageInfoEventType> => {
+  payload: MessageInfoType
+): ActionWithParameter<MessageInfoType, MessageInfoEventType> => {
   return {
     type: "SET_MESSAGE_INFO",
     payload: payload,

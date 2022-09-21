@@ -42,3 +42,16 @@ export type SessionStatusEventType =
  */
 
 export type RootState = ReturnType<typeof reducers>;
+
+/**
+ * This is the Message info type, this type is used in the message info reducer to store a readable message and a actual message data.
+ * As the content of the message may be modified.
+ *
+ * @param {MessageType} message The actual message information.
+ * @param {string} readMessage The message content used by the message reader.
+ */
+
+export interface MessageInfoType {
+  message: MessageType;
+  readMessage: string;
+}

@@ -1,16 +1,16 @@
 import { ActionWithParameter, MessageInfoEventType } from "../index.d";
-import { MessageType } from "../../scripts/index.d";
+import { MessageInfoType } from "../index.d";
 
 /**
- * This is the message info reducer, this reducer stores the message information. 
+ * This is the message info reducer, this reducer stores the message information.
  * This information is normally used to store the message for the message options page.
- * 
- * @param {MessageType | null} action The message information.
+ *
+ * @param {MessageInfoType | null} action The message information.
  */
 
 const messageInfo = (
-  state: MessageType | null = null,
-  action: ActionWithParameter<MessageType, MessageInfoEventType>
+  state: MessageInfoType | null = null,
+  action: ActionWithParameter<MessageInfoType, MessageInfoEventType>
 ): typeof state => {
   switch (action.type) {
     case "SET_MESSAGE_INFO":
