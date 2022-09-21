@@ -97,8 +97,7 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
 
               createRoom(name, password, username)
                 .then((): void => {
-                  Alert.alert("", "Please restart the app to see the changes.");
-                  navigation.navigate("menu");
+                  navigation.push("menu");
                 })
                 .catch((err: unknown): void => {
                   setError("Unable to create room.");

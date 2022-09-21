@@ -8,6 +8,7 @@ import reportRoom from "../scripts/reportRoom";
 import Button from "../components/Button";
 import { RootState } from "../redux/index.d";
 import removeRoom from "../scripts/removeRoom";
+import login from "../scripts/login";
 
 const RoomDangerZone: React.FC = () => {
   const { sessionStatus, userInfo }: any = useSelector(
@@ -17,9 +18,11 @@ const RoomDangerZone: React.FC = () => {
 
   const style: any = StyleSheet.create({
     text: {
-      fontFamily: "poppinsBold",
-      fontSize: 22,
-      padding: 30,
+      fontSize: 25,
+      fontFamily: "poppinsExtraBold",
+      position: "absolute",
+      top: "7%",
+      alignSelf: "center",
     },
     back: {
       position: "absolute",
@@ -32,10 +35,8 @@ const RoomDangerZone: React.FC = () => {
       flex: 1,
     },
     buttons: {
-      borderColor: "red",
-      borderWidth: 2,
-      padding: 20
-      ,borderRadius: 10,
+      padding: 35,
+      borderRadius: 10,
     },
   });
 
@@ -81,27 +82,62 @@ const RoomDangerZone: React.FC = () => {
           }}
           text={"report room"}
         />
-        <View style={{ marginTop: 10 }} />
+        <View style={{ marginTop: 15 }} />
         <Button
           color={"red"}
           textColor={"#fff"}
           onPress={(): void => {
             Alert.alert(
-              "",
+              "Leave room?",
               "Are you sure you want to leave this room? You cannot join unless you are reinvited.",
               [
                 {
                   text: "Leave",
                   style: "destructive",
                   onPress: (): void => {
-                    removeRoom(sessionStatus.id, userInfo.username)
-                      .then((): void => {
-                        navigation.navigate("login");
-                        Alert.alert("Room left", "You have left this room.");
-                      })
-                      .catch((err: unknown): void => {
-                        console.error(err);
-                      });
+                    Alert.prompt(
+                      "Login",
+                      "Please enter your password to confirm.",
+                      [
+                        {
+                          text: "Leave room",
+                          style: "destructive",
+                          onPress: (text: string | undefined): void => {
+                            if (text === undefined) {
+                              Alert.alert(
+                                "Password incorrect, please try again later."
+                              );
+                              return;
+                            }
+
+                            login(userInfo.username, text as string)
+                              .then((): void => {
+                                removeRoom(sessionStatus.id, userInfo.username)
+                                  .then((): void => {
+                                    navigation.push("menu");
+                                    Alert.alert(
+                                      "Room left",
+                                      "You have left this room."
+                                    );
+                                  })
+                                  .catch((err: unknown): void => {
+                                    console.error(err);
+                                  });
+                              })
+                              .catch((err: unknown): void => {
+                                console.error(err);
+                                Alert.alert(
+                                  "Password incorrect, please try again later."
+                                );
+                              });
+                          },
+                        },
+                        {
+                          text: "Cancel",
+                        },
+                      ],
+                      "secure-text"
+                    );
                   },
                 },
                 { text: "Cancel" },

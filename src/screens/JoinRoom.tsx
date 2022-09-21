@@ -147,8 +147,7 @@ const JoinRoom: React.FC<any> = ({ navigation }) => {
             if (name !== "" && password !== "") {
               joinRoom(username, name, password)
                 .then((): void => {
-                  Alert.alert("", "Please restart the app to see the changes.");
-                  navigation.navigate("menu");
+                  navigation.push("menu");
                 })
                 .catch((err: unknown): void => {
                   setError("Unable to join room.");
