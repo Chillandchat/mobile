@@ -57,8 +57,8 @@ const RoomDangerZone: React.FC = () => {
           textColor={"#fff"}
           onPress={(): void => {
             Alert.alert(
-              "",
-              "Are you sure you want to report this room? The Chill&chat team will be notified once reported.",
+              "Report room?",
+              "Are you sure you want to report this room? The Chill&chat team will be notified once it's reported. Users who spam or send useless/irrelevant report will be banned.",
               [
                 {
                   text: "Report",
