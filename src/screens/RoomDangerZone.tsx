@@ -64,16 +64,36 @@ const RoomDangerZone: React.FC = () => {
                   text: "Report",
                   style: "destructive",
                   onPress: (): void => {
-                    reportRoom(sessionStatus.id)
-                      .then((): void => {
-                        Alert.alert(
-                          "Room reported",
-                          "This room has been reported, thank you for your feedback! We will take action as soon as possible."
-                        );
-                      })
-                      .catch((err: unknown): void => {
-                        console.error(err);
-                      });
+                    Alert.prompt(
+                      "Enter a message",
+                      "Please describe the issue",
+                      [
+                        {
+                          text: "Submit",
+                          onPress: (text: string | undefined): void => {
+                            if (text === undefined) {
+                              Alert.alert("Error", "No message was provided.");
+                              return;
+                            }
+
+                            reportRoom(
+                              sessionStatus.id,
+                              String(text),
+                              userInfo.username
+                            )
+                              .then((): void => {
+                                Alert.alert(
+                                  "Room reported",
+                                  "This room has been reported, thank you for your feedback! We will take action as soon as possible."
+                                );
+                              })
+                              .catch((err: unknown): void => {
+                                console.error(err);
+                              });
+                          },
+                        },
+                      ]
+                    );
                   },
                 },
                 { text: "Cancel" },
