@@ -19,7 +19,8 @@ export type ApiEndpoint =
   | "/api/remove-room"
   | "/api/update-description"
   | "/api/unfollow-user"
-  | "/api/follow-user";
+  | "/api/follow-user"
+  | "/api/update-icon-color";
 
 /**
  * This is the ApiEndpoints type, This type works with the "ApiEndpoint"
@@ -38,6 +39,7 @@ export type ApiEndpoint =
  * @param {ApiEndpoint} unfollowUser
  * @param {ApiEndpoint} followUser
  * @param {ApiEndpoint} updateDescription
+ * @param {ApiEndpoint} updateIconColor
  */
 
 export interface ApiEndpoints {
@@ -56,6 +58,7 @@ export interface ApiEndpoints {
   followUser: ApiEndpoint;
   unfollowUser: ApiEndpoint;
   updateDescription: ApiEndpoint;
+  updateIconColor: ApiEndpoint;
 }
 
 /**
