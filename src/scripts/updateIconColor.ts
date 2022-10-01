@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 
-import api from "../../../cli/src/script/api";
+import api from "./api";
 
 /**
  * This is the update icon color function, this function just simply sends a update icon color request to the server.
