@@ -113,9 +113,7 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
                 { fontFamily: "poppinsBold", fontSize: 18, marginRight: 10 },
               ]}
             >
-              {props.messageUserInfo?.username === undefined
-                ? "Deleted user"
-                : props.message.user}
+              {props.message.user}
             </Text>
             {props.messageUserInfo?.verified ? (
               <MaterialIcons name="verified-user" size={24} color={"#00AD98"} />

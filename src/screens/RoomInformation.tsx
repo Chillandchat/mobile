@@ -24,7 +24,7 @@ import { setProfileInfo } from "../redux/action";
  */
 
 const RoomInformation: React.FC<any> = ({ navigation }) => {
-  const { roomUserInfo, userInfo } = useSelector(
+  const { roomUserInfo, userInfo, sessionStatus } = useSelector(
     (state: RootState): RootState => {
       return state;
     }
@@ -113,7 +113,7 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
           </View>
 
           {roomUserInfo.map((user: AuthType): any => {
-            return (
+            return sessionStatus.users.includes(user) ? (
               <TouchableOpacity
                 disabled={user.username === userInfo.username}
                 onPress={(): void => {
@@ -155,7 +155,7 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
                   ) : null}
                 </View>
               </TouchableOpacity>
-            );
+            ) : null;
           })}
         </ScrollView>
       </View>

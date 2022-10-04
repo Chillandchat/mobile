@@ -70,15 +70,24 @@ const Chat: React.FC = () => {
       .then((messages: Array<MessageType>): void => {
         setMessageDisplayed([]);
         setMessageDisplayed([...messages]);
+
+        const userList: typeof sessionStatus.users = [...sessionStatus.users];
+
         let users: Array<AuthType> = [];
 
-        sessionStatus.users.forEach((user: string): void => {
+        messages.forEach((message: MessageType): void => {
+          if (!userList.includes(message.user)) {
+            userList.push(message.user);
+          }
+        });
+
+        userList.forEach(async (user: string): Promise<void> => {
           if (user !== userInfo.username) {
             getUser(user)
               .then((data: AuthType | {}): void => {
                 if (Object.keys(data).length !== 0) {
                   users.push(data as AuthType);
-                  if (users.length === sessionStatus.users.length - 1) {
+                  if (users.length === userList.length - 1) {
                     dispatch(setRoomUserInfo(users));
                     setLoading(false);
                   }
@@ -88,7 +97,7 @@ const Chat: React.FC = () => {
                 console.error(err);
               });
           }
-          if (users.length === sessionStatus.users.length - 1) {
+          if (users.length === userList.length - 1) {
             setLoading(false);
           }
         });
