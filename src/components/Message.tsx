@@ -68,15 +68,6 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
       padding: 10,
       alignSelf: "flex-end",
     },
-    notification: {
-      height: 15,
-      width: 15,
-      backgroundColor: "red",
-      borderRadius: 1000,
-      position: "absolute",
-      right: 5,
-      top: 10,
-    },
   });
 
   return (
@@ -114,10 +105,6 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
         </View>
       ) : null}
       <View style={style.container}>
-        {props.message.content.includes(`@${userInfo.username}`) &&
-        props.message.user !== userInfo.username ? (
-          <View style={style.notification} />
-        ) : null}
         {props.message.user !== userInfo.username ? (
           <View style={style.usernameBox}>
             <Text

@@ -280,12 +280,12 @@ const Chat: React.FC = () => {
                     if (
                       message.content.includes(`@${username}`) &&
                       !message.content.includes(
-                        `<Text style={[bindingStyle.content, {fontFamily: "poppinsExtraBold"}]}>@${username}</Text>`
+                        `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>`
                       )
                     ) {
                       message.content = message.content.replace(
                         `@${username}`,
-                        `<Text style={[bindingStyle.content, {fontFamily: "poppinsExtraBold"}]}>@${username}</Text>`
+                        `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>`
                       );
                       if (
                         message.user !== userInfo.username &&
@@ -293,7 +293,7 @@ const Chat: React.FC = () => {
                       ) {
                         message.content = message.content.replace(
                           `@${username}`,
-                          `<Text style={[bindingStyle.content, {fontFamily: "poppinsExtraBold", color:"red"}]}>@${username}</Text>`
+                          `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", color:"red"}]}>@${username}</Text>`
                         );
                       }
                     }
