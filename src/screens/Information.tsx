@@ -17,11 +17,13 @@ import { Audio } from "expo-av";
  */
 
 const Information: React.FC<any> = () => {
-  // TODO: Fix unstable/buggy code!!
+  const [sound, setSound]: any = React.useState(null);
+
   React.useEffect((): any => {
     Audio.Sound.createAsync(require("../../assets/special_sound.mp3")).then(
       (sound: any): void => {
         sound.sound.playAsync();
+        setSound(sound.sound);
       }
     );
   }, []);
@@ -65,6 +67,7 @@ const Information: React.FC<any> = () => {
       <TouchableOpacity
         style={style.back}
         onPress={(): void => {
+          sound.unloadAsync();
           navigation.navigate("login");
         }}
       >
