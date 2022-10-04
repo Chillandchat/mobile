@@ -33,7 +33,6 @@ import { AuthType } from "../scripts";
  */
 
 const UserProfile: React.FC<any> = ({ navigation }) => {
-  const [loading, setLoading] = React.useState(false);
   const state: any = useSelector((state: RootState): RootState => state);
   const dispatch: any = useDispatch();
   const windowSize: ScaledSize = Dimensions.get("window");
@@ -129,7 +128,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
     },
   });
 
-  return !loading ? (
+  return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       enabled
@@ -239,7 +238,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
-  ) : null;
+  );
 };
 
 export default UserProfile;
