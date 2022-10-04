@@ -5,9 +5,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   Linking,
+  Image,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { Audio } from "expo-av";
 
 /**
  * This is the information page,
@@ -15,6 +17,15 @@ import { useNavigation } from "@react-navigation/native";
  */
 
 const Information: React.FC<any> = () => {
+  // TODO: Fix unstable/buggy code!!
+  React.useEffect((): any => {
+    Audio.Sound.createAsync(require("../../assets/special_sound.mp3")).then(
+      (sound: any): void => {
+        sound.sound.playAsync();
+      }
+    );
+  }, []);
+
   const navigation: any = useNavigation();
 
   const style: any = StyleSheet.create({
@@ -41,6 +52,12 @@ const Information: React.FC<any> = () => {
       bottom: "7%",
       right: "7%",
     },
+    special: {
+      height: 394 / 4,
+      width: 559 / 4,
+      padding: 40,
+      marginBottom: 30,
+    },
   });
 
   return (
@@ -53,6 +70,10 @@ const Information: React.FC<any> = () => {
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
+      <Image
+        style={style.special}
+        source={require("../../assets/logo_special.png")}
+      />
       <Text style={style.tittle}>App information:</Text>
       <Text style={style.text}>
         Version: Chill&chat official runtime v1.11.0
