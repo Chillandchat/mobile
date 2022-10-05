@@ -36,10 +36,8 @@ const RoomId: React.FC = () => {
     },
     copyToClipboard: {
       flexDirection: "row",
-      paddingBottom: 20,
+      paddingTop: 60,
       justifyContent: "center",
-      position: "absolute",
-      bottom: "20%",
     },
   });
 
@@ -61,7 +59,8 @@ const RoomId: React.FC = () => {
         logo={require("../../assets/logo.png")}
         size={250}
         backgroundColor="transparent"
-        logoBackgroundColor="transparent"
+        logoSize={60}
+        logoBackgroundColor={"#ffff"}
       />
       <TouchableOpacity
         onPress={(): void => {
