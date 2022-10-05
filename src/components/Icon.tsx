@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Platform,
 } from "react-native";
+import hexRgb from "hex-rgb";
 
 import { IconProps } from "./index.d";
 
@@ -19,6 +20,17 @@ import { IconProps } from "./index.d";
  */
 
 const Icon: React.FC<IconProps> = (props: IconProps) => {
+  const [rgbColor, setRgbColor]: any = React.useState({
+    red: 0,
+    green: 0,
+    blue: 0,
+    alpha: 0,
+  });
+
+  React.useEffect((): any => {
+    setRgbColor(hexRgb(props.color));
+  }, []);
+
   const style: any = StyleSheet.create({
     container: {
       borderRadius: 1000,
@@ -32,7 +44,11 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
       fontFamily: "poppinsLight",
       fontSize: 30,
       paddingTop: Platform.OS === "ios" ? 0 : 3,
-      color: "#ffff",
+      color:
+        rgbColor.red * 0.299 + rgbColor.green * 0.587 + rgbColor.blue * 0.114 >
+        220
+          ? "#000000"
+          : "#ffffff",
     },
   });
 
