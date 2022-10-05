@@ -113,7 +113,7 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
           </View>
 
           {roomUserInfo.map((user: AuthType): any => {
-            return sessionStatus.users.includes(user) ? (
+            return sessionStatus.users.includes(user.username) ? (
               <TouchableOpacity
                 disabled={user.username === userInfo.username}
                 onPress={(): void => {
