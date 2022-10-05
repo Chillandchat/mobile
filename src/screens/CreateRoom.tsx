@@ -3,10 +3,10 @@ import {
   Text,
   View,
   StyleSheet,
-  Alert,
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Linking,
 } from "react-native";
 import { useSelector } from "react-redux";
 
@@ -97,6 +97,10 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
 
               createRoom(name, password, username)
                 .then((): void => {
+                  if (name === "Rick roll" || name === "Rick astley")
+                    Linking.openURL(
+                      "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                    );
                   navigation.push("menu");
                 })
                 .catch((err: unknown): void => {
