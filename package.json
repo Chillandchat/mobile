@@ -10,7 +10,7 @@
     "ios": "echo 'Starting iOS...' && expo run:ios",
     "web": "echo 'Stating web...' && expo start --web",
     "eject": "echo 'Ejecting...' && expo eject",
-    "build": "echo 'Publishing to expo...' && expo publish",
+    "build": "echo 'Building and publishing...' && expo build:android && expo publish",
     "fix": "echo 'Fixing dependencies...' && expo doctor --fix-dependencies"
   },
   "repository": {
