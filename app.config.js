@@ -8,7 +8,7 @@ const ENV = {
 
 export default {
   name: "Chill&chat",
-  slug: "chill-and-chat-mobile-app",
+  slug: "chillandchat-mobile",
   version: "1.0.0",
   orientation: "portrait",
   privacy: "public",
@@ -24,14 +24,14 @@ export default {
   assetBundlePatterns: ["**/*"],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: "com.chillandchat.chillandchat",
+    bundleIdentifier: "com.chillandchat.mobile",
   },
   android: {
     adaptiveIcon: {
       foregroundImage: "./assets/logo.png",
       backgroundColor: "#ffffff",
     },
-    package: "com.chillandchat.chillandchat",
+    package: "com.chillandchat.mobile",
   },
   web: {
     favicon: "./assets/logo.png",
@@ -40,5 +40,8 @@ export default {
     API_URL: ENV.API_URL,
     API_KEY: ENV.API_KEY,
     SOCKET_URL: ENV.SOCKET_URL,
+    eas: {
+      projectId: "2329a990-f032-4541-8051-e99cb541fdea",
+    },
   },
 };
