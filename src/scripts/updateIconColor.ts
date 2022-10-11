@@ -14,9 +14,9 @@ import api from "./api";
 
 const updateIconColor = async (color: string, user: string): Promise<void> => {
   await api.instance
-    .post(`${api.endpoints.updateIconColor}?key${api.apiKey}`, {
+    .post(`${api.endpoints.updateIconColor}?key=${api.apiKey}`, {
       user: user,
-      color: `#${color}`,
+      color: color,
     })
     .then((_data: AxiosResponse): void => {})
     .catch((err: unknown): void => {
