@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Form from "../components/Form";
 import Button from "../components/Button";
 import __updateIconColor from "../scripts/updateIconColor";
-import { RootState } from "../redux/index";
+import { RootState } from "../redux/index.d";
 import Icon from "../components/Icon";
 import ColorNames from "./colors";
 import getUser from "../scripts/getUser";
