@@ -35,6 +35,7 @@ import MessageOptions from "./screens/MessageOptions";
 import UserProfile from "./screens/UserProfile";
 import RoomId from "./screens/RoomId";
 import ImageBase from "./screens/ImageBase";
+import UpdateIconColor from "./screens/UpdateIconColor";
 
 /**
  * This is the router component for the application, This component
@@ -137,6 +138,11 @@ namespace app {
                   options={{
                     headerShown: false,
                   }}
+                />
+                <NavigatorStack.Screen
+                  name="update-icon-color"
+                  component={UpdateIconColor}
+                  options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen
                   name="error"
