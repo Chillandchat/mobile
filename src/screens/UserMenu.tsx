@@ -132,6 +132,10 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
           <Icon
             iconLetter={state.userInfo.username[0]}
             color={state.userInfo.iconColor}
+            touchable
+            onPress={(): void => {
+              navigation.navigate("update-icon-color");
+            }}
           />
           <Text style={[style.text, { paddingLeft: 30, paddingRight: 10 }]}>
             {state.userInfo.username}
@@ -157,7 +161,7 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
             <TouchableOpacity
               onPress={(): void => {
                 setEditMode(true);
-                if(editMode) setEditMode(false)
+                if (editMode) setEditMode(false);
               }}
             >
               <Entypo
