@@ -12,12 +12,14 @@ import {
 import { LoginFormProps as Props } from "./index.d";
 
 /**
- *  This is the Login form component of the login page.
+ * This is the Login form component of the login page.
+ * It can be used for both username and password fields,
+ * you can change it by adjusting the type prop.
  *
- *  @prop {loginFormTypeSelector} type The type of the form.
- *  @prop {(text: string) => void} onTextChange The callback of the onTextChange callback event.
- *  @prop {string} value The value for the text input
- *  @optional @prop {boolean} safeEntry Whether the form has a safe entry feature.
+ * @prop {loginFormTypeSelector} type The type of the form.
+ * @prop {(text: string) => void} onTextChange The callback of the onTextChange callback event.
+ * @prop {string} value The value for the text input
+ * @optional @prop {boolean} safeEntry Whether the form has a safe entry feature.
  */
 
 const LoginForm: React.FC<Props> = (props: Props) => {

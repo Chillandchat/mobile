@@ -1,3 +1,4 @@
+import React from "react";
 import {
   View,
   Text,
@@ -7,21 +8,24 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-
-import { RoomType } from "../scripts";
-import Icon from "./Icon";
-import { RoomListProps as Props } from "./index.d";
 import { useDispatch } from "react-redux";
+
+import { RoomType } from "../scripts/index.d";
+import { RoomListProps as Props } from "./index.d";
 import { setSessionData } from "../redux/action";
+import Icon from "./Icon";
+import { Dispatch } from "redux";
 
 /**
- * This is the room list component, this component will display all the rooms provided.
+ * This is the room list component, this component is used in the menu to display the rooms.
+ * The information can be altered by changing the rooms prop.
  *
- * @prop {Array<RoomType>} rooms The rooms to display. @see RoomType For ore information
+ * @prop {Array<RoomType>} rooms The rooms to display.
+ * @see RoomType For more information.
  */
 
 const RoomList: React.FC<Props> = (props: Props) => {
-  const dispatch: any = useDispatch();
+  const dispatch: Dispatch = useDispatch();
   const navigation: any = useNavigation();
 
   const style: any = StyleSheet.create({
@@ -52,52 +56,48 @@ const RoomList: React.FC<Props> = (props: Props) => {
       alignItems: "center",
       justifyContent: "center",
     },
-    sadFace: { opacity: 0.3 },
+    sadFace: {
+      opacity: 0.3,
+    },
   });
 
-  if (props.rooms.length === 0) {
-    return (
-      <View style={style.errorContainer}>
-        <Text style={style.error}>No rooms found.</Text>
-        <MaterialCommunityIcons
-          name="emoticon-sad-outline"
-          size={50}
-          color="black"
-          style={style.sadFace}
-        />
-      </View>
-    );
-  } else {
-    return (
-      <ScrollView style={style.container}>
-        {props.rooms.map((room: RoomType): any => {
-          return (
-            <TouchableOpacity
-              style={style.roomContainer}
-              key={room.id.concat("-a")}
-              onPress={async (): Promise<void> => {
-                dispatch(setSessionData(room));
-                navigation.push("chat");
-              }}
-            >
-              <Icon
-                iconLetter={room.name[0]}
-                color={room.iconColor}
-                key={room.id.concat("-b")}
-              />
-              <Text
-                style={style.titleStyle}
-                numberOfLines={1}
-                key={room.id.concat("-c")}
-              >
-                {room.name}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
-      </ScrollView>
-    );
-  }
+  return props.rooms.length === 0 ? (
+    <View style={style.errorContainer}>
+      <Text style={style.error}>No rooms found.</Text>
+      <MaterialCommunityIcons
+        name="emoticon-sad-outline"
+        size={50}
+        color="black"
+        style={style.sadFace}
+      />
+    </View>
+  ) : (
+    <ScrollView style={style.container}>
+      {props.rooms.map((room: RoomType): any => (
+        <TouchableOpacity
+          style={style.roomContainer}
+          key={room.id.concat("-a")}
+          onPress={async (): Promise<void> => {
+            dispatch(setSessionData(room));
+            navigation.push("chat");
+          }}
+        >
+          <Icon
+            iconLetter={room.name[0]}
+            color={room.iconColor}
+            key={room.id.concat("-b")}
+          />
+          <Text
+            style={style.titleStyle}
+            numberOfLines={1}
+            key={room.id.concat("-c")}
+          >
+            {room.name}
+          </Text>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
+  );
 };
 
 export default RoomList;

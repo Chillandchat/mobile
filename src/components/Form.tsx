@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet, TextInput, Platform } from "react-native";
 
-import { FormProps } from "./index.d";
+import { FormProps as Props } from "./index.d";
 
 /**
- * This is the form component this component will allow the user to input text.
+ * This is the form component, this component is what Chill&chat uses as a form to handle user input.
  *
  * @prop {string} placeholder The placeholder of the form.
  * @prop {(text: string) => void} onChangeText The event that will be called when the text is changed and the data will be stored in the parameter.
@@ -15,7 +15,7 @@ import { FormProps } from "./index.d";
  * @optional @prop {boolean} multiline Whether the text is multiline or not.
  */
 
-const Form: React.FC<FormProps> = (props: FormProps) => {
+const Form: React.FC<Props> = (props: Props) => {
   const style: any = StyleSheet.create({
     container: {
       backgroundColor: "#E5E5E5",

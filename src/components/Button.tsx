@@ -10,8 +10,8 @@ import {
 import { ButtonProps as Props } from "./index.d";
 
 /**
- * This is the button component that renders the button on screen and
- * will run the function provided.
+ * This is the button component, this is what Chill&chat uses as it's primary button.
+ * This button will run the onPress function once pressed.
  *
  * @prop {string} color The background color of the button.
  * @prop {string} textColor The color of the text on the button.
@@ -44,9 +44,7 @@ const Button: React.FC<Props> = (props: Props) => {
       onPress={props.disabled ? (): void => undefined : props.onPress}
       style={style.container}
     >
-      <Text style={style.content}>
-        {props.text?.toUpperCase()}
-      </Text>
+      <Text style={style.content}>{props.text.toUpperCase()}</Text>
     </TouchableOpacity>
   );
 };

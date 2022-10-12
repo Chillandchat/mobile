@@ -8,10 +8,11 @@ import {
 } from "react-native";
 import hexRgb from "hex-rgb";
 
-import { IconProps } from "./index.d";
+import { IconProps as Props, RGBColors } from "./index.d";
 
 /**
- * This is the Icon component for displaying the icons for users and rooms.
+ * This is the Icon component, this component is what Chill&chat displays icons such as users and rooms.
+ * The icon can be customizable by changing the icon letter and color values.
  *
  * @prop {string} iconLetter The letter that the icon displays.
  * @prop {string} color The background color of the icon.
@@ -19,13 +20,14 @@ import { IconProps } from "./index.d";
  * @optional @prop {boolean} touchable If the icon is touchable.
  */
 
-const Icon: React.FC<IconProps> = (props: IconProps) => {
-  const [rgbColor, setRgbColor]: any = React.useState({
-    red: 0,
-    green: 0,
-    blue: 0,
-    alpha: 0,
-  });
+const Icon: React.FC<Props> = (props: Props) => {
+  const [rgbColor, setRgbColor]: [RGBColors, (arg: RGBColors) => void] =
+    React.useState({
+      red: 0,
+      green: 0,
+      blue: 0,
+      alpha: 0,
+    });
 
   React.useEffect((): any => {
     setRgbColor(hexRgb(props.color));
@@ -52,15 +54,11 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
     },
   });
 
-  if (props.touchable) {
-    return (
-      <TouchableOpacity style={style.container} onPress={props.onPress}>
-        <Text style={style.text}>{props.iconLetter?.toUpperCase()}</Text>
-      </TouchableOpacity>
-    );
-  }
-
-  return (
+  return props.touchable ? (
+    <TouchableOpacity style={style.container} onPress={props.onPress}>
+      <Text style={style.text}>{props.iconLetter?.toUpperCase()}</Text>
+    </TouchableOpacity>
+  ) : (
     <View style={style.container}>
       <Text style={style.text}>{props.iconLetter.toUpperCase()}</Text>
     </View>

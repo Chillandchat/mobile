@@ -9,7 +9,7 @@ import { RoomType } from "../scripts/index.d";
 
 export interface ButtonProps {
   color: string;
-  text?: string;
+  text: string;
   onPress: () => void;
   textColor: string;
   disabled?: boolean;
@@ -84,4 +84,21 @@ export interface MessageProps {
   message: MessageType;
   messageUserInfo: AuthType;
   readMessage: string;
+}
+
+/**
+ * This is the RGB color values for the icon component to convert hex to RGB.
+ *
+ * @param {number} red  The red value in RGB.
+ * @param {number} green The green value in RGB.
+ * @param {number} blue The blue value in RGB.
+ * @param {number} alpha The alpha value
+ *
+ * @note If you do not know what is RGB learn more at: https://en.wikipedia.org/wiki/RGB_color_model
+ */
+export interface RGBColors {
+  red: number;
+  green: number;
+  blue: number;
+  alpha: number;
 }

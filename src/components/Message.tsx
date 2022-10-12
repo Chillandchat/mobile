@@ -8,24 +8,28 @@ import { useNavigation } from "@react-navigation/native";
 // @ts-ignore
 import JsxParser from "react-native-jsx-parser";
 
-import { MessageProps } from "./index.d";
+import { setMessageInfo, setProfileInfo } from "../redux/action";
+import { MessageProps as Props } from "./index.d";
 import { RootState } from "../redux/index.d";
 import Icon from "./Icon";
-import { setMessageInfo, setProfileInfo } from "../redux/action";
+import { Dispatch } from "redux";
 
 /**
  * This is the message component, this component will display the message that users send.
+ * Each message's details can be changed by adjusting the props.
  *
  * @prop {MessageType} message The message that the user sent.
  * @prop {AuthType} messageUserInfo The information about all the users in the room.
  * @prop {string} readMessage The message used in the message reading.
  */
 
-const Message: React.FC<MessageProps> = (props: MessageProps) => {
-  const [imageError, setImageError] = React.useState(false);
+const Message: React.FC<Props> = (props: Props) => {
+  const [imageError, setImageError]: [boolean, (arg: boolean) => void] =
+    React.useState(false);
 
-  const dispatch = useDispatch();
-  const { userInfo }: any = useSelector((state: RootState): RootState => {
+  const dispatch: Dispatch = useDispatch();
+
+  const { userInfo }: RootState = useSelector((state: RootState): RootState => {
     return state;
   });
 
@@ -104,6 +108,7 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
           />
         </View>
       ) : null}
+
       <View style={style.container}>
         {props.message.user !== userInfo.username ? (
           <View style={style.usernameBox}>
@@ -123,6 +128,7 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
             ) : null}
           </View>
         ) : null}
+
         {props.message.content.includes("!IMG") && !imageError ? (
           <Image
             source={{ uri: props.message.content.slice(5, -1) }}
