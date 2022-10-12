@@ -86,8 +86,9 @@ const updateIconColor: React.FC = () => {
           iconLetter={userInfo.username[0]}
           color={
             /^#([0-9a-f]{3}){1,2}$/i.test(color) ||
-            ColorNames.colors[color.toLowerCase()] !== undefined
-              ? color.toLowerCase()
+            ColorNames.colors[color.replaceAll(" ", "").toLowerCase()] !==
+              undefined
+              ? color.replaceAll(" ", "").toLowerCase()
               : userInfo.iconColor
           }
           touchable={false}
@@ -106,14 +107,16 @@ const updateIconColor: React.FC = () => {
           text={"Change color"}
           textColor={"white"}
           onPress={(): void => {
+            const submitColor: string = color.replaceAll(" ", "").toLowerCase();
+
             if (
-              /^#([0-9a-f]{3}){1,2}$/i.test(color) ||
-              ColorNames.colors[color.toLowerCase()] !== undefined
+              /^#([0-9a-f]{3}){1,2}$/i.test(submitColor) ||
+              ColorNames.colors[submitColor] !== undefined
             ) {
               __updateIconColor(
-                ColorNames.colors[color.toLowerCase()] !== undefined
-                  ? ColorNames.colors[color.toLowerCase()]
-                  : color.toLowerCase(),
+                ColorNames.colors[submitColor] !== undefined
+                  ? ColorNames.colors[submitColor]
+                  : submitColor,
                 userInfo.username
               )
                 .then(async (): Promise<void> => {

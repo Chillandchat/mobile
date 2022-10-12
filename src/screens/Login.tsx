@@ -92,6 +92,7 @@ const Login: React.FC<any> = ({ navigation }) => {
           <Form
             safeEntry={false}
             type="username"
+            value={username}
             onTextChange={(text: string): void => {
               setUsername(text);
             }}
@@ -99,6 +100,7 @@ const Login: React.FC<any> = ({ navigation }) => {
           <Form
             safeEntry={true}
             type="password"
+            value={password}
             onTextChange={(text: string): void => {
               setPassword(text);
             }}

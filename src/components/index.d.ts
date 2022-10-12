@@ -25,6 +25,7 @@ export interface LoginFormProps {
   safeEntry?: boolean;
   type: loginFormTypeSelector;
   onTextChange: (text: string) => void;
+  value?: string;
 }
 
 /**

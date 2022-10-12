@@ -9,7 +9,6 @@ import {
   Text,
 } from "react-native";
 
-
 import { LoginFormProps as Props } from "./index.d";
 
 /**
@@ -17,6 +16,7 @@ import { LoginFormProps as Props } from "./index.d";
  *
  *  @prop {loginFormTypeSelector} type The type of the form.
  *  @prop {(text: string) => void} onTextChange The callback of the onTextChange callback event.
+ *  @prop {string} value The value for the text input
  *  @optional @prop {boolean} safeEntry Whether the form has a safe entry feature.
  */
 
@@ -52,7 +52,9 @@ const LoginForm: React.FC<Props> = (props: Props) => {
       <View style={style.headerContainer}>
         <Text style={style.text}>
           {props.type !== "username"
-            ? props.type === "password" ? "Password" : "Confirm Password"
+            ? props.type === "password"
+              ? "Password"
+              : "Confirm Password"
             : "Username"}
         </Text>
         <Feather
@@ -66,6 +68,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
         onChangeText={props.onTextChange}
         secureTextEntry={props.safeEntry}
         style={style.input}
+        value={props.value}
       />
     </View>
   );
