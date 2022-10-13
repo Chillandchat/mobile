@@ -1,7 +1,7 @@
 import reducers from "./index";
 
 /**
- * This is the action interface for the redux store.(Without the payload)
+ * This is the action interface for the redux store without a payload.
  *
  * @param ActionType The type of the type of the action.
  * @param {ActionType} type The type of the action.
@@ -12,9 +12,10 @@ export interface ActionNoParameter<ActionType> {
 }
 
 /**
- * This is the action interface for the redux store.(With the payload)
+ * This is the action interface for the redux store with a payload value.
  *
  * @extends {ActionNoParameter} This interface extends the action no parameter interface.
+ *
  * @param PayloadType The type of the payload.
  * @param {PayloadType} payload The payload of the action.
  */
@@ -24,6 +25,7 @@ export interface ActionWithParameter<PayloadType, ActionType>
   payload: PayloadType;
 }
 
+// These types validates actions to make sure their names/syntax is correct.
 // Redux events types:
 export type RoomUserInfoEventType =
   | "SET_ROOM_USER_INFO"
@@ -38,7 +40,7 @@ export type SessionStatusEventType =
   | "DELETE_SESSION_STATUS";
 
 /**
- * This is the rootstate type
+ * This is the root state type of the reducers.
  */
 
 export type RootState = ReturnType<typeof reducers>;

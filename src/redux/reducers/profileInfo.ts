@@ -2,9 +2,9 @@ import { ActionWithParameter, ProfileInfoEventType } from "./../index.d";
 import { AuthType } from "./../../scripts/index.d";
 
 /**
- * This is the profile info reducer, this reducer will keep track of the user you are currently viewing.
+ * This is the profile info reducer, this reducer will keep track of the user you are currently viewing in the profile page.
  *
- * @param {AuthType} payload The user you are currently viewing.
+ * @param {AuthType} action.payload The user you are currently viewing.
  */
 
 const profileInfo = (

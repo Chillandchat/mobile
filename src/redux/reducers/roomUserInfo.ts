@@ -5,7 +5,7 @@ import { AuthType } from "../../scripts/index.d";
  * This is the room user info reducer, this reducer manages the all the user' information
  * in the chat room.
  *
- * @param {Array<AuthType>} action The users' information.
+ * @param {Array<AuthType>} action.payload The users' information.
  */
 
 const roomUserInfo = (

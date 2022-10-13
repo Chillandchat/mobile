@@ -3,11 +3,11 @@ import { ActionNoParameter, loginStatusEventType } from "../index.d";
 /**
  * This is the reducer for the loginStatus object in the redux store.
  *
- * @note This reducer has no argument.
+ * @note This reducer has no arguments
  */
 
 const loginStatus = (
-  state = false,
+  state: boolean = false,
   action: ActionNoParameter<loginStatusEventType>
 ): typeof state => {
   switch (action.type) {

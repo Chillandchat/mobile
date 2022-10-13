@@ -2,9 +2,9 @@ import { RoomType } from "../../scripts";
 import { ActionWithParameter, SessionStatusEventType } from "./../index.d";
 
 /**
- * This is the session status reducer.
+ * This is the session status reducer, this reducer is in charge of keeping track of the room you are in.
  *
- * @param {string} action The id of the chat room session.
+ * @param {string} action.payload The data of the chat room session.
  */
 
 const sessionStatus = (

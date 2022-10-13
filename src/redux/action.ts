@@ -1,4 +1,4 @@
-import { MessageType, RoomType } from "./../scripts/index.d";
+import { RoomType } from "./../scripts/index.d";
 import { AuthType } from "../scripts/index.d";
 import {
   ActionNoParameter,
@@ -14,7 +14,10 @@ import {
 } from "./index.d";
 
 /**
- *  This is the login action for the login reducer.
+ * This is the login action for the login status reducer.
+ * As the name suggests this action will just set the logged in flag to true.
+ *
+ * @note This action does not take any arguments.
  */
 
 export const login = (): ActionNoParameter<loginStatusEventType> => {
@@ -24,7 +27,10 @@ export const login = (): ActionNoParameter<loginStatusEventType> => {
 };
 
 /**
- *  This is the logout action for the login reducer.
+ * This is the logout action for the login reducer.
+ * As the name suggests this action will just log the user out and set the logged in flag to false.
+ *
+ * @note This action does not take any arguments.
  */
 
 export const logout = (): ActionNoParameter<loginStatusEventType> => {
@@ -35,6 +41,7 @@ export const logout = (): ActionNoParameter<loginStatusEventType> => {
 
 /**
  * This is the set session info action for the session status reducer.
+ * This action will set the session data reducer to the data argument.
  *
  * @param {string} data The id of the chat room session.
  */
@@ -49,7 +56,9 @@ export const setSessionData = (
 };
 
 /**
- * This is the clear session data action, this will clear the session data.
+ * This is the clear session data action, this action will just clear the session data.
+ *
+ * @note The action does not take any arguments.
  */
 
 export const clearSessionData =
@@ -61,6 +70,7 @@ export const clearSessionData =
 
 /**
  * This is the set user information action for the user information reducer.
+ * As the name suggests, this action will set the user info to the reducer.
  *
  * @param {AuthType} userInfo The payload of the action.
  */
@@ -76,6 +86,8 @@ export const setUserInfo = (
 
 /**
  * This is the delete user information action for the user information reducer.
+ *
+ * @note This action does not take any arguments.
  */
 
 export const deleteUserInfo = (): ActionNoParameter<UserInfoEventType> => {
@@ -86,6 +98,8 @@ export const deleteUserInfo = (): ActionNoParameter<UserInfoEventType> => {
 
 /**
  * This is the clear room user info action, this action is used for clearing the room user info reducer.
+ *
+ * @note This action does not take any arguments.
  */
 
 export const clearRoomUserInfo =
@@ -111,7 +125,8 @@ export const setRoomUserInfo = (
 };
 
 /**
- * This is the set message info action for the message information reducer, this action will set the message information.
+ * This is the set message info action for the message information reducer.
+ * This action will set the message information from the payload in the action.
  *
  * @param {MessageInfoType} payload The message information.
  */
@@ -126,7 +141,10 @@ export const setMessageInfo = (
 };
 
 /**
- * This is the clear message information action for the message information reducer, this action will clear the message information data state.
+ * This is the clear message information action for the message information reducer.
+ * This action will clear the message information data reducer.
+ *
+ * @note This action does not take any arguments.
  */
 
 export const clearMessageInfo = (): ActionNoParameter<MessageInfoEventType> => {
@@ -134,7 +152,9 @@ export const clearMessageInfo = (): ActionNoParameter<MessageInfoEventType> => {
 };
 
 /**
- * This is the set profile info action, this action will change the profile information. In the profile info reducer.
+ * This is the set profile info action, this action will change the profile information.
+ * In the profile info reducer.
+ *
  * @param {AuthType} payload
  */
 
@@ -145,7 +165,9 @@ export const setProfileInfo = (
 };
 
 /**
- * This is the clear profile info action, this action will clear the profile information. In the profile info reducer.
+ * This is the clear profile info action, this action will clear the profile information.
+ *
+ * @note This action does not take any arguments.
  */
 
 export const clearProfileInfo = (): ActionNoParameter<ProfileInfoEventType> => {
@@ -155,7 +177,7 @@ export const clearProfileInfo = (): ActionNoParameter<ProfileInfoEventType> => {
 /**
  * This is the set image base action, this action will set the parameter into the reducer.
  *
- * @param payload The link of the image's link.
+ * @param {string} payload The link of the image's link.
  */
 
 export const setImageBase = (
@@ -165,7 +187,9 @@ export const setImageBase = (
 };
 
 /**
- * This is the clear image base action, this action will, as the name suggests will clear the image base reducer.
+ * This is the clear image base action, this action will as the name suggests will clear the image base reducer.
+ *
+ * @note This action does not take any arguments.
  */
 
 export const clearImageBase = (): ActionNoParameter<ImageBaseEventType> => {

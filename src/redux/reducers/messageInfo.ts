@@ -5,7 +5,7 @@ import { MessageInfoType } from "../index.d";
  * This is the message info reducer, this reducer stores the message information.
  * This information is normally used to store the message for the message options page.
  *
- * @param {MessageInfoType | null} action The message information.
+ * @param {MessageInfoType | null} action.payload The message information.
  */
 
 const messageInfo = (
