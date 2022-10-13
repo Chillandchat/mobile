@@ -6,11 +6,10 @@ import { useNavigation } from "@react-navigation/native";
 import Button from "../components/Button";
 
 /**
- * The is the add room screen,
- * this room is where the user can select to join or create a room.
+ * The is the add room screen, this room is where the user can select to join or create a room.
  */
 
-const AddRoom: React.FC<any> = () => {
+const AddRoom: React.FC = () => {
   const navigation: any = useNavigation();
 
   const style: any = StyleSheet.create({
@@ -37,15 +36,14 @@ const AddRoom: React.FC<any> = () => {
 
   return (
     <View style={style.container}>
-      <View style={style.back}>
-        <TouchableOpacity
-          onPress={(): void => {
-            navigation.navigate("menu");
-          }}
-        >
-          <AntDesign name="back" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        style={style.back}
+        onPress={(): void => {
+          navigation.navigate("menu");
+        }}
+      >
+        <AntDesign name="back" size={24} color="black" />
+      </TouchableOpacity>
       <Text style={style.title}>Add a room...</Text>
       <Button
         textColor="white"
@@ -60,7 +58,7 @@ const AddRoom: React.FC<any> = () => {
         textColor="black"
         color={"transparent"}
         onPress={(): void => {
-          navigation.navigate("join-room");
+          navigation.push("join-room");
         }}
         text={"Join room"}
       />
