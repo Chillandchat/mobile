@@ -32,24 +32,23 @@ import filter from "../scripts/filter";
 import setKeyboardSocket from "../scripts/setKeyboardSocket";
 import getUser from "../scripts/getUser";
 import { clearRoomUserInfo, setRoomUserInfo } from "../redux/action";
+import { Dispatch } from "redux";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
  */
 
 const Chat: React.FC = () => {
-  const { sessionStatus, userInfo, roomUserInfo }: any = useSelector(
+  const dispatch: Dispatch = useDispatch();
+  const { sessionStatus, userInfo, roomUserInfo }: RootState = useSelector(
     (state: RootState): RootState => {
       return state;
     }
   );
 
-  const dispatch: any = useDispatch();
-
   const navigator: any = useNavigation();
 
   const scrollRef: React.MutableRefObject<any> = React.useRef();
-
   const windowDimensions: ScaledSize = Dimensions.get("window");
 
   const [message, setMessage]: any = React.useState("");
