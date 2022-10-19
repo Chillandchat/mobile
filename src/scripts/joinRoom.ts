@@ -7,14 +7,14 @@ import api from "./api";
  *
  * @param {string} id The id of the user.
  * @param {string} roomId The room id.
- * @param {string} roomPassword The password of the room.
+ * @param {string | null} roomPassword The password of the room.
  * @returns {Promise<void>}
  */
 
 const joinRoom = async (
   id: string,
   roomId: string,
-  roomPassword: string
+  roomPassword: string | null
 ): Promise<void> => {
   await api.instance
     .post(`${api.endpoints.joinRoom}?key=${api.apiKey}`, {

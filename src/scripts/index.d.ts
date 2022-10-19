@@ -95,15 +95,18 @@ export interface AuthType {
  * @param {string} id The id of the message room.
  * @param {string} name The name of the message room.
  * @param {string} users The users in the message room.
+ * @param {string | null} passcode The passcode of the room.
  * @param {string} iconColor The color of the icon.
+ * @param {boolean} public Weather the room is public or not.
  */
 
 export interface RoomType {
   id: string;
   name: string;
   users: Array<string>;
-  passcode: string;
+  passcode: string | null;
   iconColor: string;
+  public: boolean;
 }
 
 /**
