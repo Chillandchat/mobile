@@ -21,6 +21,7 @@ export const endpoints: ApiEndpoints = {
   unfollowUser: "/api/unfollow-user",
   updateDescription: "/api/update-description",
   updateIconColor: "/api/update-icon-color",
+  getPublicRooms: "/api/get-public-rooms",
 };
 
 export const apiInstance: AxiosInstance = axios.create({
