@@ -1,3 +1,4 @@
+import Checkbox from "expo-checkbox";
 import React from "react";
 import {
   Text,
@@ -22,7 +23,7 @@ import createRoom from "../scripts/createRoom";
 const CreateRoom: React.FC<any> = ({ navigation }) => {
   const [name, setName]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
-
+  const [isPublic, setIsPublic]: any = React.useState(false);
   const { username } = useSelector((state: RootState): RootState => {
     return state.userInfo;
   });
@@ -45,9 +46,26 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
     },
     error: {
       color: "red",
-      marginTop: -20,
+      marginTop: -5,
       marginBottom: 20,
       fontFamily: "poppinsLight",
+      paddingTop: 15,
+    },
+    checkBox: {
+      margin: 10,
+    },
+    selection: {
+      flexDirection: "row",
+    },
+    text: {
+      fontFamily: "poppins",
+      fontSize: 15,
+      paddingHorizontal: 10,
+    },
+    password: {
+      width: "100%",
+      alignItems: "center",
+      justifyContent: "center",
     },
   });
 
@@ -67,27 +85,41 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
             setName(text);
           }}
         />
+        {!isPublic ? (
+          <View style={style.password}>
+            <View style={style.divider} />
+
+            <Form
+              safeEntry
+              placeholder={"Password"}
+              onTextChange={(text: string): void => {
+                setPassword(text);
+              }}
+            />
+          </View>
+        ) : null}
 
         <View style={style.divider} />
 
-        <Form
-          safeEntry
-          placeholder={"Password"}
-          onTextChange={(text: string): void => {
-            setPassword(text);
-          }}
-        />
-
-        <View style={style.divider} />
-
+        <View style={style.selection}>
+          <Checkbox
+            style={style.checkbox}
+            value={isPublic}
+            onValueChange={(value: boolean): void => {
+              setIsPublic(value);
+            }}
+            color={isPublic ? "#00AD98" : undefined}
+          />
+          <Text style={style.text}>Make this room public</Text>
+        </View>
         <Text style={style.error}>{error}</Text>
         <Button
           color={"#00AD98"}
           textColor={"#ffff"}
           text={"Lets' go!"}
           onPress={(): void => {
-            if (name !== "" && password !== "") {
-              if (password.length < 5) {
+            if (name !== "") {
+              if (password.length < 5 && !isPublic) {
                 setError("Password must be at least 5 letters long.");
                 setTimeout((): void => {
                   setError("");
@@ -95,7 +127,9 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
                 return;
               }
 
-              createRoom(name, password, username)
+              if (isPublic) setPassword(null);
+
+              createRoom(name, password, username, isPublic)
                 .then((): void => {
                   if (name === "Rick roll" || name === "Rick astley")
                     Linking.openURL(
