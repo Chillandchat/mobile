@@ -13,6 +13,7 @@ import {
   View,
   Dimensions,
   ScaledSize,
+  Keyboard,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -56,7 +57,7 @@ const Chat: React.FC = () => {
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
   const [errorMessage, setErrorMessage]: any = React.useState("");
-
+  const [keyboardOpen, setKeyboardOpen]: any = React.useState(false);
   const [scrollViewHeight, setScrollViewHeight]: any = React.useState(0);
   const [scrollPosition, setScrollPosition]: any = React.useState(0);
 
@@ -146,6 +147,14 @@ const Chat: React.FC = () => {
       }
     );
 
+    Keyboard.addListener("keyboardDidShow", (): void => {
+      setKeyboardOpen(true);
+    });
+
+    Keyboard.addListener("keyboardDidHide", (): void => {
+      setKeyboardOpen(false);
+    });
+
     return (): void => {
       socket.disconnect();
       setAnimationFrame(0);
@@ -182,6 +191,7 @@ const Chat: React.FC = () => {
       alignItems: "center",
       flex: 1,
       flexDirection: "column",
+      marginTop: keyboardOpen ? 30 : 0,
     },
     keyboardMessageContainer: {
       flexDirection: "row",
