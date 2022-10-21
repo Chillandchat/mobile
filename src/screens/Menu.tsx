@@ -119,8 +119,8 @@ const Menu: React.FC<any> = ({ navigation }) => {
           </View>
           <View style={style.searchContainer}>
             <Form
-              placeholder={"Search"}
               width={"75%"}
+              placeholder={"Search..."}
               height={55}
               onTextChange={(text: string): void => {
                 setRooms(
