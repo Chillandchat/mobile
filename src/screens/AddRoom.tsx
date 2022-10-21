@@ -18,9 +18,6 @@ const AddRoom: React.FC = () => {
       justifyContent: "center",
       alignItems: "center",
     },
-    divider: {
-      padding: 5,
-    },
     title: {
       fontFamily: "poppinsExtraBold",
       fontSize: 25,
@@ -31,6 +28,23 @@ const AddRoom: React.FC = () => {
       position: "absolute",
       top: "7%",
       left: "7%",
+    },
+    joinRoom: {
+      position: "absolute",
+      bottom: "7%",
+      alignItems: "center",
+      justifyContent: "center",
+      alignSelf: "center",
+      borderColor: "#e5e5e5",
+      borderWidth: 3,
+      borderRadius: 20,
+      paddingBottom: 20,
+      width: "90%",
+    },
+    createRoom: {
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: -120,
     },
   });
 
@@ -44,24 +58,43 @@ const AddRoom: React.FC = () => {
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-      <Text style={style.title}>Add a room...</Text>
-      <Button
-        textColor="white"
-        color={"#00AD98"}
-        onPress={(): void => {
-          navigation.push("create-room");
-        }}
-        text={"Create room"}
-      />
-      <View style={style.divider} />
-      <Button
-        textColor="black"
-        color={"transparent"}
-        onPress={(): void => {
-          navigation.push("join-room");
-        }}
-        text={"Join room"}
-      />
+      <View style={style.createRoom}>
+        <Text style={style.title}>Create a room...</Text>
+        <Text
+          style={[
+            style.title,
+            {
+              fontSize: 15,
+              fontFamily: "poppins",
+              marginTop: -60,
+              textAlign: "center",
+            },
+          ]}
+        >
+          A room is where you can invite a group of friends and chat privately!
+        </Text>
+        <Button
+          textColor="white"
+          color={"#00AD98"}
+          onPress={(): void => {
+            navigation.push("create-room");
+          }}
+          text={"Create room"}
+        />
+      </View>
+      <View style={style.joinRoom}>
+        <Text style={[style.title, { fontSize: 20, marginBottom: -10 }]}>
+          Already have a room?
+        </Text>
+        <Button
+          textColor="white"
+          color={"#00ad98"}
+          onPress={(): void => {
+            navigation.push("join-room");
+          }}
+          text={"Join room"}
+        />
+      </View>
     </View>
   );
 };
