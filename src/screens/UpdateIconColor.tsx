@@ -27,7 +27,7 @@ import { AuthType } from "../scripts";
  * this component is the screen where the user can change it's icon color.
  */
 
-const updateIconColor: React.FC = () => {
+const UpdateIconColor: React.FC = () => {
   const [color, setColor]: any = React.useState("");
   const [error, setError]: any = React.useState("");
   const navigation: any = useNavigation();
@@ -147,4 +147,4 @@ const updateIconColor: React.FC = () => {
   );
 };
 
-export default updateIconColor;
+export default UpdateIconColor;
