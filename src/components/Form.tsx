@@ -37,6 +37,7 @@ const Form: React.FC<Props> = (props: Props) => {
         secureTextEntry={props.safeEntry || false}
         value={props.value}
         multiline={props?.multiline || false}
+        placeholderTextColor={"#C7C7CD"}
       />
     </View>
   );
