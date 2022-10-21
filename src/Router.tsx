@@ -89,7 +89,7 @@ namespace app {
       return (
         <Provider store={store}>
           <View style={style.container}>
-            <StatusBar style="auto" />
+            <StatusBar style="dark" />
             <NavigationContainer>
               <NavigatorStack.Navigator initialRouteName="login">
                 <NavigatorStack.Screen
