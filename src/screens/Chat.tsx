@@ -13,6 +13,7 @@ import {
   View,
   Dimensions,
   ScaledSize,
+  SafeAreaView,
   Keyboard,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
@@ -21,6 +22,7 @@ import { io } from "socket.io-client";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
+import { Dispatch } from "redux";
 
 import Form from "../components/Form";
 import ChatRoomBar from "../components/ChatRoomBar";
@@ -33,7 +35,6 @@ import filter from "../scripts/filter";
 import setKeyboardSocket from "../scripts/setKeyboardSocket";
 import getUser from "../scripts/getUser";
 import { clearRoomUserInfo, setRoomUserInfo } from "../redux/action";
-import { Dispatch } from "redux";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -57,7 +58,6 @@ const Chat: React.FC = () => {
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
   const [errorMessage, setErrorMessage]: any = React.useState("");
-  const [keyboardOpen, setKeyboardOpen]: any = React.useState(false);
   const [scrollViewHeight, setScrollViewHeight]: any = React.useState(0);
   const [scrollPosition, setScrollPosition]: any = React.useState(0);
 
@@ -147,20 +147,23 @@ const Chat: React.FC = () => {
       }
     );
 
-    Keyboard.addListener("keyboardDidShow", (): void => {
-      setKeyboardOpen(true);
-    });
-
-    Keyboard.addListener("keyboardDidHide", (): void => {
-      setKeyboardOpen(false);
-    });
-
     return (): void => {
       socket.disconnect();
+      Keyboard.removeAllListeners("keyboardDidShow");
       setAnimationFrame(0);
       setMessageDisplayed([]);
     };
   }, []);
+
+  React.useEffect((): any => {
+    Keyboard.removeAllListeners("keyboardDidShow");
+    Keyboard.addListener("keyboardDidShow", (): void => {
+      scrollRef.current.scrollTo({
+        y: scrollViewHeight,
+        animated: true,
+      });
+    });
+  }, [scrollViewHeight]);
 
   const [animationFrame, setAnimationFrame]: any = React.useState(0);
   const [animationIndexArray, setAnimationIndexArray]: any = React.useState([
@@ -191,7 +194,6 @@ const Chat: React.FC = () => {
       alignItems: "center",
       flex: 1,
       flexDirection: "column",
-      marginTop: keyboardOpen ? 30 : 0,
     },
     keyboardMessageContainer: {
       flexDirection: "row",
@@ -202,20 +204,22 @@ const Chat: React.FC = () => {
     sendBar: {
       flexDirection: "row",
       alignItems: "center",
-      position: "absolute",
-      bottom: "7%",
       marginHorizontal: 50,
       maxHeight: 100,
+      marginBottom: 40,
+      paddingTop: errorMessage !== "" ? 30 : 0,
     },
     chatRoomBar: {
-      position: "absolute",
-      top: "7%",
-      width: "100%",
+      paddingBottom: 20,
+      marginTop: 20,
+      alignItems: "center",
+      marginHorizontal: 40,
+      width: windowDimensions.width,
     },
     chatArea: {
-      height: "65%",
       width: "90%",
       marginBottom: -20,
+      flex: 1,
     },
     loadingMessageContainer: {
       alignItems: "center",
@@ -249,6 +253,7 @@ const Chat: React.FC = () => {
       alignItems: "flex-start",
       flexDirection: "row",
       width: "80%",
+      marginBottom: -10,
     },
   });
 
@@ -259,9 +264,11 @@ const Chat: React.FC = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView contentContainerStyle={style.container}>
-        <View style={style.chatRoomBar}>
-          <ChatRoomBar />
-        </View>
+        <SafeAreaView>
+          <View style={style.chatRoomBar}>
+            <ChatRoomBar />
+          </View>
+        </SafeAreaView>
         <View style={style.chatArea}>
           {!loading ? (
             <ScrollView
@@ -361,13 +368,11 @@ const Chat: React.FC = () => {
         ) : null}
         <View
           style={{
-            justifyContent: "center",
+            alignItems: "center",
             marginHorizontal: "10%",
-            marginTop: 5,
+            paddingTop: 20,
           }}
         >
-          <Text style={[style.text, { color: "red" }]}>{errorMessage}</Text>
-
           {typing ? (
             <View style={style.typingMessageContainer}>
               <View
@@ -418,6 +423,16 @@ const Chat: React.FC = () => {
               friend!
             </Text>
           ) : null}
+          <Text
+            style={[
+              style.text,
+              {
+                color: "red",
+              },
+            ]}
+          >
+            {errorMessage}
+          </Text>
         </View>
         <View style={style.sendBar}>
           <TouchableOpacity
