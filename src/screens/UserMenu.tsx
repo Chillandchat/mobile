@@ -127,7 +127,7 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView contentContainerStyle={style.container}>
-        <Text style={style.heading}>Your profile</Text>
+        {keyboardOpen ? null : <Text style={style.heading}>Your profile</Text>}
         <View style={style.nameInfo}>
           <Icon
             iconLetter={state.userInfo.username[0]}
