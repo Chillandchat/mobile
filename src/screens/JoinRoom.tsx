@@ -77,7 +77,7 @@ const JoinRoom: React.FC<any> = ({ navigation }) => {
       height: 300,
       width: 300,
       borderRadius: 20,
-      margin: 30,
+      alignSelf: "center",
     },
     heading: {
       fontSize: 25,
@@ -85,20 +85,30 @@ const JoinRoom: React.FC<any> = ({ navigation }) => {
       alignSelf: "center",
       marginBottom: 20,
     },
+    scannerBody: {
+      borderRadius: 20,
+      backgroundColor: "transparent",
+      height: 300,
+      width: 300,
+      zIndex: 2000,
+      overflow: "hidden",
+    },
   });
 
   return scannerOn ? (
     <View style={style.container}>
       <Text style={style.heading}>Scan Room QR code</Text>
-      <BarCodeScanner
-        onBarCodeScanned={(data: any): void => {
-          if (!data.data.includes("!chillandchat-room-invite")) return;
+      <View style={style.scannerBody}>
+        <BarCodeScanner
+          onBarCodeScanned={(data: any): void => {
+            if (!data.data.includes("!chillandchat-room-invite")) return;
 
-          setScannerOn(false);
-          setName(data.data.slice(26, -1));
-        }}
-        style={style.scanner}
-      />
+            setScannerOn(false);
+            setName(data.data.slice(26, -1));
+          }}
+          style={style.scanner}
+        />
+      </View>
       <Button
         color={"transparent"}
         textColor={"black"}
