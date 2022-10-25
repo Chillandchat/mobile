@@ -24,7 +24,7 @@ import { setProfileInfo } from "../redux/action";
  */
 
 const RoomInformation: React.FC<any> = ({ navigation }) => {
-  const { roomUserInfo, userInfo, sessionStatus } = useSelector(
+  const { roomUserInfo, userInfo, sessionStatus }: RootState = useSelector(
     (state: RootState): RootState => {
       return state;
     }
