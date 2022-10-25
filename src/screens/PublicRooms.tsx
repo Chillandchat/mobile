@@ -78,7 +78,7 @@ const PublicRooms: React.FC = () => {
       <View style={style.roomList}>
         <RoomList
           onPress={(room: RoomType): void => {
-            joinRoom(userInfo.username, room.id, "null")
+            joinRoom(userInfo.username, room.id, null)
               .then((): void => {
                 navigation.push("menu");
               })
