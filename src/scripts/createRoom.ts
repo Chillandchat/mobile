@@ -25,7 +25,7 @@ const createRoom = async (
     .post(`${api.endpoints.createRoom}?key=${api.apiKey}`, {
       id: uuid(),
       name: name,
-      passcode: password,
+      passcode: isPublic ? null : password,
       user: id,
       public: isPublic,
     })
