@@ -60,7 +60,7 @@ const ChatRoomBar: React.FC = () => {
       />
       <TouchableOpacity
         onPress={(): void => {
-          navigation.navigate("room-details");
+          navigation.push("room-details");
         }}
       >
         <Feather name="info" size={35} color="black" />

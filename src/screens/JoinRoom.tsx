@@ -3,7 +3,6 @@ import {
   Text,
   View,
   StyleSheet,
-  Alert,
   ScrollView,
   KeyboardAvoidingView,
   Platform,
@@ -12,6 +11,7 @@ import {
 import { useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
 import { BarCodeScanner, PermissionResponse } from "expo-barcode-scanner";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import Button from "../components/Button";
 import Form from "../components/Form";
@@ -71,6 +71,11 @@ const JoinRoom: React.FC<any> = ({ navigation }) => {
     scannerIcon: {
       position: "absolute",
       left: "7%",
+      bottom: "5%",
+    },
+    publicIcon: {
+      position: "absolute",
+      right: "7%",
       bottom: "5%",
     },
     scanner: {
@@ -191,6 +196,14 @@ const JoinRoom: React.FC<any> = ({ navigation }) => {
         }}
       >
         <AntDesign name="scan1" size={30} color="black" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={style.publicIcon}
+        onPress={(): void => {
+          navigation.push("public-rooms");
+        }}
+      >
+        <MaterialIcons name="public" size={30} color="black" />
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );
