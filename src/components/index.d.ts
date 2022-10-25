@@ -66,6 +66,7 @@ export interface FormProps {
 
 export interface RoomListProps {
   rooms: Array<RoomType>;
+  onPress?: (room: RootType) => void;
 }
 
 /**

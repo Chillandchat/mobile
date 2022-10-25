@@ -21,6 +21,7 @@ import { Dispatch } from "redux";
  * The information can be altered by changing the rooms prop.
  *
  * @prop {Array<RoomType>} rooms The rooms to display.
+ * @optional @prop {(room: RoomType) => void} onPress What to run a user click the room.
  * @see RoomType For more information.
  */
 
@@ -77,9 +78,13 @@ const RoomList: React.FC<Props> = (props: Props) => {
         <TouchableOpacity
           style={style.roomContainer}
           key={room.id.concat("-a")}
-          onPress={async (): Promise<void> => {
-            dispatch(setSessionData(room));
-            navigation.push("chat");
+          // @ts-ignore
+          onPress={(): void => {
+            if (props.onPress !== undefined) props?.onPress(room);
+            else {
+              dispatch(setSessionData(room));
+              navigation.push("chat");
+            }
           }}
         >
           <Icon
