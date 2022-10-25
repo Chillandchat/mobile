@@ -88,7 +88,9 @@ const PublicRooms: React.FC = () => {
           }}
           rooms={rooms.filter(
             (room: RoomType): boolean =>
-              !JSON.stringify(existingRooms).includes(`"id": "${room.id}"`)
+              !JSON.stringify(existingRooms)
+                .replaceAll(" ", "")
+                .includes(`"id":"${room.id}"`)
           )}
         />
       </View>
