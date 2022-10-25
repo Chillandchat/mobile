@@ -36,6 +36,7 @@ import UserProfile from "./screens/UserProfile";
 import RoomId from "./screens/RoomId";
 import ImageBase from "./screens/ImageBase";
 import UpdateIconColor from "./screens/UpdateIconColor";
+import PublicRooms from "./screens/PublicRooms";
 
 /**
  * This is the router component for the application, This component
@@ -171,6 +172,11 @@ namespace app {
                 <NavigatorStack.Screen
                   name="signout-confirm"
                   component={UserMenu}
+                  options={{ headerShown: false }}
+                />
+                <NavigatorStack.Screen
+                  name="public-rooms"
+                  component={PublicRooms}
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen
