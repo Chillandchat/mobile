@@ -34,7 +34,11 @@ import getMessages from "../scripts/getMessages";
 import filter from "../scripts/filter";
 import setKeyboardSocket from "../scripts/setKeyboardSocket";
 import getUser from "../scripts/getUser";
-import { clearRoomUserInfo, setRoomUserInfo } from "../redux/action";
+import {
+  clearRoomUserInfo,
+  clearSessionData,
+  setRoomUserInfo,
+} from "../redux/action";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -65,7 +69,6 @@ const Chat: React.FC = () => {
   const [typingUser, setTypingUser]: any = React.useState("");
 
   React.useEffect((): any => {
-    dispatch(clearRoomUserInfo());
     getMessages(sessionStatus.id)
       .then((messages: Array<MessageType>): void => {
         setMessageDisplayed([]);
@@ -152,6 +155,8 @@ const Chat: React.FC = () => {
       Keyboard.removeAllListeners("keyboardDidShow");
       setAnimationFrame(0);
       setMessageDisplayed([]);
+      dispatch(clearRoomUserInfo());
+      dispatch(clearSessionData());
     };
   }, []);
 
