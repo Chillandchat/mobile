@@ -55,10 +55,9 @@ const Information: React.FC<any> = () => {
       right: "7%",
     },
     special: {
-      height: 394 / 4,
-      width: 559 / 4,
+      height: 563 / 4,
+      width: 918 / 4,
       padding: 40,
-      marginBottom: 30,
     },
   });
 
@@ -79,7 +78,7 @@ const Information: React.FC<any> = () => {
       />
       <Text style={style.tittle}>App information:</Text>
       <Text style={style.text}>
-        Version: Chill&chat official runtime v1.11.0
+        Version: Chill&chat official runtime v1.12.0
       </Text>
       <Text style={style.text}>Verified official Chill&chat build.</Text>
       <Text style={style.text}>Connected to Chill&chat global network</Text>
