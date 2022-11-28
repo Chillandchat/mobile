@@ -1,5 +1,12 @@
+import {
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  TouchableOpacity,
+  Vibration,
+} from "react-native";
 import React from "react";
-import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -77,6 +84,7 @@ const Message: React.FC<Props> = (props: Props) => {
   return (
     <TouchableOpacity
       onLongPress={(): void => {
+        Vibration.vibrate();
         dispatch(
           setMessageInfo({
             message: props.message,
