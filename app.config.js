@@ -44,4 +44,15 @@ export default {
       projectId: "2329a990-f032-4541-8051-e99cb541fdea",
     },
   },
+  expo: {
+    plugins: [
+      [
+        "expo-image-picker",
+        {
+          photosPermission:
+            "Please allow access to your photo library to share it!",
+        },
+      ],
+    ],
+  },
 };
