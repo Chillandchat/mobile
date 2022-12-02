@@ -36,15 +36,15 @@ export default {
   web: {
     favicon: "./assets/logo.png",
   },
-  extra: {
-    API_URL: ENV.API_URL,
-    API_KEY: ENV.API_KEY,
-    SOCKET_URL: ENV.SOCKET_URL,
-    eas: {
-      projectId: "2329a990-f032-4541-8051-e99cb541fdea",
-    },
-  },
   expo: {
+    extra: {
+      API_URL: ENV.API_URL,
+      API_KEY: ENV.API_KEY,
+      SOCKET_URL: ENV.SOCKET_URL,
+      eas: {
+        projectId: "2329a990-f032-4541-8051-e99cb541fdea",
+      },
+    },
     plugins: [
       [
         "expo-image-picker",
