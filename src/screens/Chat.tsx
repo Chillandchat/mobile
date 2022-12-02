@@ -305,6 +305,15 @@ const Chat: React.FC = () => {
 
                 let message: MessageType = { ...tmpMessage };
 
+                [...message.content.matchAll(/\!BOLD\((.*?)\)/g)].forEach(
+                  (value: any, index: number): void => {
+                    message.content = message.content.replace(
+                      `!BOLD${value[index][0]}`,
+                      `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>${value[index][1]}</Text>`
+                    );
+                  }
+                );
+
                 if (message.content.includes("@")) {
                   sessionStatus.users.forEach((username: string): void => {
                     if (
@@ -313,7 +322,7 @@ const Chat: React.FC = () => {
                         `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>`
                       )
                     ) {
-                      message.content = message.content.replace(
+                      message.content = message.content.replaceAll(
                         `@${username}`,
                         `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>`
                       );
@@ -321,7 +330,7 @@ const Chat: React.FC = () => {
                         message.user !== userInfo.username &&
                         username === userInfo.username
                       ) {
-                        message.content = message.content.replace(
+                        message.content = message.content.replaceAll(
                           `@${username}`,
                           `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", color:"red"}]}>@${username}</Text>`
                         );
