@@ -305,11 +305,38 @@ const Chat: React.FC = () => {
 
                 let message: MessageType = { ...tmpMessage };
 
-                [...message.content.matchAll(/\!BOLD\((.*?)\)/g)].forEach(
-                  (value: any, index: number): void => {
+                [...message.content.matchAll(/!BOLD\((.*?)\)/g)].forEach(
+                  (value: any): void => {
                     message.content = message.content.replace(
-                      `!BOLD${value[index][0]}`,
-                      `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>${value[index][1]}</Text>`
+                      `!BOLD(${value[1]})`,
+                      `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>${value[1]}</Text>`
+                    );
+                  }
+                );
+
+                [...message.content.matchAll(/!ITALIC\((.*?)\)/g)].forEach(
+                  (value: any): void => {
+                    message.content = message.content.replace(
+                      `!ITALIC(${value[1]})`,
+                      `<Text style={[bindingStyle.content, { fontStyle: "italic"}]}>${value[1]}</Text>`
+                    );
+                  }
+                );
+
+                [...message.content.matchAll(/!UNDERLINE\((.*?)\)/g)].forEach(
+                  (value: any): void => {
+                    message.content = message.content.replace(
+                      `!UNDERLINE(${value[1]})`,
+                      `<Text style={[bindingStyle.content, {textDecorationLine: 'underline'}]}>${value[1]}</Text>`
+                    );
+                  }
+                );
+
+                [...message.content.matchAll(/!TITLE\((.*?)\)/g)].forEach(
+                  (value: any): void => {
+                    message.content = message.content.replace(
+                      `!TITLE(${value[1]})`,
+                      `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", fontSize: 30}]}>${value[1]}</Text>`
                     );
                   }
                 );
