@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import Constants from "expo-constants";
 import { useDispatch, useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -116,7 +117,9 @@ const SendImage: React.FC = () => {
           <Image
             style={style.preview}
             source={{
-              uri: link,
+              uri: link.includes(Constants.expoConfig?.extra?.API_URL)
+                ? `${link}&key=${Constants.expoConfig?.extra?.API_KEY}`
+                : link,
             }}
             onError={(): void => {
               setError(true);
