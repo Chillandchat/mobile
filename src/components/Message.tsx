@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import Constants from "expo-constants";
 
 // @ts-ignore
 import JsxParser from "react-native-jsx-parser";
@@ -139,7 +140,15 @@ const Message: React.FC<Props> = (props: Props) => {
 
         {props.message.content.includes("!IMG") && !imageError ? (
           <Image
-            source={{ uri: props.message.content.slice(5, -1) }}
+            source={{
+              uri: props.message.content
+                .slice(5, -1)
+                .includes(Constants.expoConfig?.extra?.API_URL)
+                ? `${props.message.content.slice(5, -1)}&key=${
+                    Constants.expoConfig?.extra?.API_KEY
+                  }`
+                : props.message.content.slice(5, -1),
+            }}
             style={style.imageContent}
             onError={(): void => {
               setImageError(true);
