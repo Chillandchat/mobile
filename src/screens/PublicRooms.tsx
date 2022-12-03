@@ -83,7 +83,7 @@ const PublicRooms: React.FC = () => {
                 navigation.push("menu");
               })
               .catch((err: unknown): void => {
-                console.log(err);
+                console.error(err);
               });
           }}
           rooms={rooms.filter(
