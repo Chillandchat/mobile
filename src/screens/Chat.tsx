@@ -336,7 +336,7 @@ const Chat: React.FC = () => {
                   (value: any): void => {
                     message.content = message.content.replace(
                       `!TITLE(${value[1]})`,
-                      `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", fontSize: 30}]}>${value[1]}</Text>`
+                      `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", fontSize: 20}]}>${value[1]}</Text>`
                     );
                   }
                 );
