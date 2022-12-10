@@ -21,7 +21,9 @@ export type ApiEndpoint =
   | "/api/unfollow-user"
   | "/api/follow-user"
   | "/api/update-icon-color"
-  | "/api/get-public-rooms";
+  | "/api/get-public-rooms"
+  | "/api/get-content"
+  | "/api/upload-content";
 
 /**
  * This is the ApiEndpoints type, This type works with the "ApiEndpoint"
@@ -42,6 +44,8 @@ export type ApiEndpoint =
  * @param {ApiEndpoint} updateDescription
  * @param {ApiEndpoint} updateIconColor
  * @param {ApiEndpoint} getPublicRooms
+ * @param {ApiEndpoint} getContent
+ * @param {ApiEndpoint} uploadContent
  */
 
 export interface ApiEndpoints {
@@ -53,6 +57,7 @@ export interface ApiEndpoints {
   reportRoom: ApiEndpoint;
   blockUser: ApiEndpoint;
   getUsers: ApiEndpoint;
+  getContent: ApiEndpoint;
   joinRoom: ApiEndpoint;
   getRoom: ApiEndpoint;
   createRoom: ApiEndpoint;
@@ -62,6 +67,7 @@ export interface ApiEndpoints {
   updateDescription: ApiEndpoint;
   updateIconColor: ApiEndpoint;
   getPublicRooms: ApiEndpoint;
+  uploadContent: ApiEndpoint;
 }
 
 /**
@@ -136,3 +142,12 @@ export interface MessageType {
  */
 
 export type KeyboardMode = "start" | "stop";
+
+/**
+ * This is the content type for the upload content endpoint.
+ *
+ * @option 'CHILL&CHAT_IMG' Type for images.
+ * @option 'CHILL&CHAT_GIF' Type for GIFs.
+ */
+
+export type ContentType = "CHILL&CHAT_IMG" | "CHILL&CHAT_GIF";

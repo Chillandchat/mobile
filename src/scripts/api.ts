@@ -22,6 +22,8 @@ export const endpoints: ApiEndpoints = {
   updateDescription: "/api/update-description",
   updateIconColor: "/api/update-icon-color",
   getPublicRooms: "/api/get-public-rooms",
+  getContent: "/api/get-content",
+  uploadContent: "/api/upload-content",
 };
 
 export const apiInstance: AxiosInstance = axios.create({
