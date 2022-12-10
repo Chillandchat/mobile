@@ -104,11 +104,6 @@ namespace app {
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen
-                  name="image-base"
-                  component={ImageBase}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
                   name="send-image"
                   component={SendImage}
                   options={{ headerShown: false }}
