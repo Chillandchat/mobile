@@ -20,12 +20,12 @@ const Information: React.FC<any> = () => {
   const [sound, setSound]: any = React.useState(null);
 
   React.useEffect((): any => {
-    Audio.Sound.createAsync(require("../../assets/special_sound.mp3")).then(
-      (sound: any): void => {
-        sound.sound.playAsync();
-        setSound(sound.sound);
-      }
-    );
+    Audio.Sound.createAsync(
+      require("../../assets/special/christmas_soundtrack.mp3")
+    ).then((sound: any): void => {
+      sound.sound.playAsync();
+      setSound(sound.sound);
+    });
   }, []);
 
   const navigation: any = useNavigation();
@@ -74,7 +74,7 @@ const Information: React.FC<any> = () => {
       </TouchableOpacity>
       <Image
         style={style.special}
-        source={require("../../assets/logo_special.png")}
+        source={require("../../assets/special/christmas_logo.png")}
       />
       <Text style={style.tittle}>App information:</Text>
       <Text style={style.text}>
