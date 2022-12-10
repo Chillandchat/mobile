@@ -1,4 +1,4 @@
-<p align="center"how><img src="https://github.com/Chill-and-chat/Chill-and-chat/blob/master/logo.svg/" style="width:12rem;"/></p>
+<p align="center"how><img src="https://github.com/Chillandchat/.github/blob/main/logo.svg" style="width:12rem;"/></p>
 
 # Chill&chat mobile app
 ![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/issues-pr-closed/chill-and-chat/chill-chat) ![](https://img.shields.io/github/issues-pr-raw/chill-and-chat/chill-chat)
