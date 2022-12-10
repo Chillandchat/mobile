@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
+import NetInfo from "@react-native-community/netinfo";
 
 import { login as loginAction, setUserInfo } from "../redux/action";
 import Button from "../components/Button";
@@ -32,6 +33,13 @@ const Login: React.FC<any> = ({ navigation }) => {
   const [keyboardOpen, setKeyboardOpen]: any = React.useState(false);
 
   React.useEffect((): any => {
+    NetInfo.fetch().then((state: any): void => {
+      if (!state.isConnected) {
+        navigation.navigate("error");
+        console.error("Unable to connect. \n    Error code: CC_ERROR_0318");
+      }
+    });
+
     Keyboard.addListener("keyboardDidShow", (): void => {
       setKeyboardOpen(true);
     });
