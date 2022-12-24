@@ -20,10 +20,12 @@ const uploadContent = async (
   user: string,
   content: string,
   type: ContentType
-): Promise<void> => {
+): Promise<any> => {
+  const id: string = uuid();
+  console.log(id);
   await api.instance
     .post(`${api.endpoints.uploadContent}?key=${api.apiKey}`, {
-      id: uuid(),
+      id: id,
       content: content,
       type: type,
       user: user,
@@ -32,6 +34,8 @@ const uploadContent = async (
     .catch((err: unknown): void => {
       throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
     });
+
+  return id;
 };
 
 export default uploadContent;

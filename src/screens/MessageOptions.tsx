@@ -9,6 +9,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import deleteMessage from "../scripts/deleteMessage";
 import { RootState } from "../redux/index.d";
 import { clearMessageInfo } from "../redux/action";
+import Constants from "expo-constants";
 
 /**
  * This is the Message option component, this component will display the message options.(like delete)
@@ -75,7 +76,15 @@ const MessageOptions: React.FC = () => {
       {messageInfo?.message.content.includes("!IMG") ? (
         <Image
           style={style.image}
-          source={{ uri: messageInfo?.message?.content.slice(5, -1) }}
+          source={{
+            uri: messageInfo?.message?.content
+              .slice(5, -1)
+              .includes(Constants.expoConfig?.extra?.API_URL)
+              ? `${messageInfo?.message?.content.slice(5, -1)}&key=${
+                  Constants.expoConfig?.extra?.API_KEY
+                }`
+              : messageInfo?.message?.content.slice(5, -1),
+          }}
         />
       ) : null}
       <TouchableOpacity

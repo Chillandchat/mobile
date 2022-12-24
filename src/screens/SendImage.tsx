@@ -1,6 +1,7 @@
 //! "import "react-native-get-random-values";" MUST BE FIRST!!
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
+import * as ImagePicker from "expo-image-picker";
 import React from "react";
 import {
   View,
@@ -26,6 +27,7 @@ import sendMessage from "../scripts/sendMessage";
 import { RootState } from "../redux/index.d";
 import setKeyboardSocket from "../scripts/setKeyboardSocket";
 import { clearImageBase } from "../redux/action";
+import uploadContent from "../scripts/uploadContent";
 
 /**
  * This is the send image screen, this screen will allow the user to send an image.
@@ -35,6 +37,7 @@ const SendImage: React.FC = () => {
   const [link, setLink]: any = React.useState("");
   const [error, setError]: any = React.useState(true);
   const [keyboardOpen, setKeyboardOpen]: any = React.useState(false);
+  const [loading, setLoading]: any = React.useState(false);
   const navigation: any = useNavigation();
   const dispatch: any = useDispatch();
   const imageBase: any = useSelector(
@@ -125,6 +128,16 @@ const SendImage: React.FC = () => {
               setError(true);
             }}
           />
+        ) : loading ? (
+          <View
+            style={[
+              style.preview,
+              { alignItems: "center", justifyContent: "center" },
+            ]}
+          >
+            <AntDesign name="loading1" size={50} color="#00ad98" />
+            <Text style={style.errorText}>Uploading...</Text>
+          </View>
         ) : (
           <View
             style={[
@@ -153,7 +166,7 @@ const SendImage: React.FC = () => {
             onPress={(): void => {
               if (error) {
                 Alert.alert(
-                  "",
+                  "Fatal error",
                   "No image found, we can't send an empty one. Please try again"
                 );
                 return;
@@ -204,7 +217,38 @@ const SendImage: React.FC = () => {
           style={style.find}
           onPress={(): void => {
             dispatch(clearImageBase());
-            navigation.navigate("image-base");
+            setLoading(true);
+            ImagePicker.launchImageLibraryAsync({
+              mediaTypes: ImagePicker.MediaTypeOptions.Images,
+              allowsEditing: true,
+              aspect: [4, 3],
+              quality: 1,
+              base64: true,
+            }).then((result: ImagePicker.ImagePickerResult): void => {
+              if (!result.canceled) {
+                uploadContent(
+                  userInfo.username,
+                  String(result.assets[0].base64),
+                  result.assets[0].type === "image"
+                    ? "CHILL&CHAT_IMG"
+                    : "CHILL&CHAT_GIF"
+                )
+                  .then((id: string): void => {
+                    setLink(
+                      `${Constants.manifest?.extra?.API_URL}/api/get-content?id=${id}&user=${userInfo.username}`
+                    );
+                    setError(false);
+                    setLoading(false);
+                  })
+                  .catch((err: unknown): void => {
+                    Alert.alert(
+                      "Upload too large",
+                      "Sorry, your file is too large to be uploaded to the Chill&chat cloud. Why not try compressing it!"
+                    );
+                    console.error(err);
+                  });
+              }
+            });
           }}
         >
           <AntDesign name="find" size={35} color="black" />
