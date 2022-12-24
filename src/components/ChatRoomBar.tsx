@@ -63,7 +63,7 @@ const ChatRoomBar: React.FC = () => {
           navigation.push("room-details");
         }}
       >
-        <Feather name="info" size={35} color="black" />
+        <Feather name="more-horizontal" size={35} color="black" />
       </TouchableOpacity>
     </View>
   );
