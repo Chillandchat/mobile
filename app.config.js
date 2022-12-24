@@ -7,36 +7,36 @@ const ENV = {
 };
 
 export default {
-  name: "Chill&chat",
-  slug: "chillandchat-mobile",
-  version: "1.0.0",
-  orientation: "portrait",
-  privacy: "public",
-  icon: "./assets/logo.png",
-  splash: {
-    image: "./assets/splash.png",
-    resizeMode: "contain",
-    backgroundColor: "#ffffff",
-  },
-  updates: {
-    fallbackToCacheTimeout: 0,
-  },
-  assetBundlePatterns: ["**/*"],
-  ios: {
-    supportsTablet: true,
-    bundleIdentifier: "com.chillandchat.mobile",
-  },
-  android: {
-    adaptiveIcon: {
-      foregroundImage: "./assets/logo.png",
+  expo: {
+    name: "Chill&chat",
+    slug: "chillandchat-mobile",
+    version: "1.13.0",
+    orientation: "portrait",
+    privacy: "public",
+    icon: "./assets/logo.png",
+    splash: {
+      image: "./assets/splash.png",
+      resizeMode: "contain",
       backgroundColor: "#ffffff",
     },
-    package: "com.chillandchat.mobile",
-  },
-  web: {
-    favicon: "./assets/logo.png",
-  },
-  expo: {
+    updates: {
+      fallbackToCacheTimeout: 0,
+    },
+    assetBundlePatterns: ["**/*"],
+    ios: {
+      supportsTablet: true,
+      bundleIdentifier: "com.chillandchat.mobile",
+    },
+    android: {
+      adaptiveIcon: {
+        foregroundImage: "./assets/logo.png",
+        backgroundColor: "#ffffff",
+      },
+      package: "com.chillandchat.mobile",
+    },
+    web: {
+      favicon: "./assets/logo.png",
+    },
     extra: {
       API_URL: ENV.API_URL,
       API_KEY: ENV.API_KEY,
