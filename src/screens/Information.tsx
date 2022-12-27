@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { Audio } from "expo-av";
+// import { Audio } from "expo-av";
 
 /**
  * This is the information page,
@@ -17,16 +17,16 @@ import { Audio } from "expo-av";
  */
 
 const Information: React.FC<any> = () => {
-  const [sound, setSound]: any = React.useState(null);
+  // const [sound, setSound]: any = React.useState(null);
 
-  React.useEffect((): any => {
-    Audio.Sound.createAsync(
-      require("../../assets/special/christmas_soundtrack.mp3")
-    ).then((sound: any): void => {
-      sound.sound.playAsync();
-      setSound(sound.sound);
-    });
-  }, []);
+  // React.useEffect((): any => {
+  //   Audio.Sound.createAsync(
+  //     require("../../assets/special/christmas_soundtrack.mp3")
+  //   ).then((sound: any): void => {
+  //     sound.sound.playAsync();
+  //     setSound(sound.sound);
+  //   });
+  // }, []);
 
   const navigation: any = useNavigation();
 
@@ -66,16 +66,13 @@ const Information: React.FC<any> = () => {
       <TouchableOpacity
         style={style.back}
         onPress={(): void => {
-          sound.unloadAsync();
+          // sound.unloadAsync();
           navigation.navigate("login");
         }}
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-      <Image
-        style={style.special}
-        source={require("../../assets/special/christmas_logo.png")}
-      />
+      {/* <Image style={style.special} source={require("../../assets/logo.png")} /> */}
       <Text style={style.tittle}>App information:</Text>
       <Text style={style.text}>
         Version: Chill&chat official runtime v1.13.0

@@ -140,6 +140,9 @@ const Login: React.FC<any> = ({ navigation }) => {
                       // @ts-ignore
 
                       if (!user.blocked && !user.bot) {
+                        setUsername("");
+                        setPassword("");
+
                         dispatch(setUserInfo(user as AuthType)); //! Dangerous way to convert types
                         dispatch(loginAction());
 

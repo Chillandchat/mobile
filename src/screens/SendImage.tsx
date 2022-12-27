@@ -28,6 +28,7 @@ import { RootState } from "../redux/index.d";
 import setKeyboardSocket from "../scripts/setKeyboardSocket";
 import { clearImageBase } from "../redux/action";
 import uploadContent from "../scripts/uploadContent";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 /**
  * This is the send image screen, this screen will allow the user to send an image.
@@ -135,7 +136,7 @@ const SendImage: React.FC = () => {
               { alignItems: "center", justifyContent: "center" },
             ]}
           >
-            <AntDesign name="loading1" size={50} color="#00ad98" />
+            <LoadingSpinner />
             <Text style={style.errorText}>Uploading...</Text>
           </View>
         ) : (

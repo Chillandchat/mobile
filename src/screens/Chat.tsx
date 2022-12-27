@@ -39,6 +39,7 @@ import {
   clearSessionData,
   setRoomUserInfo,
 } from "../redux/action";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -390,7 +391,10 @@ const Chat: React.FC = () => {
             </ScrollView>
           ) : (
             <View style={style.loadingMessageContainer}>
-              <Text style={style.text}>Loading, please wait...</Text>
+              <LoadingSpinner />
+              <Text style={[style.text, { marginTop: 20, marginBottom: 40 }]}>
+                Loading, please wait...
+              </Text>
             </View>
           )}
         </View>
