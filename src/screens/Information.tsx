@@ -75,7 +75,7 @@ const Information: React.FC<any> = () => {
       {/* <Image style={style.special} source={require("../../assets/logo.png")} /> */}
       <Text style={style.tittle}>App information:</Text>
       <Text style={style.text}>
-        Version: Chill&chat official runtime v1.13.0
+        Version: Chill&chat official runtime v1.13.1
       </Text>
       <Text style={style.text}>Verified official Chill&chat build.</Text>
       <Text style={style.text}>Connected to Chill&chat global network</Text>
