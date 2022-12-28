@@ -32,12 +32,17 @@ const RoomId: React.FC = () => {
     },
     text: {
       fontFamily: "poppins",
-      fontSize: 15,
+      fontSize: 13,
     },
     copyToClipboard: {
       flexDirection: "row",
-      paddingTop: 60,
-      justifyContent: "center",
+      alignItems: "center",
+      borderColor: "#E5E5E5",
+      padding: 10,
+      borderWidth: 4,
+      borderRadius: 10,
+      marginTop: 60,
+      paddingHorizontal: 40,
     },
   });
 
@@ -65,13 +70,16 @@ const RoomId: React.FC = () => {
       <TouchableOpacity
         onPress={(): void => {
           Clipboard.setString(sessionStatus.id);
-          Alert.alert("Room ID copied to clipboard");
+          Alert.alert(
+            "Success",
+            "Room ID was successfully copied into your clipboard."
+          );
         }}
         style={style.copyToClipboard}
       >
         <AntDesign
           name="copy1"
-          size={24}
+          size={35}
           color="black"
           style={{ paddingHorizontal: 10 }}
         />
