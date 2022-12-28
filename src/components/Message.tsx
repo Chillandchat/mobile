@@ -1,17 +1,11 @@
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  TouchableOpacity,
-  Vibration,
-} from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
+import * as Haptics from "expo-haptics";
 
 // @ts-ignore
 import JsxParser from "react-native-jsx-parser";
@@ -85,7 +79,7 @@ const Message: React.FC<Props> = (props: Props) => {
   return (
     <TouchableOpacity
       onLongPress={(): void => {
-        Vibration.vibrate();
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
         dispatch(
           setMessageInfo({
             message: props.message,
