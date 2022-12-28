@@ -25,10 +25,10 @@ I look forward to seeing your contributions to Chill&chat!
 If you have found any bug(s) please post them in the [Issues](https://github.com/Chill-and-chat/mobile/issues) tab in this repository. Please explain the problem and post any error messages or codes, also include a list of instructions to reproduce this bug or problem.
 
 ## Download
-### Expo go
-Please click the link below and run the app in expo go:
+### iOS
+To download the app via the apple app store, please click the link below.
 
-<a href="https://expo.dev/@cheng-alvin/chillandchat-mobile?serviceType=classic&distribution=expo-go"><img style="width:15rem;" src="https://images.squarespace-cdn.com/content/v1/602d0aa03d9bab5833f89e28/1615402085435-KPC9C9YMJD2IUD18D9XS/apple-app-store-badge-white.png"/><a>
+<a href=""><img style="width:20rem;" src="https://www.logo.wine/a/logo/App_Store_(iOS)/App_Store_(iOS)-Badge-Alternative-Logo.wine.svg"/><a>
 
 ### Manual install
 Please click the button below to go to the releases tab and install the version you like!
