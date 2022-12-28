@@ -28,7 +28,7 @@ If you have found any bug(s) please post them in the [Issues](https://github.com
 ### iOS
 To download the app via the apple app store, please click the link below.
 
-<a href=""><img style="width:20rem; padding: -20rem;" src="https://www.logo.wine/a/logo/App_Store_(iOS)/App_Store_(iOS)-Badge-Alternative-Logo.wine.svg"/><a>
+<a href=""><img style="width:15rem;" src="https://images.squarespace-cdn.com/content/v1/602d0aa03d9bab5833f89e28/1615402085435-KPC9C9YMJD2IUD18D9XS/apple-app-store-badge-white.png"/><a>
 
 ### Manual install
 Please click the button below to go to the releases tab and install the version you like!
