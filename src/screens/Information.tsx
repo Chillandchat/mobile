@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Linking,
   Image,
+  ImageBackground,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -57,7 +58,7 @@ const Information: React.FC<any> = () => {
     special: {
       height: 563 / 4,
       width: 918 / 4,
-      padding: 40,
+      padding: 20,
     },
   });
 
@@ -72,7 +73,28 @@ const Information: React.FC<any> = () => {
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-      {/* <Image style={style.special} source={require("../../assets/logo.png")} /> */}
+      <Image
+        style={style.special}
+        source={require("../../assets/special/ukraine_logo.png")}
+      />
+      <Text
+        style={[
+          style.text,
+          { color: "#0057b7", fontFamily: "poppinsBold", marginBottom: 20 },
+        ]}
+      >
+        #Support
+        {
+          <Text
+            style={[
+              style.text,
+              { color: "#ffd700", fontFamily: "poppinsBold" },
+            ]}
+          >
+            _ukraine
+          </Text>
+        }
+      </Text>
       <Text style={style.tittle}>App information:</Text>
       <Text style={style.text}>
         Version: Chill&chat official runtime v1.13.1
