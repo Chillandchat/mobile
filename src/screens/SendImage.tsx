@@ -226,7 +226,7 @@ const SendImage: React.FC = () => {
               quality: 1,
               base64: true,
             }).then((result: ImagePicker.ImagePickerResult): void => {
-              if (result.canceled) {
+              if(result.canceled){
                 setLoading(true);
                 setError(true);
               }
