@@ -337,7 +337,11 @@ const Chat: React.FC = () => {
                 style.text,
                 {
                   opacity: 0.5,
-                  paddingBottom: Platform.OS === "android" ? 30 : 20,
+                  marginBottom: Platform.OS === "android" ? 0 : -10,
+                  borderColor: "#e5e5e5",
+                  borderWidth: 3,
+                  padding: 20,
+                  borderRadius: 20,
                 },
               ]}
             >
