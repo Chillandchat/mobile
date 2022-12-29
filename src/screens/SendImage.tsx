@@ -226,7 +226,7 @@ const SendImage: React.FC = () => {
               quality: 1,
               base64: true,
             }).then((result: ImagePicker.ImagePickerResult): void => {
-              if(result.canceled){
+              if (result.canceled) {
                 setLoading(true);
                 setError(true);
               }
@@ -237,7 +237,7 @@ const SendImage: React.FC = () => {
                   String(result.assets[0].base64),
                   result.assets[0].type === "image"
                     ? "CHILL&CHAT_IMG"
-                    : "CHILL&CHAT_GIF"
+                    : "CHILL&CHAT_VIDEO"
                 )
                   .then((id: string): void => {
                     setLink(
