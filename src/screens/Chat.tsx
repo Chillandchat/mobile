@@ -1,6 +1,3 @@
-//! "import "react-native-get-random-values";" MUST BE FIRST!!
-import "react-native-get-random-values";
-import { v4 as uuid } from "uuid";
 import Constants from "expo-constants";
 import React from "react";
 import {
@@ -16,23 +13,16 @@ import {
   SafeAreaView,
   Keyboard,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
-import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { Dispatch } from "redux";
 
-import Form from "../components/Form";
 import ChatRoomBar from "../components/ChatRoomBar";
 import { RootState } from "../redux/index.d";
-import sendMessage from "../scripts/sendMessage";
 import { AuthType, MessageType } from "../scripts";
 import Message from "../components/Message";
 import getMessages from "../scripts/getMessages";
-import filter from "../scripts/filter";
-import setKeyboardSocket from "../scripts/setKeyboardSocket";
 import getUser from "../scripts/getUser";
 import {
   clearRoomUserInfo,
@@ -40,6 +30,8 @@ import {
   setRoomUserInfo,
 } from "../redux/action";
 import LoadingSpinner from "../components/LoadingSpinner";
+import TypingAnimation from "../components/TypingAnimation";
+import SendBar from "../components/SendBar";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -53,21 +45,16 @@ const Chat: React.FC = () => {
     }
   );
 
-  const navigator: any = useNavigation();
-
   const scrollRef: React.MutableRefObject<any> = React.useRef();
   const windowDimensions: ScaledSize = Dimensions.get("window");
 
-  const [message, setMessage]: any = React.useState("");
-  const [textBoxHelper, setTextBoxHelper]: any = React.useState(undefined);
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
-  const [errorMessage, setErrorMessage]: any = React.useState("");
+
   const [scrollViewHeight, setScrollViewHeight]: any = React.useState(0);
   const [scrollPosition, setScrollPosition]: any = React.useState(0);
 
   const [typing, setTyping]: any = React.useState(false);
-  const [typingUser, setTypingUser]: any = React.useState("");
 
   React.useEffect((): any => {
     getMessages(sessionStatus.id)
@@ -115,22 +102,6 @@ const Chat: React.FC = () => {
     });
 
     socket.on(
-      `keyboard-start:room(${sessionStatus.id})`,
-      (user: string): void => {
-        if (user !== userInfo.username) {
-          setTyping(true);
-          setTypingUser(user);
-          setAnimationFrame((prevState: number): number => prevState + 1);
-        }
-      }
-    );
-
-    socket.on(`keyboard-stop:room(${sessionStatus.id})`, (): void => {
-      setTyping(false);
-      setTypingUser("");
-    });
-
-    socket.on(
       `client-message:room(${sessionStatus.id})`,
       (message: MessageType): void => {
         setMessageDisplayed((messagePrevious: any): any =>
@@ -154,7 +125,6 @@ const Chat: React.FC = () => {
     return (): void => {
       socket.disconnect();
       Keyboard.removeAllListeners("keyboardDidShow");
-      setAnimationFrame(0);
       setMessageDisplayed([]);
       dispatch(clearRoomUserInfo());
       dispatch(clearSessionData());
@@ -171,29 +141,6 @@ const Chat: React.FC = () => {
     });
   }, [scrollViewHeight]);
 
-  const [animationFrame, setAnimationFrame]: any = React.useState(0);
-  const [animationIndexArray, setAnimationIndexArray]: any = React.useState([
-    0, 0, 0,
-  ]);
-
-  React.useEffect((): void => {
-    if (typing) {
-      setTimeout((): void => {
-        if (animationFrame >= Math.pow(2, 31) - 2) setAnimationFrame(0);
-        setAnimationFrame((prevState: number): number => prevState + 1);
-        setAnimationIndexArray((prevState: Array<number>): Array<number> => {
-          if (prevState[0] == 1) {
-            return [0, 1, 0];
-          }
-          if (prevState[1] == 1) {
-            return [0, 0, 1];
-          }
-          return [1, 0, 0];
-        });
-      }, 700);
-    }
-  }, [animationFrame]);
-
   const style: any = StyleSheet.create({
     container: {
       justifyContent: "center",
@@ -201,19 +148,8 @@ const Chat: React.FC = () => {
       flex: 1,
       flexDirection: "column",
     },
-    keyboardMessageContainer: {
-      flexDirection: "row",
-    },
     text: {
       fontFamily: "poppins",
-    },
-    sendBar: {
-      flexDirection: "row",
-      alignItems: "center",
-      marginHorizontal: 50,
-      maxHeight: 100,
-      marginBottom: 40,
-      paddingTop: errorMessage !== "" ? 30 : 0,
     },
     chatRoomBar: {
       paddingBottom: 20,
@@ -232,34 +168,16 @@ const Chat: React.FC = () => {
       justifyContent: "center",
       height: "100%",
     },
-    typingMessage: {
-      fontFamily: "poppins",
-      fontSize: 16,
-      alignSelf: "flex-start",
-      marginLeft: 5,
-    },
-    typingMessageContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-    },
-    typingAnimationComponent: {
-      height: 10,
-      width: 10,
-      marginHorizontal: 3,
-      borderRadius: 5,
-    },
-    sendIcon: {
-      marginLeft: Platform.OS == "android" ? 23 : 15,
-    },
-    sendImage: {
-      marginRight: Platform.OS == "android" ? 23 : 15,
-      marginLeft: -10,
-    },
     downButton: {
       alignItems: "flex-start",
       flexDirection: "row",
       width: "80%",
       marginBottom: -10,
+    },
+    informationPanel: {
+      alignItems: "center",
+      marginHorizontal: "10%",
+      paddingTop: 20,
     },
   });
 
@@ -411,49 +329,8 @@ const Chat: React.FC = () => {
             <AntDesign name="arrowdown" size={32} color={"#00AD98"} />
           </TouchableOpacity>
         ) : null}
-        <View
-          style={{
-            alignItems: "center",
-            marginHorizontal: "10%",
-            paddingTop: 20,
-          }}
-        >
-          {typing ? (
-            <View style={style.typingMessageContainer}>
-              <View
-                style={[
-                  style.typingAnimationComponent,
-                  {
-                    backgroundColor:
-                      animationIndexArray[0] === 1 ? "#00AD98" : "black",
-                    opacity: animationIndexArray[0] === 1 ? 1 : 0.2,
-                  },
-                ]}
-              />
-              <View
-                style={[
-                  style.typingAnimationComponent,
-                  {
-                    backgroundColor:
-                      animationIndexArray[1] === 1 ? "#00AD98" : "black",
-                    opacity: animationIndexArray[1] === 1 ? 1 : 0.2,
-                  },
-                ]}
-              />
-              <View
-                style={[
-                  style.typingAnimationComponent,
-                  {
-                    backgroundColor:
-                      animationIndexArray[2] === 1 ? "#00AD98" : "black",
-                    opacity: animationIndexArray[2] === 1 ? 1 : 0.2,
-                  },
-                ]}
-              />
-              <Text style={style.typingMessage}>{typingUser} is typing...</Text>
-            </View>
-          ) : null}
-
+        <View style={style.informationPanel}>
+          <TypingAnimation state={[typing, setTyping]} />
           {sessionStatus.users?.length <= 1 ? (
             <Text
               style={[
@@ -468,98 +345,8 @@ const Chat: React.FC = () => {
               friend!
             </Text>
           ) : null}
-          <Text
-            style={[
-              style.text,
-              {
-                color: "red",
-              },
-            ]}
-          >
-            {errorMessage}
-          </Text>
         </View>
-        <View style={style.sendBar}>
-          <TouchableOpacity
-            style={style.sendImage}
-            onPress={(): void => {
-              navigator.navigate("send-image");
-            }}
-          >
-            <Ionicons name="images-outline" size={32} color="#00AD98" />
-          </TouchableOpacity>
-          <Form
-            placeholder={"Type a message..."}
-            multiline
-            onTextChange={(text: string): void => {
-              if (text !== "" && !typing) {
-                setKeyboardSocket(
-                  sessionStatus.id,
-                  userInfo.username,
-                  "start"
-                ).catch((err: unknown): void => {
-                  console.error(err);
-                });
-              }
-
-              if (text === "") {
-                setKeyboardSocket(
-                  sessionStatus.id,
-                  userInfo.username,
-                  "stop"
-                ).catch((err: unknown): void => {
-                  console.error(err);
-                });
-              }
-
-              setMessage((_prevState: string): string => text);
-            }}
-            value={textBoxHelper}
-          />
-          <View style={style.sendIcon}>
-            <TouchableOpacity
-              onPress={(): void => {
-                if (message === undefined || message === "") return;
-
-                if (message.length > 200) {
-                  setErrorMessage(
-                    "Whoa there! That's a lot of characters! You can't send messages that long!"
-                  );
-
-                  setTimeout((): void => {
-                    setErrorMessage("");
-                  }, 5000);
-
-                  return;
-                }
-
-                const filteredMessage = filter(message);
-
-                sendMessage({
-                  id: uuid(),
-                  content: filteredMessage,
-                  room: sessionStatus.id,
-                  user: userInfo.username,
-                })
-                  .then((): void => {
-                    setKeyboardSocket(
-                      sessionStatus.id,
-                      userInfo.username,
-                      "stop"
-                    );
-                    setMessage("");
-                    setTextBoxHelper("");
-                    setTextBoxHelper(undefined);
-                  })
-                  .catch((err: unknown): void => {
-                    console.error(err);
-                  });
-              }}
-            >
-              <Feather name="send" size={32} color="#00AD98" />
-            </TouchableOpacity>
-          </View>
-        </View>
+        <SendBar typing={typing} />
       </ScrollView>
     </KeyboardAvoidingView>
   ) : null;

@@ -103,3 +103,23 @@ export interface RGBColors {
   blue: number;
   alpha: number;
 }
+
+/**
+ * This is the props interface/outline for the typing animation component.
+ *
+ * @see TypingAnimation.tsx
+ */
+
+export interface TypingAnimationProps {
+  state: [boolean, () => boolean];
+}
+
+/**
+ * This is the props outline fo the send bar component.
+ *
+ * @see SendBar.tsx
+ */
+
+export interface SendBarProps {
+  typing: boolean;
+}
