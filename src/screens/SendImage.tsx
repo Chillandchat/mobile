@@ -237,7 +237,7 @@ const SendImage: React.FC = () => {
                   String(result.assets[0].base64),
                   result.assets[0].type === "image"
                     ? "CHILL&CHAT_IMG"
-                    : "CHILL&CHAT_GIF"
+                    : "CHILL&CHAT_VIDEO"
                 )
                   .then((id: string): void => {
                     setLink(
