@@ -147,7 +147,7 @@ export type KeyboardMode = "start" | "stop";
  * This is the content type for the upload content endpoint.
  *
  * @option 'CHILL&CHAT_IMG' Type for images.
- * @option 'CHILL&CHAT_VIDEO' Type for GIFs.
+ * @option 'CHILL&CHAT_GIF' Type for GIFs.
  */
 
-export type ContentType = "CHILL&CHAT_IMG" | "CHILL&CHAT_VIDEO";
+export type ContentType = "CHILL&CHAT_IMG" | "CHILL&CHAT_GIF";
