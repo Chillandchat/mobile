@@ -220,7 +220,7 @@ const SendImage: React.FC = () => {
             dispatch(clearImageBase());
             setLoading(true);
             ImagePicker.launchImageLibraryAsync({
-              mediaTypes: ImagePicker.MediaTypeOptions.Images,
+              mediaTypes: ImagePicker.MediaTypeOptions.All,
               allowsEditing: true,
               aspect: [4, 3],
               quality: 1,
