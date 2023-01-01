@@ -97,7 +97,7 @@ const Information: React.FC<any> = () => {
       </Text>
       <Text style={style.tittle}>App information:</Text>
       <Text style={style.text}>
-        Version: Chill&chat official runtime v1.13.1
+        Version: Chill&chat official runtime v1.14.0
       </Text>
       <Text style={style.text}>Verified official Chill&chat build.</Text>
       <Text style={style.text}>Connected to Chill&chat global network</Text>

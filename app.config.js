@@ -10,7 +10,7 @@ export default {
   expo: {
     name: "Chill&chat",
     slug: "chillandchat-mobile",
-    version: "1.13.1",
+    version: "1.14.0",
     orientation: "portrait",
     privacy: "public",
     icon: "./assets/logo.png",
@@ -24,7 +24,7 @@ export default {
     },
     assetBundlePatterns: ["**/*"],
     ios: {
-      supportsTablet: true,
+      supportsTablet: false,
       bundleIdentifier: "com.chillandchat.mobile",
     },
     android: {
