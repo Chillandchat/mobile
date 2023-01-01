@@ -26,6 +26,7 @@ export default {
     ios: {
       supportsTablet: false,
       bundleIdentifier: "com.chillandchat.mobile",
+      buildNumber: "2",
     },
     android: {
       adaptiveIcon: {
