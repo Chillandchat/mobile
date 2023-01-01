@@ -6,6 +6,8 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
+  TouchableOpacity,
+  Linking,
 } from "react-native";
 
 import Form from "../components/LoginForm";
@@ -56,6 +58,16 @@ const Signup: React.FC<any> = ({ navigation }) => {
       alignSelf: "center",
       justifyContent: "center",
       paddingBottom: 20,
+      alignItems: "center",
+    },
+    link: {
+      textDecorationLine: "underline",
+      fontFamily: "poppinsExtraBold",
+      fontSize: 15,
+      paddingTop: 20,
+    },
+    checkBox: {
+      marginTop: 20,
     },
   });
   return (
@@ -91,13 +103,23 @@ const Signup: React.FC<any> = ({ navigation }) => {
           <View style={style.selection}>
             <Checkbox
               value={agreed}
+              style={style.checkBox}
               onValueChange={(value: boolean): void => {
                 setAgreed(value);
               }}
               color={agreed ? "#00AD98" : undefined}
             />
             <Text style={[style.text, { fontSize: 15, fontFamily: "poppins" }]}>
-              I agree and have read the user agreement.
+              I agree to the{" "}
+              <TouchableOpacity
+                onPress={(): void => {
+                  Linking.openURL(
+                    "https://github.com/Chillandchat#user-safety-agreement"
+                  );
+                }}
+              >
+                <Text style={style.link}>user safety agreement</Text>
+              </TouchableOpacity>
             </Text>
           </View>
         </View>
