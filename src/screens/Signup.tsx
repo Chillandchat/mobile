@@ -43,11 +43,11 @@ const Signup: React.FC<any> = ({ navigation }) => {
       alignSelf: "flex-start",
       marginLeft: 10,
     },
-    formContainer: {},
     error: {
       color: "red",
+      alignSelf: "center",
       marginTop: 10,
-      marginBottom: 20,
+      marginBottom: 40,
       fontFamily: "poppinsLight",
     },
     backButton: {
@@ -59,6 +59,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
       justifyContent: "center",
       paddingBottom: 20,
       alignItems: "center",
+      marginTop: -40,
     },
     link: {
       textDecorationLine: "underline",
@@ -76,7 +77,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
       style={{ flex: 1 }}
     >
       <ScrollView contentContainerStyle={style.container}>
-        <View style={style.formContainer}>
+        <View>
           <Text style={style.text}>Signup</Text>
           <Form
             safeEntry={false}
