@@ -13,6 +13,7 @@ import Button from "../components/Button";
 import getUser from "../scripts/getUser";
 import { AuthType } from "../scripts";
 import signup from "../scripts/signup";
+import Checkbox from "expo-checkbox";
 
 /**
  * This is the signup component for the application, this component is responsible for
@@ -21,9 +22,10 @@ import signup from "../scripts/signup";
 
 const Signup: React.FC<any> = ({ navigation }) => {
   const [error, setError] = React.useState("");
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [username, setUsername]: any = React.useState("");
+  const [password, setPassword]: any = React.useState("");
+  const [confirmPassword, setConfirmPassword]: any = React.useState("");
+  const [agreed, setAgreed]: any = React.useState(false);
 
   const style = StyleSheet.create({
     container: {
@@ -48,6 +50,12 @@ const Signup: React.FC<any> = ({ navigation }) => {
     },
     backButton: {
       marginTop: 10,
+    },
+    selection: {
+      flexDirection: "row",
+      alignSelf: "center",
+      justifyContent: "center",
+      paddingBottom: 20,
     },
   });
   return (
@@ -79,12 +87,25 @@ const Signup: React.FC<any> = ({ navigation }) => {
               setConfirmPassword(text);
             }}
           />
+          <Text style={style.error}>{error}</Text>
+          <View style={style.selection}>
+            <Checkbox
+              value={agreed}
+              onValueChange={(value: boolean): void => {
+                setAgreed(value);
+              }}
+              color={agreed ? "#00AD98" : undefined}
+            />
+            <Text style={[style.text, { fontSize: 15, fontFamily: "poppins" }]}>
+              I agree and have read the user agreement.
+            </Text>
+          </View>
         </View>
-        <Text style={style.error}>{error}</Text>
         <Button
           color={"#00AD98"}
           textColor={"#ffff"}
           text={"sign up"}
+          disabled={!agreed}
           onPress={(): void => {
             if (password?.length < 5) {
               setError("Password must be at least 5 letters long.");
