@@ -47,7 +47,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
       color: "red",
       alignSelf: "center",
       marginTop: 10,
-      marginBottom: 40,
+      marginBottom: error !== "" ? 80 : 40,
       fontFamily: "poppinsLight",
     },
     backButton: {
@@ -59,7 +59,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
       justifyContent: "center",
       paddingBottom: 20,
       alignItems: "center",
-      marginTop: -40,
+      marginTop: -60,
     },
     link: {
       textDecorationLine: "underline",
