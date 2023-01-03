@@ -1,5 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Image,
+  Alert,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +17,7 @@ import deleteMessage from "../scripts/deleteMessage";
 import { RootState } from "../redux/index.d";
 import { clearMessageInfo } from "../redux/action";
 import Constants from "expo-constants";
+import reportRoom from "../scripts/reportRoom";
 
 /**
  * This is the Message option component, this component will display the message options.(like delete)
@@ -19,7 +27,7 @@ const MessageOptions: React.FC = () => {
   const navigation: any = useNavigation();
   const dispatch: any = useDispatch();
 
-  const { messageInfo, userInfo, sessionStatus }: any = useSelector(
+  const { messageInfo, userInfo, sessionStatus }: RootState = useSelector(
     (state: RootState): RootState => state
   );
 
@@ -131,6 +139,43 @@ const MessageOptions: React.FC = () => {
         >
           <AntDesign name="delete" size={30} color="red" />
           <Text style={[style.text, { color: "red" }]}>Delete message</Text>
+        </TouchableOpacity>
+      ) : null}
+      {messageInfo?.message.user !== userInfo.username ? (
+        <TouchableOpacity
+          style={style.delete}
+          onPress={(): void => {
+            Alert.alert(
+              "Flag message?",
+              "Are you sure you want to report this message? The Chill&chat team will be notified once it's reported. Users who spam or send useless/irrelevant report will be banned.",
+              [
+                {
+                  text: "Report",
+                  style: "destructive",
+                  onPress: (): void => {
+                    reportRoom(
+                      sessionStatus.id,
+                      `Flagging: ${messageInfo.message.id}`,
+                      userInfo.username
+                    )
+                      .then((): void => {
+                        Alert.alert(
+                          "Flagged message",
+                          "This message has been reported, thank you for your feedback! We will take action as soon as possible."
+                        );
+                      })
+                      .catch((err: unknown): void => {
+                        console.error(err);
+                      });
+                  },
+                },
+                { text: "Cancel" },
+              ]
+            );
+          }}
+        >
+          <AntDesign name="flag" size={30} color="red" />
+          <Text style={[style.text, { color: "red" }]}>Flag message</Text>
         </TouchableOpacity>
       ) : null}
     </View>
