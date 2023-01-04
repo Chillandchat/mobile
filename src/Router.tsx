@@ -1,8 +1,8 @@
 import React from "react";
 import {
-  createStackNavigator,
-  StackNavigationOptions,
-} from "@react-navigation/stack";
+  createNativeStackNavigator,
+  NativeStackNavigationOptions,
+} from "@react-navigation/native-stack";
 import {
   NavigationContainer,
   ParamListBase,
@@ -34,7 +34,6 @@ import SendImage from "./screens/SendImage";
 import MessageOptions from "./screens/MessageOptions";
 import UserProfile from "./screens/UserProfile";
 import RoomId from "./screens/RoomId";
-import ImageBase from "./screens/ImageBase";
 import UpdateIconColor from "./screens/UpdateIconColor";
 import PublicRooms from "./screens/PublicRooms";
 
@@ -67,7 +66,7 @@ namespace app {
     const NavigatorStack: TypedNavigator<
       ParamListBase,
       StackNavigationState<ParamListBase>,
-      StackNavigationOptions,
+      NativeStackNavigationOptions,
       StackNavigationEventMap,
       ({
         initialRouteName,
@@ -76,7 +75,7 @@ namespace app {
         screenOptions,
         ...rest
       }: any) => JSX.Element
-    > = createStackNavigator();
+    > = createNativeStackNavigator();
 
     const style: any = StyleSheet.create({
       container: {
