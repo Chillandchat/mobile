@@ -1,6 +1,7 @@
 //! "import "react-native-get-random-values";" MUST BE FIRST!!
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
+import * as FileSystem from "expo-file-system";
 import * as ImagePicker from "expo-image-picker";
 import React from "react";
 import {
@@ -225,36 +226,54 @@ const SendImage: React.FC = () => {
               aspect: [4, 3],
               quality: 1,
               base64: true,
-            }).then((result: ImagePicker.ImagePickerResult): void => {
-              if (result.canceled) {
+            })
+              .then(
+                async (
+                  result: ImagePicker.ImagePickerResult
+                ): Promise<void> => {
+                  if (result.canceled) {
+                    setLoading(false);
+                    setError(true);
+                  }
+
+                  if (!result.canceled) {
+                    uploadContent(
+                      userInfo.username,
+                      result.assets[0].duration === null
+                        ? String(result.assets[0].base64)
+                        : await FileSystem.readAsStringAsync(
+                            result.assets[0].uri,
+                            {
+                              encoding: "base64",
+                            }
+                          ),
+                      result.assets[0].duration === null
+                        ? "CHILL&CHAT_IMG"
+                        : "CHILL&CHAT_GIF"
+                    )
+                      .then((id: string): void => {
+                        setLink(
+                          `${Constants.manifest?.extra?.API_URL}/api/get-content?id=${id}&user=${userInfo.username}`
+                        );
+                        console.log(link);
+                        setError(false);
+                        setLoading(false);
+                      })
+                      .catch((err: unknown): void => {
+                        Alert.alert(
+                          "Upload too large",
+                          "Sorry, your file is too large to be uploaded to the Chill&chat cloud. Why not try compressing it!"
+                        );
+                        console.error(err);
+                      });
+                  }
+                }
+              )
+              .catch((err: unknown): void => {
                 setLoading(false);
                 setError(true);
-              }
-
-              if (!result.canceled) {
-                uploadContent(
-                  userInfo.username,
-                  String(result.assets[0].base64),
-                  result.assets[0].type === "image"
-                    ? "CHILL&CHAT_IMG"
-                    : "CHILL&CHAT_GIF"
-                )
-                  .then((id: string): void => {
-                    setLink(
-                      `${Constants.manifest?.extra?.API_URL}/api/get-content?id=${id}&user=${userInfo.username}`
-                    );
-                    setError(false);
-                    setLoading(false);
-                  })
-                  .catch((err: unknown): void => {
-                    Alert.alert(
-                      "Upload too large",
-                      "Sorry, your file is too large to be uploaded to the Chill&chat cloud. Why not try compressing it!"
-                    );
-                    console.error(err);
-                  });
-              }
-            });
+                console.log(err);
+              });
           }}
         >
           <AntDesign name="find" size={35} color="black" />
