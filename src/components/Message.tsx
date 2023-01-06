@@ -135,13 +135,7 @@ const Message: React.FC<Props> = (props: Props) => {
         {props.message.content.includes("!IMG") && !imageError ? (
           <Image
             source={{
-              uri: props.message.content
-                .slice(5, -1)
-                .includes(Constants.expoConfig?.extra?.API_URL)
-                ? `${props.message.content.slice(5, -1)}&key=${
-                    Constants.expoConfig?.extra?.API_KEY
-                  }`
-                : props.message.content.slice(5, -1),
+              uri: props.message.content.slice(5, -1),
             }}
             style={style.imageContent}
             onError={(): void => {

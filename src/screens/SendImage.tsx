@@ -42,9 +42,6 @@ const SendImage: React.FC = () => {
   const [loading, setLoading]: any = React.useState(false);
   const navigation: any = useNavigation();
   const dispatch: any = useDispatch();
-  const imageBase: any = useSelector(
-    (state: RootState): RootState => state.imageBase
-  );
 
   React.useEffect((): any => {
     Keyboard.addListener("keyboardDidShow", (): void => {
@@ -69,12 +66,6 @@ const SendImage: React.FC = () => {
       }
     );
   }, []);
-
-  React.useEffect((): void => {
-    if (imageBase === null) return;
-    setLink(imageBase);
-    setError(false);
-  }, [imageBase]);
 
   const style: any = StyleSheet.create({
     container: {
@@ -122,9 +113,7 @@ const SendImage: React.FC = () => {
           <Image
             style={style.preview}
             source={{
-              uri: link.includes(Constants.expoConfig?.extra?.API_URL)
-                ? `${link}&key=${Constants.expoConfig?.extra?.API_KEY}`
-                : link,
+              uri: link,
             }}
             onError={(): void => {
               setError(true);
@@ -154,7 +143,7 @@ const SendImage: React.FC = () => {
 
         <Form
           placeholder={"Image link"}
-          value={imageBase === null ? undefined : imageBase}
+          value={link.includes(Constants.manifest?.extra?.API_URL) ? " " : link}
           onTextChange={(text: string): void => {
             setLink(text);
             setError(false);
@@ -252,12 +241,18 @@ const SendImage: React.FC = () => {
                         : "CHILL&CHAT_GIF"
                     )
                       .then((id: string): void => {
-                        setLink(
-                          `${Constants.manifest?.extra?.API_URL}/api/get-content?id=${id}&user=${userInfo.username}`
-                        );
+                        const url: string = `${
+                          Constants.manifest?.extra?.API_URL
+                        }content/${userInfo.username}/${id}.${
+                          result.assets[0].duration === null ? "webp" : "gif"
+                        }`;
+
+                        setTimeout((): void => {
+                          setLink(url);
+                          setError(false);
+                          setLoading(false);
+                        }, 5000);
                         console.log(link);
-                        setError(false);
-                        setLoading(false);
                       })
                       .catch((err: unknown): void => {
                         Alert.alert(
