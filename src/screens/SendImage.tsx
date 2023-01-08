@@ -63,6 +63,7 @@ const SendImage: React.FC = () => {
     setKeyboardSocket(sessionStatus.id, userInfo.username, "start").catch(
       (err: unknown): void => {
         console.error(err);
+        navigation.navigate("error");
       }
     );
   }, []);
@@ -176,12 +177,14 @@ const SendImage: React.FC = () => {
                     "stop"
                   ).catch((err: unknown): void => {
                     console.error(err);
+                    navigation.navigate("error");
                   });
                   dispatch(clearImageBase());
                   navigation.navigate("chat");
                 })
                 .catch((err: unknown): void => {
                   console.error(err);
+                  navigation.navigate("error");
                 });
             }}
           />
@@ -196,6 +199,7 @@ const SendImage: React.FC = () => {
                 "stop"
               ).catch((err: unknown): void => {
                 console.error(err);
+                navigation.navigate("error");
               });
               dispatch(clearImageBase());
               navigation.navigate("chat");
@@ -267,7 +271,7 @@ const SendImage: React.FC = () => {
               .catch((err: unknown): void => {
                 setLoading(false);
                 setError(true);
-                console.log(err);
+                console.error(err);
               });
           }}
         >

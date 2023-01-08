@@ -32,6 +32,7 @@ import {
 import LoadingSpinner from "../components/LoadingSpinner";
 import TypingAnimation from "../components/TypingAnimation";
 import SendBar from "../components/SendBar";
+import { useNavigation } from "@react-navigation/native";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -47,6 +48,7 @@ const Chat: React.FC = () => {
 
   const scrollRef: React.MutableRefObject<any> = React.useRef();
   const windowDimensions: ScaledSize = Dimensions.get("window");
+  const navigator: any = useNavigation();
 
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
@@ -86,6 +88,7 @@ const Chat: React.FC = () => {
               })
               .catch((err: unknown): void => {
                 console.error(err);
+                navigator.navigate("error");
               });
           }
           if (users.length === userList.length - 1) {
@@ -95,6 +98,7 @@ const Chat: React.FC = () => {
       })
       .catch((err: unknown): void => {
         console.error(err);
+        navigator.navigate("error");
       });
 
     const socket: any = io(Constants.manifest?.extra?.SOCKET_URL, {

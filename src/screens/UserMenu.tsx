@@ -206,10 +206,12 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
                           })
                           .catch((err: unknown): void => {
                             console.error(err);
+                            navigation.navigate("error");
                           });
                       })
                       .catch((err: unknown): void => {
                         console.error(err);
+                        navigation.navigate("error");
                       });
                   }}
                   color={"#00AD98"}

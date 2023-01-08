@@ -127,12 +127,14 @@ const UpdateIconColor: React.FC = () => {
                     })
                     .catch((err: unknown): void => {
                       console.error(err);
+                      navigation.navigate("error");
                     });
                   setColor("");
                   navigation.push("signout-confirm");
                 })
                 .catch((err: unknown): void => {
                   console.error(err);
+                  navigation.navigate("error");
                 });
             } else {
               setError("Invalid color, please try again.");

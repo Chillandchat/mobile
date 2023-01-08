@@ -134,6 +134,7 @@ const MessageOptions: React.FC = () => {
               })
               .catch((err: unknown): void => {
                 console.error(err);
+                navigation.navigate("error");
               });
           }}
         >
@@ -166,6 +167,7 @@ const MessageOptions: React.FC = () => {
                       })
                       .catch((err: unknown): void => {
                         console.error(err);
+                        navigation.navigate("error");
                       });
                   },
                 },

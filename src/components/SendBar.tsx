@@ -99,6 +99,7 @@ const SendBar: React.FC<any> = (props: any): any => {
                 "start"
               ).catch((err: unknown): void => {
                 console.error(err);
+                navigator.navigate("error");
               });
             }
 
@@ -109,6 +110,7 @@ const SendBar: React.FC<any> = (props: any): any => {
                 "stop"
               ).catch((err: unknown): void => {
                 console.error(err);
+                navigator.navigate("error");
               });
             }
 
@@ -153,6 +155,7 @@ const SendBar: React.FC<any> = (props: any): any => {
                 })
                 .catch((err: unknown): void => {
                   console.error(err);
+                  navigator.navigate("error");
                 });
             }}
           >

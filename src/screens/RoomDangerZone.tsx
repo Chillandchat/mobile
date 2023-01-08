@@ -89,6 +89,7 @@ const RoomDangerZone: React.FC = () => {
                               })
                               .catch((err: unknown): void => {
                                 console.error(err);
+                                navigation.navigate("error");
                               });
                           },
                         },
@@ -142,6 +143,7 @@ const RoomDangerZone: React.FC = () => {
                                   })
                                   .catch((err: unknown): void => {
                                     console.error(err);
+                                    navigation.navigate("error");
                                   });
                               })
                               .catch((err: unknown): void => {

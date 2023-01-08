@@ -33,6 +33,7 @@ const PublicRooms: React.FC = () => {
       })
       .catch((err: unknown): void => {
         console.error(err);
+        navigation.navigate("error");
       });
 
     getRoom(userInfo.username).then((rooms: Array<RoomType>): void => {
@@ -84,6 +85,7 @@ const PublicRooms: React.FC = () => {
               })
               .catch((err: unknown): void => {
                 console.error(err);
+                navigation.navigate("error");
               });
           }}
           rooms={rooms.filter(

@@ -187,6 +187,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
                 })
                 .catch((err: unknown): void => {
                   console.error(err);
+                  navigation.navigate("error");
                 });
             } else {
               followUser(state.profileInfo.username, state.userInfo.username)
@@ -203,6 +204,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
                 })
                 .catch((err: unknown): void => {
                   console.error(err);
+                  navigation.navigate("error");
                 });
             }
           }}
