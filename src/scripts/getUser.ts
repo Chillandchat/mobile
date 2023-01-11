@@ -14,16 +14,16 @@ import { AuthType } from "./index.d";
 const getUser = async (user: string): Promise<AuthType | {}> => {
   let userData: AuthType | any = {};
 
-    await api.instance
-      .get(`${api.endpoints.getUserInfo}?key=${api.apiKey}&user=${user}`)
-      .then((data: AxiosResponse): void => {
-        if (data.data !== "") {
-          userData = data.data;
-        }
-      })
-      .catch((err: unknown): void => {
-        throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
-      });
+  await api.instance
+    .get(`${api.endpoints.getUserInfo}?key=${api.apiKey}&user=${user}`)
+    .then((data: AxiosResponse): void => {
+      if (data.data !== "") {
+        userData = data.data;
+      }
+    })
+    .catch((err: unknown): void => {
+      throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
+    });
 
   return userData;
 };
