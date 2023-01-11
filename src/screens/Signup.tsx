@@ -155,7 +155,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
             }
 
             if (password === undefined || username === undefined) {
-              setError("Unable to create account.");
+              setError("Please fill in all fields!");
               setTimeout(() => {
                 setError("");
               }, 5000);

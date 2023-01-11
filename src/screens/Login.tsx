@@ -125,7 +125,7 @@ const Login: React.FC<any> = ({ navigation }) => {
         <Button
           onPress={(): void => {
             if (username === undefined || password === undefined) {
-              setError("Invalid username or password");
+              setError("Please fill in all fields.");
               setTimeout(() => {
                 setError("");
               }, 5000);
