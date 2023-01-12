@@ -9,6 +9,7 @@ import {
 import hexRgb from "hex-rgb";
 
 import { IconProps as Props, RGBColors } from "./index.d";
+import decideOverlay from "./decideOverlay";
 
 /**
  * This is the Icon component, this component is what Chill&chat displays icons such as users and rooms.
@@ -21,18 +22,6 @@ import { IconProps as Props, RGBColors } from "./index.d";
  */
 
 const Icon: React.FC<Props> = (props: Props) => {
-  const [rgbColor, setRgbColor]: [RGBColors, (arg: RGBColors) => void] =
-    React.useState({
-      red: 0,
-      green: 0,
-      blue: 0,
-      alpha: 0,
-    });
-
-  React.useEffect((): any => {
-    setRgbColor(hexRgb(props.color));
-  }, []);
-
   const style: any = StyleSheet.create({
     container: {
       borderRadius: 1000,
@@ -46,11 +35,7 @@ const Icon: React.FC<Props> = (props: Props) => {
       fontFamily: "poppinsLight",
       fontSize: 30,
       paddingTop: Platform.OS === "ios" ? 0 : 3,
-      color:
-        rgbColor.red * 0.299 + rgbColor.green * 0.587 + rgbColor.blue * 0.114 >
-        220
-          ? "#000000"
-          : "#ffffff",
+      color: decideOverlay(props.color, "#ffffff", "#000000"),
     },
   });
 
