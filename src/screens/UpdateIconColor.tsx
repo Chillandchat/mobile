@@ -56,7 +56,7 @@ const UpdateIconColor: React.FC = () => {
     text: {
       fontFamily: "poppinsExtraBold",
       fontSize: 20,
-      margin: 20,
+      marginBottom: 20,
     },
     error: {
       color: "red",
@@ -81,21 +81,64 @@ const UpdateIconColor: React.FC = () => {
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
         <Text style={style.boldText}>Update icon color</Text>
-        <Text style={style.text}>Preview</Text>
-        <Icon
-          iconLetter={userInfo.username[0]}
-          color={
-            /^#([0-9a-f]{3}){1,2}$/i.test(color) ||
-            ColorNames.colors[color.replaceAll(" ", "").toLowerCase()] !==
-              undefined
-              ? color.replaceAll(" ", "").toLowerCase()
-              : userInfo.iconColor
-          }
-          touchable={false}
-        />
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "85%",
+          }}
+        >
+          <View style={{ flex: 1, marginLeft: 20, flexDirection: "column" }}>
+            <Text style={style.text}>Preview</Text>
+            <View style={{ marginLeft: 10 }}>
+              <Icon
+                iconLetter={userInfo.username[0]}
+                color={
+                  /^#([0-9a-f]{3}){1,2}$/i.test(color) ||
+                  ColorNames.colors[color.replaceAll(" ", "").toLowerCase()] !==
+                    undefined
+                    ? color.replaceAll(" ", "").toLowerCase()
+                    : userInfo.iconColor
+                }
+                touchable={false}
+              />
+            </View>
+          </View>
+          <View
+            style={{
+              marginTop: 20,
+              width: "100%",
+              height: 400,
+              flex: 2,
+            }}
+          >
+            <ScrollView
+              contentContainerStyle={{
+                flexDirection: "row",
+                flexWrap: "wrap",
+              }}
+            >
+              {Object.keys(ColorNames.colors).map((value: string): any => {
+                return (
+                  <View style={{ margin: 5 }}>
+                    <Icon
+                      iconLetter={userInfo.username[0]}
+                      color={ColorNames.colors[value].toString()}
+                      touchable
+                      onPress={(): void => {
+                        setColor(ColorNames.colors[value]);
+                      }}
+                    />
+                  </View>
+                );
+              })}
+            </ScrollView>
+          </View>
+        </View>
         <View style={{ padding: 20 }} />
         <Form
-          placeholder="Icon color"
+          placeholder="Custom icon color"
           onTextChange={(text: string): void => {
             setColor(text);
           }}
