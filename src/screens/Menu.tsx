@@ -59,9 +59,10 @@ const Menu: React.FC<any> = ({ navigation }) => {
       console.log();
       if (!ran && JSON.stringify(defaultRooms) === JSON.stringify(ref)) {
         let tmpRecentMessages: Array<MessageType> = [];
+
         ref.forEach((room: RoomType): void => {
           getMessages(room.id)
-            .then((returnedMessages: MessageType[]): void => {
+            .then((returnedMessages: Array<MessageType>): void => {
               console.log(returnedMessages);
               let current: MessageType =
                 returnedMessages[returnedMessages.length - 1];
