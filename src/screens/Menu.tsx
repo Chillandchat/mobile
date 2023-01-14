@@ -63,7 +63,6 @@ const Menu: React.FC<any> = ({ navigation }) => {
         ref.forEach((room: RoomType): void => {
           getMessages(room.id)
             .then((returnedMessages: Array<MessageType>): void => {
-              console.log(returnedMessages);
               let current: MessageType =
                 returnedMessages[returnedMessages.length - 1];
               current.content = `${

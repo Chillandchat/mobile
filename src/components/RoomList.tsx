@@ -67,11 +67,6 @@ const RoomList: React.FC<Props> = (props: Props) => {
     },
   });
 
-  // Debug code:
-  // React.useEffect((): any => {
-  //   console.log(props);
-  // }, [props]);
-
   return props.rooms.length === 0 ? (
     <View style={style.errorContainer} key={props.messages?.length.toString()}>
       <Text style={style.error}>No rooms found.</Text>
@@ -84,7 +79,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
     </View>
   ) : (
     <ScrollView style={style.container}>
-      {props.rooms.map((room: RoomType, index: number): any => (
+      {props.rooms.map((room: RoomType): any => (
         <TouchableOpacity
           style={style.roomContainer}
           key={room.id.concat("-a")}
@@ -120,7 +115,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
                   //@ts-ignore
                   props.messages.find(
                     (value: MessageType): any => value.room === room.id
-                  )?.content || ""
+                  )?.content || "No messages found."
                 )}
               </Text>
             ) : null}
