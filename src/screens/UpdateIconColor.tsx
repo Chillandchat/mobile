@@ -78,6 +78,12 @@ const UpdateIconColor: React.FC = () => {
     previewDivider: { marginLeft: 10 },
     divider: { padding: 20 },
     previewContainer: { flex: 1, marginLeft: 20, flexDirection: "column" },
+    bodyContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "85%",
+    },
   });
 
   return (
@@ -95,14 +101,7 @@ const UpdateIconColor: React.FC = () => {
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
         <Text style={style.boldText}>Update icon color</Text>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "85%",
-          }}
-        >
+        <View style={style.bodyContainer}>
           <View style={style.previewContainer}>
             <Text style={style.text}>Preview</Text>
             <View style={style.previewDivider}>
