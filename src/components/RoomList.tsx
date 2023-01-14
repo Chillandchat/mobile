@@ -10,7 +10,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 
-import { RoomType } from "../scripts/index.d";
+import { MessageType, RoomType } from "../scripts/index.d";
 import { RoomListProps as Props } from "./index.d";
 import { setSessionData } from "../redux/action";
 import Icon from "./Icon";
@@ -67,6 +67,11 @@ const RoomList: React.FC<Props> = (props: Props) => {
     },
   });
 
+  // Debug code:
+  // React.useEffect((): any => {
+  //   console.log(props);
+  // }, [props]);
+
   return props.rooms.length === 0 ? (
     <View style={style.errorContainer} key={props.messages?.length.toString()}>
       <Text style={style.error}>No rooms found.</Text>
@@ -106,13 +111,16 @@ const RoomList: React.FC<Props> = (props: Props) => {
               {room.name}
             </Text>
             {props.displayMessages ? (
-              <Text key={room.id.concat("-d")}>
+              <Text
+                key={room.id.concat("-d")}
+                numberOfLines={1}
+                style={[style.titleStyle, { fontSize: 15 }]}
+              >
                 {String(
                   //@ts-ignore
                   props.messages.find(
-                    //@ts-ignore
-                    (message): boolean => message.room === room
-                  ) || "No messages."
+                    (value: MessageType): any => value.room === room.id
+                  )?.content || ""
                 )}
               </Text>
             ) : null}

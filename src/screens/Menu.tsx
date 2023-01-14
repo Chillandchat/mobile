@@ -70,7 +70,15 @@ const Menu: React.FC<any> = ({ navigation }) => {
               }: ${returnedMessages[returnedMessages.length - 1].content}`;
 
               tmpRecentMessages.push(current);
-              setRecentMessages(tmpRecentMessages);
+              setRecentMessages(
+                (_prev: Array<MessageType>): Array<MessageType> => {
+                  _prev.length === defaultRooms.length
+                    ? setRooms(defaultRooms)
+                    : null;
+
+                  return tmpRecentMessages;
+                }
+              );
             })
             .catch((err: unknown): void => {
               console.error(err);
