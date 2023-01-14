@@ -17,8 +17,9 @@ import RoomList from "../components/RoomList";
 import Icon from "../components/Icon";
 import { RootState } from "../redux/index.d";
 import getRoom from "../scripts/getRooms";
-import { RoomType } from "../scripts/index.d";
+import { MessageType, RoomType } from "../scripts/index.d";
 import Form from "../components/Form";
+import getMessages from "../scripts/getMessages";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
@@ -37,14 +38,15 @@ const Menu: React.FC<any> = ({ navigation }) => {
     return state.loginStatus;
   });
 
-  const [rooms, setRooms] = React.useState<Array<RoomType>>([]);
-  const [defaultRooms, setDefaultRooms] = React.useState<Array<RoomType>>([]);
+  const [rooms, setRooms]: any = React.useState([]);
+  const [defaultRooms, setDefaultRooms]: any = React.useState([]);
+  const [recentMessages, setRecentMessages]: any = React.useState([]);
+  const [ran, setRan]: any = React.useState(false);
 
   React.useEffect((): void => {
     getRoom(username)
       .then((data: Array<RoomType>): void => {
-        setRooms(data);
-        setDefaultRooms(data);
+        setDefaultRooms((_prev: Array<RoomType>): Array<RoomType> => data);
       })
       .catch((err: unknown) => {
         console.error(err);
@@ -52,6 +54,35 @@ const Menu: React.FC<any> = ({ navigation }) => {
       });
   }, []);
 
+  React.useEffect((): void => {
+    getRoom(username).then((ref: Array<RoomType>): void => {
+      console.log();
+      if (!ran && JSON.stringify(defaultRooms) === JSON.stringify(ref)) {
+        let tmpRecentMessages: Array<MessageType> = [];
+        ref.forEach((room: RoomType): void => {
+          getMessages(room.id)
+            .then((returnedMessages: MessageType[]): void => {
+              console.log(returnedMessages);
+              let current: MessageType =
+                returnedMessages[returnedMessages.length - 1];
+              current.content = `${
+                returnedMessages[returnedMessages.length - 1].user
+              }: ${returnedMessages[returnedMessages.length - 1].content}`;
+
+              tmpRecentMessages.push(current);
+              setRecentMessages(tmpRecentMessages);
+            })
+            .catch((err: unknown): void => {
+              console.error(err);
+              navigation.navigate("error");
+            });
+        });
+        setRan(true);
+      }
+    });
+  }, [defaultRooms]);
+
+  React.useEffect((): any => {}, [recentMessages]);
   const style: any = StyleSheet.create({
     container: {
       alignItems: "center",
@@ -132,7 +163,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
               }}
             />
           </View>
-          <RoomList rooms={rooms} />
+          <RoomList rooms={rooms} displayMessages messages={recentMessages} />
           <TouchableOpacity
             style={style.addButton}
             onPress={(): void => {
