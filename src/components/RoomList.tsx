@@ -22,6 +22,8 @@ import { Dispatch } from "redux";
  *
  * @prop {Array<RoomType>} rooms The rooms to display.
  * @optional @prop {(room: RoomType) => void} onPress What to run a user click the room.
+ * @prop {boolean} displayMessages If it should display the recent messages.
+ * @prop {Array<MessageType>} messages the messages to display.
  * @see RoomType For more information.
  */
 
@@ -60,10 +62,13 @@ const RoomList: React.FC<Props> = (props: Props) => {
     sadFace: {
       opacity: 0.3,
     },
+    nameContainer: {
+      flexDirection: "column",
+    },
   });
 
   return props.rooms.length === 0 ? (
-    <View style={style.errorContainer}>
+    <View style={style.errorContainer} key={props.messages?.length.toString()}>
       <Text style={style.error}>No rooms found.</Text>
       <MaterialCommunityIcons
         name="emoticon-sad-outline"
@@ -74,7 +79,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
     </View>
   ) : (
     <ScrollView style={style.container}>
-      {props.rooms.map((room: RoomType): any => (
+      {props.rooms.map((room: RoomType, index: number): any => (
         <TouchableOpacity
           style={style.roomContainer}
           key={room.id.concat("-a")}
@@ -92,13 +97,26 @@ const RoomList: React.FC<Props> = (props: Props) => {
             color={room.iconColor}
             key={room.id.concat("-b")}
           />
-          <Text
-            style={style.titleStyle}
-            numberOfLines={1}
-            key={room.id.concat("-c")}
-          >
-            {room.name}
-          </Text>
+          <View style={style.nameContainer}>
+            <Text
+              style={style.titleStyle}
+              numberOfLines={1}
+              key={room.id.concat("-c")}
+            >
+              {room.name}
+            </Text>
+            {props.displayMessages ? (
+              <Text key={room.id.concat("-d")}>
+                {String(
+                  //@ts-ignore
+                  props.messages.find(
+                    //@ts-ignore
+                    (message): boolean => message.room === room
+                  ) || "No messages."
+                )}
+              </Text>
+            ) : null}
+          </View>
         </TouchableOpacity>
       ))}
     </ScrollView>
