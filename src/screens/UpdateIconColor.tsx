@@ -65,6 +65,20 @@ const UpdateIconColor: React.FC = () => {
       marginBottom: 20,
       fontFamily: "poppinsLight",
     },
+    colorPickerContainer: {
+      marginTop: 20,
+      width: "100%",
+      height: 400,
+      flex: 2,
+    },
+    colorPickerWrapper: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+    },
+    elementDivider: { margin: 5 },
+    previewDivider: { marginLeft: 10 },
+    divider: { padding: 20 },
+    previewContainer: { flex: 1, marginLeft: 20, flexDirection: "column" },
   });
 
   return (
@@ -90,9 +104,9 @@ const UpdateIconColor: React.FC = () => {
             width: "85%",
           }}
         >
-          <View style={{ flex: 1, marginLeft: 20, flexDirection: "column" }}>
+          <View style={style.previewContainer}>
             <Text style={style.text}>Preview</Text>
-            <View style={{ marginLeft: 10 }}>
+            <View style={style.previewDivider}>
               <Icon
                 iconLetter={userInfo.username[0]}
                 color={
@@ -106,23 +120,11 @@ const UpdateIconColor: React.FC = () => {
               />
             </View>
           </View>
-          <View
-            style={{
-              marginTop: 20,
-              width: "100%",
-              height: 400,
-              flex: 2,
-            }}
-          >
-            <ScrollView
-              contentContainerStyle={{
-                flexDirection: "row",
-                flexWrap: "wrap",
-              }}
-            >
+          <View style={style.colorPickerContainer}>
+            <ScrollView contentContainerStyle={style.colorPickerWrapper}>
               {Object.keys(ColorNames.colors).map((value: string): any => {
                 return (
-                  <View style={{ margin: 5 }}>
+                  <View style={style.elementDivider}>
                     <Icon
                       iconLetter={userInfo.username[0]}
                       color={ColorNames.colors[value].toString()}
@@ -137,7 +139,7 @@ const UpdateIconColor: React.FC = () => {
             </ScrollView>
           </View>
         </View>
-        <View style={{ padding: 20 }} />
+        <View style={style.divider} />
         <Form
           placeholder="Custom icon color"
           onTextChange={(text: string): void => {
