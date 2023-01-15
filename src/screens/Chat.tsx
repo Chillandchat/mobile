@@ -33,6 +33,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import TypingAnimation from "../components/TypingAnimation";
 import SendBar from "../components/SendBar";
 import { useNavigation } from "@react-navigation/native";
+import RoomWelcomer from "../components/RoomWelcomer";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -223,6 +224,7 @@ const Chat: React.FC = () => {
                 setScrollViewHeight(height);
               }}
             >
+              <RoomWelcomer />
               {messageDisplayed?.map((tmpMessage: MessageType): any => {
                 const readMessage: string = tmpMessage.content;
 
