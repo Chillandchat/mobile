@@ -45,7 +45,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
     container: {
       alignSelf: "flex-start",
       marginHorizontal: "5%",
-      width: "85%",
+      width: "90%",
       marginBottom: "10%",
     },
     error: {
@@ -108,7 +108,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
             {props.displayMessages ? (
               <Text
                 key={room.id.concat("-d")}
-                numberOfLines={1}
+                numberOfLines={3}
                 style={[style.titleStyle, { fontSize: 15 }]}
               >
                 {String(
