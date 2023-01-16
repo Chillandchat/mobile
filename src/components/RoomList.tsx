@@ -108,7 +108,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
             {props.displayMessages ? (
               <Text
                 key={room.id.concat("-d")}
-                numberOfLines={3}
+                numberOfLines={2}
                 style={[style.titleStyle, { fontSize: 15 }]}
               >
                 {String(
