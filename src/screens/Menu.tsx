@@ -56,29 +56,32 @@ const Menu: React.FC<any> = ({ navigation }) => {
 
   React.useEffect((): void => {
     getRoom(username).then((ref: Array<RoomType>): void => {
-      console.log();
       if (!ran && JSON.stringify(defaultRooms) === JSON.stringify(ref)) {
         let tmpRecentMessages: Array<MessageType> = [];
 
         ref.forEach((room: RoomType): void => {
           getMessages(room.id)
             .then((returnedMessages: Array<MessageType>): void => {
-              let current: MessageType =
-                returnedMessages[returnedMessages.length - 1];
-              current.content = `${
-                returnedMessages[returnedMessages.length - 1].user
-              }: ${returnedMessages[returnedMessages.length - 1].content}`;
+              if (returnedMessages.length !== 0) {
+                let current: MessageType =
+                  returnedMessages[returnedMessages.length - 1];
+                current.content = `${
+                  returnedMessages[returnedMessages.length - 1].user
+                }: ${returnedMessages[returnedMessages.length - 1].content}`;
 
-              tmpRecentMessages.push(current);
-              setRecentMessages(
-                (_prev: Array<MessageType>): Array<MessageType> => {
-                  _prev.length === defaultRooms.length
-                    ? setRooms(defaultRooms)
-                    : null;
+                tmpRecentMessages.push(current);
+                setRecentMessages(
+                  (_prev: Array<MessageType>): Array<MessageType> => {
+                    _prev.length === defaultRooms.length
+                      ? setRooms(defaultRooms)
+                      : null;
 
-                  return tmpRecentMessages;
-                }
-              );
+                    return tmpRecentMessages;
+                  }
+                );
+              } else {
+                setRooms(defaultRooms);
+              }
             })
             .catch((err: unknown): void => {
               console.error(err);
@@ -90,7 +93,6 @@ const Menu: React.FC<any> = ({ navigation }) => {
     });
   }, [defaultRooms]);
 
-  React.useEffect((): any => {}, [recentMessages]);
   const style: any = StyleSheet.create({
     container: {
       alignItems: "center",
