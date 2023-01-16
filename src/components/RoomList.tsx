@@ -45,7 +45,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
     container: {
       alignSelf: "flex-start",
       marginHorizontal: "5%",
-      width: "100%",
+      width: "85%",
       marginBottom: "10%",
     },
     error: {
