@@ -17,6 +17,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
 import { AntDesign } from "@expo/vector-icons";
 import { Dispatch } from "redux";
+import {
+  clearRoomUserInfo,
+  clearSessionData,
+  setRoomUserInfo,
+} from "../redux/action";
+import { useNavigation } from "@react-navigation/native";
 
 import ChatRoomBar from "../components/ChatRoomBar";
 import { RootState } from "../redux/index.d";
@@ -24,15 +30,9 @@ import { AuthType, MessageType } from "../scripts";
 import Message from "../components/Message";
 import getMessages from "../scripts/getMessages";
 import getUser from "../scripts/getUser";
-import {
-  clearRoomUserInfo,
-  clearSessionData,
-  setRoomUserInfo,
-} from "../redux/action";
 import LoadingSpinner from "../components/LoadingSpinner";
 import TypingAnimation from "../components/TypingAnimation";
 import SendBar from "../components/SendBar";
-import { useNavigation } from "@react-navigation/native";
 import RoomWelcomer from "../components/RoomWelcomer";
 
 /**

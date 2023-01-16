@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Icon from "./Icon";
 import { useSelector } from "react-redux";
+
+import Icon from "./Icon";
 import { RootState } from "../redux/index.d";
 
 /**
@@ -11,7 +12,7 @@ import { RootState } from "../redux/index.d";
  * @note There are no props that needs to be fed into this component.
  */
 
-const RoomWelcomer: React.FC<any> = (_props: any) => {
+const RoomWelcomer: React.FC = () => {
   const { name, iconColor }: RootState = useSelector(
     (state: RootState): RootState => state.sessionStatus
   );
