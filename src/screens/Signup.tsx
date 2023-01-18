@@ -16,6 +16,7 @@ import getUser from "../scripts/getUser";
 import { AuthType } from "../scripts";
 import signup from "../scripts/signup";
 import Checkbox from "expo-checkbox";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 /**
  * This is the signup component for the application, this component is responsible for
@@ -28,6 +29,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
   const [password, setPassword]: any = React.useState("");
   const [confirmPassword, setConfirmPassword]: any = React.useState("");
   const [agreed, setAgreed]: any = React.useState(false);
+  const [loading, setLoading]: any = React.useState(false);
 
   const style = StyleSheet.create({
     container: {
@@ -69,6 +71,30 @@ const Signup: React.FC<any> = ({ navigation }) => {
     },
     checkBox: {
       marginTop: 20,
+    },
+    loader: {
+      backgroundColor: "#ffffff",
+      padding: 40,
+      borderRadius: 20,
+      opacity: 1,
+      zIndex: 10,
+    },
+    loadingContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 10,
+      height: "100%",
+      width: "100%",
+      position: "absolute",
+    },
+    loadingBackground: {
+      backgroundColor: "#000000",
+      opacity: 0.5,
+      height: "1000%",
+      width: "100%",
+      zIndex: 0,
+      position: "absolute",
     },
   });
   return (
@@ -130,11 +156,13 @@ const Signup: React.FC<any> = ({ navigation }) => {
           text={"sign up"}
           disabled={!agreed}
           onPress={(): void => {
+            setLoading(true);
             if (password?.length < 5) {
               setError("Password must be at least 5 letters long.");
               setTimeout(() => {
                 setError("");
               }, 5000);
+              setLoading(false);
               return;
             }
 
@@ -143,6 +171,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
               setTimeout(() => {
                 setError("");
               }, 5000);
+              setLoading(false);
               return;
             }
 
@@ -151,6 +180,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
               setTimeout(() => {
                 setError("");
               }, 5000);
+              setLoading(false);
               return;
             }
 
@@ -159,6 +189,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
               setTimeout(() => {
                 setError("");
               }, 5000);
+              setLoading(false);
               return;
             }
 
@@ -169,6 +200,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
                   setTimeout(() => {
                     setError("");
                   }, 5000);
+                  setLoading(false);
                   return;
                 }
 
@@ -181,6 +213,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
                     setTimeout(() => {
                       setError("");
                     }, 5000);
+                    setLoading(false);
                     console.error(err);
                   });
               })
@@ -190,6 +223,7 @@ const Signup: React.FC<any> = ({ navigation }) => {
                 setTimeout(() => {
                   setError("");
                 }, 5000);
+                setLoading(false);
               });
           }}
         />
@@ -203,6 +237,14 @@ const Signup: React.FC<any> = ({ navigation }) => {
             text={"back"}
           />
         </View>
+        {!loading ? null : (
+          <View style={style.loadingContainer}>
+            <View style={style.loadingBackground} />
+            <View style={style.loader}>
+              <LoadingSpinner />
+            </View>
+          </View>
+        )}
       </ScrollView>
     </KeyboardAvoidingView>
   );
