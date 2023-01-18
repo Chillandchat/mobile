@@ -19,6 +19,7 @@ import Form from "../components/LoginForm";
 import login from "../scripts/login";
 import { AuthType } from "../scripts";
 import getUser from "../scripts/getUser";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 /**
  * This is the login component for the application, this component is responsible for
@@ -31,6 +32,7 @@ const Login: React.FC<any> = ({ navigation }) => {
   const [username, setUsername]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
   const [keyboardOpen, setKeyboardOpen]: any = React.useState(false);
+  const [loading, setLoading]: any = React.useState(false);
 
   React.useEffect((): any => {
     NetInfo.fetch().then((state: any): void => {
@@ -86,6 +88,30 @@ const Login: React.FC<any> = ({ navigation }) => {
       justifyContent: "flex-start",
       flexDirection: "row",
     },
+    loader: {
+      backgroundColor: "#ffffff",
+      padding: 40,
+      borderRadius: 20,
+      opacity: 1,
+      zIndex: 10,
+    },
+    loadingContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 10,
+      height: "100%",
+      width: "100%",
+      position: "absolute",
+    },
+    loadingBackground: {
+      backgroundColor: "#000000",
+      opacity: 0.5,
+      height: "1000%",
+      width: "100%",
+      zIndex: 0,
+      position: "absolute",
+    },
   });
 
   return (
@@ -124,11 +150,13 @@ const Login: React.FC<any> = ({ navigation }) => {
         <Text style={style.error}>{error}</Text>
         <Button
           onPress={(): void => {
+            setLoading(true);
             if (username === undefined || password === undefined) {
               setError("Please fill in all fields.");
               setTimeout(() => {
                 setError("");
               }, 5000);
+              setLoading(false);
               return;
             }
 
@@ -147,11 +175,14 @@ const Login: React.FC<any> = ({ navigation }) => {
                         dispatch(loginAction());
 
                         navigation.push("menu");
+                        setLoading(false);
                       } else {
                         navigation.push("block-error");
+                        setLoading(false);
                         return;
                       }
                     } else {
+                      setLoading(false);
                       setError("Unable to connect.");
                       setTimeout(() => {
                         setError("");
@@ -167,6 +198,7 @@ const Login: React.FC<any> = ({ navigation }) => {
                     setTimeout(() => {
                       setError("");
                     }, 5000);
+                    setLoading(false);
                     console.error(err);
                   });
               })
@@ -175,6 +207,7 @@ const Login: React.FC<any> = ({ navigation }) => {
                 setTimeout(() => {
                   setError("");
                 }, 5000);
+                setLoading(false);
                 console.error(err);
               });
           }}
@@ -182,6 +215,14 @@ const Login: React.FC<any> = ({ navigation }) => {
           textColor={"#ffff"}
           text={"login"}
         />
+        {!loading ? null : (
+          <View style={style.loadingContainer}>
+            <View style={style.loadingBackground} />
+            <View style={style.loader}>
+              <LoadingSpinner />
+            </View>
+          </View>
+        )}
       </ScrollView>
       {!keyboardOpen ? (
         <TouchableOpacity
@@ -189,6 +230,7 @@ const Login: React.FC<any> = ({ navigation }) => {
             navigation.navigate("information");
           }}
           style={style.informationLink}
+          disabled={loading}
         >
           <Feather name="info" size={40} color="black" />
         </TouchableOpacity>
