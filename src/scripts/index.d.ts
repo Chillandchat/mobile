@@ -22,7 +22,7 @@ export type ApiEndpoint =
   | "/api/follow-user"
   | "/api/update-icon-color"
   | "/api/get-public-rooms"
-  | "/api/get-content"
+  | "/api/get-gif"
   | "/api/upload-content";
 
 /**
@@ -44,8 +44,8 @@ export type ApiEndpoint =
  * @param {ApiEndpoint} updateDescription
  * @param {ApiEndpoint} updateIconColor
  * @param {ApiEndpoint} getPublicRooms
- * @param {ApiEndpoint} getContent
  * @param {ApiEndpoint} uploadContent
+ * @param {ApiEndpoint} getGif
  */
 
 export interface ApiEndpoints {
@@ -57,7 +57,7 @@ export interface ApiEndpoints {
   reportRoom: ApiEndpoint;
   blockUser: ApiEndpoint;
   getUsers: ApiEndpoint;
-  getContent: ApiEndpoint;
+  getGif: ApiEndpoint;
   joinRoom: ApiEndpoint;
   getRoom: ApiEndpoint;
   createRoom: ApiEndpoint;
