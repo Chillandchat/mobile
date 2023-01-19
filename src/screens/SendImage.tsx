@@ -21,6 +21,7 @@ import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
 import { useDispatch, useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Form from "../components/Form";
 import Button from "../components/Button";
@@ -53,11 +54,15 @@ const SendImage: React.FC = () => {
     });
   });
 
-  const { sessionStatus, userInfo }: any = useSelector(
+  const { sessionStatus, userInfo, imageBase }: any = useSelector(
     (state: RootState): RootState => {
       return state;
     }
   );
+
+  React.useEffect((): void => {
+    imageBase !== null ? setLink(imageBase) : null;
+  }, [imageBase]);
 
   React.useEffect((): any => {
     setKeyboardSocket(sessionStatus.id, userInfo.username, "start").catch(
@@ -96,6 +101,11 @@ const SendImage: React.FC = () => {
       position: "absolute",
       bottom: 40,
       left: 40,
+    },
+    gif: {
+      position: "absolute",
+      bottom: 40,
+      right: 40,
     },
   });
 
@@ -208,75 +218,89 @@ const SendImage: React.FC = () => {
         </View>
       </ScrollView>
       {!keyboardOpen ? (
-        <TouchableOpacity
-          style={style.find}
-          onPress={(): void => {
-            dispatch(clearImageBase());
-            setLoading(true);
-            ImagePicker.launchImageLibraryAsync({
-              mediaTypes: ImagePicker.MediaTypeOptions.All,
-              allowsEditing: true,
-              aspect: [4, 3],
-              quality: 1,
-              base64: true,
-            })
-              .then(
-                async (
-                  result: ImagePicker.ImagePickerResult
-                ): Promise<void> => {
-                  if (result.canceled) {
-                    setLoading(false);
-                    setError(true);
-                  }
+        <View>
+          <TouchableOpacity
+            style={style.find}
+            onPress={(): void => {
+              dispatch(clearImageBase());
+              setLoading(true);
+              ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.All,
+                allowsEditing: true,
+                aspect: [4, 3],
+                quality: 1,
+                base64: true,
+              })
+                .then(
+                  async (
+                    result: ImagePicker.ImagePickerResult
+                  ): Promise<void> => {
+                    if (result.canceled) {
+                      setLoading(false);
+                      setError(true);
+                    }
 
-                  if (!result.canceled) {
-                    uploadContent(
-                      userInfo.username,
-                      result.assets[0].duration === null
-                        ? String(result.assets[0].base64)
-                        : await FileSystem.readAsStringAsync(
-                            result.assets[0].uri,
-                            {
-                              encoding: "base64",
-                            }
-                          ),
-                      result.assets[0].duration === null
-                        ? "CHILL&CHAT_IMG"
-                        : "CHILL&CHAT_GIF"
-                    )
-                      .then((id: string): void => {
-                        const url: string = `${
-                          Constants.manifest?.extra?.API_URL
-                        }content/${userInfo.username}/${id}.${
-                          result.assets[0].duration === null ? "webp" : "gif"
-                        }`;
+                    if (!result.canceled) {
+                      uploadContent(
+                        userInfo.username,
+                        result.assets[0].duration === null
+                          ? String(result.assets[0].base64)
+                          : await FileSystem.readAsStringAsync(
+                              result.assets[0].uri,
+                              {
+                                encoding: "base64",
+                              }
+                            ),
+                        result.assets[0].duration === null
+                          ? "CHILL&CHAT_IMG"
+                          : "CHILL&CHAT_GIF"
+                      )
+                        .then((id: string): void => {
+                          const url: string = `${
+                            Constants.manifest?.extra?.API_URL
+                          }content/${userInfo.username}/${id}.${
+                            result.assets[0].duration === null ? "webp" : "gif"
+                          }`;
 
-                        setTimeout((): void => {
-                          setLink(url);
-                          setError(false);
-                          setLoading(false);
-                        }, 5000);
-                        console.log(link);
-                      })
-                      .catch((err: unknown): void => {
-                        Alert.alert(
-                          "Upload too large",
-                          "Sorry, your file is too large to be uploaded to the Chill&chat cloud. Why not try compressing it!"
-                        );
-                        console.error(err);
-                      });
+                          setTimeout((): void => {
+                            setLink(url);
+                            setError(false);
+                            setLoading(false);
+                          }, 5000);
+                        })
+                        .catch((err: unknown): void => {
+                          Alert.alert(
+                            "Upload too large",
+                            "Sorry, your file is too large to be uploaded to the Chill&chat cloud. Why not try compressing it!"
+                          );
+                          console.error(err);
+                        });
+                    }
                   }
-                }
-              )
-              .catch((err: unknown): void => {
-                setLoading(false);
-                setError(true);
-                console.error(err);
-              });
-          }}
-        >
-          <AntDesign name="find" size={35} color="black" />
-        </TouchableOpacity>
+                )
+                .catch((err: unknown): void => {
+                  setLoading(false);
+                  setError(true);
+                  console.error(err);
+                });
+            }}
+          >
+            <AntDesign name="find" size={35} color="black" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={style.gif}
+            onPress={(): void => {
+              dispatch(clearImageBase());
+              navigation.navigate("image-base");
+            }}
+          >
+            <MaterialCommunityIcons
+              name="file-gif-box"
+              size={45}
+              color="black"
+            />
+          </TouchableOpacity>
+        </View>
       ) : null}
     </KeyboardAvoidingView>
   );

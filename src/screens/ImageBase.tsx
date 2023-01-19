@@ -14,8 +14,6 @@ import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 
 import Form from "../components/Form";
-import Images from "./images";
-import { setImageBase } from "../redux/action";
 
 /**
  * This is the image base component/screen.
@@ -50,35 +48,12 @@ const ImageBase: React.FC = () => {
       height: 300,
       width: 300,
     },
-
     imageListContainer: {
       height: "55%",
       width: "90%",
       justifyContent: "center",
       alignItems: "center",
       marginTop: 30,
-    },
-    heading: {
-      fontSize: 25,
-      fontFamily: "poppinsExtraBold",
-      position: "absolute",
-      top: "7%",
-      alignSelf: "center",
-    },
-    pexels: {
-      height: 40,
-      width: 40,
-    },
-    pexelsContainer: {
-      position: "absolute",
-      bottom: "5%",
-      left: "7%",
-      flexDirection: "row",
-      alignItems: "center",
-    },
-    credit: {
-      fontFamily: "poppins",
-      marginLeft: 10,
     },
   });
 
@@ -97,7 +72,6 @@ const ImageBase: React.FC = () => {
         >
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
-        <Text style={style.heading}>Chill&chat images</Text>
         <Form
           placeholder="Search"
           onTextChange={(text: string): void => {
@@ -106,10 +80,7 @@ const ImageBase: React.FC = () => {
         />
         <View style={style.imageListContainer}>
           <ScrollView>
-            {Images.images.map((image: Images.ImageType): any => {
-              return filter == "" ||
-                image.name.toLowerCase().includes(filter.toLowerCase()) ? (
-                <TouchableOpacity
+            {/* <TouchableOpacity
                   key={image.link}
                   style={style.imageContainer}
                   onPress={(): void => {
@@ -118,19 +89,8 @@ const ImageBase: React.FC = () => {
                   }}
                 >
                   <Image source={{ uri: image.link }} style={style.image} />
-                </TouchableOpacity>
-              ) : null;
-            })}
+                </TouchableOpacity> */}
           </ScrollView>
-        </View>
-        <View style={style.pexelsContainer}>
-          <Image
-            source={{
-              uri: "https://seeklogo.com/images/P/pexels-logo-EFB9232709-seeklogo.com.png",
-            }}
-            style={style.pexels}
-          />
-          <Text style={style.credit}>Images from Pexels(Not sponsored)</Text>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
