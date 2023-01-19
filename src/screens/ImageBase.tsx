@@ -10,13 +10,13 @@ import {
   Platform,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { PrivateValueStore, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
+import { FontAwesome } from "@expo/vector-icons";
 
 import Form from "../components/Form";
 import getGif from "../scripts/getGif";
 import { setImageBase } from "../redux/action";
-import Button from "../components/Button";
 
 /**
  * This is the image base component/screen.
@@ -70,15 +70,16 @@ const ImageBase: React.FC = () => {
       alignItems: "center",
     },
     image: {
-      height: 150,
-      width: 150,
-      borderRadius: 20,
+      height: 100,
+      width: 100,
     },
     searchWrapper: {
       width: "100%",
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",
+      marginTop: 50,
+      marginLeft: 35,
     },
     searchIcon: {
       padding: 20,
@@ -90,10 +91,9 @@ const ImageBase: React.FC = () => {
     },
     imageContainer: {
       backgroundColor: "#E5E5E5",
-      margin: 20,
-      borderRadius: 20,
-      height: 150,
-      width: 150,
+      height: 100,
+      width: 100,
+      margin: 5,
     },
     imageListContainer: {
       height: "65%",
@@ -149,7 +149,7 @@ const ImageBase: React.FC = () => {
                 });
             }}
           >
-            <AntDesign name="search1" size={24} color="black" />
+            <FontAwesome name="search" size={24} color="#00ad98" />
           </TouchableOpacity>
         </View>
         <View style={style.imageListContainer}>
