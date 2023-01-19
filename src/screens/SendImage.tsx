@@ -73,6 +73,10 @@ const SendImage: React.FC = () => {
     );
   }, []);
 
+  React.useEffect((): void => {
+    setError(false);
+  }, [imageBase]);
+
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
