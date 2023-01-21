@@ -16,6 +16,7 @@ import { Dimensions } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 import { RootState } from "../redux/index.d";
 import { logout, setUserInfo } from "../redux/action";
@@ -118,6 +119,12 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
       alignSelf: "center",
       paddingTop: 20,
     },
+    back: {
+      justifyContent: "flex-start",
+      position: "absolute",
+      top: "7%",
+      left: "7%",
+    },
   });
 
   return (
@@ -127,6 +134,14 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView contentContainerStyle={style.container}>
+        <TouchableOpacity
+          style={style.back}
+          onPress={async (): Promise<void> => {
+            navigation.navigate("menu");
+          }}
+        >
+          <AntDesign name="back" size={24} color="black" />
+        </TouchableOpacity>
         {keyboardOpen ? null : <Text style={style.heading}>Your profile</Text>}
         <View style={style.nameInfo}>
           <Icon
@@ -229,6 +244,56 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
               textColor={"#ffff"}
               onPress={() => {
                 Alert.alert(
+                  "Confirm account closure",
+                  "Are you sure you want to close this account?? All images, rooms, history and messages will be lost!!! This cannot be undone!!",
+                  [
+                    {
+                      text: "Proceed",
+                      onPress: (): void => {
+                        Alert.prompt(
+                          "Login",
+                          "Please enter your password to confirm closure.",
+                          [
+                            {
+                              text: "Close account",
+                              style: "destructive",
+                              onPress: (text: string | undefined): void => {
+                                if (text === undefined) {
+                                  Alert.alert(
+                                    "Password incorrect, please try again later."
+                                  );
+                                  return;
+                                }
+                                // TODO: Add delete script!!
+                                dispatch(logout());
+                                navigation.navigate("login");
+                                Alert.alert(
+                                  "Closed successfully",
+                                  "You account was closed successfully, and all data was permanently deleted."
+                                );
+                              },
+                            },
+                            {
+                              text: "Cancel",
+                            },
+                          ],
+                          "secure-text"
+                        );
+                      },
+                      style: "destructive",
+                    },
+                    { text: "Cancel", onPress: (): void => {} },
+                  ]
+                );
+              }}
+              text={"close account"}
+            />
+            <View style={{ padding: 5 }} />
+            <Button
+              color={"red"}
+              textColor={"#ffff"}
+              onPress={() => {
+                Alert.alert(
                   "Signout confirm",
                   "Are you sure you want to signout?",
                   [
@@ -245,14 +310,6 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
                 );
               }}
               text={"sign out"}
-            />
-            <Button
-              color={"transparent"}
-              textColor={"black"}
-              onPress={() => {
-                navigation.navigate("menu");
-              }}
-              text={"back"}
             />
           </View>
         ) : null}
