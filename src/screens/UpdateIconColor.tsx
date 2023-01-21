@@ -50,8 +50,7 @@ const UpdateIconColor: React.FC = () => {
     boldText: {
       fontFamily: "poppinsExtraBold",
       fontSize: 25,
-      position: "absolute",
-      top: "7%",
+      justifyContent: "flex-start",
     },
     text: {
       fontFamily: "poppinsExtraBold",
