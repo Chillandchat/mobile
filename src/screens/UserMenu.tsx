@@ -16,6 +16,7 @@ import { Dimensions } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 import { RootState } from "../redux/index.d";
 import { logout, setUserInfo } from "../redux/action";
@@ -24,7 +25,11 @@ import Icon from "../components/Icon";
 import Form from "../components/Form";
 import updateDescription from "../scripts/updateDescription";
 import getUser from "../scripts/getUser";
-import { AuthType } from "../scripts";
+import { AuthType, RoomType } from "../scripts";
+import deleteUser from "../scripts/deleteUser";
+import removeRoom from "../scripts/removeRoom";
+import getRoom from "../scripts/getRooms";
+import login from "../scripts/login";
 
 /**
  * This is the user menu screen this where the user could logout and customize their profile description.
@@ -118,6 +123,12 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
       alignSelf: "center",
       paddingTop: 20,
     },
+    back: {
+      justifyContent: "flex-start",
+      position: "absolute",
+      top: "7%",
+      left: "7%",
+    },
   });
 
   return (
@@ -127,6 +138,14 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView contentContainerStyle={style.container}>
+        <TouchableOpacity
+          style={style.back}
+          onPress={async (): Promise<void> => {
+            navigation.navigate("menu");
+          }}
+        >
+          <AntDesign name="back" size={24} color="black" />
+        </TouchableOpacity>
         {keyboardOpen ? null : <Text style={style.heading}>Your profile</Text>}
         <View style={style.nameInfo}>
           <Icon
@@ -229,6 +248,94 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
               textColor={"#ffff"}
               onPress={() => {
                 Alert.alert(
+                  "Confirm account closure",
+                  "Are you sure you want to close this account?? All images, rooms, history and messages will be lost!!! This cannot be undone!!",
+                  [
+                    {
+                      text: "Proceed",
+                      onPress: (): void => {
+                        Alert.prompt(
+                          "Login",
+                          "Please enter your password to confirm closure.",
+                          [
+                            {
+                              text: "Close account",
+                              style: "destructive",
+                              onPress: (text: string | undefined): void => {
+                                if (text === undefined) {
+                                  Alert.alert(
+                                    "Password incorrect, please try again later."
+                                  );
+                                  return;
+                                }
+                                login(state.userInfo.username, text)
+                                  .then((): void => {
+                                    getRoom(state.userInfo.username)
+                                      .then((room: Array<RoomType>): void => {
+                                        room.forEach(
+                                          async (
+                                            room: RoomType
+                                          ): Promise<void> => {
+                                            await removeRoom(
+                                              room.id,
+                                              state.userInfo.username
+                                            )
+                                              .then((): void => {})
+                                              .catch((err: unknown): void => {
+                                                console.error(err);
+                                                navigation.navigate("error");
+                                              });
+                                          }
+                                        );
+
+                                        deleteUser(state.userInfo.username)
+                                          .then((): void => {
+                                            dispatch(logout());
+                                            navigation.navigate("login");
+                                            Alert.alert(
+                                              "Closed successfully",
+                                              "You account was closed successfully, and all data was permanently deleted."
+                                            );
+                                          })
+                                          .catch((err: unknown): void => {
+                                            console.error(err);
+                                            navigation.navigate("error");
+                                          });
+                                      })
+                                      .catch((err: unknown): void => {
+                                        console.error(err);
+                                        navigation.navigate("error");
+                                      });
+                                  })
+                                  .catch((): void => {
+                                    Alert.alert(
+                                      "Password incorrect, please try again later."
+                                    );
+                                    return;
+                                  });
+                              },
+                            },
+                            {
+                              text: "Cancel",
+                            },
+                          ],
+                          "secure-text"
+                        );
+                      },
+                      style: "destructive",
+                    },
+                    { text: "Cancel", onPress: (): void => {} },
+                  ]
+                );
+              }}
+              text={"close account"}
+            />
+            <View style={{ padding: 5 }} />
+            <Button
+              color={"red"}
+              textColor={"#ffff"}
+              onPress={() => {
+                Alert.alert(
                   "Signout confirm",
                   "Are you sure you want to signout?",
                   [
@@ -245,14 +352,6 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
                 );
               }}
               text={"sign out"}
-            />
-            <Button
-              color={"transparent"}
-              textColor={"black"}
-              onPress={() => {
-                navigation.navigate("menu");
-              }}
-              text={"back"}
             />
           </View>
         ) : null}

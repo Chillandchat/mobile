@@ -72,7 +72,8 @@ const Menu: React.FC<any> = ({ navigation }) => {
                 tmpRecentMessages.push(current);
                 setRecentMessages(
                   (_prev: Array<MessageType>): Array<MessageType> => {
-                    _prev.length === defaultRooms.length
+                    _prev.length === defaultRooms.length ||
+                    defaultRooms.length === 1
                       ? setRooms(defaultRooms)
                       : null;
 
