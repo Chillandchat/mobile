@@ -25,7 +25,11 @@ import Icon from "../components/Icon";
 import Form from "../components/Form";
 import updateDescription from "../scripts/updateDescription";
 import getUser from "../scripts/getUser";
-import { AuthType } from "../scripts";
+import { AuthType, RoomType } from "../scripts";
+import deleteUser from "../scripts/deleteUser";
+import removeRoom from "../scripts/removeRoom";
+import getRoom from "../scripts/getRooms";
+import login from "../scripts/login";
 
 /**
  * This is the user menu screen this where the user could logout and customize their profile description.
@@ -264,13 +268,51 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
                                   );
                                   return;
                                 }
-                                // TODO: Add delete script!!
-                                dispatch(logout());
-                                navigation.navigate("login");
-                                Alert.alert(
-                                  "Closed successfully",
-                                  "You account was closed successfully, and all data was permanently deleted."
-                                );
+                                login(state.userInfo.username, text)
+                                  .then((): void => {
+                                    getRoom(state.userInfo.username)
+                                      .then((room: Array<RoomType>): void => {
+                                        room.forEach(
+                                          async (
+                                            room: RoomType
+                                          ): Promise<void> => {
+                                            await removeRoom(
+                                              room.id,
+                                              state.userInfo.username
+                                            )
+                                              .then((): void => {})
+                                              .catch((err: unknown): void => {
+                                                console.error(err);
+                                                navigation.navigate("error");
+                                              });
+                                          }
+                                        );
+
+                                        deleteUser(state.userInfo.username)
+                                          .then((): void => {
+                                            dispatch(logout());
+                                            navigation.navigate("login");
+                                            Alert.alert(
+                                              "Closed successfully",
+                                              "You account was closed successfully, and all data was permanently deleted."
+                                            );
+                                          })
+                                          .catch((err: unknown): void => {
+                                            console.error(err);
+                                            navigation.navigate("error");
+                                          });
+                                      })
+                                      .catch((err: unknown): void => {
+                                        console.error(err);
+                                        navigation.navigate("error");
+                                      });
+                                  })
+                                  .catch((): void => {
+                                    Alert.alert(
+                                      "Password incorrect, please try again later."
+                                    );
+                                    return;
+                                  });
                               },
                             },
                             {
