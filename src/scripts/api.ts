@@ -24,6 +24,7 @@ export const endpoints: ApiEndpoints = {
   getPublicRooms: "/api/get-public-rooms",
   uploadContent: "/api/upload-content",
   getGif: "/api/get-gif",
+  deleteUser: "/api/delete-user",
 };
 
 export const apiInstance: AxiosInstance = axios.create({

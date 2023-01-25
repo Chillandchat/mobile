@@ -24,6 +24,7 @@ export type ApiEndpoint =
   | "/api/get-public-rooms"
   | "/api/get-gif"
   | "/api/upload-content";
+  | "/api/delete-user";
 
 /**
  * This is the ApiEndpoints type, This type works with the "ApiEndpoint"
@@ -46,6 +47,7 @@ export type ApiEndpoint =
  * @param {ApiEndpoint} getPublicRooms
  * @param {ApiEndpoint} uploadContent
  * @param {ApiEndpoint} getGif
+ * @param {ApiEndpoint} deleteUser
  */
 
 export interface ApiEndpoints {
@@ -68,6 +70,7 @@ export interface ApiEndpoints {
   updateIconColor: ApiEndpoint;
   getPublicRooms: ApiEndpoint;
   uploadContent: ApiEndpoint;
+  deleteUser: ApiEndpoint;
 }
 
 /**
