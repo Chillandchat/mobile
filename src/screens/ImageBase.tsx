@@ -102,7 +102,7 @@ const ImageBase: React.FC = () => {
       marginTop: 30,
       alignItems: "center",
     },
-    _imageListContainerStyle: {
+    imageListBody: {
       flexDirection: "row",
       flexWrap: "wrap",
       justifyContent: "center",
