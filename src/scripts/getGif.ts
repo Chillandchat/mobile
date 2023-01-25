@@ -21,8 +21,8 @@ const getGif = async (search: string, useTrending: boolean): Promise<any> => {
         useTrending ? `` : `&search=${search}`
       }`
     )
-    .then((__data: AxiosResponse): void => {
-      gifs = __data.data;
+    .then((data: AxiosResponse): void => {
+      gifs = data.data;
     })
     .catch((err: unknown): void => {
       throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);

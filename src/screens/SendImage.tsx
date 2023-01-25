@@ -54,7 +54,7 @@ const SendImage: React.FC = () => {
     });
   });
 
-  const { sessionStatus, userInfo, imageBase }: any = useSelector(
+  const { sessionStatus, userInfo, imageBase }: RootState = useSelector(
     (state: RootState): RootState => {
       return state;
     }
