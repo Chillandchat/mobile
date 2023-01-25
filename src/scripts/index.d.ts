@@ -23,7 +23,7 @@ export type ApiEndpoint =
   | "/api/update-icon-color"
   | "/api/get-public-rooms"
   | "/api/get-gif"
-  | "/api/upload-content";
+  | "/api/upload-content"
   | "/api/delete-user";
 
 /**
