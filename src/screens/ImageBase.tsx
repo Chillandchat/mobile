@@ -12,9 +12,10 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
+import { FontAwesome } from "@expo/vector-icons";
 
 import Form from "../components/Form";
-import Images from "./images";
+import getGif from "../scripts/getGif";
 import { setImageBase } from "../redux/action";
 
 /**
@@ -24,8 +25,43 @@ import { setImageBase } from "../redux/action";
 
 const ImageBase: React.FC = () => {
   const [filter, setFilter]: any = React.useState("");
+  const [results, setResults]: any = React.useState([]);
+  const [loading, setLoading]: any = React.useState(true);
+
   const navigation: any = useNavigation();
   const dispatch: any = useDispatch();
+
+  React.useEffect((): void => {
+    getGif(filter, filter === "")
+      .then((gif: Array<any>): void => {
+        setResults((_prev: any): any => {
+          return gif;
+        });
+      })
+      .catch((err: unknown): void => {
+        console.error(err);
+        navigation.navigate("error");
+      });
+  }, []);
+
+  React.useEffect((): void => {
+    filter === "" && results.length !== 0
+      ? getGif(filter, filter === "")
+          .then((gif: Array<any>): void => {
+            setResults((_prev: any): any => {
+              return gif;
+            });
+          })
+          .catch((err: unknown): void => {
+            console.error(err);
+            navigation.navigate("error");
+          })
+      : null;
+  }, [filter]);
+
+  React.useEffect((): void => {
+    if (results.length > 0) setLoading(false);
+  }, [results.length]);
 
   const style: any = StyleSheet.create({
     container: {
@@ -34,9 +70,19 @@ const ImageBase: React.FC = () => {
       alignItems: "center",
     },
     image: {
-      height: 300,
-      width: 300,
-      borderRadius: 20,
+      height: 100,
+      width: 100,
+    },
+    searchWrapper: {
+      width: "100%",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 50,
+      marginLeft: 35,
+    },
+    searchIcon: {
+      padding: 20,
     },
     back: {
       position: "absolute",
@@ -45,40 +91,22 @@ const ImageBase: React.FC = () => {
     },
     imageContainer: {
       backgroundColor: "#E5E5E5",
-      margin: 20,
-      borderRadius: 20,
-      height: 300,
-      width: 300,
+      height: 100,
+      width: 100,
+      margin: 5,
     },
-
     imageListContainer: {
-      height: "55%",
+      height: "65%",
       width: "90%",
       justifyContent: "center",
-      alignItems: "center",
       marginTop: 30,
-    },
-    heading: {
-      fontSize: 25,
-      fontFamily: "poppinsExtraBold",
-      position: "absolute",
-      top: "7%",
-      alignSelf: "center",
-    },
-    pexels: {
-      height: 40,
-      width: 40,
-    },
-    pexelsContainer: {
-      position: "absolute",
-      bottom: "5%",
-      left: "7%",
-      flexDirection: "row",
       alignItems: "center",
     },
-    credit: {
-      fontFamily: "poppins",
-      marginLeft: 10,
+    imageListBody: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      alignItems: "center",
     },
   });
 
@@ -97,40 +125,55 @@ const ImageBase: React.FC = () => {
         >
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
-        <Text style={style.heading}>Chill&chat images</Text>
-        <Form
-          placeholder="Search"
-          onTextChange={(text: string): void => {
-            setFilter(text);
-          }}
-        />
-        <View style={style.imageListContainer}>
-          <ScrollView>
-            {Images.images.map((image: Images.ImageType): any => {
-              return filter == "" ||
-                image.name.toLowerCase().includes(filter.toLowerCase()) ? (
-                <TouchableOpacity
-                  key={image.link}
-                  style={style.imageContainer}
-                  onPress={(): void => {
-                    dispatch(setImageBase(image.link));
-                    navigation.navigate("send-image");
-                  }}
-                >
-                  <Image source={{ uri: image.link }} style={style.image} />
-                </TouchableOpacity>
-              ) : null;
-            })}
-          </ScrollView>
-        </View>
-        <View style={style.pexelsContainer}>
-          <Image
-            source={{
-              uri: "https://seeklogo.com/images/P/pexels-logo-EFB9232709-seeklogo.com.png",
+        <View style={style.searchWrapper}>
+          <Form
+            placeholder="Search"
+            width={"70%"}
+            value={filter}
+            onTextChange={(text: string): void => {
+              setFilter(text);
             }}
-            style={style.pexels}
           />
-          <Text style={style.credit}>Images from Pexels(Not sponsored)</Text>
+          <TouchableOpacity
+            style={style.searchIcon}
+            onPress={(): void => {
+              getGif(filter, filter === "")
+                .then((gif: Array<any>): void => {
+                  setResults((_prev: any): any => {
+                    return gif;
+                  });
+                })
+                .catch((err: unknown): void => {
+                  console.error(err);
+                  navigation.navigate("error");
+                });
+            }}
+          >
+            <FontAwesome name="search" size={24} color="#00ad98" />
+          </TouchableOpacity>
+        </View>
+        <View style={style.imageListContainer}>
+          <ScrollView contentContainerStyle={style._imageListContainerStyle}>
+            {loading
+              ? null
+              : results.map((image: any): any => {
+                  return (
+                    <TouchableOpacity
+                      key={image.id}
+                      style={style.imageContainer}
+                      onPress={(): void => {
+                        dispatch(setImageBase(image.images.original.url));
+                        navigation.navigate("send-image");
+                      }}
+                    >
+                      <Image
+                        source={{ uri: image.images.original.url }}
+                        style={style.image}
+                      />
+                    </TouchableOpacity>
+                  );
+                })}
+          </ScrollView>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
