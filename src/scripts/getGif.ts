@@ -9,11 +9,11 @@ import api from "./api";
  * @param {string} search The search query.
  * @param {boolean} useTrending Wether use trending GIFs or not.
  * @returns {any} Returns a list of either trending or searched GIFs.
- * @see https://developers.giphy.com/docs/api/schema#gif-object for schema def.
+ * @see https://developers.giphy.com/docs/api/schema#gif-object for schema definition.
  */
 
 const getGif = async (search: string, useTrending: boolean): Promise<any> => {
-  let data: Array<any> = [];
+  let gifs: Array<any> = [];
 
   await api.instance
     .get(
@@ -22,13 +22,13 @@ const getGif = async (search: string, useTrending: boolean): Promise<any> => {
       }`
     )
     .then((__data: AxiosResponse): void => {
-      data = __data.data;
+      gifs = __data.data;
     })
     .catch((err: unknown): void => {
       throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
     });
 
-  return data;
+  return gifs;
 };
 
 export default getGif;

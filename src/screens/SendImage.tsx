@@ -61,7 +61,7 @@ const SendImage: React.FC = () => {
   );
 
   React.useEffect((): void => {
-    imageBase !== null ? setLink(imageBase) : null;
+    imageBase !== null && imageBase.length > 0 ? setLink(imageBase) : null;
   }, [imageBase]);
 
   React.useEffect((): any => {
