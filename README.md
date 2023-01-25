@@ -3,7 +3,7 @@
 # Chill&chat mobile app
 
 ![](https://img.shields.io/github/repo-size/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/v/release/Chill-and-chat/Chill-chat) ![](https://img.shields.io/github/issues-pr-closed/chill-and-chat/chill-chat) ![](https://img.shields.io/github/issues-pr-raw/chill-and-chat/chill-chat)
-[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-000.svg?logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)[![CodeQL](https://github.com/Chillandchat/mobile/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Chillandchat/mobile/actions/workflows/codeql-analysis.yml)
+[![CodeQL](https://github.com/Chillandchat/mobile/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Chillandchat/mobile/actions/workflows/codeql-analysis.yml)
 
 Chill&chat is a free and open-source mobile chat application that can send messages instantly to anyone around the world with a Chill&chat account. It's an amazing way to socialize and connect with your friends, especially in lockdown!
 
@@ -29,7 +29,7 @@ If you have found any bug(s) please post them in the [Issues](https://github.com
 
 To download the app via the apple app store, please click the link below.
 
-<a href=""><img style="width:15rem;" src="https://images.squarespace-cdn.com/content/v1/602d0aa03d9bab5833f89e28/1615402085435-KPC9C9YMJD2IUD18D9XS/apple-app-store-badge-white.png"/><a>
+<a href="https://apps.apple.com/au/app/chill-chat/id6443742617"><img style="width:15rem;" src="https://images.squarespace-cdn.com/content/v1/602d0aa03d9bab5833f89e28/1615402085435-KPC9C9YMJD2IUD18D9XS/apple-app-store-badge-white.png"/><a>
 
 ### Manual install
 
