@@ -153,7 +153,7 @@ const ImageBase: React.FC = () => {
           </TouchableOpacity>
         </View>
         <View style={style.imageListContainer}>
-          <ScrollView contentContainerStyle={style._imageListContainerStyle}>
+          <ScrollView contentContainerStyle={style.imageListBody}>
             {loading
               ? null
               : results.map((image: any): any => {
