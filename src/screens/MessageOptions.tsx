@@ -31,21 +31,6 @@ const MessageOptions: React.FC = () => {
     (state: RootState): RootState => state
   );
 
-  React.useEffect((): void => {
-    console.log(
-      messageInfo?.message?.content.includes(
-        Constants.expoConfig?.extra?.API_URL
-      )
-        ? `${messageInfo?.message?.content.slice(
-            5,
-            messageInfo?.message?.content.length - 1
-          )}?key=${Constants.expoConfig?.extra?.API_KEY}`
-        : messageInfo?.message?.content.slice(
-            5,
-            messageInfo?.message?.content.length - 1
-          )
-    );
-  });
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
