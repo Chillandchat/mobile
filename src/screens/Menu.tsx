@@ -69,6 +69,27 @@ const Menu: React.FC<any> = ({ navigation }) => {
                   returnedMessages[returnedMessages.length - 1].user
                 }: ${returnedMessages[returnedMessages.length - 1].content}`;
 
+                [...current.content.matchAll(/!IMG\((.*?)\)/g)].forEach(
+                  (value: any): void => {
+                    current.content = current.content.replace(
+                      value[0],
+                      "<Sent an image>"
+                    );
+                  }
+                );
+
+                [...current.content.matchAll(/!(.*?)\((.*?)\)/g)].forEach(
+                  (value: any): void => {
+                    current.content = current.content.replace(
+                      value[0],
+                      value[0].slice(
+                        value[0].match(/!(.*?)\(/)[0].length,
+                        value[0].length - 1
+                      )
+                    );
+                  }
+                );
+
                 tmpRecentMessages.push(current);
                 setRecentMessages(
                   (_prev: Array<MessageType>): Array<MessageType> => {
