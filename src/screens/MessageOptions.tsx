@@ -85,13 +85,7 @@ const MessageOptions: React.FC = () => {
         <Image
           style={style.image}
           source={{
-            uri: messageInfo?.message?.content
-              .slice(5, -1)
-              .includes(Constants.expoConfig?.extra?.API_URL)
-              ? `${messageInfo?.message?.content.slice(5, -1)}&key=${
-                  Constants.expoConfig?.extra?.API_KEY
-                }`
-              : messageInfo?.message?.content.slice(5, -1),
+            uri: messageInfo?.message?.content.slice(5, -1),
           }}
         />
       ) : null}

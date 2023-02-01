@@ -20,6 +20,7 @@ import login from "../scripts/login";
 import { AuthType } from "../scripts";
 import getUser from "../scripts/getUser";
 import LoadingSpinner from "../components/LoadingSpinner";
+import Constants from "expo-constants";
 
 /**
  * This is the login component for the application, this component is responsible for
