@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
+import Constants from "expo-constants";
+import { io } from "socket.io-client";
 
 import RoomList from "../components/RoomList";
 import Icon from "../components/Icon";
@@ -20,8 +22,6 @@ import getRoom from "../scripts/getRooms";
 import { MessageType, RoomType } from "../scripts/index.d";
 import Form from "../components/Form";
 import getMessages from "../scripts/getMessages";
-import Constants from "expo-constants";
-import { io } from "socket.io-client";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
