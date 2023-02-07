@@ -36,6 +36,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
       flexDirection: "row",
       alignItems: "center",
       marginTop: 20,
+      marginRight: 50,
     },
     titleStyle: {
       fontFamily: "poppins",
@@ -108,7 +109,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
             {props.displayMessages ? (
               <Text
                 key={room.id.concat("-d")}
-                numberOfLines={2}
+                numberOfLines={1}
                 style={[style.titleStyle, { fontSize: 15 }]}
               >
                 {String(
