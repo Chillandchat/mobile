@@ -217,7 +217,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
         />
         <View style={style.descriptionInfo}>
           <View style={style.descriptionTittle}>
-            <Text style={style.tittle}>Description:</Text>
+            <Text style={style.tittle}>Description</Text>
           </View>
           <View style={style.descriptionBody}>
             <ScrollView>

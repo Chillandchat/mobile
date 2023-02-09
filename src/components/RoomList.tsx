@@ -39,7 +39,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
       marginRight: 50,
     },
     titleStyle: {
-      fontFamily: "poppins",
+      fontFamily: "poppinsBold",
       fontSize: 22,
       marginHorizontal: 20,
     },
@@ -80,7 +80,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
     </View>
   ) : (
     <ScrollView style={style.container}>
-      {props.rooms.map((room: RoomType): any => (
+      {props.rooms.map((room: RoomType, index: number): any => (
         <TouchableOpacity
           style={style.roomContainer}
           key={room.id.concat("-a")}
@@ -110,7 +110,10 @@ const RoomList: React.FC<Props> = (props: Props) => {
               <Text
                 key={room.id.concat("-d")}
                 numberOfLines={1}
-                style={[style.titleStyle, { fontSize: 15 }]}
+                style={[
+                  style.titleStyle,
+                  { fontSize: 15, fontFamily: "poppins" },
+                ]}
               >
                 {String(
                   //@ts-ignore
