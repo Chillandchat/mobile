@@ -88,9 +88,9 @@ const SendImage: React.FC = () => {
       fontSize: 25,
     },
     preview: {
-      height: "40%",
-      width: "60%",
-      borderRadius: 10,
+      height: 300,
+      width: 300,
+      borderRadius: 20,
       margin: 50,
     },
     errorText: {
