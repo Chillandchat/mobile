@@ -22,6 +22,7 @@ import getRoom from "../scripts/getRooms";
 import { MessageType, RoomType } from "../scripts/index.d";
 import Form from "../components/Form";
 import getMessages from "../scripts/getMessages";
+import Button from "../components/Button";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
@@ -253,13 +254,11 @@ const Menu: React.FC<any> = ({ navigation }) => {
       padding: 5,
     },
     addButton: {
-      backgroundColor: "#00AD98",
       zIndex: 3,
       marginBottom: 10,
       position: "absolute",
       bottom: "5%",
       padding: 5,
-      borderRadius: 10000,
     },
     searchIcon: {
       marginLeft: 15,
@@ -304,14 +303,16 @@ const Menu: React.FC<any> = ({ navigation }) => {
             />
           </View>
           <RoomList rooms={rooms} displayMessages messages={recentMessages} />
-          <TouchableOpacity
-            style={style.addButton}
-            onPress={(): void => {
-              navigation.navigate("add-room");
-            }}
-          >
-            <Ionicons name="ios-add" size={50} color="white" />
-          </TouchableOpacity>
+          <View style={style.addButton}>
+            <Button
+              color={"#00ad98"}
+              text="Add room"
+              textColor={"white"}
+              onPress={(): void => {
+                navigation.navigate("add-room");
+              }}
+            />
+          </View>
         </ScrollView>
       </KeyboardAvoidingView>
     );
