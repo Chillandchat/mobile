@@ -13,7 +13,7 @@ import { io } from "socket.io-client";
 
 const deleteMessage = async (id: string, room: string): Promise<void> => {
   const responseToken: string = uuid();
-  const socket: any = io(String(Constants.manifest?.extra?.SOCKET_URL), {
+  const socket: any = io(String(Constants.expoConfig?.extra?.SOCKET_URL), {
     transports: ["websocket"],
   });
 
@@ -22,7 +22,7 @@ const deleteMessage = async (id: string, room: string): Promise<void> => {
     id,
     room,
     responseToken,
-    String(Constants.manifest?.extra?.API_KEY)
+    String(Constants.expoConfig?.extra?.API_KEY)
   );
 
   socket.on(`deleted:token(${responseToken})`, (): void => {

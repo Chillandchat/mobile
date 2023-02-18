@@ -158,7 +158,9 @@ const SendImage: React.FC = () => {
 
         <Form
           placeholder={"Image link"}
-          value={link.includes(Constants.manifest?.extra?.API_URL) ? " " : link}
+          value={
+            link.includes(Constants.expoConfig?.extra?.API_URL) ? " " : link
+          }
           onTextChange={(text: string): void => {
             setLink(text);
             setError(false);
@@ -261,7 +263,7 @@ const SendImage: React.FC = () => {
                       )
                         .then((id: string): void => {
                           const url: string = `${
-                            Constants.manifest?.extra?.API_URL
+                            Constants.expoConfig?.extra?.API_URL
                           }content/${userInfo.username}/${id}.${
                             result.assets[0].duration === null ? "webp" : "gif"
                           }`;
