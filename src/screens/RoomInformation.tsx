@@ -84,7 +84,7 @@ const RoomInformation: React.FC<any> = ({ navigation }) => {
       <View style={style.users}>
         <Feather name="users" size={24} color="black" />
         <Text style={[style.boldText, { fontSize: 25, marginLeft: 15 }]}>
-          Users:
+          Users
         </Text>
       </View>
 

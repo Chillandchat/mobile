@@ -14,14 +14,14 @@ import { MessageType } from "./index.d";
 
 const sendMessage = async (message: MessageType): Promise<void> => {
   const responseToken: string = uuid();
-  const socket: any = io(String(Constants.manifest?.extra?.SOCKET_URL), {
+  const socket: any = io(String(Constants.expoConfig?.extra?.SOCKET_URL), {
     transports: ["websocket"],
   });
 
   socket.emit(
     "server-message",
     message,
-    String(Constants.manifest?.extra?.API_KEY),
+    String(Constants.expoConfig?.extra?.API_KEY),
     responseToken
   );
 

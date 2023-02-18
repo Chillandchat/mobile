@@ -102,7 +102,7 @@ const Chat: React.FC = () => {
         navigator.navigate("error");
       });
 
-    const socket: any = io(Constants.manifest?.extra?.SOCKET_URL, {
+    const socket: any = io(Constants.expoConfig?.extra?.SOCKET_URL, {
       transports: ["websocket"],
     });
 

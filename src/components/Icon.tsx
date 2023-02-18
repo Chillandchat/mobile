@@ -33,7 +33,7 @@ const Icon: React.FC<Props> = (props: Props) => {
     },
     text: {
       fontFamily: "poppinsLight",
-      fontSize: 30,
+      fontSize: props.size !== undefined ? props.size / 2 : 30,
       paddingTop: Platform.OS === "ios" ? 0 : 3,
       color: decideOverlay(props.color, "#ffffff", "#000000"),
     },

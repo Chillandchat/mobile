@@ -22,7 +22,7 @@ const uploadContent = async (
   type: ContentType
 ): Promise<any> => {
   const id: string = uuid();
-  console.log(id);
+
   await api.instance
     .post(`${api.endpoints.uploadContent}?key=${api.apiKey}`, {
       id: id,

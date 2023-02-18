@@ -20,7 +20,7 @@ const setKeyboardSocket = async (
   mode: KeyboardMode
 ): Promise<void> => {
   const responseToken: string = uuid();
-  const socket: any = io(String(Constants.manifest?.extra?.SOCKET_URL), {
+  const socket: any = io(String(Constants.expoConfig?.extra?.SOCKET_URL), {
     transports: ["websocket"],
   });
 
@@ -28,7 +28,7 @@ const setKeyboardSocket = async (
     "server-keyboard",
     room,
     user,
-    String(Constants.manifest?.extra?.API_KEY),
+    String(Constants.expoConfig?.extra?.API_KEY),
     responseToken,
     mode
   );

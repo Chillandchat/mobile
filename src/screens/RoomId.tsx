@@ -26,10 +26,6 @@ const RoomId: React.FC = () => {
       top: "7%",
       left: "7%",
     },
-    boldText: {
-      fontFamily: "poppinsExtraBold",
-      fontSize: 25,
-    },
     text: {
       fontFamily: "poppins",
       fontSize: 13,
@@ -39,7 +35,7 @@ const RoomId: React.FC = () => {
       alignItems: "center",
       borderColor: "#E5E5E5",
       padding: 10,
-      borderWidth: 4,
+      borderWidth: 3,
       borderRadius: 10,
       marginTop: 60,
       paddingHorizontal: 40,
@@ -56,15 +52,11 @@ const RoomId: React.FC = () => {
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-      <Text style={[style.boldText, { paddingBottom: 20 }]}>
-        Room ID QR code
-      </Text>
       <QRCode
         value={`!chillandchat-room-invite(${sessionStatus.id})`}
         logo={require("../../assets/logo.png")}
         size={250}
         backgroundColor="transparent"
-        logoSize={60}
         logoBackgroundColor={"#ffff"}
       />
       <TouchableOpacity

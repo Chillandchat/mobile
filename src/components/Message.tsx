@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Constants from "expo-constants";
 import * as Haptics from "expo-haptics";
 
 // @ts-ignore

@@ -176,7 +176,7 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
         </View>
         <View style={style.descriptionInfo}>
           <View style={style.descriptionTittle}>
-            <Text style={style.tittle}>Description:</Text>
+            <Text style={style.tittle}>Description</Text>
             <TouchableOpacity
               onPress={(): void => {
                 setEditMode(true);
