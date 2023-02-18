@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import verifyClient from "../scripts/verifyClient";
 // import { Audio } from "expo-av";
 
 /**
@@ -19,15 +20,24 @@ import { useNavigation } from "@react-navigation/native";
 
 const Information: React.FC<any> = () => {
   // const [sound, setSound]: any = React.useState(null);
+  const [verified, setVerified]: any = React.useState(false);
 
-  // React.useEffect((): any => {
-  //   Audio.Sound.createAsync(
-  //     require("../../assets/special/christmas_soundtrack.mp3")
-  //   ).then((sound: any): void => {
-  //     sound.sound.playAsync();
-  //     setSound(sound.sound);
-  //   });
-  // }, []);
+  React.useEffect((): any => {
+    //   Audio.Sound.createAsync(
+    //     require("../../assets/special/christmas_soundtrack.mp3")
+    //   ).then((sound: any): void => {
+    //     sound.sound.playAsync();
+    //     setSound(sound.sound);
+    //   });
+
+    verifyClient()
+      .then((): void => {
+        setVerified(true);
+      })
+      .catch((err: unknown): void => {
+        console.error(err);
+      });
+  }, []);
 
   const navigation: any = useNavigation();
 
@@ -99,8 +109,16 @@ const Information: React.FC<any> = () => {
       <Text style={style.text}>
         Version: Chill&chat official runtime v1.15.0
       </Text>
-      <Text style={style.text}>Verified official Chill&chat build.</Text>
-      <Text style={style.text}>Connected to Chill&chat global network</Text>
+      <Text style={[style.text, { color: verified ? "black" : "red" }]}>
+        {verified
+          ? "Verified official Chill&chat build."
+          : "Unverified Chill&chat build"}
+      </Text>
+      <Text style={[style.text, { color: verified ? "black" : "red" }]}>
+        {verified
+          ? "Connected to Chill&chat global network."
+          : "NOT connected to Chill&chat global network"}
+      </Text>
       <View style={{ padding: 10 }} />
       <Text style={style.tittle}>Credits:</Text>
       <Text style={style.text}>Alvin cheng - Software engineer</Text>
