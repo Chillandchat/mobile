@@ -98,9 +98,6 @@ const SendImage: React.FC = () => {
       fontSize: 15,
       margin: 10,
     },
-    buttonContainer: {
-      marginTop: 50,
-    },
     find: {
       position: "absolute",
       bottom: 40,
@@ -156,16 +153,6 @@ const SendImage: React.FC = () => {
           </View>
         )}
 
-        <Form
-          placeholder={"Image link"}
-          value={
-            link.includes(Constants.expoConfig?.extra?.API_URL) ? " " : link
-          }
-          onTextChange={(text: string): void => {
-            setLink(text);
-            setError(false);
-          }}
-        />
         <View style={style.buttonContainer}>
           <Button
             color={"#00AD98"}
