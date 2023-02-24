@@ -19,10 +19,8 @@ import Login from "./screens/Login";
 import Signup from "./screens/Signup";
 import Chat from "./screens/Chat";
 import Error from "./screens/Error";
-import Menu from "./screens/Menu";
 import store from "./redux/index";
 import BlockError from "./screens/BlockError";
-import UserMenu from "./screens/UserMenu";
 import CreateRoom from "./screens/CreateRoom";
 import AddRoom from "./screens/AddRoom";
 import JoinRoom from "./screens/JoinRoom";
@@ -37,6 +35,7 @@ import RoomId from "./screens/RoomId";
 import UpdateIconColor from "./screens/UpdateIconColor";
 import PublicRooms from "./screens/PublicRooms";
 import ImageBase from "./screens/ImageBase";
+import ControlCenter from "./screens/ControlCenter";
 
 /**
  * This is the router component for the application, This component
@@ -125,7 +124,7 @@ namespace app {
                 />
                 <NavigatorStack.Screen
                   name="menu"
-                  component={Menu}
+                  component={ControlCenter}
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen
@@ -169,11 +168,7 @@ namespace app {
                   component={Chat}
                   options={{ headerShown: false }}
                 />
-                <NavigatorStack.Screen
-                  name="signout-confirm"
-                  component={UserMenu}
-                  options={{ headerShown: false }}
-                />
+
                 <NavigatorStack.Screen
                   name="public-rooms"
                   component={PublicRooms}
@@ -182,11 +177,6 @@ namespace app {
                 <NavigatorStack.Screen
                   name="create-room"
                   component={CreateRoom}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="add-room"
-                  component={AddRoom}
                   options={{ headerShown: false }}
                 />
                 <NavigatorStack.Screen

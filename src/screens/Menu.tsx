@@ -14,6 +14,8 @@ import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { io } from "socket.io-client";
+import { NavigationContainer, TypedNavigator } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import RoomList from "../components/RoomList";
 import Icon from "../components/Icon";
@@ -23,6 +25,7 @@ import { MessageType, RoomType } from "../scripts/index.d";
 import Form from "../components/Form";
 import getMessages from "../scripts/getMessages";
 import Button from "../components/Button";
+import UserMenu from "./UserMenu";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
@@ -303,16 +306,6 @@ const Menu: React.FC<any> = ({ navigation }) => {
             />
           </View>
           <RoomList rooms={rooms} displayMessages messages={recentMessages} />
-          <View style={style.addButton}>
-            <Button
-              color={"#00ad98"}
-              text="Add room"
-              textColor={"white"}
-              onPress={(): void => {
-                navigation.navigate("add-room");
-              }}
-            />
-          </View>
         </ScrollView>
       </KeyboardAvoidingView>
     );
