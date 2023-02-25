@@ -43,8 +43,6 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
   const dispatch: any = useDispatch();
   const state: any = useSelector((state: RootState): RootState => state);
 
-  const windowSize: ScaledSize = Dimensions.get("window");
-
   React.useEffect((): any => {
     Keyboard.addListener("keyboardDidShow", (): void => {
       setKeyboardOpen(true);
@@ -62,6 +60,7 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
+      marginTop: 70,
     },
     signOut: {
       position: "absolute",
@@ -76,7 +75,7 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
       alignItems: "center",
       alignSelf: "flex-start",
       paddingLeft: 30,
-      marginTop: windowSize.height / 7,
+      marginTop: 30,
     },
     tittle: {
       fontSize: 25,
@@ -86,7 +85,7 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
       alignItems: "flex-start",
       alignSelf: "flex-start",
       paddingHorizontal: 30,
-      paddingBottom: 10,
+      paddingBottom: 40,
       width: "100%",
     },
     descriptionTittle: {
@@ -106,8 +105,6 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
     heading: {
       fontSize: 25,
       fontFamily: "poppinsExtraBold",
-      position: "absolute",
-      top: "7%",
       alignSelf: "center",
     },
     descriptionBody: {
@@ -138,15 +135,7 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView contentContainerStyle={style.container}>
-        <TouchableOpacity
-          style={style.back}
-          onPress={async (): Promise<void> => {
-            navigation.navigate("menu");
-          }}
-        >
-          <AntDesign name="back" size={24} color="black" />
-        </TouchableOpacity>
-        {keyboardOpen ? null : <Text style={style.heading}>Your profile</Text>}
+        <Text style={style.heading}>Your profile</Text>
         <View style={style.nameInfo}>
           <Icon
             iconLetter={state.userInfo.username[0]}
@@ -180,7 +169,11 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
             <TouchableOpacity
               onPress={(): void => {
                 setEditMode(true);
-                if (editMode) setEditMode(false);
+                setKeyboardOpen(true);
+                if (editMode) {
+                  setEditMode(false);
+                  setKeyboardOpen(false);
+                }
               }}
             >
               <Entypo
@@ -241,7 +234,7 @@ const UserMenu: React.FC<any> = ({ navigation }) => {
             </View>
           )}
         </View>
-        {!keyboardOpen ? (
+        {!keyboardOpen && !editMode ? (
           <View style={style.signOut}>
             <Button
               color={"red"}
