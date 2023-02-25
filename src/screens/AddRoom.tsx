@@ -39,7 +39,7 @@ const AddRoom: React.FC = () => {
       borderWidth: 3,
       borderRadius: 20,
       paddingBottom: 20,
-      width: "90%",
+      width: "85%",
     },
     createRoom: {
       alignItems: "center",
@@ -50,14 +50,6 @@ const AddRoom: React.FC = () => {
 
   return (
     <View style={style.container}>
-      <TouchableOpacity
-        style={style.back}
-        onPress={(): void => {
-          navigation.navigate("menu");
-        }}
-      >
-        <AntDesign name="back" size={24} color="black" />
-      </TouchableOpacity>
       <View style={style.createRoom}>
         <Text style={style.title}>Create a room...</Text>
         <Text
