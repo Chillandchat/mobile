@@ -24,7 +24,7 @@ const ControlCenter: React.FC = () => {
           } else if (options.route.name === "signout-confirm") {
             return <Feather name="user" size={size} color={color} />;
           } else {
-            return <Ionicons name="add-circle" size={size} color={color} />;
+            return <Ionicons name="add-circle" size={size+10} color={color} />;
           }
         },
         tabBarActiveTintColor: "#00ad98",
