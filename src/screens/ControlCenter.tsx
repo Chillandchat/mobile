@@ -9,7 +9,14 @@ import Menu from "./Menu";
 import AddRoom from "./AddRoom";
 
 /**
+ * This is the control center component, this component is the nested navigation group.
  *
+ * This group contains 3 screens:
+ *     - Menu
+ *     - Signout confirm
+ *     - User profile
+ *
+ * @note There are no props for this component.
  */
 
 const ControlCenter: React.FC = () => {
@@ -24,7 +31,9 @@ const ControlCenter: React.FC = () => {
           } else if (options.route.name === "signout-confirm") {
             return <Feather name="user" size={size} color={color} />;
           } else {
-            return <Ionicons name="add-circle" size={size+10} color={color} />;
+            return (
+              <Ionicons name="add-circle" size={size + 10} color={color} />
+            );
           }
         },
         tabBarActiveTintColor: "#00ad98",
