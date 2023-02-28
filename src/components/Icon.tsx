@@ -6,14 +6,13 @@ import {
   TouchableOpacity,
   Platform,
 } from "react-native";
-import hexRgb from "hex-rgb";
 
-import { IconProps as Props, RGBColors } from "./index.d";
+import { IconProps as Props } from "./index.d";
 import decideOverlay from "./decideOverlay";
 
 /**
  * This is the Icon component, this component is what Chill&chat displays icons such as users and rooms.
- * The icon can be customizable by changing the icon letter and color values.
+ * The icon can be customizable by changing the icon letter and color values of the props below 👇.
  *
  * @prop {string} iconLetter The letter that the icon displays.
  * @prop {string} color The background color of the icon.

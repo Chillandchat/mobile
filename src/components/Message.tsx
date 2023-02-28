@@ -6,6 +6,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import * as Haptics from "expo-haptics";
 
+/** JSX parser import */
 // @ts-ignore
 import JsxParser from "react-native-jsx-parser";
 
@@ -16,8 +17,8 @@ import Icon from "./Icon";
 import { Dispatch } from "redux";
 
 /**
- * This is the message component, this component will display the message that users send.
- * Each message's details can be changed by adjusting the props.
+ * This is the message component, this component will display the message that users send in the chat screen.
+ * Each message's details can be changed by adjusting the props listed below.
  *
  * @prop {MessageType} message The message that the user sent.
  * @prop {AuthType} messageUserInfo The information about all the users in the room.
@@ -25,8 +26,7 @@ import { Dispatch } from "redux";
  */
 
 const Message: React.FC<Props> = (props: Props) => {
-  const [imageError, setImageError]: [boolean, (arg: boolean) => void] =
-    React.useState(false);
+  const [imageError, setImageError]:any = React.useState(false);
 
   const dispatch: Dispatch = useDispatch();
 

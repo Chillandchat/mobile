@@ -2,9 +2,16 @@ import { MessageType } from "./../scripts/index.d";
 import { RoomType } from "../scripts/index.d";
 
 /**
- * This is the props for the button component.
+ * This is the prop interface for the button component,
+ * this set of props are used to define the shape of the prop.
  *
- * @see Button.tsx
+ * @prop {string} color The background color of the button.
+ * @prop {string} textColor The color of the text on the button.
+ * @prop {() => void} onPress The function to call when the button is pressed.
+ * @prop {string} text The text that the button displays.
+ * @optional @prop {boolean} disabled If the button is disabled.
+ *
+ * @see Button.tsx Please see the button component for source code and information.
  */
 
 export interface ButtonProps {
@@ -16,9 +23,7 @@ export interface ButtonProps {
 }
 
 /**
- * This is the props for the form component.
- *
- * @see LoginForm.tsx
+ * TODO: DO LATER
  */
 
 export interface LoginFormProps {
@@ -29,9 +34,15 @@ export interface LoginFormProps {
 }
 
 /**
- * This is the props for the icon component.
+ * This is the interface for the props on the icon component,
+ * this interface outlines the shape of the object passed to the component.
  *
- * @see Icon.tsx
+ * @prop {string} iconLetter The letter that the icon displays.
+ * @prop {string} color The background color of the icon.
+ * @optional @prop {() => void} onPress The function to call when the icon is pressed.
+ * @optional @prop {boolean} touchable If the icon is touchable.
+ *
+ * @see Icon.tsx Please see the icon component for more information and source code.
  */
 
 export interface IconProps {
@@ -43,9 +54,16 @@ export interface IconProps {
 }
 
 /**
- * This is the props for the input component.
+ * This is the interface for props on the form component.
+ * the interface outlines the shape of the object passed to this component.
  *
- * @see Input.tsx
+ * @prop {string} placeholder The placeholder of the form.
+ * @prop {(text: string) => void} onChangeText The event that will be called when the text is changed and the data will be stored in the parameter.
+ * @optional @prop {boolean} safeEntry Whether the text is secure or not.
+ * @optional @prop {string} value The value of the text form.
+ * @optional @prop {number | string} width The width of the form.
+ * @optional @prop {number | string} height The height of the form
+ * @optional @prop {boolean} multiline Whether the text is multiline or not.
  */
 
 export interface FormProps {

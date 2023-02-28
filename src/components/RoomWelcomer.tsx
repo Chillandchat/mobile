@@ -34,6 +34,7 @@ const RoomWelcomer: React.FC = () => {
       fontFamily: "poppins",
     },
   });
+
   return (
     <View style={style.container}>
       <Icon iconLetter={name[0]} color={iconColor} size={50} />

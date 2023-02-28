@@ -22,11 +22,13 @@ import { RootState } from "../redux/index.d";
 
 /**
  * This is the send bar component for the chat room, this is where the user can input a message and send it.
+ * This component will normally be located at the bottom of the chat room.
  *
  * @prop {boolean} typing Whether the user is typing.
  */
 
-const SendBar: React.FC<any> = (props: any): any => {
+// TODO: NO props type
+const SendBar: React.FC = (props: any) => {
   const navigator: any = useNavigation();
 
   const { sessionStatus, userInfo }: RootState = useSelector(
@@ -114,7 +116,7 @@ const SendBar: React.FC<any> = (props: any): any => {
               });
             }
 
-            setMessage((_prevState: string): string => text);
+            setMessage(text);
           }}
           value={textBoxHelper}
         />
