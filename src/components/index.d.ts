@@ -86,7 +86,15 @@ export interface FormProps {
 }
 
 /**
+ * This is the props interface for the room list component. Here are some props required below:
  *
+ * @prop {Array<RoomType>} rooms The rooms to display.
+ * @optional @prop {(room: RoomType) => void} onPress What to run a user click the room.
+ * @prop {boolean} displayMessages If it should display the recent messages.
+ * @prop {Array<MessageType>} messages the messages to display.
+ * @see RoomType For more information.
+ *
+ * @see RoomList.tsx Please see the room list component for the source code and more information.
  */
 
 export interface RoomListProps {
