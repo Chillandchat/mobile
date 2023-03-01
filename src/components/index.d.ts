@@ -23,7 +23,14 @@ export interface ButtonProps {
 }
 
 /**
- * TODO: DO LATER
+ * This is the login form props, this interface outlines the values needed for the login form to function.
+ *
+ * @prop {loginFormTypeSelector} type The type of the form.
+ * @prop {(text: string) => void} onTextChange The callback of the onTextChange callback event.
+ * @prop {string} value The value for the text input
+ * @optional @prop {boolean} safeEntry Whether the form has a safe entry feature.
+ *
+ * @see LoginForm.tsx Please see the login form component for source code and more information.
  */
 
 export interface LoginFormProps {
@@ -64,6 +71,8 @@ export interface IconProps {
  * @optional @prop {number | string} width The width of the form.
  * @optional @prop {number | string} height The height of the form
  * @optional @prop {boolean} multiline Whether the text is multiline or not.
+ *
+ * @see Form.tsx Please the form component for the source code and more information.
  */
 
 export interface FormProps {
@@ -77,9 +86,7 @@ export interface FormProps {
 }
 
 /**
- * This is the props for the room list component.
  *
- * @see RoomList.tsx
  */
 
 export interface RoomListProps {
@@ -90,7 +97,14 @@ export interface RoomListProps {
 }
 
 /**
- * This is the type restrictions for the form component type prop.
+ * This is the login form selector prop type, this type lists th modes available by the login form component.
+ * This also in addition type gives limitations to the form modes to prevent errors.
+ *
+ * @option "username" The mode for user name input. eg: Login screen.
+ * @option "password" The mode for a password form.
+ * @option "confirm-password" The mode for the confirm password form. eg: Sign up screen.
+ *
+ * @see LoginForm.tsx Please see the login form component for source code and more information.
  */
 
 type loginFormTypeSelector = "username" | "password" | "confirm-password";
@@ -108,24 +122,10 @@ export interface MessageProps {
 }
 
 /**
- * This is the RGB color values for the icon component to convert hex to RGB.
+ * This is the typing animation component prop interface, this interface outlines the shape of the props required.
  *
- * @param {number} red  The red value in RGB.
- * @param {number} green The green value in RGB.
- * @param {number} blue The blue value in RGB.
- * @param {number} alpha The alpha value
- *
- * @note If you do not know what is RGB learn more at: https://en.wikipedia.org/wiki/RGB_color_model
- */
-export interface RGBColors {
-  red: number;
-  green: number;
-  blue: number;
-  alpha: number;
-}
-
-/**
- * This is the props interface/outline for the typing animation component.
+ * @prop {[boolean, () => boolean]} state The state to change to show if it's activated.
+ * @note You can just put simply pass the state down.
  *
  * @see TypingAnimation.tsx
  */
@@ -135,9 +135,12 @@ export interface TypingAnimationProps {
 }
 
 /**
- * This is the props outline fo the send bar component.
+ * This is hte props interface for the send bar component,
+ * this interface outlines the values to be parsed.
  *
- * @see SendBar.tsx
+ * @prop {boolean} typing Whether the user is typing.
+ *
+ * @see SendBar.tsx Please see the send bar component for source code and more information.
  */
 
 export interface SendBarProps {

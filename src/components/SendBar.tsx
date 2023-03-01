@@ -12,12 +12,13 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 import filter from "../scripts/filter";
 import sendMessage from "../scripts/sendMessage";
 import setKeyboardSocket from "../scripts/setKeyboardSocket";
 import Form from "./Form";
-import { useSelector } from "react-redux";
+import { SendBarProps as Props } from "./index";
 import { RootState } from "../redux/index.d";
 
 /**
@@ -27,8 +28,7 @@ import { RootState } from "../redux/index.d";
  * @prop {boolean} typing Whether the user is typing.
  */
 
-// TODO: NO props type
-const SendBar: React.FC = (props: any) => {
+const SendBar: React.FC<Props> = (props: Props) => {
   const navigator: any = useNavigation();
 
   const { sessionStatus, userInfo }: RootState = useSelector(
