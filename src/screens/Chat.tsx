@@ -234,7 +234,7 @@ const Chat: React.FC = () => {
                   (value: any): void => {
                     message.content = message.content.replace(
                       `!BOLD(${value[1]})`,
-                      `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>${value[1]}</Text>`
+                      `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>{\`${value[1]}\`}</Text>{\``
                     );
                   }
                 );
@@ -243,7 +243,7 @@ const Chat: React.FC = () => {
                   (value: any): void => {
                     message.content = message.content.replace(
                       `!ITALIC(${value[1]})`,
-                      `<Text style={[bindingStyle.content, { fontStyle: "italic"}]}>${value[1]}</Text>`
+                      `\`}<Text style={[bindingStyle.content, { fontStyle: "italic"}]}>{\`${value[1]}\`}</Text>{\``
                     );
                   }
                 );
@@ -252,7 +252,7 @@ const Chat: React.FC = () => {
                   (value: any): void => {
                     message.content = message.content.replace(
                       `!UNDERLINE(${value[1]})`,
-                      `<Text style={[bindingStyle.content, {textDecorationLine: 'underline'}]}>${value[1]}</Text>`
+                      `\`}<Text style={[bindingStyle.content, {textDecorationLine: 'underline'}]}>{\`${value[1]}\`}</Text>{\``
                     );
                   }
                 );
@@ -261,7 +261,7 @@ const Chat: React.FC = () => {
                   (value: any): void => {
                     message.content = message.content.replace(
                       `!TITLE(${value[1]})`,
-                      `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", fontSize: 20}]}>${value[1]}</Text>`
+                      `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", fontSize: 20}]}>{\`${value[1]}\`}</Text>{\``
                     );
                   }
                 );
@@ -271,22 +271,21 @@ const Chat: React.FC = () => {
                     if (
                       message.content.includes(`@${username}`) &&
                       !message.content.includes(
-                        `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>`
+                        `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>\`}`
                       )
                     ) {
                       message.content = message.content.replaceAll(
                         `@${username}`,
-                        `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>`
+                        `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>\`}`
                       );
                       if (
                         message.user !== userInfo.username &&
                         username === userInfo.username
-                      ) {
+                      )
                         message.content = message.content.replaceAll(
                           `@${username}`,
-                          `<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", color:"red"}]}>@${username}</Text>`
+                          `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", color:"red"}]}>@${username}</Text>\`}`
                         );
-                      }
                     }
                   });
                 }
