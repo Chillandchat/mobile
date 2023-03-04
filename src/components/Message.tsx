@@ -26,11 +26,9 @@ import { Dispatch } from "redux";
  */
 
 const Message: React.FC<Props> = (props: Props) => {
-  const [imageError, setImageError]: any = React.useState(false);
+  const [imageError, setImageError]:any = React.useState(false);
 
   const dispatch: Dispatch = useDispatch();
-
-  console.log(props.message.content.toString());
 
   const { userInfo }: RootState = useSelector((state: RootState): RootState => {
     return state;
@@ -57,7 +55,6 @@ const Message: React.FC<Props> = (props: Props) => {
     content: {
       fontFamily: "poppins",
       color: props.message.user === userInfo.username ? "white" : "black",
-      whiteSpace: "pre-line",
     },
     icon: {
       marginBottom: -30,
@@ -158,7 +155,7 @@ const Message: React.FC<Props> = (props: Props) => {
             <JsxParser
               components={{ Text }}
               bindings={{ bindingStyle: style }}
-              jsx={`${props.message.content.toString()}`}
+              jsx={`${props.message.content}`}
             />
           </Text>
         )}
