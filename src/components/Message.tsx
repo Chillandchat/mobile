@@ -26,7 +26,7 @@ import { Dispatch } from "redux";
  */
 
 const Message: React.FC<Props> = (props: Props) => {
-  const [imageError, setImageError]:any = React.useState(false);
+  const [imageError, setImageError]: any = React.useState(false);
 
   const dispatch: Dispatch = useDispatch();
 
@@ -154,8 +154,18 @@ const Message: React.FC<Props> = (props: Props) => {
           <Text style={style.content}>
             <JsxParser
               components={{ Text }}
-              bindings={{ bindingStyle: style }}
-              jsx={`${props.message.content}`}
+              bindings={{
+                bindingStyle: style,
+                bindingContent: props.message.content,
+              }}
+              jsx={
+                props.message.content.includes("!FMT")
+                  ? `{\`${props.message.content.slice(
+                      5,
+                      props.message.content.length - 1
+                    )}\`}`
+                  : "{bindingContent}"
+              }
             />
           </Text>
         )}

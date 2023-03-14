@@ -13,6 +13,9 @@ import { FormProps as Props } from "./index.d";
  * @optional @prop {number | string} width The width of the form.
  * @optional @prop {number | string} height The height of the form
  * @optional @prop {boolean} multiline Whether the text is multiline or not.
+ * @optional @prop {(unknown) => void} onKeypress The function to be called on key press.
+ * @optional @prop {(property) selection?: {start: number; end?: number | undefined;}} selection The selection value.
+ * @optional @prop {(unknown) => void} onSelectionChange The function to be called on a selection.
  */
 
 const Form: React.FC<Props> = (props: Props) => {
@@ -32,12 +35,15 @@ const Form: React.FC<Props> = (props: Props) => {
   return (
     <View style={style.container}>
       <TextInput
+        onKeyPress={props.onKeyPress}
         placeholder={props.placeholder}
         onChangeText={props.onTextChange}
         secureTextEntry={props.safeEntry || false}
         value={props.value}
         multiline={props?.multiline || false}
         placeholderTextColor={"#C7C7CD"}
+        selection={props.selection}
+        onSelectionChange={props.onSelectionChange}
       />
     </View>
   );

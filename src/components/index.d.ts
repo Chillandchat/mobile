@@ -71,6 +71,9 @@ export interface IconProps {
  * @optional @prop {number | string} width The width of the form.
  * @optional @prop {number | string} height The height of the form
  * @optional @prop {boolean} multiline Whether the text is multiline or not.
+ * @optional @prop {(unknown) => void} onKeypress The function to be called on key press.
+ * @optional @prop {{start: number; end?: number | undefined}} selection The selection value.
+ * @optional @prop {(unknown) => void} onSelectionChange The function to be called on a selection.
  *
  * @see Form.tsx Please the form component for the source code and more information.
  */
@@ -83,6 +86,9 @@ export interface FormProps {
   width?: number | string;
   height?: number | string;
   multiline?: boolean;
+  onKeyPress?: (unknown: unknown) => void;
+  selection?: { start: number; end?: number | undefined };
+  onSelectionChange?: (unknown: unknown) => void;
 }
 
 /**

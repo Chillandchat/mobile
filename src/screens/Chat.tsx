@@ -230,66 +230,67 @@ const Chat: React.FC = () => {
 
                 let message: MessageType = { ...tmpMessage };
 
-                [...message.content.matchAll(/!BOLD\((.*?)\)/g)].forEach(
-                  (value: any): void => {
-                    message.content = message.content.replace(
-                      `!BOLD(${value[1]})`,
-                      `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>{\`${value[1]}\`}</Text>{\``
-                    );
-                  }
-                );
-
-                [...message.content.matchAll(/!ITALIC\((.*?)\)/g)].forEach(
-                  (value: any): void => {
-                    message.content = message.content.replace(
-                      `!ITALIC(${value[1]})`,
-                      `\`}<Text style={[bindingStyle.content, { fontStyle: "italic"}]}>{\`${value[1]}\`}</Text>{\``
-                    );
-                  }
-                );
-
-                [...message.content.matchAll(/!UNDERLINE\((.*?)\)/g)].forEach(
-                  (value: any): void => {
-                    message.content = message.content.replace(
-                      `!UNDERLINE(${value[1]})`,
-                      `\`}<Text style={[bindingStyle.content, {textDecorationLine: 'underline'}]}>{\`${value[1]}\`}</Text>{\``
-                    );
-                  }
-                );
-
-                [...message.content.matchAll(/!TITLE\((.*?)\)/g)].forEach(
-                  (value: any): void => {
-                    message.content = message.content.replace(
-                      `!TITLE(${value[1]})`,
-                      `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", fontSize: 20}]}>{\`${value[1]}\`}</Text>{\``
-                    );
-                  }
-                );
-
-                if (message.content.includes("@")) {
-                  sessionStatus.users.forEach((username: string): void => {
-                    if (
-                      message.content.includes(`@${username}`) &&
-                      !message.content.includes(
-                        `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>\`}`
-                      )
-                    ) {
-                      message.content = message.content.replaceAll(
-                        `@${username}`,
-                        `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>\`}`
+                if (message.content.includes("!FMT")) {
+                  [...message.content.matchAll(/!BOLD\((.*?)\)/g)].forEach(
+                    (value: any): void => {
+                      message.content = message.content.replace(
+                        `!BOLD(${value[1]})`,
+                        `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>{\`${value[1]}\`}</Text>{\``
                       );
+                    }
+                  );
+
+                  [...message.content.matchAll(/!ITALIC\((.*?)\)/g)].forEach(
+                    (value: any): void => {
+                      message.content = message.content.replace(
+                        `!ITALIC(${value[1]})`,
+                        `\`}<Text style={[bindingStyle.content, { fontStyle: "italic"}]}>{\`${value[1]}\`}</Text>{\``
+                      );
+                    }
+                  );
+
+                  [...message.content.matchAll(/!UNDERLINE\((.*?)\)/g)].forEach(
+                    (value: any): void => {
+                      message.content = message.content.replace(
+                        `!UNDERLINE(${value[1]})`,
+                        `\`}<Text style={[bindingStyle.content, {textDecorationLine: 'underline'}]}>{\`${value[1]}\`}</Text>{\``
+                      );
+                    }
+                  );
+
+                  [...message.content.matchAll(/!TITLE\((.*?)\)/g)].forEach(
+                    (value: any): void => {
+                      message.content = message.content.replace(
+                        `!TITLE(${value[1]})`,
+                        `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", fontSize: 20}]}>{\`${value[1]}\`}</Text>{\``
+                      );
+                    }
+                  );
+
+                  if (message.content.includes("@")) {
+                    sessionStatus.users.forEach((username: string): void => {
                       if (
-                        message.user !== userInfo.username &&
-                        username === userInfo.username
-                      )
+                        message.content.includes(`@${username}`) &&
+                        !message.content.includes(
+                          `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>{\``
+                        )
+                      ) {
                         message.content = message.content.replaceAll(
                           `@${username}`,
-                          `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", color:"red"}]}>@${username}</Text>\`}`
+                          `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold"}]}>@${username}</Text>{\``
                         );
-                    }
-                  });
+                        if (
+                          message.user !== userInfo.username &&
+                          username === userInfo.username
+                        )
+                          message.content = message.content.replaceAll(
+                            `@${username}`,
+                            `\`}<Text style={[bindingStyle.content, {fontFamily: "poppinsBold", color:"red"}]}>@${username}</Text>{\``
+                          );
+                      }
+                    });
+                  }
                 }
-
                 return (
                   <Message
                     readMessage={readMessage}
@@ -302,12 +303,7 @@ const Chat: React.FC = () => {
                           )
                         : userInfo
                     }
-                    message={{
-                      id: message.id,
-                      user: message.user,
-                      content: message.content,
-                      room: message.room,
-                    }}
+                    message={message}
                   />
                 );
               })}
