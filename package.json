@@ -10,8 +10,8 @@
     "ios": "echo 'Starting iOS...' && expo run:ios",
     "web": "echo 'Stating web...' && expo start --web",
     "eject": "echo 'Ejecting...' && expo eject",
-    "build": "echo 'Building and publishing...' && expo publish",
-    "fix": "echo 'Fixing dependencies...' && expo doctor --fix-dependencies"
+    "build": "echo 'Building and publishing...' && expo publish && eas build -p ios && eas submit --latest -p ios",
+    "fix": "echo 'Fixing dependencies...' && expo-cli doctor --fix-dependencies"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
     "dotenv": "^16.0.1",
     "expo": "^47.0.0",
     "expo-app-loading": "~2.1.1",
-    "expo-av": "~13.0.2",
+    "expo-av": "~13.0.3",
     "expo-barcode-scanner": "~12.1.0",
     "expo-checkbox": "~2.2.2",
     "expo-clipboard": "~4.0.1",
