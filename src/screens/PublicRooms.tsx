@@ -39,9 +39,14 @@ const PublicRooms: React.FC = () => {
         navigation.navigate("error");
       });
 
-    getRoom(userInfo.username).then((rooms: Array<RoomType>): void => {
-      setExistingRooms(rooms);
-    });
+    getRoom(userInfo.username)
+      .then((rooms: Array<RoomType>): void => {
+        setExistingRooms(rooms);
+      })
+      .catch((err: unknown): void => {
+        console.error(err);
+        navigation.navigate("error");
+      });
   }, []);
 
   const style: any = StyleSheet.create({
