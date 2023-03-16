@@ -22,7 +22,6 @@ import Error from "./screens/Error";
 import store from "./redux/index";
 import BlockError from "./screens/BlockError";
 import CreateRoom from "./screens/CreateRoom";
-import AddRoom from "./screens/AddRoom";
 import JoinRoom from "./screens/JoinRoom";
 import Information from "./screens/Information";
 import loadFonts from "../assets/fonts/loader";
@@ -36,6 +35,7 @@ import UpdateIconColor from "./screens/UpdateIconColor";
 import PublicRooms from "./screens/PublicRooms";
 import ImageBase from "./screens/ImageBase";
 import ControlCenter from "./screens/ControlCenter";
+import Share from "./screens/Share";
 
 /**
  * This is the router component for the application, This component
@@ -93,6 +93,11 @@ namespace app {
             <NavigationContainer>
               <NavigatorStack.Navigator initialRouteName="login">
                 <NavigatorStack.Group screenOptions={{ presentation: "modal" }}>
+                  <NavigatorStack.Screen
+                    name="share"
+                    component={Share}
+                    options={{ headerShown: false }}
+                  />
                   <NavigatorStack.Screen
                     name="send-image"
                     component={SendImage}
