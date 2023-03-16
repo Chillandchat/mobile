@@ -16,7 +16,6 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import deleteMessage from "../scripts/deleteMessage";
 import { RootState } from "../redux/index.d";
 import { clearMessageInfo } from "../redux/action";
-import Constants from "expo-constants";
 import reportRoom from "../scripts/reportRoom";
 
 /**
