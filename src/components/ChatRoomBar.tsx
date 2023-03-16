@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Dimensions,
   ScaledSize,
+  Text,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,6 +43,18 @@ const ChatRoomBar: React.FC = () => {
       width: "100%",
       paddingHorizontal: windowDimensions.width * 0.07,
     },
+    nameTag: {
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      alignSelf: "flex-start",
+      maxWidth: 200,
+    },
+    text: {
+      fontFamily: "poppinsBold",
+      fontSize: 22,
+      marginLeft: 15,
+    },
   });
 
   return (
@@ -53,11 +66,16 @@ const ChatRoomBar: React.FC = () => {
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-      <Icon
-        iconLetter={sessionStatus.name[0]}
-        color={sessionStatus.iconColor}
-        size={50}
-      />
+      <View style={style.nameTag}>
+        <Icon
+          iconLetter={sessionStatus.name[0]}
+          color={sessionStatus.iconColor}
+          size={50}
+        />
+        <Text style={style.text} numberOfLines={1}>
+          {sessionStatus.name}
+        </Text>
+      </View>
       <TouchableOpacity
         onPress={(): void => {
           navigation.push("room-details");
