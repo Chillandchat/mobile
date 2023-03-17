@@ -1,14 +1,18 @@
+//! "import "react-native-get-random-values";" MUST BE FIRST!!
+import "react-native-get-random-values";
+import { v4 as uuid } from "uuid";
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 
 import { RootState } from "../redux/index.d";
 import Form from "../components/Form";
-import { RoomType } from "../scripts/index.d";
+import { MessageType, RoomType } from "../scripts/index.d";
 import getRooms from "../scripts/getRooms";
 import { useNavigation } from "@react-navigation/native";
 import RoomList from "../components/RoomList";
 import { AntDesign } from "@expo/vector-icons";
+import sendMessage from "../scripts/sendMessage";
 
 /**
  * This is the share screen, this screen will be used to prompt the user
@@ -84,7 +88,7 @@ const Share: React.FC = () => {
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-      <Text style={style.heading}>Share message</Text>
+      <Text style={style.heading}>Share message...</Text>
       <View style={style.roomList}>
         <View style={style.searchContainer}>
           <Form
@@ -103,7 +107,20 @@ const Share: React.FC = () => {
             height={55}
           />
         </View>
-        <RoomList rooms={rooms} />
+        <RoomList
+          rooms={rooms}
+          onPress={(room: RoomType): void => {
+            let message: MessageType = {
+              id: uuid(),
+              user: userInfo.username,
+              content: messageInfo.message.content.toString(),
+              room: room.id,
+            };
+
+            sendMessage(message);
+            navigation.navigate("message-options");
+          }}
+        />
       </View>
     </View>
   );
