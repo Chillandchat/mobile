@@ -26,14 +26,15 @@ const ControlCenter: React.FC = () => {
     <Tab.Navigator
       screenOptions={(options: any): Object => ({
         tabBarIcon: ({ color, size }: any): JSX.Element => {
-          if (options.route.name === "menu") {
-            return <Entypo name="chat" size={size} color={color} />;
-          } else if (options.route.name === "signout-confirm") {
-            return <Feather name="user" size={size} color={color} />;
-          } else {
-            return (
-              <Ionicons name="add-circle" size={size + 10} color={color} />
-            );
+          switch (options.route.name) {
+            case "menu":
+              return <Entypo name="chat" size={size} color={color} />;
+            case "signout-confirm":
+              return <Feather name="user" size={size} color={color} />;
+            default:
+              return (
+                <Ionicons name="add-circle" size={size + 10} color={color} />
+              );
           }
         },
         tabBarActiveTintColor: "#00ad98",
