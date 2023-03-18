@@ -11,7 +11,7 @@ import { ButtonProps as Props } from "./index.d";
 
 /**
  * This is the button component, this is what Chill&chat uses as it's primary button.
- * This button will run the onPress function once pressed.
+ * Basically, this button will just simply put run the onPress function once pressed.
  *
  * @prop {string} color The background color of the button.
  * @prop {string} textColor The color of the text on the button.

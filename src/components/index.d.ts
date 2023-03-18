@@ -2,9 +2,16 @@ import { MessageType } from "./../scripts/index.d";
 import { RoomType } from "../scripts/index.d";
 
 /**
- * This is the props for the button component.
+ * This is the prop interface for the button component,
+ * this set of props are used to define the shape of the prop.
  *
- * @see Button.tsx
+ * @prop {string} color The background color of the button.
+ * @prop {string} textColor The color of the text on the button.
+ * @prop {() => void} onPress The function to call when the button is pressed.
+ * @prop {string} text The text that the button displays.
+ * @optional @prop {boolean} disabled If the button is disabled.
+ *
+ * @see Button.tsx Please see the button component for source code and information.
  */
 
 export interface ButtonProps {
@@ -16,9 +23,14 @@ export interface ButtonProps {
 }
 
 /**
- * This is the props for the form component.
+ * This is the login form props, this interface outlines the values needed for the login form to function.
  *
- * @see LoginForm.tsx
+ * @prop {loginFormTypeSelector} type The type of the form.
+ * @prop {(text: string) => void} onTextChange The callback of the onTextChange callback event.
+ * @prop {string} value The value for the text input
+ * @optional @prop {boolean} safeEntry Whether the form has a safe entry feature.
+ *
+ * @see LoginForm.tsx Please see the login form component for source code and more information.
  */
 
 export interface LoginFormProps {
@@ -29,9 +41,15 @@ export interface LoginFormProps {
 }
 
 /**
- * This is the props for the icon component.
+ * This is the interface for the props on the icon component,
+ * this interface outlines the shape of the object passed to the component.
  *
- * @see Icon.tsx
+ * @prop {string} iconLetter The letter that the icon displays.
+ * @prop {string} color The background color of the icon.
+ * @optional @prop {() => void} onPress The function to call when the icon is pressed.
+ * @optional @prop {boolean} touchable If the icon is touchable.
+ *
+ * @see Icon.tsx Please see the icon component for more information and source code.
  */
 
 export interface IconProps {
@@ -43,9 +61,21 @@ export interface IconProps {
 }
 
 /**
- * This is the props for the input component.
+ * This is the interface for props on the form component.
+ * the interface outlines the shape of the object passed to this component.
  *
- * @see Input.tsx
+ * @prop {string} placeholder The placeholder of the form.
+ * @prop {(text: string) => void} onChangeText The event that will be called when the text is changed and the data will be stored in the parameter.
+ * @optional @prop {boolean} safeEntry Whether the text is secure or not.
+ * @optional @prop {string} value The value of the text form.
+ * @optional @prop {number | string} width The width of the form.
+ * @optional @prop {number | string} height The height of the form
+ * @optional @prop {boolean} multiline Whether the text is multiline or not.
+ * @optional @prop {(unknown) => void} onKeypress The function to be called on key press.
+ * @optional @prop {{start: number; end?: number | undefined}} selection The selection value.
+ * @optional @prop {(unknown) => void} onSelectionChange The function to be called on a selection.
+ *
+ * @see Form.tsx Please the form component for the source code and more information.
  */
 
 export interface FormProps {
@@ -56,12 +86,21 @@ export interface FormProps {
   width?: number | string;
   height?: number | string;
   multiline?: boolean;
+  onKeyPress?: (unknown: unknown) => void;
+  selection?: { start: number; end?: number | undefined };
+  onSelectionChange?: (unknown: unknown) => void;
 }
 
 /**
- * This is the props for the room list component.
+ * This is the props interface for the room list component. Here are some props required below:
  *
- * @see RoomList.tsx
+ * @prop {Array<RoomType>} rooms The rooms to display.
+ * @optional @prop {(room: RoomType) => void} onPress What to run a user click the room.
+ * @prop {boolean} displayMessages If it should display the recent messages.
+ * @prop {Array<MessageType>} messages the messages to display.
+ * @see RoomType For more information.
+ *
+ * @see RoomList.tsx Please see the room list component for the source code and more information.
  */
 
 export interface RoomListProps {
@@ -72,7 +111,14 @@ export interface RoomListProps {
 }
 
 /**
- * This is the type restrictions for the form component type prop.
+ * This is the login form selector prop type, this type lists th modes available by the login form component.
+ * This also in addition type gives limitations to the form modes to prevent errors.
+ *
+ * @option "username" The mode for user name input. eg: Login screen.
+ * @option "password" The mode for a password form.
+ * @option "confirm-password" The mode for the confirm password form. eg: Sign up screen.
+ *
+ * @see LoginForm.tsx Please see the login form component for source code and more information.
  */
 
 type loginFormTypeSelector = "username" | "password" | "confirm-password";
@@ -90,24 +136,10 @@ export interface MessageProps {
 }
 
 /**
- * This is the RGB color values for the icon component to convert hex to RGB.
+ * This is the typing animation component prop interface, this interface outlines the shape of the props required.
  *
- * @param {number} red  The red value in RGB.
- * @param {number} green The green value in RGB.
- * @param {number} blue The blue value in RGB.
- * @param {number} alpha The alpha value
- *
- * @note If you do not know what is RGB learn more at: https://en.wikipedia.org/wiki/RGB_color_model
- */
-export interface RGBColors {
-  red: number;
-  green: number;
-  blue: number;
-  alpha: number;
-}
-
-/**
- * This is the props interface/outline for the typing animation component.
+ * @prop {[boolean, () => boolean]} state The state to change to show if it's activated.
+ * @note You can just put simply pass the state down.
  *
  * @see TypingAnimation.tsx
  */
@@ -117,9 +149,12 @@ export interface TypingAnimationProps {
 }
 
 /**
- * This is the props outline fo the send bar component.
+ * This is hte props interface for the send bar component,
+ * this interface outlines the values to be parsed.
  *
- * @see SendBar.tsx
+ * @prop {boolean} typing Whether the user is typing.
+ *
+ * @see SendBar.tsx Please see the send bar component for source code and more information.
  */
 
 export interface SendBarProps {

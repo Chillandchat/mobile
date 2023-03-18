@@ -99,7 +99,7 @@ const UpdateIconColor: React.FC = () => {
         >
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
-        <Text style={style.boldText}>Update icon color</Text>
+        <Text style={style.boldText}>Customize icon</Text>
         <View style={style.bodyContainer}>
           <View style={style.previewContainer}>
             <Text style={style.text}>Preview</Text>

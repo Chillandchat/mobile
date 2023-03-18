@@ -14,6 +14,8 @@ import { useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { io } from "socket.io-client";
+import { NavigationContainer, TypedNavigator } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import RoomList from "../components/RoomList";
 import Icon from "../components/Icon";
@@ -23,6 +25,7 @@ import { MessageType, RoomType } from "../scripts/index.d";
 import Form from "../components/Form";
 import getMessages from "../scripts/getMessages";
 import Button from "../components/Button";
+import UserMenu from "./UserMenu";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
@@ -238,14 +241,14 @@ const Menu: React.FC<any> = ({ navigation }) => {
     tittleBar: {
       flexDirection: "row",
       justifyContent: "space-between",
-      marginHorizontal: "5%",
-      marginTop: windowSize.height / 4, // Style of the header offset
+      alignItems: "center",
+      marginLeft: 30,
+      marginBottom: 10,
+      marginTop: "40%",
     },
     searchContainer: {
       width: "100%",
-      flexDirection: "row",
       alignItems: "center",
-      marginLeft: "10%",
       height: 55,
       marginTop: 5,
       marginBottom: 10,
@@ -263,6 +266,9 @@ const Menu: React.FC<any> = ({ navigation }) => {
     searchIcon: {
       marginLeft: 15,
     },
+    paddingActor: {
+      paddingBottom: 40,
+    },
   });
 
   if (!loggedIn) {
@@ -277,19 +283,11 @@ const Menu: React.FC<any> = ({ navigation }) => {
       >
         <ScrollView contentContainerStyle={style.container}>
           <View style={style.tittleBar}>
-            <Text style={style.text}>Messages</Text>
-            <Icon
-              iconLetter={username[0] || ""}
-              color={iconColor || "#0000"}
-              touchable
-              onPress={(): void => {
-                navigation.push("signout-confirm");
-              }}
-            />
+            <Text style={style.text}>Chats</Text>
           </View>
           <View style={style.searchContainer}>
             <Form
-              width={"75%"}
+              width={"90%"}
               placeholder={"Search..."}
               height={55}
               onTextChange={(text: string): void => {
@@ -303,16 +301,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
             />
           </View>
           <RoomList rooms={rooms} displayMessages messages={recentMessages} />
-          <View style={style.addButton}>
-            <Button
-              color={"#00ad98"}
-              text="Add room"
-              textColor={"white"}
-              onPress={(): void => {
-                navigation.navigate("add-room");
-              }}
-            />
-          </View>
+          <View style={style.paddingActor} />
         </ScrollView>
       </KeyboardAvoidingView>
     );

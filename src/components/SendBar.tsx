@@ -12,21 +12,23 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 import filter from "../scripts/filter";
 import sendMessage from "../scripts/sendMessage";
 import setKeyboardSocket from "../scripts/setKeyboardSocket";
 import Form from "./Form";
-import { useSelector } from "react-redux";
+import { SendBarProps as Props } from "./index.d";
 import { RootState } from "../redux/index.d";
 
 /**
  * This is the send bar component for the chat room, this is where the user can input a message and send it.
+ * This component will normally be located at the bottom of the chat room.
  *
  * @prop {boolean} typing Whether the user is typing.
  */
 
-const SendBar: React.FC<any> = (props: any): any => {
+const SendBar: React.FC<Props> = (props: Props) => {
   const navigator: any = useNavigation();
 
   const { sessionStatus, userInfo }: RootState = useSelector(
@@ -114,7 +116,7 @@ const SendBar: React.FC<any> = (props: any): any => {
               });
             }
 
-            setMessage((_prevState: string): string => text);
+            setMessage(text);
           }}
           value={textBoxHelper}
         />

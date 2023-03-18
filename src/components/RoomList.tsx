@@ -17,8 +17,7 @@ import Icon from "./Icon";
 import { Dispatch } from "redux";
 
 /**
- * This is the room list component, this component is used in the menu to display the rooms.
- * The information can be altered by changing the rooms prop.
+ * This is the room list component, this component is used in the menu to display the rooms along with other places.
  *
  * @prop {Array<RoomType>} rooms The rooms to display.
  * @optional @prop {(room: RoomType) => void} onPress What to run a user click the room.
@@ -47,7 +46,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
       alignSelf: "flex-start",
       marginHorizontal: "5%",
       width: "90%",
-      marginBottom: "10%",
+      height: "120%",
     },
     error: {
       fontFamily: "poppins",
@@ -80,11 +79,10 @@ const RoomList: React.FC<Props> = (props: Props) => {
     </View>
   ) : (
     <ScrollView style={style.container}>
-      {props.rooms.map((room: RoomType, index: number): any => (
+      {props.rooms.map((room: RoomType): any => (
         <TouchableOpacity
           style={style.roomContainer}
           key={room.id.concat("-a")}
-          // @ts-ignore
           onPress={(): void => {
             if (props.onPress !== undefined) props?.onPress(room);
             else {

@@ -1,6 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { Text, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import Button from "../components/Button";
@@ -23,12 +22,6 @@ const AddRoom: React.FC = () => {
       fontSize: 25,
       padding: 40,
     },
-    back: {
-      justifyContent: "flex-start",
-      position: "absolute",
-      top: "7%",
-      left: "7%",
-    },
     joinRoom: {
       position: "absolute",
       bottom: "7%",
@@ -39,7 +32,7 @@ const AddRoom: React.FC = () => {
       borderWidth: 3,
       borderRadius: 20,
       paddingBottom: 20,
-      width: "90%",
+      width: "85%",
     },
     createRoom: {
       alignItems: "center",
@@ -50,14 +43,6 @@ const AddRoom: React.FC = () => {
 
   return (
     <View style={style.container}>
-      <TouchableOpacity
-        style={style.back}
-        onPress={(): void => {
-          navigation.navigate("menu");
-        }}
-      >
-        <AntDesign name="back" size={24} color="black" />
-      </TouchableOpacity>
       <View style={style.createRoom}>
         <Text style={style.title}>Create a room...</Text>
         <Text

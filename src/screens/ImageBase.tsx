@@ -72,6 +72,7 @@ const ImageBase: React.FC = () => {
     image: {
       height: 100,
       width: 100,
+      borderRadius: 10,
     },
     searchWrapper: {
       width: "100%",
@@ -79,10 +80,6 @@ const ImageBase: React.FC = () => {
       alignItems: "center",
       justifyContent: "center",
       marginTop: 50,
-      marginLeft: 35,
-    },
-    searchIcon: {
-      padding: 20,
     },
     back: {
       position: "absolute",
@@ -94,6 +91,7 @@ const ImageBase: React.FC = () => {
       height: 100,
       width: 100,
       margin: 5,
+      borderRadius: 10,
     },
     imageListContainer: {
       height: "65%",
@@ -132,11 +130,6 @@ const ImageBase: React.FC = () => {
             value={filter}
             onTextChange={(text: string): void => {
               setFilter(text);
-            }}
-          />
-          <TouchableOpacity
-            style={style.searchIcon}
-            onPress={(): void => {
               getGif(filter, filter === "")
                 .then((gif: Array<any>): void => {
                   setResults((_prev: any): any => {
@@ -148,9 +141,7 @@ const ImageBase: React.FC = () => {
                   navigation.navigate("error");
                 });
             }}
-          >
-            <FontAwesome name="search" size={24} color="#00ad98" />
-          </TouchableOpacity>
+          />
         </View>
         <View style={style.imageListContainer}>
           <ScrollView contentContainerStyle={style.imageListBody}>

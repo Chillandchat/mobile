@@ -19,12 +19,9 @@ import Login from "./screens/Login";
 import Signup from "./screens/Signup";
 import Chat from "./screens/Chat";
 import Error from "./screens/Error";
-import Menu from "./screens/Menu";
 import store from "./redux/index";
 import BlockError from "./screens/BlockError";
-import UserMenu from "./screens/UserMenu";
 import CreateRoom from "./screens/CreateRoom";
-import AddRoom from "./screens/AddRoom";
 import JoinRoom from "./screens/JoinRoom";
 import Information from "./screens/Information";
 import loadFonts from "../assets/fonts/loader";
@@ -37,6 +34,8 @@ import RoomId from "./screens/RoomId";
 import UpdateIconColor from "./screens/UpdateIconColor";
 import PublicRooms from "./screens/PublicRooms";
 import ImageBase from "./screens/ImageBase";
+import ControlCenter from "./screens/ControlCenter";
+import Share from "./screens/Share";
 
 /**
  * This is the router component for the application, This component
@@ -93,112 +92,112 @@ namespace app {
             <StatusBar style="dark" />
             <NavigationContainer>
               <NavigatorStack.Navigator initialRouteName="login">
-                <NavigatorStack.Screen
-                  name="login"
-                  component={Login}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="information"
-                  component={Information}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="send-image"
-                  component={SendImage}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="message-options"
-                  component={MessageOptions}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="user-profile"
-                  component={UserProfile}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="sign-up"
-                  component={Signup}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="menu"
-                  component={Menu}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="room-danger-zone"
-                  component={RoomDangerZone}
-                  options={{
-                    headerShown: false,
-                  }}
-                />
-                <NavigatorStack.Screen
-                  name="update-icon-color"
-                  component={UpdateIconColor}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="image-base"
-                  component={ImageBase}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="error"
-                  component={Error}
-                  options={{
-                    headerShown: false,
-                  }}
-                />
-                <NavigatorStack.Screen
-                  name="block-error"
-                  component={BlockError}
-                  options={{
-                    headerShown: false,
-                  }}
-                />
-                <NavigatorStack.Screen
-                  name="room-details"
-                  component={RoomInformation}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="chat"
-                  component={Chat}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="signout-confirm"
-                  component={UserMenu}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="public-rooms"
-                  component={PublicRooms}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="create-room"
-                  component={CreateRoom}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="add-room"
-                  component={AddRoom}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="join-room"
-                  component={JoinRoom}
-                  options={{ headerShown: false }}
-                />
-                <NavigatorStack.Screen
-                  name="room-id"
-                  component={RoomId}
-                  options={{ headerShown: false }}
-                />
+                <NavigatorStack.Group screenOptions={{ presentation: "modal" }}>
+                  <NavigatorStack.Screen
+                    name="share"
+                    component={Share}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="send-image"
+                    component={SendImage}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="message-options"
+                    component={MessageOptions}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="image-base"
+                    component={ImageBase}
+                    options={{ headerShown: false }}
+                  />
+                </NavigatorStack.Group>
+                <NavigatorStack.Group>
+                  <NavigatorStack.Screen
+                    name="login"
+                    component={Login}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="information"
+                    component={Information}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="user-profile"
+                    component={UserProfile}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="sign-up"
+                    component={Signup}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="menu"
+                    component={ControlCenter}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="room-danger-zone"
+                    component={RoomDangerZone}
+                    options={{
+                      headerShown: false,
+                    }}
+                  />
+                  <NavigatorStack.Screen
+                    name="update-icon-color"
+                    component={UpdateIconColor}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="error"
+                    component={Error}
+                    options={{
+                      headerShown: false,
+                    }}
+                  />
+                  <NavigatorStack.Screen
+                    name="block-error"
+                    component={BlockError}
+                    options={{
+                      headerShown: false,
+                    }}
+                  />
+                  <NavigatorStack.Screen
+                    name="room-details"
+                    component={RoomInformation}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="chat"
+                    component={Chat}
+                    options={{ headerShown: false }}
+                  />
+
+                  <NavigatorStack.Screen
+                    name="public-rooms"
+                    component={PublicRooms}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="create-room"
+                    component={CreateRoom}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="join-room"
+                    component={JoinRoom}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="room-id"
+                    component={RoomId}
+                    options={{ headerShown: false }}
+                  />
+                </NavigatorStack.Group>
               </NavigatorStack.Navigator>
             </NavigationContainer>
           </View>

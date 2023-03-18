@@ -11,12 +11,12 @@ import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import * as Speech from "expo-speech";
+import { Feather } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 import deleteMessage from "../scripts/deleteMessage";
 import { RootState } from "../redux/index.d";
 import { clearMessageInfo } from "../redux/action";
-import Constants from "expo-constants";
 import reportRoom from "../scripts/reportRoom";
 
 /**
@@ -116,6 +116,15 @@ const MessageOptions: React.FC = () => {
       >
         <FontAwesome5 name="readme" size={35} color="black" />
         <Text style={style.text}>Read message</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={style.readMessage}
+        onPress={(): void => {
+          navigation.navigate("share");
+        }}
+      >
+        <Feather name="share" size={27} color="black" />
+        <Text style={style.text}>Share message</Text>
       </TouchableOpacity>
       {messageInfo?.message.user === userInfo.username ? (
         <TouchableOpacity
