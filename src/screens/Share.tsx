@@ -3,15 +3,15 @@ import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 
 import { RootState } from "../redux/index.d";
 import Form from "../components/Form";
 import { MessageType, RoomType } from "../scripts/index.d";
 import getRooms from "../scripts/getRooms";
-import { useNavigation } from "@react-navigation/native";
 import RoomList from "../components/RoomList";
-import { AntDesign } from "@expo/vector-icons";
 import sendMessage from "../scripts/sendMessage";
 
 /**
@@ -33,7 +33,7 @@ const Share: React.FC = () => {
 
   React.useEffect((): void => {
     getRooms(userInfo.username)
-      .then((returnedRooms: Array<RoomType>) => {
+      .then((returnedRooms: Array<RoomType>): void => {
         let nestedRooms = returnedRooms;
         nestedRooms = nestedRooms.filter(
           (room: RoomType): boolean => room.id !== sessionStatus.id
@@ -101,7 +101,6 @@ const Share: React.FC = () => {
                     )
                   : defaultRooms
               );
-              console.log(text.toLowerCase());
             }}
             width={"80%"}
             height={55}

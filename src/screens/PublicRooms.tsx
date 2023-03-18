@@ -1,16 +1,10 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+
 import getPublicRooms from "../scripts/getPublicRooms";
-import { RoomType } from "../scripts";
-import Icon from "../components/Icon";
+import { RoomType } from "../scripts/index.d";
 import joinRoom from "../scripts/joinRoom";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/index.d";
@@ -20,6 +14,7 @@ import Form from "../components/Form";
 
 const PublicRooms: React.FC = () => {
   const navigation: any = useNavigation();
+
   const [rooms, setRooms]: any = React.useState([]);
   const [existingRooms, setExistingRooms]: any = React.useState([]);
   const [defaultRooms, setDefaultRooms]: any = React.useState([]);
