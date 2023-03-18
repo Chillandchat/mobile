@@ -1,6 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { Text, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import Button from "../components/Button";
@@ -22,12 +21,6 @@ const AddRoom: React.FC = () => {
       fontFamily: "poppinsExtraBold",
       fontSize: 25,
       padding: 40,
-    },
-    back: {
-      justifyContent: "flex-start",
-      position: "absolute",
-      top: "7%",
-      left: "7%",
     },
     joinRoom: {
       position: "absolute",

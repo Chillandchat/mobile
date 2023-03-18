@@ -18,7 +18,7 @@ import filter from "../scripts/filter";
 import sendMessage from "../scripts/sendMessage";
 import setKeyboardSocket from "../scripts/setKeyboardSocket";
 import Form from "./Form";
-import { SendBarProps as Props } from "./index";
+import { SendBarProps as Props } from "./index.d";
 import { RootState } from "../redux/index.d";
 
 /**

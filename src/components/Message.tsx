@@ -5,6 +5,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import * as Haptics from "expo-haptics";
+import { Dispatch } from "redux";
 
 /** JSX parser import */
 // @ts-ignore
@@ -14,7 +15,6 @@ import { setMessageInfo, setProfileInfo } from "../redux/action";
 import { MessageProps as Props } from "./index.d";
 import { RootState } from "../redux/index.d";
 import Icon from "./Icon";
-import { Dispatch } from "redux";
 
 /**
  * This is the message component, this component will display the message that users send in the chat screen.
