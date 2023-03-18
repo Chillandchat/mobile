@@ -12,7 +12,7 @@ import {
 import { LoginFormProps as Props } from "./index.d";
 
 /**
- * This is the login form component, this component is used in the login and signup screens to prompt the user with password and username.
+ * This is the login form component, this component is used in the login and signup screens to prompt the user with password or username.
  *
  * @prop {loginFormTypeSelector} type The type of the form.
  * @prop {(text: string) => void} onTextChange The callback of the onTextChange callback event.
