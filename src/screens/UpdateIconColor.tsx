@@ -173,7 +173,7 @@ const UpdateIconColor: React.FC = () => {
                       navigation.navigate("error");
                     });
                   setColor("");
-                  navigation.push("signout-confirm");
+                  navigation.push("menu");
                 })
                 .catch((err: unknown): void => {
                   console.error(err);
