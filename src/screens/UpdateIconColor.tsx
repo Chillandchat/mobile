@@ -33,7 +33,9 @@ const UpdateIconColor: React.FC = () => {
   const navigation: any = useNavigation();
   const dispatch: any = useDispatch();
 
-  const { userInfo }: any = useSelector((state: RootState): RootState => state);
+  const { userInfo }: RootState = useSelector(
+    (state: RootState): RootState => state
+  );
 
   const style: any = StyleSheet.create({
     container: {
