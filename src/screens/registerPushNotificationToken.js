@@ -12,6 +12,7 @@ import * as Device from "expo-device";
  * Modified and reimplemented by Alvin cheng.
  *
  * @returns {string} The push notification token in a string type.
+ * @note may return undefined in error cases.
  */
 
 async function registerForPushNotificationsAsync() {
@@ -41,9 +42,9 @@ async function registerForPushNotificationsAsync() {
       return;
     }
     token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log("hi");
   } else {
     console.error("Incompatible device!\n   Error code: CC_ERROR_0022");
+    return;
   }
 
   return token;
