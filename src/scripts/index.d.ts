@@ -25,7 +25,8 @@ export type ApiEndpoint =
   | "/api/get-gif"
   | "/api/upload-content"
   | "/api/delete-user"
-  | "/api/verify-client";
+  | "/api/verify-client"
+  | "api/upload-token";
 
 /**
  * This is the ApiEndpoints type, This type works with the "ApiEndpoint"
@@ -50,6 +51,7 @@ export type ApiEndpoint =
  * @param {ApiEndpoint} getGif
  * @param {ApiEndpoint} deleteUser
  * @param {ApiEndpoint} verifyClient
+ * @param {ApiEndpoint} uploadToken
  */
 
 export interface ApiEndpoints {
@@ -74,6 +76,7 @@ export interface ApiEndpoints {
   uploadContent: ApiEndpoint;
   deleteUser: ApiEndpoint;
   verifyClient: ApiEndpoint;
+  uploadToken: ApiEndpoint;
 }
 
 /**
