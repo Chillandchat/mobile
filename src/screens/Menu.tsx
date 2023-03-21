@@ -3,19 +3,13 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
-  ScaledSize,
-  Dimensions,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
 } from "react-native";
 import { useSelector } from "react-redux";
-import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { io } from "socket.io-client";
-import { NavigationContainer, TypedNavigator } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import RoomList from "../components/RoomList";
 import Icon from "../components/Icon";
@@ -24,8 +18,6 @@ import getRoom from "../scripts/getRooms";
 import { MessageType, RoomType } from "../scripts/index.d";
 import Form from "../components/Form";
 import getMessages from "../scripts/getMessages";
-import Button from "../components/Button";
-import UserMenu from "./UserMenu";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
@@ -37,8 +29,6 @@ const Menu: React.FC<any> = ({ navigation }) => {
       return state.userInfo;
     }
   );
-
-  const windowSize: ScaledSize = Dimensions.get("window");
 
   const loggedIn: any = useSelector((state: RootState): RootState => {
     return state.loginStatus;
