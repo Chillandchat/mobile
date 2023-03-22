@@ -10,25 +10,33 @@ import {
 import { useSelector } from "react-redux";
 import Constants from "expo-constants";
 import { io } from "socket.io-client";
+import * as Notifications from "expo-notifications";
 
 import RoomList from "../components/RoomList";
-import Icon from "../components/Icon";
 import { RootState } from "../redux/index.d";
 import getRoom from "../scripts/getRooms";
 import { MessageType, RoomType } from "../scripts/index.d";
 import Form from "../components/Form";
 import getMessages from "../scripts/getMessages";
+import registerForPushNotificationsAsync from "./registerPushNotificationToken";
+import uploadToken from "../scripts/uploadToken";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
  */
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
+
 const Menu: React.FC<any> = ({ navigation }) => {
-  const { username, iconColor }: any = useSelector(
-    (state: RootState): RootState => {
-      return state.userInfo;
-    }
-  );
+  const { username }: any = useSelector((state: RootState): RootState => {
+    return state.userInfo;
+  });
 
   const loggedIn: any = useSelector((state: RootState): RootState => {
     return state.loginStatus;
@@ -40,6 +48,18 @@ const Menu: React.FC<any> = ({ navigation }) => {
   const [ran, setRan]: any = React.useState(false);
 
   React.useEffect((): void => {
+    registerForPushNotificationsAsync()
+      // @ts-ignore
+      .then((token: string | undefined): void => {
+        if (token !== undefined) {
+          token !== undefined ? uploadToken(username, token) : undefined;
+        }
+      })
+      .catch((err: unknown) => {
+        console.error(err);
+        navigation.navigate("error");
+      });
+
     getRoom(username)
       .then((data: Array<RoomType>): void => {
         setDefaultRooms((_prev: Array<RoomType>): Array<RoomType> => data);
