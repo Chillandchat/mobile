@@ -27,6 +27,9 @@ export default {
       supportsTablet: false,
       bundleIdentifier: "com.chillandchat.mobile",
       buildNumber: "13",
+      infoPlist: {
+        UIBackgroundModes: ["remote-notification"],
+      },
     },
     android: {
       adaptiveIcon: {
