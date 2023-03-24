@@ -26,6 +26,7 @@ export const endpoints: ApiEndpoints = {
   getGif: "/api/get-gif",
   deleteUser: "/api/delete-user",
   verifyClient: "/api/verify-client",
+  uploadToken: "api/upload-token",
 };
 
 export const apiInstance: AxiosInstance = axios.create({

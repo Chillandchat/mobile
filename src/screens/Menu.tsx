@@ -3,42 +3,40 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
-  ScaledSize,
-  Dimensions,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
 } from "react-native";
 import { useSelector } from "react-redux";
-import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { io } from "socket.io-client";
-import { NavigationContainer, TypedNavigator } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import * as Notifications from "expo-notifications";
 
 import RoomList from "../components/RoomList";
-import Icon from "../components/Icon";
 import { RootState } from "../redux/index.d";
 import getRoom from "../scripts/getRooms";
 import { MessageType, RoomType } from "../scripts/index.d";
 import Form from "../components/Form";
 import getMessages from "../scripts/getMessages";
-import Button from "../components/Button";
-import UserMenu from "./UserMenu";
+import registerForPushNotificationsAsync from "./registerPushNotificationToken";
+import uploadToken from "../scripts/uploadToken";
 
 /**
  * This the menu screen, this screen is where the rooms are displayed.
  */
 
-const Menu: React.FC<any> = ({ navigation }) => {
-  const { username, iconColor }: any = useSelector(
-    (state: RootState): RootState => {
-      return state.userInfo;
-    }
-  );
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
 
-  const windowSize: ScaledSize = Dimensions.get("window");
+const Menu: React.FC<any> = ({ navigation }) => {
+  const { username }: any = useSelector((state: RootState): RootState => {
+    return state.userInfo;
+  });
 
   const loggedIn: any = useSelector((state: RootState): RootState => {
     return state.loginStatus;
@@ -50,6 +48,18 @@ const Menu: React.FC<any> = ({ navigation }) => {
   const [ran, setRan]: any = React.useState(false);
 
   React.useEffect((): void => {
+    registerForPushNotificationsAsync()
+      // @ts-ignore
+      .then((token: string | undefined): void => {
+        if (token !== undefined) {
+          token !== undefined ? uploadToken(username, token) : undefined;
+        }
+      })
+      .catch((err: unknown) => {
+        console.error(err);
+        navigation.navigate("error");
+      });
+
     getRoom(username)
       .then((data: Array<RoomType>): void => {
         setDefaultRooms((_prev: Array<RoomType>): Array<RoomType> => data);

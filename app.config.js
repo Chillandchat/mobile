@@ -10,7 +10,7 @@ export default {
   expo: {
     name: "Chill&chat",
     slug: "chillandchat-mobile",
-    version: "1.15.1",
+    version: "1.16.0",
     orientation: "portrait",
     privacy: "public",
     icon: "./assets/logo.png",
@@ -26,7 +26,10 @@ export default {
     ios: {
       supportsTablet: false,
       bundleIdentifier: "com.chillandchat.mobile",
-      buildNumber: "13",
+      buildNumber: "14",
+      infoPlist: {
+        UIBackgroundModes: ["remote-notification"],
+      },
     },
     android: {
       adaptiveIcon: {
