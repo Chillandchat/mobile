@@ -1,9 +1,9 @@
 {
-  "name": "@chillandchat/mobile-app",
-  "version": "1.15.1",
-  "author": "Alvin cheng",
+  "name": "@chillandchat/mobile",
+  "version": "1.16.0",
+  "author": "Alvin cheng <eventide1029@gmail.com>",
   "license": "MIT",
-  "main": "index.js",
+  "main": "./src/index.ts",
   "scripts": {
     "start": "echo 'Staring Metro...' && expo start",
     "android": "echo 'Starting Android...' && expo run:android",
@@ -15,23 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Chill-and-chat/Chill-and-chat.git"
+    "url": "https://github.com/chillandchat/mobile.git"
   },
   "dependencies": {
-    "@babel/core": "^7.19.3",
     "@react-native-community/netinfo": "9.3.5",
     "@react-navigation/bottom-tabs": "^6.5.6",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.9.7",
     "@react-navigation/stack": "^6.0.11",
-    "@types/axios": "^0.14.0",
-    "@types/expo": "^33.0.1",
-    "@types/react": "~18.0.24",
-    "@types/react-native": "~0.70.6",
-    "@types/react-native-dotenv": "^0.2.0",
-    "@types/redux": "^3.6.0",
-    "@types/socket.io-client": "^3.0.0",
-    "@types/uuid": "^8.3.4",
     "axios": "0.25.0",
     "dotenv": "^16.0.1",
     "expo": "^47.0.0",
@@ -69,6 +60,17 @@
     "socket.io-client": "^4.4.1",
     "typescript": "^4.6.3",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@types/axios": "^0.14.0",
+    "@types/expo": "^33.0.1",
+    "@types/react": "~18.0.24",
+    "@types/react-native": "~0.70.6",
+    "@types/react-native-dotenv": "^0.2.0",
+    "@types/redux": "^3.6.0",
+    "@types/socket.io-client": "^3.0.0",
+    "@types/uuid": "^8.3.4"
   },
   "private": false
 }
