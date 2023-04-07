@@ -48,7 +48,7 @@ const ChatRoomBar: React.FC = () => {
       justifyContent: "center",
       alignItems: "center",
       alignSelf: "flex-start",
-      maxWidth: 200,
+      maxWidth: "50%",
     },
     text: {
       fontFamily: "poppinsBold",
