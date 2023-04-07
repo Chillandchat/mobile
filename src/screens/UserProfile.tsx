@@ -42,6 +42,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
+      paddingTop: 20,
     },
     signOut: {
       position: "absolute",
@@ -89,7 +90,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
       fontSize: 25,
       fontFamily: "poppinsExtraBold",
       position: "absolute",
-      top: "7%",
+      top: "8%",
       alignSelf: "center",
       maxWidth: "65%",
     },
@@ -108,7 +109,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
     },
     back: {
       position: "absolute",
-      top: "7%",
+      top: "8%",
       left: "7%",
     },
   });
