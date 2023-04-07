@@ -78,66 +78,6 @@ const Menu: React.FC<any> = ({ navigation }) => {
     getRoom(username).then((ref: Array<RoomType>): void => {
       ref.forEach((room: RoomType): void => {
         socket.on(
-          `client-message-delete:room(${room.id})`,
-          (_id: string): void => {
-            let tmpRecentMessages: Array<MessageType> = [];
-
-            ref.forEach((room: RoomType): void => {
-              getMessages(room.id)
-                .then((returnedMessages: Array<MessageType>): void => {
-                  if (returnedMessages.length !== 0) {
-                    let current: MessageType =
-                      returnedMessages[returnedMessages.length - 1];
-                    current.content = `${
-                      returnedMessages[returnedMessages.length - 1].user
-                    }: ${
-                      returnedMessages[returnedMessages.length - 1].content
-                    }`;
-
-                    [...current.content.matchAll(/!IMG\((.*?)\)/g)].forEach(
-                      (value: any): void => {
-                        current.content = current.content.replace(
-                          value[0],
-                          "<Sent an image>"
-                        );
-                      }
-                    );
-
-                    [...current.content.matchAll(/!(.*?)\((.*?)\)/g)].forEach(
-                      (value: any): void => {
-                        current.content = current.content.replace(
-                          value[0],
-                          value[0].slice(
-                            value[0].match(/!(.*?)\(/)[0].length,
-                            value[0].length - 1
-                          )
-                        );
-                      }
-                    );
-
-                    tmpRecentMessages.push(current);
-                    setRecentMessages(
-                      (_prev: Array<MessageType>): Array<MessageType> => {
-                        _prev.length === defaultRooms.length ||
-                        defaultRooms.length === 1
-                          ? setRooms(defaultRooms)
-                          : null;
-
-                        return tmpRecentMessages;
-                      }
-                    );
-                  } else {
-                    setRooms(defaultRooms);
-                  }
-                })
-                .catch((err: unknown): void => {
-                  console.error(err);
-                  navigation.navigate("error");
-                });
-            });
-          }
-        );
-        socket.on(
           `client-message:room(${room.id})`,
           (message: MessageType): void => {
             setRecentMessages((prev: Array<MessageType>): typeof prev => {
