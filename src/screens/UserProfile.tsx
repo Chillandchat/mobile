@@ -111,21 +111,6 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
       top: "7%",
       left: "7%",
     },
-    moderatorBadge: {
-      position: "absolute",
-      bottom: "15%",
-      flexDirection: "row",
-      borderWidth: 3,
-      padding: 20,
-      borderColor: "#e5e5e5",
-      borderRadius: 20,
-      alignSelf: "center",
-    },
-    moderatorHeading: {
-      fontSize: 23,
-      fontFamily: "poppinsExtraBold",
-      marginLeft: 10,
-    },
   });
 
   return (
@@ -226,17 +211,6 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
               </Text>
             </ScrollView>
           </View>
-          {state.profileInfo.verified ? (
-            <View style={style.moderatorBadge}>
-              <MaterialIcons name="verified-user" size={60} color={"#00AD98"} />
-              <View>
-                <Text style={style.moderatorHeading}>Verified moderator</Text>
-                <Text style={[style.text, { fontSize: 15, marginLeft: 10 }]}>
-                  Hi! I'm a verified moderator!
-                </Text>
-              </View>
-            </View>
-          ) : null}
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
