@@ -67,7 +67,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
       alignItems: "flex-start",
       alignSelf: "flex-start",
       paddingHorizontal: 30,
-      paddingBottom: 10,
+      paddingBottom: 5,
       width: "100%",
     },
     descriptionTittle: {
@@ -94,7 +94,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
       maxWidth: "65%",
     },
     descriptionBody: {
-      height: "60%",
+      height: "65%",
       width: "100%",
     },
     editPrompt: {
