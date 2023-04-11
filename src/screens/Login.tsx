@@ -44,8 +44,8 @@ const Login: React.FC<any> = ({ navigation }) => {
     });
 
     (async (): Promise<void> => {
-      await AsyncStorage.getItem("chillandchat-login-details").then(
-        (data: string | null): void => {
+      await AsyncStorage.getItem("chillandchat-login-details")
+        .then((data: string | null): void => {
           if (data !== null) {
             // @ts-ignore
             data = JSON.parse(data);
@@ -54,8 +54,10 @@ const Login: React.FC<any> = ({ navigation }) => {
             // @ts-ignore
             setPassword(data.password);
           }
-        }
-      );
+        })
+        .catch((err: unknown): void => {
+          console.error(err);
+        });
     })();
 
     Keyboard.addListener("keyboardDidShow", (): void => {
@@ -65,7 +67,7 @@ const Login: React.FC<any> = ({ navigation }) => {
     Keyboard.addListener("keyboardDidHide", (): void => {
       setKeyboardOpen(false);
     });
-  });
+  }, []);
 
   const style: any = StyleSheet.create({
     container: {
@@ -182,36 +184,38 @@ const Login: React.FC<any> = ({ navigation }) => {
                   .then(async (user: any): Promise<void> => {
                     if (Object.keys(user).length !== 0) {
                       if (!user.blocked && !user.bot) {
-                        await AsyncStorage.getItem(
-                          "chillandchat-login-details"
-                        ).then((data: string | null): void => {
-                          // @ts-ignore
-                          data = JSON.parse(data);
-
-                          if (data !== null) {
+                        await AsyncStorage.getItem("chillandchat-login-details")
+                          .then((data: string | null): void => {
                             // @ts-ignore
-                            if (data.username !== username) {
-                              setLoading(false);
-                              setError("Already logged in.");
-                              setTimeout(() => {
-                                setError("");
-                              }, 5000);
-                              console.error(
-                                "Error: User override! Cannot login!\n   Error code: CC_ERROR_1591"
+                            data = JSON.parse(data);
+
+                            if (data !== null) {
+                              // @ts-ignore
+                              if (data.username !== username) {
+                                setLoading(true);
+                                setError("Already logged in.");
+                                setTimeout(() => {
+                                  setError("");
+                                }, 5000);
+                                console.error(
+                                  "Error: User override! Cannot login!\n   Error code: CC_ERROR_1591"
+                                );
+                              }
+                            } else {
+                              AsyncStorage.setItem(
+                                "chillandchat-login-details",
+                                JSON.stringify({
+                                  username: username,
+                                  password: password,
+                                })
                               );
                             }
-                          } else {
-                            AsyncStorage.setItem(
-                              "chillandchat-login-details",
-                              JSON.stringify({
-                                username: username,
-                                password: password,
-                              })
-                            );
-                          }
-                        });
+                          })
+                          .catch((err: unknown): void => {
+                            console.error(err);
+                          });
 
-                        if (!loading) return;
+                        if (loading) return;
 
                         setUsername("");
                         setPassword("");
