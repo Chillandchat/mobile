@@ -9,6 +9,7 @@ import {
   Platform,
   Keyboard,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import NetInfo from "@react-native-community/netinfo";
@@ -20,7 +21,6 @@ import login from "../scripts/login";
 import { AuthType } from "../scripts";
 import getUser from "../scripts/getUser";
 import LoadingSpinner from "../components/LoadingSpinner";
-import Constants from "expo-constants";
 
 /**
  * This is the login component for the application, this component is responsible for
@@ -43,6 +43,23 @@ const Login: React.FC<any> = ({ navigation }) => {
       }
     });
 
+    (async (): Promise<void> => {
+      await AsyncStorage.getItem("chillandchat-login-details")
+        .then((data: string | null): void => {
+          if (data !== null) {
+            // @ts-ignore
+            data = JSON.parse(data);
+            // @ts-ignore
+            setUsername(data.username);
+            // @ts-ignore
+            setPassword(data.password);
+          }
+        })
+        .catch((err: unknown): void => {
+          console.error(err);
+        });
+    })();
+
     Keyboard.addListener("keyboardDidShow", (): void => {
       setKeyboardOpen(true);
     });
@@ -50,7 +67,7 @@ const Login: React.FC<any> = ({ navigation }) => {
     Keyboard.addListener("keyboardDidHide", (): void => {
       setKeyboardOpen(false);
     });
-  });
+  }, []);
 
   const style: any = StyleSheet.create({
     container: {
@@ -164,11 +181,42 @@ const Login: React.FC<any> = ({ navigation }) => {
             login(username, password)
               .then((): void => {
                 getUser(username)
-                  .then((user: AuthType | {}): void => {
+                  .then(async (user: any): Promise<void> => {
                     if (Object.keys(user).length !== 0) {
-                      // @ts-ignore
-
                       if (!user.blocked && !user.bot) {
+                        await AsyncStorage.getItem("chillandchat-login-details")
+                          .then((data: string | null): void => {
+                            // @ts-ignore
+                            data = JSON.parse(data);
+
+                            if (data !== null) {
+                              // @ts-ignore
+                              if (data.username !== username) {
+                                setLoading(true);
+                                setError("Already logged in.");
+                                setTimeout(() => {
+                                  setError("");
+                                }, 5000);
+                                console.error(
+                                  "Error: User override! Cannot login!\n   Error code: CC_ERROR_1591"
+                                );
+                              }
+                            } else {
+                              AsyncStorage.setItem(
+                                "chillandchat-login-details",
+                                JSON.stringify({
+                                  username: username,
+                                  password: password,
+                                })
+                              );
+                            }
+                          })
+                          .catch((err: unknown): void => {
+                            console.error(err);
+                          });
+
+                        if (loading) return;
+
                         setUsername("");
                         setPassword("");
 
