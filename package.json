@@ -5,6 +5,7 @@
   "license": "MIT",
   "main": "./node_modules/expo/AppEntry.js",
   "scripts": {
+    "format": "prettier --write .",
     "start": "echo 'Staring Metro...' && expo start",
     "android": "echo 'Starting Android...' && expo run:android",
     "ios": "echo 'Starting iOS...' && expo run:ios",
