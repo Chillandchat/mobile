@@ -26,7 +26,7 @@ export default {
     ios: {
       supportsTablet: false,
       bundleIdentifier: "com.chillandchat.mobile",
-      buildNumber: "15",
+      buildNumber: "14",
       infoPlist: {
         UIBackgroundModes: ["remote-notification"],
       },
