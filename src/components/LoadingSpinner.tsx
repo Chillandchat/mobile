@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { AppState, AppStateStatus, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 /**
@@ -11,6 +11,8 @@ import { AntDesign } from "@expo/vector-icons";
 
 const LoadingSpinner: React.FC = () => {
   const [animationFrame, setAnimationFrame]: any = React.useState(0);
+  const [stopped, setStopped]: any = React.useState(false);
+
   let interval: NodeJS.Timer;
 
   React.useEffect((): (() => void) => {
@@ -19,6 +21,10 @@ const LoadingSpinner: React.FC = () => {
         frame === 360 ? 0 : frame + 5
       );
     }, 10);
+
+    AppState.addEventListener("change", (newAppState: AppStateStatus): void => {
+      setStopped(newAppState === "background");
+    });
 
     return (): void => {
       clearInterval(interval);
@@ -30,7 +36,9 @@ const LoadingSpinner: React.FC = () => {
     <View
       style={{ transform: [{ rotate: `${animationFrame.toString()}deg` }] }}
     >
-      <AntDesign name="loading2" size={50} color="#00ad98" />
+      {!stopped ? (
+        <AntDesign name="loading2" size={50} color="#00ad98" />
+      ) : null}
     </View>
   );
 };
