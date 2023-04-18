@@ -125,7 +125,9 @@ const SendBar: React.FC<Props> = (props: Props) => {
             onPress={(): void => {
               if (message === undefined || message === "") return;
 
-              if (message.length > 200) {
+              setMessage(message.replace(/[{}<>\/\\\n]/g, "\\$&"));
+
+              if (message.length > 2000) {
                 setErrorMessage(
                   "Whoa there! That's a lot of characters! You can't send messages that long!"
                 );
