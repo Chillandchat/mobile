@@ -17,16 +17,19 @@ import Button from "../components/Button";
 import Form from "../components/Form";
 import { RootState } from "../redux/index.d";
 import joinRoom from "../scripts/joinRoom";
+import { useNavigation } from "@react-navigation/native";
 
 /**
  * This is the join room page, this page will prompt the user to join a room.
  */
 
-const JoinRoom: React.FC<any> = ({ navigation }) => {
+const JoinRoom: React.FC<any> = () => {
   const [name, setName]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
   const [scannerOn, setScannerOn]: any = React.useState(false);
   const [hasPermission, setHasPermission]: any = React.useState(null);
+
+  const navigation: any = useNavigation();
 
   const { username } = useSelector((state: RootState): RootState => {
     return state.userInfo;
