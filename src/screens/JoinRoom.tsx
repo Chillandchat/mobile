@@ -31,11 +31,11 @@ const JoinRoom: React.FC<any> = () => {
 
   const navigation: any = useNavigation();
 
-  const { username } = useSelector((state: RootState): RootState => {
+  const { username }: RootState = useSelector((state: RootState): RootState => {
     return state.userInfo;
   });
 
-  const [error, setError] = React.useState("");
+  const [error, setError]: any = React.useState("");
 
   const getBarCodeScannerPermissions = async (): Promise<void> => {
     BarCodeScanner.requestPermissionsAsync().then(
