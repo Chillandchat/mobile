@@ -12,12 +12,12 @@ import { useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
 import { BarCodeScanner, PermissionResponse } from "expo-barcode-scanner";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import Button from "../components/Button";
 import Form from "../components/Form";
 import { RootState } from "../redux/index.d";
 import joinRoom from "../scripts/joinRoom";
-import { useNavigation } from "@react-navigation/native";
 
 /**
  * This is the join room page, this page will prompt the user to join a room.
@@ -36,14 +36,6 @@ const JoinRoom: React.FC<any> = () => {
   });
 
   const [error, setError]: any = React.useState("");
-
-  const getBarCodeScannerPermissions = async (): Promise<void> => {
-    BarCodeScanner.requestPermissionsAsync().then(
-      (permission: PermissionResponse): void => {
-        setHasPermission(permission.status === "granted");
-      }
-    );
-  };
 
   React.useEffect((): void => {
     if (!hasPermission) {
@@ -87,12 +79,6 @@ const JoinRoom: React.FC<any> = () => {
       borderRadius: 20,
       alignSelf: "center",
     },
-    heading: {
-      fontSize: 25,
-      fontFamily: "poppinsExtraBold",
-      alignSelf: "center",
-      marginBottom: 20,
-    },
     scannerBody: {
       borderRadius: 20,
       backgroundColor: "transparent",
@@ -105,7 +91,6 @@ const JoinRoom: React.FC<any> = () => {
 
   return scannerOn ? (
     <View style={style.container}>
-      <Text style={style.heading}>Scan Room QR code</Text>
       <View style={style.scannerBody}>
         <BarCodeScanner
           onBarCodeScanned={(data: any): void => {
@@ -117,6 +102,7 @@ const JoinRoom: React.FC<any> = () => {
           style={style.scanner}
         />
       </View>
+      <View style={style.divider} />
       <Button
         color={"transparent"}
         textColor={"black"}
@@ -193,9 +179,13 @@ const JoinRoom: React.FC<any> = () => {
       </ScrollView>
       <TouchableOpacity
         style={style.scannerIcon}
-        onPress={(): void => {
-          setScannerOn(true);
-          getBarCodeScannerPermissions();
+        onPress={async (): Promise<void> => {
+          await BarCodeScanner.requestPermissionsAsync().then(
+            (permission: PermissionResponse): void => {
+              setHasPermission(permission.status === "granted");
+            }
+          );
+          hasPermission ? setScannerOn(true) : null;
         }}
       >
         <AntDesign name="scan1" size={30} color="black" />
