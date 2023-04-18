@@ -34,7 +34,6 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import TypingAnimation from "../components/TypingAnimation";
 import SendBar from "../components/SendBar";
 import RoomWelcomer from "../components/RoomWelcomer";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 /**
  * This is the chat room as the name suggests it will display the chat room.
@@ -52,8 +51,6 @@ const Chat: React.FC = () => {
   const windowDimensions: ScaledSize = Dimensions.get("window");
   const navigator: any = useNavigation();
 
-  const messageStorageKey: string = `chillandchat-messages:(${sessionStatus.id})`;
-
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
 
@@ -63,25 +60,10 @@ const Chat: React.FC = () => {
   const [typing, setTyping]: any = React.useState(false);
 
   React.useEffect((): any => {
-    (async (): Promise<void> => {
-      await AsyncStorage.getItem(messageStorageKey)
-        .then((data: string | null): void => {
-          if (data !== null) {
-            setMessageDisplayed([...JSON.parse(data)]);
-            setLoading(false);
-          }
-        })
-        .catch((err: unknown): void => {
-          console.error(err);
-        });
-    })();
-
     getMessages(sessionStatus.id)
-      .then(async (messages: Array<MessageType>): Promise<void> => {
+      .then((messages: Array<MessageType>): void => {
         setMessageDisplayed([]);
         setMessageDisplayed([...messages]);
-
-        AsyncStorage.setItem(messageStorageKey, JSON.stringify(messages));
 
         const userList: typeof sessionStatus.users = [...sessionStatus.users];
 
@@ -224,7 +206,7 @@ const Chat: React.FC = () => {
               onScroll={(event: any): void => {
                 setScrollPosition(event.nativeEvent.contentOffset.y);
               }}
-              onContentSizeChange={(_width, height): void => {
+              onContentSizeChange={(_width, height) => {
                 if (scrollViewHeight === 0)
                   scrollRef.current.scrollTo({
                     y: height,
