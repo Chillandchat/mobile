@@ -14,12 +14,18 @@ import { RootState } from "../redux/index.d";
 
 const RoomId: React.FC = () => {
   const navigation: any = useNavigation();
-  const { sessionStatus }: any = useSelector((state: RootState): RootState => {
-    return state;
-  });
+  const { sessionStatus }: RootState = useSelector(
+    (state: RootState): RootState => {
+      return state;
+    }
+  );
 
   const style: any = StyleSheet.create({
-    container: { flex: 1, alignItems: "center", justifyContent: "center" },
+    container: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+    },
     back: {
       justifyContent: "flex-start",
       position: "absolute",
