@@ -36,6 +36,7 @@ import PublicRooms from "./screens/PublicRooms";
 import ImageBase from "./screens/ImageBase";
 import ControlCenter from "./screens/ControlCenter";
 import Share from "./screens/Share";
+import AddRoomOptions from "./screens/AddRoomOptions";
 
 /**
  * This is the router component for the application, This component
@@ -108,6 +109,11 @@ namespace app {
                     component={MessageOptions}
                     options={{ headerShown: false }}
                   />
+                    <NavigatorStack.Screen
+                    name="add-room-options"
+                    component={AddRoomOptions}
+                    options={{ headerShown: false }}
+                  />
                   <NavigatorStack.Screen
                     name="image-base"
                     component={ImageBase}
@@ -138,6 +144,11 @@ namespace app {
                   <NavigatorStack.Screen
                     name="menu"
                     component={ControlCenter}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="join-room"
+                    component={JoinRoom}
                     options={{ headerShown: false }}
                   />
                   <NavigatorStack.Screen
@@ -185,11 +196,6 @@ namespace app {
                   <NavigatorStack.Screen
                     name="create-room"
                     component={CreateRoom}
-                    options={{ headerShown: false }}
-                  />
-                  <NavigatorStack.Screen
-                    name="join-room"
-                    component={JoinRoom}
                     options={{ headerShown: false }}
                   />
                   <NavigatorStack.Screen
