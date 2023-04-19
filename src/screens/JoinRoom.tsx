@@ -9,15 +9,16 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useSelector } from "react-redux";
-import { AntDesign } from "@expo/vector-icons";
-import { BarCodeScanner, PermissionResponse } from "expo-barcode-scanner";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { Dispatch } from "redux";
+import { useDispatch } from "react-redux";
 
 import Button from "../components/Button";
 import Form from "../components/Form";
 import { RootState } from "../redux/index.d";
 import joinRoom from "../scripts/joinRoom";
+import { clearScannerResult } from "../redux/action";
 
 /**
  * This is the join room page, this page will prompt the user to join a room.
@@ -26,31 +27,28 @@ import joinRoom from "../scripts/joinRoom";
 const JoinRoom: React.FC<any> = () => {
   const [name, setName]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
-  const [scannerOn, setScannerOn]: any = React.useState(false);
-  const [hasPermission, setHasPermission]: any = React.useState(null);
+
+  const dispatch: Dispatch = useDispatch();
 
   const navigation: any = useNavigation();
 
-  const { username }: RootState = useSelector((state: RootState): RootState => {
-    return state.userInfo;
-  });
-
-  const [error, setError]: any = React.useState("");
+  const { userInfo, scannerResult }: RootState = useSelector(
+    (state: RootState): RootState => {
+      return state;
+    }
+  );
 
   React.useEffect((): void => {
-    if (!hasPermission) {
-      setScannerOn(false);
-    }
-  }, [hasPermission]);
+    if (scannerResult !== null) setName(scannerResult);
+  }, [scannerResult]);
+
+  const [error, setError]: any = React.useState("");
 
   const style: any = StyleSheet.create({
     container: {
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
-    },
-    divider: {
-      padding: 20,
     },
     title: {
       fontFamily: "poppinsExtraBold",
@@ -63,56 +61,12 @@ const JoinRoom: React.FC<any> = () => {
       marginBottom: 20,
       fontFamily: "poppinsLight",
     },
-    scannerIcon: {
-      position: "absolute",
-      left: "7%",
-      bottom: "5%",
-    },
-    publicIcon: {
-      position: "absolute",
-      right: "7%",
-      bottom: "5%",
-    },
-    scanner: {
-      height: 300,
-      width: 300,
-      borderRadius: 20,
-      alignSelf: "center",
-    },
-    scannerBody: {
-      borderRadius: 20,
-      backgroundColor: "transparent",
-      height: 300,
-      width: 300,
-      zIndex: 2000,
-      overflow: "hidden",
+    divider: {
+      padding: 20,
     },
   });
 
-  return scannerOn ? (
-    <View style={style.container}>
-      <View style={style.scannerBody}>
-        <BarCodeScanner
-          onBarCodeScanned={(data: any): void => {
-            if (!data.data.includes("!chillandchat-room-invite")) return;
-
-            setScannerOn(false);
-            setName(data.data.slice(26, -1));
-          }}
-          style={style.scanner}
-        />
-      </View>
-      <View style={style.divider} />
-      <Button
-        color={"transparent"}
-        textColor={"black"}
-        text={"Cancel"}
-        onPress={(): void => {
-          setScannerOn(false);
-        }}
-      />
-    </View>
-  ) : (
+  return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -149,8 +103,9 @@ const JoinRoom: React.FC<any> = () => {
           text={"Lets' go!"}
           onPress={(): void => {
             if (name !== "" && password !== "") {
-              joinRoom(username, name, password)
+              joinRoom(userInfo.username, name, password)
                 .then((): void => {
+                  dispatch(clearScannerResult());
                   navigation.push("menu");
                 })
                 .catch((err: unknown): void => {
@@ -177,27 +132,6 @@ const JoinRoom: React.FC<any> = () => {
           text={"Cancel"}
         />
       </ScrollView>
-      <TouchableOpacity
-        style={style.scannerIcon}
-        onPress={async (): Promise<void> => {
-          await BarCodeScanner.requestPermissionsAsync().then(
-            (permission: PermissionResponse): void => {
-              setHasPermission(permission.status === "granted");
-            }
-          );
-          hasPermission ? setScannerOn(true) : null;
-        }}
-      >
-        <AntDesign name="scan1" size={30} color="black" />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={style.publicIcon}
-        onPress={(): void => {
-          navigation.push("public-rooms");
-        }}
-      >
-        <MaterialIcons name="public" size={30} color="black" />
-      </TouchableOpacity>
     </KeyboardAvoidingView>
   );
 };
