@@ -27,7 +27,6 @@ const RoomId: React.FC = () => {
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
-      marginBottom: 100,
     },
     back: {
       justifyContent: "flex-start",
@@ -95,11 +94,10 @@ const RoomId: React.FC = () => {
           style.text,
           {
             textAlign: "center",
-            position: "absolute",
-            bottom: 50,
             opacity: 0.5,
             width: "80%",
             fontSize: 15,
+            marginTop: 40,
           },
         ]}
       >
