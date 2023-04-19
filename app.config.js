@@ -51,10 +51,17 @@ export default {
     },
     plugins: [
       [
+        "expo-barcode-scanner",
+        {
+          cameraPermission:
+            "Allow Chill&chat(com.chillandchat.mobile) to access your camera for support regarding instant linking (A service to join rooms instantly with a scan of a QR code found in the room identifier.) with Chill&chat QR codes!",
+        },
+      ],
+      [
         "expo-image-picker",
         {
           photosPermission:
-            "Please allow access to your photo library to share it!",
+            "Allow Chill&chat(com.chillandchat.mobile) to access your photo library to share/upload them to the Chill&chat cloud service!",
         },
       ],
     ],
