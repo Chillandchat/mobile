@@ -56,13 +56,36 @@ const AddRoomOptions: React.FC = () => {
       zIndex: 2000,
       overflow: "hidden",
     },
+    parent: {
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    text: {
+      fontFamily: "poppins",
+      fontSize: 20,
+      color: "#000",
+      margin: 10,
+    },
+    back: {
+      position: "absolute",
+      top: "7%",
+      left: "7%",
+    },
   });
 
   return !scannerOn ? (
     <View style={style.container}>
-      <Text>Options</Text>
       <TouchableOpacity
-        style={style.scannerIcon}
+        style={style.back}
+        onPress={(): void => {
+          navigation.navigate("add-room");
+        }}
+      >
+        <AntDesign name="back" size={24} color="black" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={style.parent}
         onPress={async (): Promise<void> => {
           await BarCodeScanner.requestPermissionsAsync().then(
             (permission: PermissionResponse): void => {
@@ -80,15 +103,17 @@ const AddRoomOptions: React.FC = () => {
         }}
       >
         <AntDesign name="scan1" size={30} color="black" />
+        <Text style={style.text}>Scan invite code</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={style.publicIcon}
+        style={style.parent}
         onPress={(): void => {
           navigation.goBack();
           navigation.navigate("public-rooms");
         }}
       >
         <MaterialIcons name="public" size={30} color="black" />
+        <Text style={style.text}>Browse public rooms</Text>
       </TouchableOpacity>
     </View>
   ) : (
