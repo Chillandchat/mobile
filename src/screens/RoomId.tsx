@@ -58,8 +58,13 @@ const RoomId: React.FC = () => {
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-      <View style={[style.parent, { marginBottom: 30, maxWidth: "60%" }]}>
-        <MaterialCommunityIcons name="qrcode-scan" size={30} color="black" />
+      <View
+        style={[
+          style.parent,
+          { marginBottom: 30, maxWidth: "60%", marginTop: 50 },
+        ]}
+      >
+        <MaterialCommunityIcons name="qrcode-scan" size={35} color="black" />
         <Text
           style={[style.text, { fontFamily: "poppinsBold", fontSize: 20 }]}
           numberOfLines={1}
