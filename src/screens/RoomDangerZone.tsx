@@ -10,8 +10,13 @@ import { RootState } from "../redux/index.d";
 import removeRoom from "../scripts/removeRoom";
 import login from "../scripts/login";
 
+/**
+ * This is the room danger zone, this screen will allow the user to report or leave a room.
+ * This screen was separated from the room details screen to avoid clutter and mess.
+ */
+
 const RoomDangerZone: React.FC = () => {
-  const { sessionStatus, userInfo }: any = useSelector(
+  const { sessionStatus, userInfo }: RootState = useSelector(
     (state: RootState): RootState => state
   );
   const navigation: any = useNavigation();
