@@ -54,6 +54,7 @@ const RoomDangerZone: React.FC = () => {
       <TouchableOpacity
         style={style.back}
         onPress={(): void => {
+          navigation.goBack();
           navigation.navigate("room-details");
         }}
       >
@@ -103,6 +104,7 @@ const RoomDangerZone: React.FC = () => {
                               })
                               .catch((err: unknown): void => {
                                 console.error(err);
+                                navigation.goBack();
                                 navigation.navigate("error");
                               });
                           },
@@ -149,6 +151,7 @@ const RoomDangerZone: React.FC = () => {
                               .then((): void => {
                                 removeRoom(sessionStatus.id, userInfo.username)
                                   .then((): void => {
+                                    navigation.goBack();
                                     navigation.push("menu");
                                     Alert.alert(
                                       "Room left",
@@ -157,6 +160,7 @@ const RoomDangerZone: React.FC = () => {
                                   })
                                   .catch((err: unknown): void => {
                                     console.error(err);
+                                    navigation.goBack();
                                     navigation.navigate("error");
                                   });
                               })
