@@ -109,7 +109,7 @@ namespace app {
                     component={MessageOptions}
                     options={{ headerShown: false }}
                   />
-                    <NavigatorStack.Screen
+                  <NavigatorStack.Screen
                     name="add-room-options"
                     component={AddRoomOptions}
                     options={{ headerShown: false }}
@@ -118,6 +118,13 @@ namespace app {
                     name="image-base"
                     component={ImageBase}
                     options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="room-danger-zone"
+                    component={RoomDangerZone}
+                    options={{
+                      headerShown: false,
+                    }}
                   />
                 </NavigatorStack.Group>
                 <NavigatorStack.Group>
@@ -150,13 +157,6 @@ namespace app {
                     name="join-room"
                     component={JoinRoom}
                     options={{ headerShown: false }}
-                  />
-                  <NavigatorStack.Screen
-                    name="room-danger-zone"
-                    component={RoomDangerZone}
-                    options={{
-                      headerShown: false,
-                    }}
                   />
                   <NavigatorStack.Screen
                     name="update-icon-color"

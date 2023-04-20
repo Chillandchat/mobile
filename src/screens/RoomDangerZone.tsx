@@ -17,13 +17,6 @@ const RoomDangerZone: React.FC = () => {
   const navigation: any = useNavigation();
 
   const style: any = StyleSheet.create({
-    text: {
-      fontSize: 25,
-      fontFamily: "poppinsExtraBold",
-      position: "absolute",
-      top: "7%",
-      alignSelf: "center",
-    },
     back: {
       position: "absolute",
       top: "7%",
@@ -33,10 +26,26 @@ const RoomDangerZone: React.FC = () => {
       justifyContent: "center",
       alignItems: "center",
       flex: 1,
+      marginTop: 40,
     },
     buttons: {
       padding: 35,
       borderRadius: 10,
+    },
+    parent: {
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      marginBottom: 20,
+    },
+    text: {
+      fontFamily: "poppins",
+      fontSize: 17,
+      color: "#000",
+      margin: 10,
+      maxWidth: "80%",
+      textAlign: "center",
+      opacity: 0.5,
     },
   });
 
@@ -50,7 +59,12 @@ const RoomDangerZone: React.FC = () => {
       >
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
-      <Text style={style.text}>Danger zone </Text>
+      <View style={style.parent}>
+        <AntDesign name="warning" size={35} color="red" />
+        <Text style={[style.text, { color: "red", opacity: 1, fontSize: 25 }]}>
+          Danger zone
+        </Text>
+      </View>
       <View style={style.buttons}>
         <Button
           color={"red"}
@@ -169,6 +183,11 @@ const RoomDangerZone: React.FC = () => {
           text={"leave room"}
         />
       </View>
+      <Text style={style.text}>
+        Whoa there! Be careful rookie! This is a danger zone! Some actions
+        CANNOT be reversed and is very dangerous! BOOM! (Please, just don't be
+        stupid)
+      </Text>
     </View>
   );
 };
