@@ -24,6 +24,7 @@ export default {
     },
     assetBundlePatterns: ["**/*"],
     ios: {
+      jsEngine: "hermes",
       supportsTablet: false,
       bundleIdentifier: "com.chillandchat.mobile",
       buildNumber: "17",
