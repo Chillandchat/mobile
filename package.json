@@ -7,7 +7,7 @@
   "scripts": {
     "start": "echo 'Staring Metro...' && expo start",
     "ios": "echo 'Starting iOS...' && expo run:ios",
-    "eject": "echo 'Ejecting...' && expo eject",
+    "eject": "echo 'Ejecting...' && expo prebuild",
     "build": "echo 'Building and publishing...' && eas build -p ios && eas submit --latest -p ios",
     "fix": "echo 'Fixing dependencies...' && expo-cli doctor --fix-dependencies"
   },
