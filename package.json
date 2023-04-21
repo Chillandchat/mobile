@@ -6,9 +6,7 @@
   "main": "./node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "echo 'Staring Metro...' && expo start",
-    "android": "echo 'Starting Android...' && expo run:android",
     "ios": "echo 'Starting iOS...' && expo run:ios",
-    "web": "echo 'Stating web...' && expo start --web",
     "eject": "echo 'Ejecting...' && expo eject",
     "build": "echo 'Building and publishing...' && eas build -p ios && eas submit --latest -p ios",
     "fix": "echo 'Fixing dependencies...' && expo-cli doctor --fix-dependencies"

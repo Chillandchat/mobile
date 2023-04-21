@@ -31,16 +31,6 @@ export default {
         UIBackgroundModes: ["remote-notification"],
       },
     },
-    android: {
-      adaptiveIcon: {
-        foregroundImage: "./assets/logo.png",
-        backgroundColor: "#ffffff",
-      },
-      package: "com.chillandchat.mobile",
-    },
-    web: {
-      favicon: "./assets/logo.png",
-    },
     extra: {
       API_URL: ENV.API_URL,
       API_KEY: ENV.API_KEY,
