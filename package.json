@@ -1,6 +1,6 @@
 {
   "name": "@chillandchat/mobile",
-  "version": "1.16.0",
+  "version": "1.16.1",
   "author": "Alvin cheng <eventide1029@gmail.com>",
   "license": "MIT",
   "main": "./node_modules/expo/AppEntry.js",
