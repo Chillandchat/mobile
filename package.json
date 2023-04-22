@@ -27,7 +27,6 @@
     "axios": "0.25.0",
     "dotenv": "^16.0.1",
     "expo": "48.0.0",
-    "expo-app-loading": "~2.1.1",
     "expo-av": "~13.2.1",
     "expo-barcode-scanner": "~12.3.2",
     "expo-checkbox": "~2.3.1",
