@@ -10,10 +10,10 @@ import {
   TypedNavigator,
 } from "@react-navigation/native";
 import { Alert, View, StyleSheet } from "react-native";
-import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import { StackNavigationEventMap } from "@react-navigation/stack/lib/typescript/src/types";
 import { Provider } from "react-redux";
+import * as SplashScreen from "expo-splash-screen";
 
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
@@ -44,6 +44,8 @@ import AddRoomOptions from "./screens/AddRoomOptions";
  */
 
 namespace app {
+  SplashScreen.preventAutoHideAsync();
+
   export const Router: React.FC = () => {
     const [loading, setLoading] = React.useState(true);
 
@@ -78,6 +80,10 @@ namespace app {
       }: any) => JSX.Element
     > = createNativeStackNavigator();
 
+    React.useEffect((): void => {
+      if (!loading) SplashScreen.hideAsync();
+    }, [loading]);
+
     const style: any = StyleSheet.create({
       container: {
         flex: 1,
@@ -85,7 +91,7 @@ namespace app {
     });
 
     if (loading) {
-      return <AppLoading />;
+      return null;
     } else {
       return (
         <Provider store={store}>
