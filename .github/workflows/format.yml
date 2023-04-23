@@ -20,12 +20,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
-      - name: Install Prettier
-        run: npm install prettier
       - name: Format code
         run: npx prettier --write .
-      - name: Uninstall Prettier
-        run: npm uninstall prettier
       - name: Commit changes
         env:
           GIT_USER: ${{ secrets.USERNAME_SECRET }}
