@@ -22,18 +22,7 @@ jobs:
           node-version: "16.x"
       - name: Format code
         run: npx prettier --write .
-      - name: Check if there are any changes
-        id: verify_diff
-        run: |
-          git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
-      - name: Commit changes
-        if: steps.verify_diff.outputs.changed == 'true'
-        env:
-          GIT_USER: ${{ secrets.USERNAME_SECRET }}
-          GIT_MAIL: ${{ secrets.MAIL_SECRET }}
-        run: |
-          git config  user.email "${GIT_MAIL}"
-          git config  user.name "${GIT_USER}"
-          git add .
-          git commit -m "Commit workflow changes"
-          git push
+      - name: Commit changes to git
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Format code (Automatic workflow commit)"
