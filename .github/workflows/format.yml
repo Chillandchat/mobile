@@ -32,8 +32,8 @@ jobs:
           GIT_USER: ${{ secrets.USERNAME_SECRET }}
           GIT_MAIL: ${{ secrets.MAIL_SECRET }}
         run: |
-          git config --local user.email "${GIT_MAIL}"
-          git config --local user.name "${GIT_USER}"
+          git config --global user.email "${GIT_MAIL}"
+          git config --global user.name "${GIT_USER}"
           git add .
           git commit -m "Commit workflow changes"
           git push
