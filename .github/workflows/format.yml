@@ -22,7 +22,13 @@ jobs:
           node-version: "16.x"
       - name: Format code
         run: npx prettier --write .
+      - name: Check if working tree is empty
+        id: check_changes
+        run: |
+          git diff-index --quiet HEAD --
+          echo ::set-output name=has_changes::$(echo $?)
       - name: Commit changes
+        if: steps.check_changes.outputs.has_changes == '0'
         env:
           GIT_USER: ${{ secrets.USERNAME_SECRET }}
           GIT_MAIL: ${{ secrets.MAIL_SECRET }}
