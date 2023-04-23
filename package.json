@@ -11,7 +11,8 @@
     "web": "echo 'Stating web...' && expo start --web",
     "eject": "echo 'Ejecting...' && expo eject",
     "build": "echo 'Building and publishing...' && eas build -p ios && eas submit --latest -p ios",
-    "fix": "echo 'Fixing dependencies...' && expo-cli doctor --fix-dependencies"
+    "fix": "echo 'Fixing dependencies...' && expo-cli doctor --fix-dependencies",
+    "format": "echo 'Formatting code...' && prettier --write ."
   },
   "repository": {
     "type": "git",
