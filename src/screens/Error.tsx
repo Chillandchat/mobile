@@ -26,7 +26,7 @@ const Error: React.FC = () => {
       paddingBottom: 23,
     },
   });
-  
+
   return (
     <View style={style.container}>
       <MaterialIcons name="error" size={75} color="orange" />

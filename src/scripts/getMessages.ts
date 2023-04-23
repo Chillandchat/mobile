@@ -12,11 +12,11 @@ import api from "./api";
 
 const getMessages = async (room: string): Promise<Array<MessageType>> => {
   let messages: Array<MessageType> = [];
-  
+
   await api.instance
     .get(`${api.endpoints.getMessages}?key=${api.apiKey}&room=${room}`)
     .then((data: AxiosResponse): void => {
-      messages = data.data; 
+      messages = data.data;
     })
     .catch((err: unknown): void => {
       throw new Error(`API Error: ${err} \n   Error code: CC_ERROR_0318`);
