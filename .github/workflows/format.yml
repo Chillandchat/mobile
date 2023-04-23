@@ -9,6 +9,9 @@ on:
       - master
 
 jobs:
+  permissions:
+    contents: write
+
   format:
     runs-on: ubuntu-latest
     steps:
