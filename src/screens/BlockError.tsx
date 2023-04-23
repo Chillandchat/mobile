@@ -34,7 +34,8 @@ const BlockError: React.FC = () => {
       <MaterialIcons name="error" size={75} color="orange" />
       <Text style={style.titleText}>Connection declined</Text>
       <Text style={style.text}>
-        We have received report(s) about your behavior, to prevent abuse we have blocked you from Chill&chat.
+        We have received report(s) about your behavior, to prevent abuse we have
+        blocked you from Chill&chat.
       </Text>
       <Button
         color={"orange"}
