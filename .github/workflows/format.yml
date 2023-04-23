@@ -22,19 +22,18 @@ jobs:
           node-version: "16.x"
       - name: Format code
         run: npx prettier --write .
-      - name: Check if working tree is empty
-        id: check_changes
+      - name: Check if there are any changes
+        id: verify_diff
         run: |
-          git diff-index --quiet HEAD --
-          echo ::set-output name=has_changes::$(echo $?)
+          git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
       - name: Commit changes
-        if: steps.check_changes.outputs.has_changes == '0'
+        if: steps.verify_diff.outputs.changed == 'true'
         env:
           GIT_USER: ${{ secrets.USERNAME_SECRET }}
           GIT_MAIL: ${{ secrets.MAIL_SECRET }}
         run: |
-          git config --global user.email "${GIT_MAIL}"
-          git config --global user.name "${GIT_USER}"
+          git config --local user.email "${GIT_MAIL}"
+          git config --local user.name "${GIT_USER}"
           git add .
           git commit -m "Commit workflow changes"
           git push
