@@ -1,25 +1,38 @@
 name: Format code using prettier
+
 on:
   pull_request:
-    branches: [master]
+    branches:
+      - master
   push:
-    branches: [master]
-    
+    branches:
+      - master
+
 jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
-      - uses: actions/setup-node@v3
+      - name: Install Node.js and Prettier
+        uses: actions/setup-node@v2
         with:
           node-version: "16.x"
-      - run: npm install -g prettier
-      - run: npm run format
-      - run: npm uninstall -g prettier
+      - name: Install Prettier
+        run: npm install prettier
+      - name: Format code
+        run: npx prettier --write .
+      - name: Uninstall Prettier
+        run: npm uninstall prettier
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Automatically format code
-          branch: ${{ github.head_ref }}
+        env:
+          GIT_USER: ${{ secrets.USERNAME_SECRET }}
+          GIT_MAIL: ${{ secrets.MAIL_SECRET }}
+        run: |
+          git config --global user.email "${GIT_MAIL}"
+          git config --global user.name "${GIT_USER}"
+          git add .
+          git commit -m "Commit workflow changes"
+          git push
