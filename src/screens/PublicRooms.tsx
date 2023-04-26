@@ -111,7 +111,7 @@ const PublicRooms: React.FC = () => {
           onPress={(room: RoomType): void => {
             joinRoom(userInfo.username, room.id, null)
               .then((): void => {
-                navigation.push("menu");
+                navigation.push("control-center");
               })
               .catch((err: unknown): void => {
                 console.error(err);
