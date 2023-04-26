@@ -106,7 +106,7 @@ const JoinRoom: React.FC<any> = () => {
               joinRoom(userInfo.username, name, password)
                 .then((): void => {
                   dispatch(clearScannerResult());
-                  navigation.push("menu");
+                  navigation.push("control-center");
                 })
                 .catch((err: unknown): void => {
                   setError("Unable to join room.");
@@ -127,7 +127,7 @@ const JoinRoom: React.FC<any> = () => {
           textColor="black"
           color={"transparent"}
           onPress={(): void => {
-            navigation.navigate("menu");
+            navigation.navigate("control-center");
           }}
           text={"Cancel"}
         />

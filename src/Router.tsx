@@ -155,7 +155,7 @@ namespace app {
                     options={{ headerShown: false }}
                   />
                   <NavigatorStack.Screen
-                    name="menu"
+                    name="control-center"
                     component={ControlCenter}
                     options={{ headerShown: false }}
                   />

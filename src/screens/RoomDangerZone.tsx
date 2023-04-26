@@ -157,7 +157,7 @@ const RoomDangerZone: React.FC = () => {
                                 removeRoom(sessionStatus.id, userInfo.username)
                                   .then((): void => {
                                     navigation.goBack();
-                                    navigation.push("menu");
+                                    navigation.push("control-center");
                                     Alert.alert(
                                       "Room left",
                                       "You have left this room."
