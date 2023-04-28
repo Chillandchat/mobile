@@ -175,7 +175,7 @@ const UpdateIconColor: React.FC = () => {
                       navigation.navigate("error");
                     });
                   setColor("");
-                  navigation.push("menu");
+                  navigation.push("control-center");
                 })
                 .catch((err: unknown): void => {
                   console.error(err);
