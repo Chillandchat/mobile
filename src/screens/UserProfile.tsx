@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Dimensions } from "react-native";
@@ -26,7 +27,9 @@ import Button from "../components/Button";
 import unfollowUser from "../scripts/unfollowUser";
 import followUser from "../scripts/followUser";
 import getUser from "../scripts/getUser";
-import { AuthType } from "../scripts";
+import { AuthType, RoomType } from "../scripts";
+import getRoom from "../scripts/getRooms";
+import removeRoom from "../scripts/removeRoom";
 
 /**
  * This is the user menu screen this where the user could logout and customize their profile description.
@@ -43,6 +46,11 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
       alignItems: "center",
       justifyContent: "center",
       paddingTop: 20,
+    },
+    block: {
+      justifyContent: "center",
+      alignItems: "center",
+      paddingTop: 30,
     },
     signOut: {
       position: "absolute",
@@ -111,6 +119,9 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
       position: "absolute",
       top: "8%",
       left: "7%",
+    },
+    descriptionText: {
+      height: "95%",
     },
   });
 
@@ -206,11 +217,101 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
             <Text style={style.tittle}>Description</Text>
           </View>
           <View style={style.descriptionBody}>
-            <ScrollView>
+            <ScrollView style={style.descriptionText}>
               <Text style={[style.text, { fontSize: 20 }]}>
                 {state.profileInfo.description || " "}
               </Text>
             </ScrollView>
+            <View style={style.block}>
+              <Button
+                onPress={() => {
+                  Alert.alert(
+                    "Block user?",
+                    "Are you sure you want to block this user? All rooms containing this user will be removed from your feed.",
+                    [
+                      {
+                        text: "Block",
+                        style: "destructive",
+                        onPress: (): void => {
+                          if (
+                            state.userInfo.following.includes(
+                              state.profileInfo.username
+                            )
+                          ) {
+                            unfollowUser(
+                              state.profileInfo.username,
+                              state.userInfo.username
+                            )
+                              .then((): void => {
+                                getRoom(state.userInfo.username).then(
+                                  (data: RoomType[] | {}): void => {
+                                    if (Object.keys(data).length !== 0) {
+                                      // @ts-ignore
+                                      data?.forEach((room: RoomType): void => {
+                                        if (
+                                          room.users.includes(
+                                            state.profileInfo.username
+                                          )
+                                        ) {
+                                          removeRoom(
+                                            room.id,
+                                            state.userInfo.username
+                                          )
+                                            .then((): void => {})
+                                            .catch((err: unknown): void => {
+                                              console.error(err);
+                                              navigation.navigate("error");
+                                            });
+                                        }
+                                      });
+
+                                      navigation.push("menu"); // TODO: Migrate to 'control-center' see: 48b301fcb1c3af0c2eeab3469306c030d844b1d3
+                                    }
+                                  }
+                                );
+                              })
+                              .catch((err: unknown): void => {
+                                console.error(err);
+                                navigation.navigate("error");
+                              });
+                          } else {
+                            getRoom(state.userInfo.username).then(
+                              (data: RoomType[] | {}): void => {
+                                if (Object.keys(data).length !== 0) {
+                                  // @ts-ignore
+                                  data?.forEach((room: RoomType): void => {
+                                    if (
+                                      room.users.includes(
+                                        state.profileInfo.username
+                                      )
+                                    ) {
+                                      removeRoom(
+                                        room.id,
+                                        state.userInfo.username
+                                      )
+                                        .then((): void => {})
+                                        .catch((err: unknown): void => {
+                                          console.error(err);
+                                          navigation.navigate("error");
+                                        });
+                                    }
+                                  });
+                                  navigation.push("menu"); // TODO: Migrate to 'control-center' see: 48b301fcb1c3af0c2eeab3469306c030d844b1d3
+                                }
+                              }
+                            );
+                          }
+                        },
+                      },
+                      { text: "Cancel" },
+                    ]
+                  );
+                }}
+                color={"red"}
+                text={"Block user"}
+                textColor={"white"}
+              />
+            </View>
           </View>
         </View>
       </ScrollView>
