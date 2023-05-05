@@ -27,7 +27,7 @@ export default {
       jsEngine: "hermes",
       supportsTablet: false,
       bundleIdentifier: "com.chillandchat.mobile",
-      buildNumber: "17",
+      buildNumber: "18",
       infoPlist: {
         UIBackgroundModes: ["remote-notification"],
       },
