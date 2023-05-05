@@ -37,6 +37,10 @@ Please click the button below to go to the releases tab and install the version 
 
 <a href="https://github.com/Chillandchat/mobile/releases"><img style="width:15rem;" src="https://user-images.githubusercontent.com/33416429/92813512-27f0bb80-f376-11ea-8562-ee2b3e416aec.png"/><a>
 
+### Preview version
+
+To use the preview version of Chill&chat, please click [here](https://expo.dev/@cheng-alvin/chillandchat-mobile?serviceType=classic&distribution=expo-go). Please note that the preview version requires the [Expo Go Application](https://apps.apple.com/app/apple-store/id982107779) and a expo account. Further more, please also note that the preview version is very in consistent and often skip or contains releases that can be unstable and buggy. 
+
 ### Latest code
 
 To get the latest code, please enter the command below into your terminal to clone it:
