@@ -12,6 +12,11 @@ import getRoom from "../scripts/getRooms";
 import RoomList from "../components/RoomList";
 import Form from "../components/Form";
 
+/**
+ * This is the public room component, this component is where the user can join a public room.
+ * The user may press a room to automatically join into it!
+ */
+
 const PublicRooms: React.FC = () => {
   const navigation: any = useNavigation();
 
@@ -80,7 +85,7 @@ const PublicRooms: React.FC = () => {
       <TouchableOpacity
         style={style.back}
         onPress={(): void => {
-          navigation.navigate("join-room");
+          navigation.navigate("add-room");
         }}
       >
         <AntDesign name="back" size={24} color="black" />
@@ -106,7 +111,7 @@ const PublicRooms: React.FC = () => {
           onPress={(room: RoomType): void => {
             joinRoom(userInfo.username, room.id, null)
               .then((): void => {
-                navigation.push("menu");
+                navigation.push("control-center");
               })
               .catch((err: unknown): void => {
                 console.error(err);

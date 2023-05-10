@@ -49,7 +49,7 @@ const MessageOptions: React.FC = () => {
       color: "#000",
       margin: 10,
     },
-    delete: {
+    parent: {
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
@@ -60,11 +60,6 @@ const MessageOptions: React.FC = () => {
       borderRadius: 20,
       margin: 50,
       backgroundColor: "#E5E5E5",
-    },
-    readMessage: {
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center",
     },
   });
 
@@ -90,7 +85,7 @@ const MessageOptions: React.FC = () => {
         />
       ) : null}
       <TouchableOpacity
-        style={style.readMessage}
+        style={style.parent}
         onPress={(): void => {
           Speech.isSpeakingAsync().then((isSpeaking: boolean): void => {
             if (isSpeaking) return;
@@ -118,7 +113,7 @@ const MessageOptions: React.FC = () => {
         <Text style={style.text}>Read message</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={style.readMessage}
+        style={style.parent}
         onPress={(): void => {
           navigation.navigate("share");
         }}
@@ -128,7 +123,7 @@ const MessageOptions: React.FC = () => {
       </TouchableOpacity>
       {messageInfo?.message.user === userInfo.username ? (
         <TouchableOpacity
-          style={style.delete}
+          style={style.parent}
           onPress={(): void => {
             deleteMessage(messageInfo?.message.id, messageInfo?.message.room)
               .then((): void => {

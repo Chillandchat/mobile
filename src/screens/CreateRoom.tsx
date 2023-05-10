@@ -135,7 +135,7 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
                     Linking.openURL(
                       "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                     );
-                  navigation.push("menu");
+                  navigation.push("control-center");
                 })
                 .catch((err: unknown): void => {
                   setError("Unable to create room.");
@@ -156,7 +156,7 @@ const CreateRoom: React.FC<any> = ({ navigation }) => {
           textColor="black"
           color={"transparent"}
           onPress={(): void => {
-            navigation.navigate("menu");
+            navigation.navigate("control-center");
           }}
           text={"Cancel"}
         />

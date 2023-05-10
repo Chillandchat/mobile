@@ -10,10 +10,10 @@ import {
   TypedNavigator,
 } from "@react-navigation/native";
 import { Alert, View, StyleSheet } from "react-native";
-import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import { StackNavigationEventMap } from "@react-navigation/stack/lib/typescript/src/types";
 import { Provider } from "react-redux";
+import * as SplashScreen from "expo-splash-screen";
 
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
@@ -36,6 +36,7 @@ import PublicRooms from "./screens/PublicRooms";
 import ImageBase from "./screens/ImageBase";
 import ControlCenter from "./screens/ControlCenter";
 import Share from "./screens/Share";
+import AddRoomOptions from "./screens/AddRoomOptions";
 
 /**
  * This is the router component for the application, This component
@@ -43,6 +44,8 @@ import Share from "./screens/Share";
  */
 
 namespace app {
+  SplashScreen.preventAutoHideAsync();
+
   export const Router: React.FC = () => {
     const [loading, setLoading] = React.useState(true);
 
@@ -77,6 +80,10 @@ namespace app {
       }: any) => JSX.Element
     > = createNativeStackNavigator();
 
+    React.useEffect((): void => {
+      if (!loading) SplashScreen.hideAsync();
+    }, [loading]);
+
     const style: any = StyleSheet.create({
       container: {
         flex: 1,
@@ -84,7 +91,7 @@ namespace app {
     });
 
     if (loading) {
-      return <AppLoading />;
+      return null;
     } else {
       return (
         <Provider store={store}>
@@ -109,9 +116,21 @@ namespace app {
                     options={{ headerShown: false }}
                   />
                   <NavigatorStack.Screen
+                    name="add-room-options"
+                    component={AddRoomOptions}
+                    options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
                     name="image-base"
                     component={ImageBase}
                     options={{ headerShown: false }}
+                  />
+                  <NavigatorStack.Screen
+                    name="room-danger-zone"
+                    component={RoomDangerZone}
+                    options={{
+                      headerShown: false,
+                    }}
                   />
                 </NavigatorStack.Group>
                 <NavigatorStack.Group>
@@ -136,16 +155,14 @@ namespace app {
                     options={{ headerShown: false }}
                   />
                   <NavigatorStack.Screen
-                    name="menu"
+                    name="control-center"
                     component={ControlCenter}
                     options={{ headerShown: false }}
                   />
                   <NavigatorStack.Screen
-                    name="room-danger-zone"
-                    component={RoomDangerZone}
-                    options={{
-                      headerShown: false,
-                    }}
+                    name="join-room"
+                    component={JoinRoom}
+                    options={{ headerShown: false }}
                   />
                   <NavigatorStack.Screen
                     name="update-icon-color"
@@ -185,11 +202,6 @@ namespace app {
                   <NavigatorStack.Screen
                     name="create-room"
                     component={CreateRoom}
-                    options={{ headerShown: false }}
-                  />
-                  <NavigatorStack.Screen
-                    name="join-room"
-                    component={JoinRoom}
                     options={{ headerShown: false }}
                   />
                   <NavigatorStack.Screen
