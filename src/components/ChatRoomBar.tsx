@@ -61,7 +61,7 @@ const ChatRoomBar: React.FC = () => {
     <View style={style.container}>
       <TouchableOpacity
         onPress={(): void => {
-          navigation.navigate("menu");
+          navigation.navigate("control-center");
         }}
       >
         <AntDesign name="back" size={24} color="black" />
