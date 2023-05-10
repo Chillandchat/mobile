@@ -1,7 +1,6 @@
 import React from "react";
-import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { AntDesign } from "@expo/vector-icons";
 
 import Button from "../components/Button";
 
@@ -39,13 +38,6 @@ const AddRoom: React.FC = () => {
       alignItems: "center",
       justifyContent: "center",
       marginTop: -120,
-    },
-    moreOptions: {
-      position: "absolute",
-      bottom: -20,
-      alignItems: "center",
-      paddingLeft: 30,
-      flexDirection: "row",
     },
   });
 
@@ -88,28 +80,6 @@ const AddRoom: React.FC = () => {
           text={"Join room"}
         />
       </View>
-      <TouchableOpacity
-        style={style.moreOptions}
-        onPress={(): void => {
-          navigation.push("add-room-options");
-        }}
-      >
-        <AntDesign name="down" size={15} color="#808080" />
-        <Text
-          style={[
-            style.title,
-            {
-              fontSize: 15,
-              fontFamily: "poppins",
-              textAlign: "center",
-              color: "#808080",
-              paddingLeft: 5,
-            },
-          ]}
-        >
-          More options
-        </Text>
-      </TouchableOpacity>
     </View>
   );
 };

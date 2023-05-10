@@ -223,7 +223,7 @@ const Login: React.FC<any> = ({ navigation }) => {
                         dispatch(setUserInfo(user as AuthType)); //! Dangerous way to convert types
                         dispatch(loginAction());
 
-                        navigation.push("control-center");
+                        navigation.push("menu");
                         setLoading(false);
                       } else {
                         navigation.push("block-error");

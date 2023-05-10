@@ -34,9 +34,6 @@ export type loginStatusEventType = "LOGIN" | "LOGOUT";
 export type UserInfoEventType = "SET_USER_INFO" | "DELETE_USER_INFO";
 export type MessageInfoEventType = "SET_MESSAGE_INFO" | "CLEAR_MESSAGE_INFO";
 export type ProfileInfoEventType = "SET_PROFILE_INFO" | "CLEAR_PROFILE_INFO";
-export type ScannerResultEventType =
-  | "SET_SCANNER_RESULT"
-  | "DELETE_SCANNER_RESULT";
 export type ImageBaseEventType = "SET_IMAGE_LINK" | "DELETE_IMAGE_LINK";
 export type SessionStatusEventType =
   | "SET_SESSION_STATUS"

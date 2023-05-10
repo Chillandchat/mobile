@@ -10,13 +10,9 @@ import { MessageType } from "./index.d";
  * This is the send message function this function will send a message to the socket server.
  *
  * @param {MessageType} message The message to be sent
- * @optional @param {() => void} callback The callback function to be called after the message is sent.
  */
 
-const sendMessage = async (
-  message: MessageType,
-  callback?: () => void
-): Promise<void> => {
+const sendMessage = async (message: MessageType): Promise<void> => {
   const responseToken: string = uuid();
   const socket: any = io(String(Constants.expoConfig?.extra?.SOCKET_URL), {
     transports: ["websocket"],
@@ -30,7 +26,6 @@ const sendMessage = async (
   );
 
   socket.on(`sent:token(${responseToken})`, (): void => {
-    callback?.();
     socket.disconnect();
   });
 
