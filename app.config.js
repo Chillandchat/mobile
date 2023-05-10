@@ -10,7 +10,7 @@ export default {
   expo: {
     name: "Chill&chat",
     slug: "chillandchat-mobile",
-    version: "1.16.0",
+    version: "1.16.1",
     orientation: "portrait",
     privacy: "public",
     icon: "./assets/logo.png",
@@ -24,23 +24,12 @@ export default {
     },
     assetBundlePatterns: ["**/*"],
     ios: {
-      jsEngine: "hermes",
       supportsTablet: false,
       bundleIdentifier: "com.chillandchat.mobile",
       buildNumber: "18",
       infoPlist: {
         UIBackgroundModes: ["remote-notification"],
       },
-    },
-    android: {
-      adaptiveIcon: {
-        foregroundImage: "./assets/logo.png",
-        backgroundColor: "#ffffff",
-      },
-      package: "com.chillandchat.mobile",
-    },
-    web: {
-      favicon: "./assets/logo.png",
     },
     extra: {
       API_URL: ENV.API_URL,
