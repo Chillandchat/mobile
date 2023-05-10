@@ -7,7 +7,6 @@ import profileInfo from "./reducers/profileInfo";
 import roomUserInfo from "./reducers/roomUserInfo";
 import sessionStatus from "./reducers/sessionStatus";
 import userInfo from "./reducers/userInfo";
-import scannerResult from "./reducers/scannerResult";
 
 export const reducers: any = combineReducers({
   userInfo: userInfo,
@@ -17,7 +16,6 @@ export const reducers: any = combineReducers({
   messageInfo: messageInfo,
   profileInfo: profileInfo,
   imageBase: imageBase,
-  scannerResult: scannerResult,
 });
 
 const store: Store<unknown, Action<any>> = createStore(reducers);

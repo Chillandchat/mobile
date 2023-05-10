@@ -123,7 +123,7 @@ const UpdateIconColor: React.FC = () => {
             <ScrollView contentContainerStyle={style.colorPickerWrapper}>
               {Object.keys(ColorNames.colors).map((value: string): any => {
                 return (
-                  <View style={style.elementDivider} key={value}>
+                  <View style={style.elementDivider}>
                     <Icon
                       iconLetter={userInfo.username[0]}
                       color={ColorNames.colors[value].toString()}
@@ -175,7 +175,7 @@ const UpdateIconColor: React.FC = () => {
                       navigation.navigate("error");
                     });
                   setColor("");
-                  navigation.push("control-center");
+                  navigation.push("menu");
                 })
                 .catch((err: unknown): void => {
                   console.error(err);

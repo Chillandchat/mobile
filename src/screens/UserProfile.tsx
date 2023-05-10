@@ -18,7 +18,11 @@ import { AntDesign } from "@expo/vector-icons";
 
 import { RootState } from "../redux/index.d";
 import Icon from "../components/Icon";
-import { setUserInfo } from "../redux/action";
+import {
+  clearProfileInfo,
+  setRoomUserInfo,
+  setUserInfo,
+} from "../redux/action";
 import Button from "../components/Button";
 import unfollowUser from "../scripts/unfollowUser";
 import followUser from "../scripts/followUser";
@@ -26,7 +30,6 @@ import getUser from "../scripts/getUser";
 import { AuthType, RoomType } from "../scripts";
 import getRoom from "../scripts/getRooms";
 import removeRoom from "../scripts/removeRoom";
-import LoadingSpinner from "../components/LoadingSpinner";
 
 /**
  * This is the user menu screen this where the user could logout and customize their profile description.
@@ -36,8 +39,6 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
   const state: any = useSelector((state: RootState): RootState => state);
   const dispatch: any = useDispatch();
   const windowSize: ScaledSize = Dimensions.get("window");
-
-  const [loading, setLoading]: any = React.useState(false);
 
   const style: any = StyleSheet.create({
     container: {
@@ -165,62 +166,52 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
             Following {state.profileInfo.following.length}
           </Text>
         </View>
-        {!loading ? (
-          <Button
-            color={"#00AD98"}
-            onPress={() => {
-              setLoading(true);
-              if (
-                state.userInfo.following.includes(state.profileInfo.username)
-              ) {
-                unfollowUser(
-                  state.profileInfo.username,
-                  state.userInfo.username
-                )
-                  .then((): void => {
-                    getUser(state.userInfo.username).then(
-                      (data: AuthType | {}): void => {
-                        if (Object.keys(data).length !== 0) {
-                          //@ts-ignore
-                          dispatch(setUserInfo(data));
-                          setLoading(false);
-                        }
+        <Button
+          color={"#00AD98"}
+          onPress={() => {
+            if (state.userInfo.following.includes(state.profileInfo.username)) {
+              unfollowUser(state.profileInfo.username, state.userInfo.username)
+                .then((): void => {
+                  getUser(state.userInfo.username).then(
+                    (data: AuthType | {}): void => {
+                      if (Object.keys(data).length !== 0) {
+                        //@ts-ignore
+                        dispatch(setUserInfo(data));
+                        navigation.navigate("menu");
                       }
-                    );
-                  })
-                  .catch((err: unknown): void => {
-                    console.error(err);
-                    navigation.navigate("error");
-                  });
-              } else {
-                followUser(state.profileInfo.username, state.userInfo.username)
-                  .then((): void => {
-                    getUser(state.userInfo.username).then(
-                      (data: AuthType | {}): void => {
-                        if (Object.keys(data).length !== 0) {
-                          //@ts-ignore
-                          dispatch(setUserInfo(data));
-                          setLoading(false);
-                        }
+                    }
+                  );
+                })
+                .catch((err: unknown): void => {
+                  console.error(err);
+                  navigation.navigate("error");
+                });
+            } else {
+              followUser(state.profileInfo.username, state.userInfo.username)
+                .then((): void => {
+                  getUser(state.userInfo.username).then(
+                    (data: AuthType | {}): void => {
+                      if (Object.keys(data).length !== 0) {
+                        //@ts-ignore
+                        dispatch(setUserInfo(data));
+                        navigation.navigate("menu");
                       }
-                    );
-                  })
-                  .catch((err: unknown): void => {
-                    console.error(err);
-                    navigation.navigate("error");
-                  });
-              }
-            }}
-            textColor={"white"}
-            text={
-              state.userInfo.following.includes(state.profileInfo.username)
-                ? "Unfollow"
-                : "Follow"
+                    }
+                  );
+                })
+                .catch((err: unknown): void => {
+                  console.error(err);
+                  navigation.navigate("error");
+                });
             }
-          />
-        ) : (
-          <LoadingSpinner />
-        )}
+          }}
+          textColor={"white"}
+          text={
+            state.userInfo.following.includes(state.profileInfo.username)
+              ? "Unfollow"
+              : "Follow"
+          }
+        />
         <View style={style.descriptionInfo}>
           <View style={style.descriptionTittle}>
             <Text style={style.tittle}>Description</Text>
@@ -228,7 +219,7 @@ const UserProfile: React.FC<any> = ({ navigation }) => {
           <View style={style.descriptionBody}>
             <ScrollView style={style.descriptionText}>
               <Text style={[style.text, { fontSize: 20 }]}>
-                {state.profileInfo.description || "No description provided."}
+                {state.profileInfo.description || " "}
               </Text>
             </ScrollView>
             <View style={style.block}>
