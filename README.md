@@ -22,6 +22,14 @@ I look forward to seeing your contributions to Chill&chat!
 ### Bugs and issues
 
 If you have found any bug(s) please post them in the [Issues](https://github.com/chillandchat/mobile/issues) tab in this repository. Please explain the problem and post any error messages or codes, also include a list of instructions to reproduce this bug or problem.
+
+### Contact
+
+For support and more information regarding Chill&chat products and services, please contact us with the details below and quote "Chill&chat" in your post:
+
+**Email:** eventide1029@gmail.com
+
+**Chill&chat ID:** fa3b185c-6d04-41ea-8082-10cc594ad8f6
 ## Download
 
 ### iOS
