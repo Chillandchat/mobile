@@ -9,9 +9,14 @@ import { io } from "socket.io-client";
  *
  * @param {string} id The id of the message.
  * @param {string} room The room of the message.
+ * @optional @param {() => void} callback The callback function to be called after the message is deleted.
  */
 
-const deleteMessage = async (id: string, room: string): Promise<void> => {
+const deleteMessage = async (
+  id: string,
+  room: string,
+  callback?: () => void
+): Promise<void> => {
   const responseToken: string = uuid();
   const socket: any = io(String(Constants.expoConfig?.extra?.SOCKET_URL), {
     transports: ["websocket"],
@@ -26,6 +31,7 @@ const deleteMessage = async (id: string, room: string): Promise<void> => {
   );
 
   socket.on(`deleted:token(${responseToken})`, (): void => {
+    callback?.();
     socket.disconnect();
   });
 

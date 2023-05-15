@@ -53,6 +53,7 @@ const Chat: React.FC = () => {
   const navigator: any = useNavigation();
 
   const messageStorageKey: string = `chillandchat-messages:(${sessionStatus.id})`;
+  const roomUserInfoStorageKey: string = `chillandchat-room-user-info:(${sessionStatus.id})`;
 
   const [messageDisplayed, setMessageDisplayed]: any = React.useState([]);
   const [loading, setLoading]: any = React.useState(true);
@@ -68,6 +69,18 @@ const Chat: React.FC = () => {
         .then((data: string | null): void => {
           if (data !== null) {
             setMessageDisplayed([...JSON.parse(data)]);
+          }
+        })
+        .catch((err: unknown): void => {
+          console.error(err);
+        });
+    })();
+
+    (async (): Promise<void> => {
+      await AsyncStorage.getItem(roomUserInfoStorageKey)
+        .then((data: string | null): void => {
+          if (data !== null) {
+            dispatch(setRoomUserInfo([...JSON.parse(data)]));
             setLoading(false);
           }
         })
@@ -84,7 +97,6 @@ const Chat: React.FC = () => {
         AsyncStorage.setItem(messageStorageKey, JSON.stringify(messages));
 
         const userList: typeof sessionStatus.users = [...sessionStatus.users];
-
         let users: Array<AuthType> = [];
 
         messages.forEach((message: MessageType): void => {
@@ -102,6 +114,10 @@ const Chat: React.FC = () => {
                   if (users.length === userList.length - 1) {
                     dispatch(setRoomUserInfo(users));
                     setLoading(false);
+                    AsyncStorage.setItem(
+                      roomUserInfoStorageKey,
+                      JSON.stringify(users)
+                    );
                   }
                 }
               })

@@ -11,6 +11,7 @@ import {
   ProfileInfoEventType,
   ImageBaseEventType,
   MessageInfoType,
+  ScannerResultEventType,
 } from "./index.d";
 
 /**
@@ -195,3 +196,26 @@ export const setImageBase = (
 export const clearImageBase = (): ActionNoParameter<ImageBaseEventType> => {
   return { type: "DELETE_IMAGE_LINK" };
 };
+
+/**
+ * This is the set scanner result action, this action will set the scanner result into the reducer.
+ *
+ * @param {string} payload The result of the scanner.
+ */
+
+export const setScannerResult = (
+  payload: string
+): ActionWithParameter<string, ScannerResultEventType> => {
+  return { type: "SET_SCANNER_RESULT", payload: payload };
+};
+
+/**
+ * This is the clear scanner result action, this action will clear the scanner result reducer.
+ *
+ * @note This action does not take any arguments.
+ */
+
+export const clearScannerResult =
+  (): ActionNoParameter<ScannerResultEventType> => {
+    return { type: "DELETE_SCANNER_RESULT" };
+  };

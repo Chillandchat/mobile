@@ -1,5 +1,10 @@
 import React from "react";
-import { AppState, AppStateStatus, View } from "react-native";
+import {
+  AppState,
+  AppStateStatus,
+  NativeEventSubscription,
+  View,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 /**
@@ -16,29 +21,37 @@ const LoadingSpinner: React.FC = () => {
   let interval: NodeJS.Timer;
 
   React.useEffect((): (() => void) => {
+    const listener: NativeEventSubscription = AppState.addEventListener(
+      "change",
+      (newAppState: AppStateStatus): void => {
+        setStopped(newAppState !== "active");
+      }
+    );
+
     interval = setInterval((): void => {
       setAnimationFrame((frame: number): number =>
         frame === 360 ? 0 : frame + 5
       );
     }, 10);
 
-    AppState.addEventListener("change", (newAppState: AppStateStatus): void => {
-      setStopped(newAppState === "background");
-    });
-
     return (): void => {
       clearInterval(interval);
       setAnimationFrame(0);
+      listener.remove();
     };
   }, []);
 
   return (
-    <View
-      style={{ transform: [{ rotate: `${animationFrame.toString()}deg` }] }}
-    >
+    <View>
       {!stopped ? (
+        <View
+          style={{ transform: [{ rotate: `${animationFrame.toString()}deg` }] }}
+        >
+          <AntDesign name="loading2" size={50} color="#00ad98" />
+        </View>
+      ) : (
         <AntDesign name="loading2" size={50} color="#00ad98" />
-      ) : null}
+      )}
     </View>
   );
 };
