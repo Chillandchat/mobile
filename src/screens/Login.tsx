@@ -203,6 +203,7 @@ const Login: React.FC<any> = () => {
                                 console.error(
                                   "Error: User override! Cannot login!\n   Error code: CC_ERROR_1591"
                                 );
+                                return;
                               }
                             } else {
                               AsyncStorage.setItem(
