@@ -221,9 +221,6 @@ const Login: React.FC<any> = () => {
 
                         if (loading) return;
 
-                        setUsername("");
-                        setPassword("");
-
                         dispatch(setUserInfo(user as AuthType)); //! Dangerous way to convert types
                         dispatch(loginAction());
 
