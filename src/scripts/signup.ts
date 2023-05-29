@@ -24,7 +24,7 @@ const signup = async (username: string, password: string): Promise<void> => {
       blocked: false,
       followers: 0,
       following: [],
-      description: `Hey👋! I'm ${username}!`,
+      description: `Hey👋! I'm ${username}!`, // TODO: Add description CHATGPT generator
     })
     .then((_data: AxiosResponse): void => {})
     .catch((err: unknown): void => {
