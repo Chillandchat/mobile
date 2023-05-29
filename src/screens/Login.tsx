@@ -13,6 +13,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import NetInfo from "@react-native-community/netinfo";
+import { useNavigation } from "@react-navigation/native";
 
 import { login as loginAction, setUserInfo } from "../redux/action";
 import Button from "../components/Button";
@@ -27,7 +28,9 @@ import LoadingSpinner from "../components/LoadingSpinner";
  * rendering the login components and loading login data.
  */
 
-const Login: React.FC<any> = ({ navigation }) => {
+const Login: React.FC<any> = () => {
+  const navigation: any = useNavigation();
+
   const [error, setError]: any = React.useState("");
   const dispatch: any = useDispatch();
   const [username, setUsername]: any = React.useState("");
