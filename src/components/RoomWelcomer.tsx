@@ -9,6 +9,7 @@ import { RootState } from "../redux/index.d";
  * This is the room welcomer, this component will be placed at the top of the chat messages.
  * The component will display a welcome message to welcome the user.
  *
+ * @deprecated
  * @note There are no props that needs to be fed into this component.
  */
 
