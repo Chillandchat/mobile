@@ -154,25 +154,42 @@ const Message: React.FC<Props> = (props: Props) => {
               ) : null}
             </View>
           ) : null}
-
           {props.message.content.includes("!IMG") && !imageError ? (
-            <Image
-              source={{
-                uri: props.message.content.slice(5, -1),
-              }}
-              style={style.imageContent}
-              onError={(): void => {
-                setImageError(true);
-              }}
-            />
+            <View>
+              <View
+                style={[
+                  style.imageContent,
+                  {
+                    backgroundColor: "#e5e5e5",
+                    zIndex: -100,
+                    position: "absolute",
+                  },
+                ]}
+              />
+              <Image
+                source={{
+                  uri: props.message.content.slice(5, -1),
+                }}
+                style={style.imageContent}
+                onError={(): void => {
+                  setImageError(true);
+                }}
+              />
+            </View>
           ) : imageError ? (
             <View
               style={[
                 style.imageContent,
-                { justifyContent: "center", alignItems: "center" },
+                {
+                  backgroundColor: "#e5e5e5",
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
               ]}
             >
-              <Text style={style.content}>Image unavailable</Text>
+              <Text style={[style.content, { color: "#000000" }]}>
+                Image unavailable
+              </Text>
             </View>
           ) : (
             <Text style={style.content}>
