@@ -107,7 +107,7 @@ const Information: React.FC<any> = () => {
       </Text>
       <Text style={style.tittle}>App information:</Text>
       <Text style={style.text}>
-        Version: Chill&chat official runtime v1.16.1
+        Version: Chill&chat official runtime v1.16.2
       </Text>
       <Text style={[style.text, { color: verified ? "black" : "red" }]}>
         {verified

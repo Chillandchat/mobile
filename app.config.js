@@ -10,7 +10,7 @@ export default {
   expo: {
     name: "Chill&chat",
     slug: "chillandchat-mobile",
-    version: "1.16.1",
+    version: "1.16.2",
     orientation: "portrait",
     privacy: "public",
     icon: "./assets/logo.png",
