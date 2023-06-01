@@ -43,7 +43,9 @@ async function registerForPushNotificationsAsync() {
     }
     token = (await Notifications.getExpoPushTokenAsync()).data;
   } else {
-    console.error("Incompatible device!\n   Error code: CC_ERROR_0022");
+    console.error(
+      "Incompatible push notification device!\n   Error code: CC_ERROR_0022"
+    );
     return;
   }
 
