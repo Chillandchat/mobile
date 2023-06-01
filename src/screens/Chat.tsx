@@ -226,7 +226,7 @@ const Chat: React.FC = () => {
       enabled
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <ScrollView contentContainerStyle={style.container}>
+      <View style={style.container}>
         <SafeAreaView>
           <View style={style.chatRoomBar}>
             <ChatRoomBar />
@@ -395,7 +395,7 @@ const Chat: React.FC = () => {
           ) : null}
         </View>
         <SendBar typing={typing} />
-      </ScrollView>
+      </View>
     </KeyboardAvoidingView>
   ) : null;
 };
