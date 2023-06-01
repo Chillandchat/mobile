@@ -18,7 +18,7 @@ import getRoom from "../scripts/getRooms";
 import { MessageType, RoomType } from "../scripts/index.d";
 import Form from "../components/Form";
 import getMessages from "../scripts/getMessages";
-import registerForPushNotificationsAsync from "./registerPushNotificationToken";
+import registerForPushNotificationsAsync from "../utils/registerPushNotificationToken";
 import uploadToken from "../scripts/uploadToken";
 
 /**

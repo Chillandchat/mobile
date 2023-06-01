@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import { IconProps as Props } from "./index.d";
-import decideOverlay from "./decideOverlay";
+import decideOverlay from "../utils/decideOverlay";
 
 /**
  * This is the Icon component, this component is what Chill&chat displays icons such as users and rooms.

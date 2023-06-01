@@ -17,7 +17,7 @@ import Button from "../components/Button";
 import __updateIconColor from "../scripts/updateIconColor";
 import { RootState } from "../redux/index.d";
 import Icon from "../components/Icon";
-import ColorNames from "./colors";
+import ColorNames from "../utils/colors";
 import getUser from "../scripts/getUser";
 import { setUserInfo } from "../redux/action";
 import { AuthType } from "../scripts";
