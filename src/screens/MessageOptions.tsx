@@ -142,7 +142,7 @@ const MessageOptions: React.FC = () => {
       ) : null}
       {messageInfo?.message.user !== userInfo.username ? (
         <TouchableOpacity
-          style={style.delete}
+          style={style.parent}
           onPress={(): void => {
             Alert.alert(
               "Flag message?",
