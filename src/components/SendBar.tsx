@@ -156,7 +156,7 @@ const SendBar: React.FC<Props> = (props: Props) => {
                       "stop"
                     );
                     setMessage("");
-                    seTextBoxHelper("");
+                    setTextBoxHelper("");
                     setTextBoxHelper(undefined);
                   })
                   .catch((err: unknown): void => {
