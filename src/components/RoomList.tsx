@@ -110,7 +110,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
                 numberOfLines={1}
                 style={[
                   style.titleStyle,
-                  { fontSize: 15, fontFamily: "poppins" },
+                  { fontSize: 15, fontFamily: "poppins", opacity: 0.5 },
                 ]}
               >
                 {String(
