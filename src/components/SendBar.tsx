@@ -52,6 +52,7 @@ const SendBar: React.FC<Props> = (props: Props) => {
     },
     sendIcon: {
       marginLeft: Platform.OS == "android" ? 23 : 15,
+      opacity: message.length === 0 ? 0.2 : undefined,
     },
     sendImage: {
       marginRight: Platform.OS == "android" ? 23 : 15,
@@ -121,50 +122,56 @@ const SendBar: React.FC<Props> = (props: Props) => {
           value={textBoxHelper}
         />
         <View style={style.sendIcon}>
-          <TouchableOpacity
-            onPress={(): void => {
-              if (message === undefined || message === "") return;
+          {message.length > 0 ? (
+            <TouchableOpacity
+              onPress={(): void => {
+                if (message === undefined || message === "") return;
 
-              setMessage(message.replace(/[{}<>\/\\\n]/g, "\\$&"));
+                setMessage(message.replace(/[{}<>\/\\\n]/g, "\\$&"));
 
-              if (message.length > 2000) {
-                setErrorMessage(
-                  "Whoa there! That's a lot of characters! You can't send messages that long!"
-                );
-
-                setTimeout((): void => {
-                  setErrorMessage("");
-                }, 5000);
-
-                return;
-              }
-
-              const filteredMessage = filter(message);
-
-              sendMessage({
-                id: uuid(),
-                content: filteredMessage,
-                room: sessionStatus.id,
-                user: userInfo.username,
-              })
-                .then((): void => {
-                  setKeyboardSocket(
-                    sessionStatus.id,
-                    userInfo.username,
-                    "stop"
+                if (message.length > 2000) {
+                  setErrorMessage(
+                    "Whoa there! That's a lot of characters! You can't send messages that long!"
                   );
-                  setMessage("");
-                  setTextBoxHelper("");
-                  setTextBoxHelper(undefined);
+
+                  setTimeout((): void => {
+                    setErrorMessage("");
+                  }, 5000);
+
+                  return;
+                }
+
+                const filteredMessage = filter(message);
+
+                sendMessage({
+                  id: uuid(),
+                  content: filteredMessage,
+                  room: sessionStatus.id,
+                  user: userInfo.username,
                 })
-                .catch((err: unknown): void => {
-                  console.error(err);
-                  navigator.navigate("error");
-                });
-            }}
-          >
-            <Feather name="send" size={32} color="#00AD98" />
-          </TouchableOpacity>
+                  .then((): void => {
+                    setKeyboardSocket(
+                      sessionStatus.id,
+                      userInfo.username,
+                      "stop"
+                    );
+                    setMessage("");
+                    seTextBoxHelper("");
+                    setTextBoxHelper(undefined);
+                  })
+                  .catch((err: unknown): void => {
+                    console.error(err);
+                    navigator.navigate("error");
+                  });
+              }}
+            >
+              <Feather name="send" size={32} color="#00AD98" />
+            </TouchableOpacity>
+          ) : (
+            <View>
+              <Feather name="send" size={32} color="#00AD98" />
+            </View>
+          )}
         </View>
       </View>
     </View>
