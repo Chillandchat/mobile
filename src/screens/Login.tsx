@@ -22,6 +22,7 @@ import login from "../scripts/login";
 import { AuthType } from "../scripts";
 import getUser from "../scripts/getUser";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { Dispatch } from "redux";
 
 /**
  * This is the login component for the application, this component is responsible for
@@ -32,7 +33,7 @@ const Login: React.FC<any> = () => {
   const navigation: any = useNavigation();
 
   const [error, setError]: any = React.useState("");
-  const dispatch: any = useDispatch();
+  const dispatch: Dispatch = useDispatch();
   const [username, setUsername]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
   const [keyboardOpen, setKeyboardOpen]: any = React.useState(false);
