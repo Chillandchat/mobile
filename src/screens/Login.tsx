@@ -12,6 +12,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
 import NetInfo from "@react-native-community/netinfo";
 import { useNavigation } from "@react-navigation/native";
 
@@ -22,7 +23,6 @@ import login from "../scripts/login";
 import { AuthType } from "../scripts";
 import getUser from "../scripts/getUser";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { Dispatch } from "redux";
 
 /**
  * This is the login component for the application, this component is responsible for
