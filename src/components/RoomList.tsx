@@ -102,7 +102,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
               {
                 paddingTop:
                   //@ts-ignore
-                  props.messages.find(
+                  props.messages?.find(
                     (value: MessageType): any => value.room === room.id
                   ) === undefined
                     ? 15
