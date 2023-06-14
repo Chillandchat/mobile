@@ -30,6 +30,7 @@ For support and more information regarding Chill&chat products and services, ple
 **Email:** eventide1029@gmail.com
 
 **Chill&chat ID:** fa3b185c-6d04-41ea-8082-10cc594ad8f6
+
 ## Download
 
 ### iOS
@@ -46,7 +47,7 @@ Please click the button below to go to the releases tab and install the version 
 
 ### Preview version
 
-To use the preview version of Chill&chat, please click [here](https://expo.dev/@cheng-alvin/chillandchat-mobile?serviceType=classic&distribution=expo-go). Please note that the preview version requires the [Expo Go Application](https://apps.apple.com/app/apple-store/id982107779) and a expo account. Further more, please also note that the preview version is very in consistent and often skip or contains releases that can be unstable and buggy. 
+To use the preview version of Chill&chat, please click [here](https://expo.dev/@cheng-alvin/chillandchat-mobile?serviceType=classic&distribution=expo-go). Please note that the preview version requires the [Expo Go Application](https://apps.apple.com/app/apple-store/id982107779) and a expo account. Further more, please also note that the preview version is very in consistent and often skip or contains releases that can be unstable and buggy.
 
 ### Latest code
 

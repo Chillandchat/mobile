@@ -18,7 +18,7 @@ import getRoom from "../scripts/getRooms";
 import { MessageType, RoomType } from "../scripts/index.d";
 import Form from "../components/Form";
 import getMessages from "../scripts/getMessages";
-import registerForPushNotificationsAsync from "./registerPushNotificationToken";
+import registerForPushNotificationsAsync from "../utils/registerPushNotificationToken";
 import uploadToken from "../scripts/uploadToken";
 
 /**
@@ -128,8 +128,8 @@ const Menu: React.FC<any> = ({ navigation }) => {
                 let current: MessageType =
                   returnedMessages[returnedMessages.length - 1];
                 current.content = `${
-                  returnedMessages[returnedMessages.length - 1].user
-                }: ${returnedMessages[returnedMessages.length - 1].content}`;
+                  current.user === username ? "You" : current.user
+                }: ${current.content}`;
 
                 [...current.content.matchAll(/!IMG\((.*?)\)/g)].forEach(
                   (value: any): void => {
@@ -184,7 +184,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
       flex: 1,
     },
     text: {
-      fontFamily: "poppinsBold",
+      fontFamily: "poppinsExtraBold",
       fontSize: 35,
       flex: 1,
     },

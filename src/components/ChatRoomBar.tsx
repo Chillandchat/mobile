@@ -48,18 +48,23 @@ const ChatRoomBar: React.FC = () => {
       justifyContent: "center",
       alignItems: "center",
       alignSelf: "flex-start",
-      maxWidth: "50%",
+      maxWidth: "40%",
     },
     text: {
       fontFamily: "poppinsBold",
       fontSize: 22,
       marginLeft: 15,
     },
+    navigationalIcon: {
+      justifyContent: "center",
+      alignItems: "center",
+    },
   });
 
   return (
     <View style={style.container}>
       <TouchableOpacity
+        style={[style.navigationalIcon, { paddingBottom: 6 }]}
         onPress={(): void => {
           navigation.navigate("control-center");
         }}
@@ -77,6 +82,7 @@ const ChatRoomBar: React.FC = () => {
         </Text>
       </View>
       <TouchableOpacity
+        style={style.navigationalIcon}
         onPress={(): void => {
           navigation.push("room-details");
         }}

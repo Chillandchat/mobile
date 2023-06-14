@@ -10,14 +10,14 @@ import userInfo from "./reducers/userInfo";
 import scannerResult from "./reducers/scannerResult";
 
 export const reducers: any = combineReducers({
-  userInfo: userInfo,
-  loginStatus: loginStatus,
-  sessionStatus: sessionStatus,
-  roomUserInfo: roomUserInfo,
-  messageInfo: messageInfo,
-  profileInfo: profileInfo,
-  imageBase: imageBase,
-  scannerResult: scannerResult,
+  userInfo,
+  loginStatus,
+  sessionStatus,
+  roomUserInfo,
+  messageInfo,
+  profileInfo,
+  imageBase,
+  scannerResult,
 });
 
 const store: Store<unknown, Action<any>> = createStore(reducers);

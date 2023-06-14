@@ -12,7 +12,9 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
 import NetInfo from "@react-native-community/netinfo";
+import { useNavigation } from "@react-navigation/native";
 
 import { login as loginAction, setUserInfo } from "../redux/action";
 import Button from "../components/Button";
@@ -27,9 +29,11 @@ import LoadingSpinner from "../components/LoadingSpinner";
  * rendering the login components and loading login data.
  */
 
-const Login: React.FC<any> = ({ navigation }) => {
+const Login: React.FC<any> = () => {
+  const navigation: any = useNavigation();
+
   const [error, setError]: any = React.useState("");
-  const dispatch: any = useDispatch();
+  const dispatch: Dispatch = useDispatch();
   const [username, setUsername]: any = React.useState("");
   const [password, setPassword]: any = React.useState("");
   const [keyboardOpen, setKeyboardOpen]: any = React.useState(false);
@@ -198,8 +202,9 @@ const Login: React.FC<any> = ({ navigation }) => {
                                   setError("");
                                 }, 5000);
                                 console.error(
-                                  "Error: User override! Cannot login!\n   Error code: CC_ERROR_1591"
+                                  "Error: User overwrite! Cannot login!\n   Error code: CC_ERROR_1591"
                                 );
+                                return;
                               }
                             } else {
                               AsyncStorage.setItem(
@@ -216,9 +221,6 @@ const Login: React.FC<any> = ({ navigation }) => {
                           });
 
                         if (loading) return;
-
-                        setUsername("");
-                        setPassword("");
 
                         dispatch(setUserInfo(user as AuthType)); //! Dangerous way to convert types
                         dispatch(loginAction());

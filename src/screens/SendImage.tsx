@@ -19,6 +19,7 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
+import { Buffer } from "@craftzdog/react-native-buffer";
 import { useDispatch, useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -232,26 +233,25 @@ const SendImage: React.FC = () => {
                       setLoading(false);
                       setError(true);
                     }
-
                     if (!result.canceled) {
                       uploadContent(
                         userInfo.username,
-                        result.assets[0].duration === null
-                          ? String(result.assets[0].base64)
-                          : await FileSystem.readAsStringAsync(
-                              result.assets[0].uri,
-                              {
-                                encoding: "base64",
-                              }
-                            ),
+                        Buffer.from(
+                          await FileSystem.readAsStringAsync(
+                            result.assets[0].uri,
+                            { encoding: FileSystem.EncodingType.Base64 }
+                          ),
+                          "base64"
+                        ),
                         result.assets[0].duration === null
                           ? "CHILL&CHAT_IMG"
-                          : "CHILL&CHAT_GIF"
+                          : "CHILL&CHAT_GIF",
+                        true
                       )
-                        .then((id: string): void => {
+                        .then((id: string | void): void => {
                           const url: string = `${
                             Constants.expoConfig?.extra?.API_URL
-                          }content/${userInfo.username}/${id}.${
+                          }content/${userInfo.username}/${id as String}.${
                             result.assets[0].duration === null ? "webp" : "gif"
                           }`;
 
