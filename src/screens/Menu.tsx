@@ -127,9 +127,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
               if (returnedMessages.length !== 0) {
                 let current: MessageType =
                   returnedMessages[returnedMessages.length - 1];
-                current.content = `${
-                  returnedMessages[returnedMessages.length - 1].user
-                }: ${returnedMessages[returnedMessages.length - 1].content}`;
+                current.content = `${current.user === username ? "You": current.user}: ${current.content}`;
 
                 [...current.content.matchAll(/!IMG\((.*?)\)/g)].forEach(
                   (value: any): void => {

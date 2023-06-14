@@ -96,7 +96,20 @@ const RoomList: React.FC<Props> = (props: Props) => {
             color={room.iconColor}
             key={room.id.concat("-b")}
           />
-          <View style={style.nameContainer}>
+          <View
+            style={[
+              style.nameContainer,
+              {
+                paddingTop:
+                  //@ts-ignore
+                  props.messages.find(
+                    (value: MessageType): any => value.room === room.id
+                  ) === undefined
+                    ? 15
+                    : undefined,
+              },
+            ]}
+          >
             <Text
               style={style.titleStyle}
               numberOfLines={1}
@@ -107,7 +120,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
             {props.displayMessages ? (
               <Text
                 key={room.id.concat("-d")}
-                numberOfLines={1}
+                numberOfLines={2}
                 style={[
                   style.titleStyle,
                   { fontSize: 15, fontFamily: "poppins", opacity: 0.5 },
@@ -117,7 +130,7 @@ const RoomList: React.FC<Props> = (props: Props) => {
                   //@ts-ignore
                   props.messages.find(
                     (value: MessageType): any => value.room === room.id
-                  )?.content || "No messages found."
+                  )?.content || ""
                 )}
               </Text>
             ) : null}
