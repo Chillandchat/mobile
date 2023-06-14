@@ -69,6 +69,7 @@ const ImageBase: React.FC = () => {
       justifyContent: "center",
       alignItems: "center",
     },
+    title: { marginTop: 100, marginBottom: -30, maxWidth: "67%" },
     image: {
       height: 100,
       width: 100,
@@ -90,7 +91,7 @@ const ImageBase: React.FC = () => {
       backgroundColor: "#E5E5E5",
       height: 100,
       width: 100,
-      margin: 5,
+      margin: 3,
       borderRadius: 10,
     },
     imageListContainer: {
@@ -105,6 +106,10 @@ const ImageBase: React.FC = () => {
       flexWrap: "wrap",
       justifyContent: "center",
       alignItems: "center",
+    },
+    text: {
+      fontFamily: "poppinsExtraBold",
+      fontSize: 25,
     },
   });
 
@@ -123,10 +128,15 @@ const ImageBase: React.FC = () => {
         >
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
+        <View style={style.title}>
+          <Text numberOfLines={1} style={style.text}>
+            {filter ? `\"${filter}\"` : "Trending"} GIFs
+          </Text>
+        </View>
         <View style={style.searchWrapper}>
           <Form
             placeholder="Search"
-            width={"70%"}
+            width={"80%"}
             value={filter}
             onTextChange={(text: string): void => {
               setFilter(text);
