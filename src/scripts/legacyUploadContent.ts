@@ -18,7 +18,7 @@ import api from "./api";
  * @since v1.16.2 Please use new binary upload endpoint script!
  */
 
-const uploadContent = async (
+const legacyUploadContent = async (
   user: string,
   content: string,
   type: ContentType
@@ -40,4 +40,4 @@ const uploadContent = async (
   return id;
 };
 
-export default uploadContent;
+export default legacyUploadContent;
