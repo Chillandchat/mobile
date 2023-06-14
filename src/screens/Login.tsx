@@ -202,7 +202,7 @@ const Login: React.FC<any> = () => {
                                   setError("");
                                 }, 5000);
                                 console.error(
-                                  "Error: User override! Cannot login!\n   Error code: CC_ERROR_1591"
+                                  "Error: User overwrite! Cannot login!\n   Error code: CC_ERROR_1591"
                                 );
                                 return;
                               }
