@@ -37,6 +37,7 @@ import ImageBase from "./screens/ImageBase";
 import ControlCenter from "./screens/ControlCenter";
 import Share from "./screens/Share";
 import AddRoomOptions from "./screens/AddRoomOptions";
+import { loadBuffer } from "./utils/loadBuffer";
 
 /**
  * This is the router component for the application, This component
@@ -50,6 +51,8 @@ namespace app {
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect((): void => {
+      loadBuffer();
+      console.log(Buffer.from("Hello world").toString("base64"));
       loadFonts()
         .then((): void => {
           setLoading(false);
