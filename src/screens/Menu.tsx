@@ -6,6 +6,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 import { useSelector } from "react-redux";
 import Constants from "expo-constants";
@@ -194,7 +195,7 @@ const Menu: React.FC<any> = ({ navigation }) => {
       alignItems: "center",
       marginLeft: 30,
       marginBottom: 10,
-      marginTop: "40%",
+      marginTop: "35%",
     },
     searchContainer: {
       width: "100%",
@@ -216,9 +217,6 @@ const Menu: React.FC<any> = ({ navigation }) => {
     searchIcon: {
       marginLeft: 15,
     },
-    paddingActor: {
-      paddingBottom: 40,
-    },
   });
 
   if (!loggedIn) {
@@ -232,9 +230,9 @@ const Menu: React.FC<any> = ({ navigation }) => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <ScrollView contentContainerStyle={style.container}>
-          <View style={style.tittleBar}>
+          <SafeAreaView style={style.tittleBar}>
             <Text style={style.text}>Chats</Text>
-          </View>
+          </SafeAreaView>
           <View style={style.searchContainer}>
             <Form
               width={"90%"}
@@ -251,7 +249,6 @@ const Menu: React.FC<any> = ({ navigation }) => {
             />
           </View>
           <RoomList rooms={rooms} displayMessages messages={recentMessages} />
-          <View style={style.paddingActor} />
         </ScrollView>
       </KeyboardAvoidingView>
     );
