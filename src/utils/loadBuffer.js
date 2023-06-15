@@ -1,5 +1,5 @@
 // @ts-check
-import { Buffer } from "buffer";
+import { Buffer as _ } from "buffer";
 
 /**
  * This function loads the buffer to the global scope.
@@ -8,4 +8,4 @@ import { Buffer } from "buffer";
  * @note This function does not require any arguments or return anything.
  */
 
-export const loadBuffer = () => (global.Buffer = Buffer);
+export const loadBuffer = () => (global.Buffer = _);
