@@ -2,7 +2,6 @@
 import "react-native-get-random-values";
 import { AxiosRequestHeaders, AxiosResponse } from "axios";
 import { v4 as uuid } from "uuid";
-import { Buffer } from "@craftzdog/react-native-buffer";
 
 import { ContentType } from "./index.d";
 import api from "./api";
